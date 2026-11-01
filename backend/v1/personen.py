@@ -77,8 +77,10 @@ class Bau:
         return tags
 
     def name(self, p: Person) -> str:
-        if not self.s.name_darf(p.id) or not p.namen:
+        if not self.s.name_darf(p.id):
             return anzeige.PRIVAT
+        if not p.namen:
+            return f"{anzeige.UNBEKANNT} {anzeige.UNBEKANNT}"     # Person ohne Namen: Vor- und Nachname unbekannt
         n = p.namen[0]
         text = anzeige.voller_name(n["value"])
         nick = (n["nickname"] or "").strip()

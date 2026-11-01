@@ -1,0 +1,19 @@
+{
+ "nr": 1,
+ "art": "schreiben",
+ "rolle": "bearbeiter",
+ "aktion": "DeleteFact",
+ "params": {
+  "xref": "I21"
+ },
+ "rumpf": {
+  "factId": "<fakt:OCCU:0>"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "I21",
+  "pending": true
+ }
+}

@@ -1,0 +1,1563 @@
+{
+ "nr": 6,
+ "art": "lesen",
+ "rolle": "verwalter",
+ "fall": "Individual__xref=I58",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "person": {
+   "xref": "I58",
+   "name": "Sophie Dorothee Falkenrath",
+   "sortName": "Falkenrath,Sophie Dorothee",
+   "given": "Sophie Dorothee",
+   "surname": "Falkenrath",
+   "sex": "F",
+   "isDead": true,
+   "private": false,
+   "access": "visitor",
+   "nameAccess": "visitor",
+   "restricted": [],
+   "lifespan": "1831–1902",
+   "birth": {
+    "date": {
+     "text": "9. November 1831",
+     "year": 1831,
+     "jd": 2390131
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": {
+    "date": {
+     "text": "25. April 1902",
+     "year": 1902,
+     "jd": 2415865
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "call": "",
+   "chr": {
+    "date": {
+     "text": "16. November 1831",
+     "year": 1831,
+     "jd": 2390138
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "buri": {
+    "date": {
+     "text": "28. April 1902",
+     "year": 1902,
+     "jd": 2415868
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "occupation": null,
+   "thumb": "<bild>",
+   "url": "<url>",
+   "hasParents": true,
+   "partnersCount": 1,
+   "childrenCount": 1
+  },
+  "relationship": "",
+  "canEdit": true,
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "BIRT",
+    "label": "Geburt",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "9. November 1831",
+     "year": 1831,
+     "jd": 2390131,
+     "gedcom": "9 NOV 1831"
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": 52.7347,
+     "lng": 10.2353
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [
+     {
+      "xref": "S105",
+      "title": "KB Eschede ev. Taufen 1809-1837",
+      "page": "Taufe 1831/6",
+      "quality": null,
+      "date": null,
+      "text": "",
+      "notes": [],
+      "media": []
+     }
+    ],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#2>",
+    "pending": false,
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "16. November 1831",
+     "year": 1831,
+     "jd": 2390138,
+     "gedcom": "16 NOV 1831"
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": 52.7347,
+     "lng": 10.2353
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [
+     {
+      "xref": "S105",
+      "title": "KB Eschede ev. Taufen 1809-1837",
+      "page": "Taufe 1831/6",
+      "quality": null,
+      "date": null,
+      "text": "",
+      "notes": [],
+      "media": []
+     }
+    ],
+    "associates": [
+     {
+      "xref": "I55",
+      "name": "Anna Margarethe Falkenrath",
+      "sex": "F",
+      "rela": "Godmother",
+      "role": "godparent",
+      "label": "Patin",
+      "private": false,
+      "access": "visitor",
+      "level1": true,
+      "notes": [],
+      "sources": []
+     }
+    ],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#3>",
+    "pending": false,
+    "tag": "NAME",
+    "label": "Name",
+    "known": true,
+    "value": "Sophie Dorothee /Falkenrath/",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#4>",
+    "pending": false,
+    "tag": "SEX",
+    "label": "Geschlecht",
+    "known": true,
+    "value": "weiblich",
+    "gedcomValue": "F",
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#5>",
+    "pending": false,
+    "tag": "ASSO",
+    "label": "Verbundene Person",
+    "known": true,
+    "value": "Anna Margarethe Falkenrath",
+    "gedcomValue": "@I55@",
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [
+     {
+      "xref": "I55",
+      "name": "Anna Margarethe Falkenrath",
+      "sex": "F",
+      "rela": "Godmother",
+      "role": "godparent",
+      "label": "Patin",
+      "private": false,
+      "access": "visitor",
+      "level1": true,
+      "notes": [],
+      "sources": []
+     }
+    ],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#6>",
+    "pending": false,
+    "tag": "DEAT",
+    "label": "Tod",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "25. April 1902",
+     "year": 1902,
+     "jd": 2415865,
+     "gedcom": "25 APR 1902"
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": 52.7347,
+     "lng": 10.2353
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#7>",
+    "pending": false,
+    "tag": "BURI",
+    "label": "Bestattung",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "28. April 1902",
+     "year": 1902,
+     "jd": 2415868,
+     "gedcom": "28 APR 1902"
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": 52.7347,
+     "lng": 10.2353
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#8>",
+    "pending": false,
+    "tag": "RELI",
+    "label": "Religion",
+    "known": true,
+    "value": "evangelisch-lutherisch",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "parentFamilies": [
+   {
+    "xref": "F21",
+    "name": "Johann Heinrich Falkenrath + Catharine Sophie Eggers",
+    "url": "<url>",
+    "husband": {
+     "xref": "I52",
+     "name": "Johann Heinrich Falkenrath",
+     "sortName": "Falkenrath,Johann Heinrich",
+     "given": "Johann Heinrich",
+     "surname": "Falkenrath",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1801–1872",
+     "birth": {
+      "date": {
+       "text": "12. Oktober 1801",
+       "year": 1801,
+       "jd": 2379146
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "3. Januar 1872",
+       "year": 1872,
+       "jd": 2404796
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "Heinrich",
+     "chr": {
+      "date": {
+       "text": "18. Oktober 1801",
+       "year": 1801,
+       "jd": 2379152
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "5. Januar 1872",
+       "year": 1872,
+       "jd": 2404798
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Häusling und Tagelöhner",
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 5
+    },
+    "wife": {
+     "xref": "I53",
+     "name": "Catharine Sophie Eggers",
+     "sortName": "Eggers,Catharine Sophie",
+     "given": "Catharine Sophie",
+     "surname": "Eggers",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1806–1880",
+     "birth": {
+      "date": {
+       "text": "28. März 1806",
+       "year": 1806,
+       "jd": 2380774
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "19. Juni 1880",
+       "year": 1880,
+       "jd": 2407886
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "3. April 1806",
+       "year": 1806,
+       "jd": 2380780
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "24. Juni 1880",
+       "year": 1880,
+       "jd": 2407891
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 5
+    },
+    "spouse": null,
+    "marriage": {
+     "date": {
+      "text": "15. November 1829",
+      "year": 1829,
+      "jd": 2389407
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#9>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Kirchliche Trauung",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "RELIGIOUS",
+      "typeLabel": "Kirchliche Trauung",
+      "date": {
+       "text": "15. November 1829",
+       "year": 1829,
+       "jd": 2389407,
+       "gedcom": "15 NOV 1829"
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": 52.7347,
+       "lng": 10.2353
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [
+       {
+        "xref": "S108",
+        "title": "KB Eschede ev. Trauungen 1809-1839",
+        "page": "Trauung 1829/9",
+        "quality": 3,
+        "date": null,
+        "text": "",
+        "notes": [],
+        "media": []
+       }
+      ],
+      "associates": [
+       {
+        "xref": "I349",
+        "name": "Heinrich Wilhelm Eggers",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       }
+      ],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I58",
+      "name": "Sophie Dorothee Falkenrath",
+      "sortName": "Falkenrath,Sophie Dorothee",
+      "given": "Sophie Dorothee",
+      "surname": "Falkenrath",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1831–1902",
+      "birth": {
+       "date": {
+        "text": "9. November 1831",
+        "year": 1831,
+        "jd": 2390131
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "25. April 1902",
+        "year": 1902,
+        "jd": 2415865
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "16. November 1831",
+        "year": 1831,
+        "jd": 2390138
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "28. April 1902",
+        "year": 1902,
+        "jd": 2415868
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": "<bild>",
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 1,
+      "marriages": [
+       {
+        "family": "F24",
+        "spouse": "Ludwig Meyerhof",
+        "date": {
+         "text": "20. Mai 1855",
+         "year": 1855,
+         "jd": 2398724
+        },
+        "place": {
+         "name": "Eschede, Celle, Niedersachsen, Deutschland",
+         "short": "Eschede, Celle, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     },
+     {
+      "xref": "I48",
+      "name": "Friedrich Wilhelm Falkenrath",
+      "sortName": "Falkenrath,Friedrich Wilhelm",
+      "given": "Friedrich Wilhelm",
+      "surname": "Falkenrath",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1834–1901",
+      "birth": {
+       "date": {
+        "text": "6. Juli 1834",
+        "year": 1834,
+        "jd": 2391101
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "22. Februar 1901",
+        "year": 1901,
+        "jd": 2415438
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "9. Juli 1834",
+        "year": 1834,
+        "jd": 2391104
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "27. Februar 1901",
+        "year": 1901,
+        "jd": 2415443
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": "Zimmermann",
+      "thumb": "<bild>",
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 3,
+      "marriages": [
+       {
+        "family": "F19",
+        "spouse": "Johanne Meinecke",
+        "date": {
+         "text": "26. Oktober 1862",
+         "year": 1862,
+         "jd": 2401440
+        },
+        "place": {
+         "name": "Celle, Niedersachsen, Deutschland",
+         "short": "Celle, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     },
+     {
+      "xref": "I60",
+      "name": "Heinrich Falkenrath",
+      "sortName": "Falkenrath,Heinrich",
+      "given": "Heinrich",
+      "surname": "Falkenrath",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1837–1864",
+      "birth": {
+       "date": {
+        "text": "21. Juni 1837",
+        "year": 1837,
+        "jd": 2392182
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "4. August 1864",
+        "year": 1864,
+        "jd": 2402088
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "26. Juni 1837",
+        "year": 1837,
+        "jd": 2392187
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "7. August 1864",
+        "year": 1864,
+        "jd": 2402091
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": "Zimmergeselle",
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I372",
+      "name": "Anna Catharina Falkenrath",
+      "sortName": "Falkenrath,Anna Catharina",
+      "given": "Anna Catharina",
+      "surname": "Falkenrath",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1840–1842",
+      "birth": {
+       "date": {
+        "text": "23. August 1840",
+        "year": 1840,
+        "jd": 2393341
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "2. März 1842",
+        "year": 1842,
+        "jd": 2393897
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "25. August 1840",
+        "year": 1840,
+        "jd": 2393343
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "4. März 1842",
+        "year": 1842,
+        "jd": 2393899
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I371",
+      "name": "Johann Friedrich Falkenrath",
+      "sortName": "Falkenrath,Johann Friedrich",
+      "given": "Johann Friedrich",
+      "surname": "Falkenrath",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1843–1911",
+      "birth": {
+       "date": {
+        "text": "4. Februar 1843",
+        "year": 1843,
+        "jd": 2394236
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "17. September 1911",
+        "year": 1911,
+        "jd": 2419297
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "Friedrich",
+      "chr": {
+       "date": {
+        "text": "12. Februar 1843",
+        "year": 1843,
+        "jd": 2394244
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "20. September 1911",
+        "year": 1911,
+        "jd": 2419300
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": "Anbauer",
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 5,
+      "marriages": [
+       {
+        "family": "F119",
+        "spouse": "Charlotte Eggers",
+        "date": {
+         "text": "12. März 1869",
+         "year": 1869,
+         "jd": 2403769
+        },
+        "place": {
+         "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+         "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     }
+    ],
+    "access": "visitor",
+    "uids": [
+     "FD043E914A2D5D0BA9E6C87526960A79BAAB"
+    ]
+   }
+  ],
+  "spouseFamilies": [
+   {
+    "xref": "F24",
+    "name": "Ludwig Meyerhof + Sophie Dorothee Falkenrath",
+    "url": "<url>",
+    "husband": {
+     "xref": "I59",
+     "name": "Ludwig Meyerhof",
+     "sortName": "Meyerhof,Ludwig",
+     "given": "Ludwig",
+     "surname": "Meyerhof",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1828–1890",
+     "birth": {
+      "date": {
+       "text": "3. Februar 1828",
+       "year": 1828,
+       "jd": 2388756
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "17. Oktober 1890",
+       "year": 1890,
+       "jd": 2411658
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "5. Februar 1828",
+       "year": 1828,
+       "jd": 2388758
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "21. Oktober 1890",
+       "year": 1890,
+       "jd": 2411662
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Hofbesitzer",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": false,
+     "partnersCount": 1,
+     "childrenCount": 1
+    },
+    "wife": {
+     "xref": "I58",
+     "name": "Sophie Dorothee Falkenrath",
+     "sortName": "Falkenrath,Sophie Dorothee",
+     "given": "Sophie Dorothee",
+     "surname": "Falkenrath",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1831–1902",
+     "birth": {
+      "date": {
+       "text": "9. November 1831",
+       "year": 1831,
+       "jd": 2390131
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "25. April 1902",
+       "year": 1902,
+       "jd": 2415865
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "16. November 1831",
+       "year": 1831,
+       "jd": 2390138
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "28. April 1902",
+       "year": 1902,
+       "jd": 2415868
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 1
+    },
+    "spouse": {
+     "xref": "I59",
+     "name": "Ludwig Meyerhof",
+     "sortName": "Meyerhof,Ludwig",
+     "given": "Ludwig",
+     "surname": "Meyerhof",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1828–1890",
+     "birth": {
+      "date": {
+       "text": "3. Februar 1828",
+       "year": 1828,
+       "jd": 2388756
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "17. Oktober 1890",
+       "year": 1890,
+       "jd": 2411658
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "5. Februar 1828",
+       "year": 1828,
+       "jd": 2388758
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "21. Oktober 1890",
+       "year": 1890,
+       "jd": 2411662
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Hofbesitzer",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": false,
+     "partnersCount": 1,
+     "childrenCount": 1
+    },
+    "marriage": {
+     "date": {
+      "text": "20. Mai 1855",
+      "year": 1855,
+      "jd": 2398724
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#10>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Kirchliche Trauung",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "RELIGIOUS",
+      "typeLabel": "Kirchliche Trauung",
+      "date": {
+       "text": "20. Mai 1855",
+       "year": 1855,
+       "jd": 2398724,
+       "gedcom": "20 MAY 1855"
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": 52.7347,
+       "lng": 10.2353
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [
+       {
+        "xref": "S109",
+        "title": "KB Eschede ev. Trauungen 1840-1868",
+        "page": "Trauung 1855/3",
+        "quality": null,
+        "date": null,
+        "text": "",
+        "notes": [],
+        "media": []
+       }
+      ],
+      "associates": [
+       {
+        "xref": "I60",
+        "name": "Heinrich Falkenrath",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       },
+       {
+        "xref": "I48",
+        "name": "Friedrich Wilhelm Falkenrath",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       }
+      ],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I61",
+      "name": "Wilhelm Meyerhof",
+      "sortName": "Meyerhof,Wilhelm",
+      "given": "Wilhelm",
+      "surname": "Meyerhof",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1860–1931",
+      "birth": {
+       "date": {
+        "text": "30. Januar 1860",
+        "year": 1860,
+        "jd": 2400440
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "12. Dezember 1931",
+        "year": 1931,
+        "jd": 2426688
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "8. Februar 1860",
+        "year": 1860,
+        "jd": 2400449
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "16. Dezember 1931",
+        "year": 1931,
+        "jd": 2426692
+       },
+       "place": {
+        "name": "Eschede, Celle, Niedersachsen, Deutschland",
+        "short": "Eschede, Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": "Hofbesitzer",
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     }
+    ],
+    "access": "visitor",
+    "uids": [
+     "4477882352FE5434B75746101F1155F219A6"
+    ]
+   }
+  ],
+  "stepFamilies": [],
+  "media": [
+   {
+    "xref": "M30",
+    "title": "Sophie Dorothee Falkenrath, Portrait",
+    "mime": "image/jpeg",
+    "isImage": true,
+    "thumb": "<bild>",
+    "file": "<datei>",
+    "url": "<url>",
+    "path": "portrait-i58.jpg",
+    "type": "photo",
+    "format": "jpg",
+    "factId": "<fact#11>",
+    "primary": true,
+    "highlighted": false,
+    "crop": null
+   }
+  ],
+  "associatedIn": [
+   {
+    "record": "I39",
+    "recordType": "INDI",
+    "name": "Carl Falkenrath",
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "factId": "<fact#12>",
+    "date": {
+     "text": "28. November 1866",
+     "year": 1866,
+     "jd": 2402934
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    },
+    "rela": "godparent",
+    "role": "godparent",
+    "label2": "Patin",
+    "level1": false,
+    "url": "<url>",
+    "husband": null,
+    "wife": null
+   },
+   {
+    "record": "I375",
+    "recordType": "INDI",
+    "name": "Frieda Falkenrath",
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "factId": "<fact#13>",
+    "date": {
+     "text": "6. September 1871",
+     "year": 1871,
+     "jd": 2404677
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    },
+    "rela": "godparent",
+    "role": "godparent",
+    "label2": "Patin",
+    "level1": false,
+    "url": "<url>",
+    "husband": null,
+    "wife": null
+   },
+   {
+    "record": "I376",
+    "recordType": "INDI",
+    "name": "Friedrich Falkenrath",
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "factId": "<fact#14>",
+    "date": {
+     "text": "28. August 1874",
+     "year": 1874,
+     "jd": 2405764
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    },
+    "rela": "godparent",
+    "role": "godparent",
+    "label2": "Patin",
+    "level1": false,
+    "url": "<url>",
+    "husband": null,
+    "wife": null
+   },
+   {
+    "record": "I377",
+    "recordType": "INDI",
+    "name": "Frieda Falkenrath",
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "factId": "<fact#15>",
+    "date": {
+     "text": "17. August 1876",
+     "year": 1876,
+     "jd": 2406484
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    },
+    "rela": "godparent",
+    "role": "godparent",
+    "label2": "Patin",
+    "level1": false,
+    "url": "<url>",
+    "husband": null,
+    "wife": null
+   },
+   {
+    "record": "I378",
+    "recordType": "INDI",
+    "name": "Otto Falkenrath",
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "factId": "<fact#16>",
+    "date": {
+     "text": "11. Dezember 1880",
+     "year": 1880,
+     "jd": 2408061
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    },
+    "rela": "godparent",
+    "role": "godparent",
+    "label2": "Patin",
+    "level1": false,
+    "url": "<url>",
+    "husband": null,
+    "wife": null
+   }
+  ],
+  "tasks": [],
+  "lastChange": {
+   "time": "<zeit>",
+   "user": "verwalter"
+  },
+  "uids": [
+   "9132383359CA521DB8C5BEEAB734D745EC4C"
+  ]
+ }
+}

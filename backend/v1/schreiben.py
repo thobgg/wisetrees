@@ -1,4 +1,4 @@
-"""v1: schreibende Aktionen (docs/PLAN-M2.md). Schritt 2: Fact – einen Fakt anlegen oder ändern.
+"""v1: schreibende Aktionen (docs/PLAN-M2.md): Fact – einen Fakt anlegen oder ändern; DeleteFact – löschen.
 
 Prüfungen und Fehler wie in den Aufzeichnungen der Referenz (vertrag/schreibfaelle.py):
   Datensatz fehlt → not-found (404), nicht sichtbar → private (403), keine Bearbeiterrolle oder gesperrt →
@@ -54,7 +54,8 @@ def _datum_spalten(text: str) -> dict:
             "date_from": d.von, "date_to": d.bis}
 
 
-def fact(ctx: Kontext):
+def _datensatz(ctx: Kontext):
+    """(xref, person.id, family.id, Verwalter?) eines bearbeitbaren Datensatzes oder eine Fehlerantwort."""
     try:
         s = sicht_fuer(ctx, ctx.baum_name or "")
     except Exception:  # noqa: BLE001
@@ -70,52 +71,63 @@ def fact(ctx: Kontext):
     resn = m.personen[pid].resn if pid is not None else m.familien[fid].resn
     if rolle not in ("editor", "moderator", "manager") or (resn == "locked" and rolle != "manager"):
         return fehler(403, "not-editable")
+    return xref, pid, fid, rolle == "manager"
 
-    r = ctx.rumpf
-    for k in ("value", "place", "note", "type"):
-        if ZEIGER.match(str(r.get(k) or "").strip()):
-            return fehler(400, "invalid-value")
 
-    b = ctx.app.state.baeume.baum(ctx.baum_name)
-    con = b.oeffnen()
+def _schreiben(ctx: Kontext, xref: str, schritte) -> dict:
+    """Eine Änderung am Datensatz: schritte(con, aenderung) sammelt sie (oder gibt eine Fehlerantwort zurück)."""
+    con = ctx.app.state.baeume.baum(ctx.baum_name).oeffnen()
     try:
         with con.begin():
             a = ae.Aenderung(con, xref, ctx.konto.name)
-            antwort = _fakt(con, a, r, pid, fid, rolle == "manager")
+            antwort = schritte(con, a)
             if antwort is not None:
                 return antwort
-            sofort = ctx.konten.kontobaum(ctx.konto, ctx.baum_name).sofort
-            a.speichern(sofort=sofort)
+            a.speichern(sofort=ctx.konten.kontobaum(ctx.konto, ctx.baum_name).sofort)
             offen = _offen(con, xref)
     finally:
         con.close()
     return {"ok": True, "xref": xref, "pending": offen}
 
 
+def _objekt(fakt_id: str) -> int | str | None:
+    """Kennung hinter dem Buchstaben einer factId: Zahl, oder „n<Schritt>“ für ein noch offen angelegtes Objekt."""
+    rest = fakt_id[1:]
+    if rest.isdigit():
+        return int(rest)
+    if rest[:1] == "n" and rest[1:].isdigit():
+        return f"neu:{rest[1:]}"
+    return None
+
+
+def fact(ctx: Kontext):
+    d = _datensatz(ctx)
+    if not isinstance(d, tuple):
+        return d
+    xref, pid, fid, verwalter = d
+    r = ctx.rumpf
+    for k in ("value", "place", "note", "type"):
+        if ZEIGER.match(str(r.get(k) or "").strip()):
+            return fehler(400, "invalid-value")
+    return _schreiben(ctx, xref, lambda con, a: _fakt(con, a, r, pid, fid, verwalter))
+
+
 def _fakt(con, a: ae.Aenderung, r: dict, pid, fid, verwalter: bool):
     """Schritte für Fact sammeln; eine Fehlerantwort oder None."""
     fakt_id = str(r.get("factId") or "")
     if fakt_id:
-        art, nr = fakt_id[:1], fakt_id[1:]
-        if not nr.isdigit():
+        art, nr = fakt_id[:1], _objekt(fakt_id)
+        if nr is None:
             return fehler(404, "fact-not-found")
-        nr = int(nr)
         if art == "E":
-            rolle = ae.aktueller_stand(con, "event_role", nr)
-            traeger_ok = rolle and rolle.get("role") == "PRINCIPAL" and (
-                (pid is not None and rolle.get("person_id") == pid) or (fid is not None and rolle.get("family_id") == fid))
-            if not traeger_ok:
-                return fehler(404, "fact-not-found")
-            ereignis = ae.aktueller_stand(con, "event", rolle["event_id"])
-            if ereignis.get("resn") == "locked" and not verwalter:
-                return fehler(403, "fact-locked")
-            return _ereignis_aendern(con, a, rolle["event_id"], ereignis, r)
+            g = _eigenes_ereignis(con, nr, pid, fid, verwalter)
+            if not isinstance(g, tuple):
+                return g
+            return _ereignis_aendern(con, a, g[0]["event_id"], g[1], r)
         if art == "N" and pid is not None:
-            name = ae.aktueller_stand(con, "name", nr)
-            if not name or name.get("person_id") != pid:
-                return fehler(404, "fact-not-found")
-            if name.get("resn") == "locked" and not verwalter:
-                return fehler(403, "fact-locked")
+            name = _eigener_name(con, nr, pid, verwalter)
+            if not isinstance(name, dict):
+                return name
             return _name_aendern(a, nr, name, r, pid)
         return fehler(404, "fact-not-found")
 
@@ -129,6 +141,114 @@ def _fakt(con, a: ae.Aenderung, r: dict, pid, fid, verwalter: bool):
             return fehler(400, "invalid-gedcom")
         return _name_aendern(a, None, None, r, pid)
     return _ereignis_neu(con, a, tag, r, pid, fid)
+
+
+def _eigenes_ereignis(con, nr, pid, fid, verwalter: bool):
+    """(Beteiligung, Ereignis) der Hauptbeteiligung nr am Datensatz, oder fact-not-found / fact-locked."""
+    rolle = ae.aktueller_stand(con, "event_role", nr)
+    traeger_ok = rolle and rolle.get("role") == "PRINCIPAL" and (
+        (pid is not None and rolle.get("person_id") == pid) or (fid is not None and rolle.get("family_id") == fid))
+    if not traeger_ok:
+        return fehler(404, "fact-not-found")
+    ereignis = ae.aktueller_stand(con, "event", rolle["event_id"])
+    if ereignis is None:
+        return fehler(404, "fact-not-found")
+    if ereignis.get("resn") == "locked" and not verwalter:
+        return fehler(403, "fact-locked")
+    return rolle, ereignis
+
+
+def _eigener_name(con, nr, pid, verwalter: bool):
+    name = ae.aktueller_stand(con, "name", nr)
+    if not name or name.get("person_id") != pid:
+        return fehler(404, "fact-not-found")
+    if name.get("resn") == "locked" and not verwalter:
+        return fehler(403, "fact-locked")
+    return name
+
+
+# ── DeleteFact ─────────────────────────────────────────────────────────────────────────────────────────────
+
+def delete_fact(ctx: Kontext):
+    d = _datensatz(ctx)
+    if not isinstance(d, tuple):
+        return d
+    xref, pid, fid, verwalter = d
+    fakt_id = str(ctx.rumpf.get("factId") or "")
+    return _schreiben(ctx, xref, lambda con, a: _loeschen(con, a, fakt_id, pid, fid, verwalter))
+
+
+def _loeschen(con, a: ae.Aenderung, fakt_id: str, pid, fid, verwalter: bool):
+    """Schritte zum Löschen eines Fakts. Was am Fakt hängt (Beteiligte, Ortsangaben, Zitate, Verweise), fällt mit
+    ihm weg; eingebettete Notizen werden mit gelöscht, Notizen als Datensatz bleiben."""
+    art, nr = fakt_id[:1], _objekt(fakt_id)
+    if art == "M":
+        return fehler(400, "link-tag-not-allowed")   # Medienverweis (OBJE): eigene Aktion
+    if nr is None:
+        return fehler(404, "fact-not-found")
+    spalte, wert = ("person_id", pid) if pid is not None else ("family_id", fid)
+    if art == "E":
+        g = _eigenes_ereignis(con, nr, pid, fid, verwalter)
+        if not isinstance(g, tuple):
+            return g
+        event_id = g[0]["event_id"]
+        er = T("event_role")
+        andere = isinstance(event_id, int) and con.execute(
+            select(func.count()).select_from(er).where(er.c.event_id == event_id, er.c.role == "PRINCIPAL",
+                                                       er.c.id != nr)).scalar()
+        if andere:
+            a.loeschen("event_role", nr)                 # geteiltes Ereignis: nur die eigene Beteiligung lösen
+        else:
+            _eingebettete_loeschen(con, a, "event_id", event_id)
+            a.loeschen("event", event_id)
+        return None
+    if art == "N" and pid is not None:
+        name = _eigener_name(con, nr, pid, verwalter)
+        if not isinstance(name, dict):
+            return name
+        _eingebettete_loeschen(con, a, "name_id", nr)
+        a.loeschen("name", nr)
+        return None
+    if art == "X" and pid is not None:
+        if nr != pid:
+            return fehler(404, "fact-not-found")
+        a.aendern("person", pid, sex=None)          # keine Angabe (E22)
+        return None
+    tabelle = {"T": "note_link", "Q": "citation", "A": "person_association", "R": "gedcom_rest"}.get(art)
+    if tabelle is None or (art == "A" and pid is None):
+        return fehler(404, "fact-not-found")
+    stand = ae.aktueller_stand(con, tabelle, nr)
+    traeger = "person_id" if art == "A" else spalte
+    if not stand or stand.get(traeger) != wert:
+        return fehler(404, "fact-not-found")
+    if art == "T":
+        notiz = ae.aktueller_stand(con, "note", stand["note_id"])
+        if notiz is not None and notiz.get("xref") is None:
+            a.loeschen("note", stand["note_id"])      # eingebettet: die Notiz selbst, der Verweis fällt mit
+        else:
+            a.loeschen("note_link", nr)
+        return None
+    if art in ("Q", "A"):
+        _eingebettete_loeschen(con, a, f"{tabelle}_id", nr)
+    a.loeschen(tabelle, nr)
+    return None
+
+
+def _eingebettete_loeschen(con, a: ae.Aenderung, spalte: str, wert) -> None:
+    """Eingebettete Notizen an einem Objekt, das gelöscht wird – bei Ereignissen auch die ihrer Zitate und
+    Beteiligten (z. B. Notizen zu Paten)."""
+    if not isinstance(wert, int):
+        return                                         # noch offen angelegt: nichts Angenommenes hängt daran
+    nl, no, ci = T("note_link"), T("note"), T("citation")
+    stellen = [nl.c[spalte] == wert]
+    if spalte == "event_id":
+        er = T("event_role")
+        stellen += [nl.c.citation_id.in_(select(ci.c.id).where(ci.c.event_id == wert)),
+                    nl.c.event_role_id.in_(select(er.c.id).where(er.c.event_id == wert))]
+    for s in stellen:
+        for (nid,) in con.execute(select(no.c.id).select_from(nl.join(no, no.c.id == nl.c.note_id))
+                                  .where(s, no.c.xref.is_(None)).order_by(no.c.id)):
+            a.loeschen("note", nid)
 
 
 # ── Ereignisse ─────────────────────────────────────────────────────────────────────────────────────────────
@@ -272,3 +392,4 @@ def _name_aendern(a: ae.Aenderung, name_id: int | None, alt: dict | None, r: dic
 
 
 POST_AKTIONEN["Fact"] = fact
+POST_AKTIONEN["DeleteFact"] = delete_fact

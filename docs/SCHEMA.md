@@ -6,7 +6,7 @@
 
 ## Baumdatei (.wise)
 
-Jeder Stammbaum ist eine SQLite-Datei mit `PRAGMA application_id = 0x57495345` („WISE“) und `PRAGMA user_version = 3` (Schemaversion). Die Datei lässt sich mit jedem SQLite-Werkzeug lesen. Das Schema ist portabel für PostgreSQL und MariaDB (KONZEPT.md E16): Kennungen haben höchstens 255 Zeichen, Textspalten mit Index bekommen in MariaDB einen Präfix-Index (191 Zeichen).
+Jeder Stammbaum ist eine SQLite-Datei mit `PRAGMA application_id = 0x57495345` („WISE“) und `PRAGMA user_version = 4` (Schemaversion). Die Datei lässt sich mit jedem SQLite-Werkzeug lesen. Das Schema ist portabel für PostgreSQL und MariaDB (KONZEPT.md E16): Kennungen haben höchstens 255 Zeichen, Textspalten mit Index bekommen in MariaDB einen Präfix-Index (191 Zeichen).
 
 Gemeinsame Bausteine:
 
@@ -32,7 +32,7 @@ Person (3.2); Namen, Ereignisse und Familien hängen über eigene Tabellen an.
 |---|---|---|---|---|---|
 | `id` | Ganzzahl | Schlüssel |  |  | interne Kennung, ändert sich nie (E1) |
 | `xref` | Text (255) | ja, eindeutig |  |  | GEDCOM-Kennung ohne @ (I12, F3 …) |
-| `sex` | Text | ja | 'U' |  |  |
+| `sex` | Text |  |  |  | M, F, X, U (ausdrücklich unbekannt); leer: keine Angabe (E22) |
 | `uid` | Text |  |  |  |  |
 | `changed_at` | Text |  |  |  |  |
 | `resn` | Text |  |  |  |  |

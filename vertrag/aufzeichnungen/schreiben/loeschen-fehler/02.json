@@ -1,0 +1,19 @@
+{
+ "nr": 2,
+ "art": "schreiben",
+ "rolle": "besucher",
+ "aktion": "DeleteFact",
+ "params": {
+  "xref": "I21"
+ },
+ "rumpf": {
+  "factId": "<fakt:OCCU:0>"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-editable",
+  "status": 403
+ }
+}

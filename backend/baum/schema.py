@@ -18,7 +18,8 @@ from sqlalchemy import (CheckConstraint, Column, Double, ForeignKey, Index, Inte
                         UniqueConstraint, text)
 
 APPLICATION_ID = 0x57495345  # ASCII "WISE", E12
-SCHEMA_VERSION = 3   # 2: Datenschutz-Regeln (E19); 3: Datensatz am Änderungssatz (E21); älteres baut oeffnen() um
+SCHEMA_VERSION = 4   # 2: Datenschutz-Regeln (E19); 3: Datensatz am Änderungssatz (E21); 4: Geschlecht darf leer
+#                      sein (E22); älteres baut oeffnen() um
 
 XREF_LAENGE = 255     # GEDCOM-Kennung ohne @ (E16); längere lehnt der Import ab
 PRAEFIX = 191         # Länge des Präfix-Index für Textspalten in MariaDB (utf8mb4)
@@ -131,7 +132,7 @@ meta = Table(
 person = _tabelle(
     "person", "Person (3.2); Namen, Ereignisse und Familien hängen über eigene Tabellen an",
     _xref(),
-    Column("sex", Text, nullable=False, server_default=text("'U'")),
+    Column("sex", Text, comment="M, F, X, U (ausdrücklich unbekannt); leer: keine Angabe (E22)"),
     Column("uid", Text),
     Column("changed_at", Text),
     *_resn(),

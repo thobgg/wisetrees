@@ -181,24 +181,34 @@ def annehmen(con: Connection, satz_ids: list[int], wer: str) -> None:
                     .values(status="accepted", decided_by=wer, decided_at=_jetzt()))
 
 
+@dataclass
+class OffenerStand:
+    """Was offen ist: berührte Objekte je Tabelle (Kennungen nach dem Anwenden) und, für neu angelegte Objekte,
+    der Schritt, der sie anlegt – über ihn lassen sie sich ansprechen, bevor sie angenommen sind („neu:<Schritt>“)."""
+    beruehrt: dict[str, set[int]] = field(default_factory=dict)
+    neu: dict[tuple[str, int], int] = field(default_factory=dict)
+
+    def __bool__(self) -> bool:
+        return bool(self.beruehrt)
+
+
 @contextmanager
-def offener_stand(con: Connection) -> Iterator[dict[str, set[int]]]:
+def offener_stand(con: Connection) -> Iterator[OffenerStand]:
     """Den Baum lesen, als wären alle offenen Sätze angenommen (Sicht der Bearbeiter, E21).
 
     Die Sätze werden in einer Transaktion angewendet, die am Ende immer zurückgerollt wird; die Datei bleibt
-    unverändert. Ein Satz mit Konflikt bleibt außen vor. Liefert die berührten Objekte je Tabelle (nach dem
-    Anwenden, also auch die Kennungen neu angelegter Objekte)."""
+    unverändert. Ein Satz mit Konflikt bleibt außen vor."""
     offen = offene_saetze(con)
     if con.in_transaction():
         con.rollback()
     if not offen:
-        yield {}
+        yield OffenerStand()
         return
     tx = con.begin()
     # Ausdrücklich beginnen: Der SQLite-Treiber beginnt sonst erst beim ersten Schreiben, und das Freigeben des
     # ersten Sicherungspunkts würde dann festschreiben.
     con.exec_driver_sql("BEGIN")
-    beruehrt: dict[str, set[int]] = {}
+    stand = OffenerStand()
     try:
         for satz in offen:
             sp = con.begin_nested()
@@ -209,8 +219,10 @@ def offener_stand(con: Connection) -> Iterator[dict[str, set[int]]]:
                 continue
             sp.commit()
             for s in schritte(con, [satz["id"]]):
-                beruehrt.setdefault(s["object_type"], set()).add(s["object_id"])
-        yield beruehrt
+                stand.beruehrt.setdefault(s["object_type"], set()).add(s["object_id"])
+                if s["operation"] == "create":
+                    stand.neu[(s["object_type"], s["object_id"])] = s["id"]
+        yield stand
     finally:
         tx.rollback()
 

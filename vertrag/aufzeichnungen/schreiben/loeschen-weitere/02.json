@@ -1,0 +1,1313 @@
+{
+ "nr": 2,
+ "art": "lesen",
+ "rolle": "verwalter",
+ "fall": "Individual__xref=I111",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "person": {
+   "xref": "I111",
+   "name": "Anna Maria Kleine",
+   "sortName": "Kleine,Anna Maria",
+   "given": "Anna Maria",
+   "surname": "Kleine",
+   "sex": "F",
+   "isDead": true,
+   "private": false,
+   "access": "visitor",
+   "nameAccess": "visitor",
+   "restricted": [],
+   "lifespan": "1874–1960",
+   "birth": {
+    "date": {
+     "text": "11. April 1874",
+     "year": 1874,
+     "jd": 2405625
+    },
+    "place": {
+     "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+     "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": {
+    "date": {
+     "text": "23. Oktober 1960",
+     "year": 1960,
+     "jd": 2437231
+    },
+    "place": {
+     "name": "Lüneburg, Niedersachsen, Deutschland",
+     "short": "Lüneburg, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "call": "",
+   "chr": {
+    "date": {
+     "text": "15. April 1874",
+     "year": 1874,
+     "jd": 2405629
+    },
+    "place": {
+     "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+     "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "buri": {
+    "date": {
+     "text": "27. Oktober 1960",
+     "year": 1960,
+     "jd": 2437235
+    },
+    "place": {
+     "name": "Lüneburg, Niedersachsen, Deutschland",
+     "short": "Lüneburg, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "occupation": null,
+   "thumb": "<bild>",
+   "url": "<url>",
+   "hasParents": true,
+   "partnersCount": 1,
+   "childrenCount": 3
+  },
+  "relationship": "",
+  "canEdit": true,
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "BIRT",
+    "label": "Geburt",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "11. April 1874",
+     "year": 1874,
+     "jd": 2405625,
+     "gedcom": "11 APR 1874"
+    },
+    "place": {
+     "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+     "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+     "lat": 51.7189,
+     "lng": 8.7575
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [
+     {
+      "xref": "S12",
+      "title": "KB Paderborn kath. Taufen 1854-1905",
+      "page": "Taufe 1874/21",
+      "quality": 2,
+      "date": null,
+      "text": "",
+      "notes": [],
+      "media": []
+     }
+    ],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#2>",
+    "pending": false,
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "15. April 1874",
+     "year": 1874,
+     "jd": 2405629,
+     "gedcom": "15 APR 1874"
+    },
+    "place": {
+     "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+     "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+     "lat": 51.7189,
+     "lng": 8.7575
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [
+     {
+      "xref": "S12",
+      "title": "KB Paderborn kath. Taufen 1854-1905",
+      "page": "Taufe 1874/21",
+      "quality": 3,
+      "date": {
+       "text": "15. April 1874",
+       "year": 1874,
+       "jd": 2405629,
+       "gedcom": "15 APR 1874"
+      },
+      "text": "Anno Domini 1874, die 15 mensis Aprilis baptizata est Anna Maria, nata die 11 Aprilis, filia legitima Franz Kleine et Franziska Rüther conjugum in Paderborn. Patrini: Wilhelm Kleine, Tischler; Franz Anton Kleine, Maurer; Johann Bernhard Rüther, Zimmermann.",
+      "notes": [],
+      "media": [
+       {
+        "xref": "M137",
+        "title": "KB Paderborn kath. Taufen 1854-1905, Taufe 1874/21",
+        "mime": "image/jpeg",
+        "isImage": true,
+        "thumb": "<bild>",
+        "file": "<datei>",
+        "url": "<url>",
+        "path": "taufeintrag-1874-i111.jpg",
+        "type": "document",
+        "format": "jpg"
+       }
+      ]
+     }
+    ],
+    "associates": [
+     {
+      "xref": "I343",
+      "name": "Wilhelm Kleine",
+      "sex": "M",
+      "rela": "godparent",
+      "role": "godparent",
+      "label": "Pate",
+      "private": false,
+      "access": "visitor",
+      "level1": false,
+      "notes": [],
+      "sources": []
+     },
+     {
+      "xref": "I344",
+      "name": "Franz Anton Kleine",
+      "sex": "M",
+      "rela": "godparent",
+      "role": "godparent",
+      "label": "Pate",
+      "private": false,
+      "access": "visitor",
+      "level1": false,
+      "notes": [],
+      "sources": []
+     },
+     {
+      "xref": "I347",
+      "name": "Johann Bernhard Rüther",
+      "sex": "M",
+      "rela": "godparent",
+      "role": "godparent",
+      "label": "Pate",
+      "private": false,
+      "access": "visitor",
+      "level1": false,
+      "notes": [],
+      "sources": []
+     }
+    ],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#3>",
+    "pending": false,
+    "tag": "NAME",
+    "label": "Name",
+    "known": true,
+    "value": "Anna Maria /Kleine/",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#4>",
+    "pending": false,
+    "tag": "SEX",
+    "label": "Geschlecht",
+    "known": true,
+    "value": "weiblich",
+    "gedcomValue": "F",
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#5>",
+    "pending": false,
+    "tag": "DEAT",
+    "label": "Tod",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "23. Oktober 1960",
+     "year": 1960,
+     "jd": 2437231,
+     "gedcom": "23 OCT 1960"
+    },
+    "place": {
+     "name": "Lüneburg, Niedersachsen, Deutschland",
+     "short": "Lüneburg, Niedersachsen, Deutschland",
+     "lat": 53.2509,
+     "lng": 10.4141
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [
+     {
+      "xref": "S9",
+      "title": "StA Lüneburg Tode 1874-1996",
+      "page": "Tod 1960/27",
+      "quality": 3,
+      "date": null,
+      "text": "",
+      "notes": [],
+      "media": []
+     }
+    ],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#6>",
+    "pending": false,
+    "tag": "BURI",
+    "label": "Bestattung",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "27. Oktober 1960",
+     "year": 1960,
+     "jd": 2437235,
+     "gedcom": "27 OCT 1960"
+    },
+    "place": {
+     "name": "Lüneburg, Niedersachsen, Deutschland",
+     "short": "Lüneburg, Niedersachsen, Deutschland",
+     "lat": 53.2509,
+     "lng": 10.4141
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#7>",
+    "pending": false,
+    "tag": "RELI",
+    "label": "Religion",
+    "known": true,
+    "value": "römisch-katholisch",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "parentFamilies": [
+   {
+    "xref": "F56",
+    "name": "Franz Kleine + Franziska Rüther",
+    "url": "<url>",
+    "husband": {
+     "xref": "I138",
+     "name": "Franz Kleine",
+     "sortName": "Kleine,Franz",
+     "given": "Franz",
+     "surname": "Kleine",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1847–1910",
+     "birth": {
+      "date": {
+       "text": "22. Februar 1847",
+       "year": 1847,
+       "jd": 2395715
+      },
+      "place": {
+       "name": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "3. Januar 1910",
+       "year": 1910,
+       "jd": 2418675
+      },
+      "place": {
+       "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "1. März 1847",
+       "year": 1847,
+       "jd": 2395722
+      },
+      "place": {
+       "name": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "7. Januar 1910",
+       "year": 1910,
+       "jd": 2418679
+      },
+      "place": {
+       "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Schuhmacher",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 1
+    },
+    "wife": {
+     "xref": "I139",
+     "name": "Franziska Rüther",
+     "sortName": "Rüther,Franziska",
+     "given": "Franziska",
+     "surname": "Rüther",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1849–1931",
+     "birth": {
+      "date": {
+       "text": "20. Dezember 1849",
+       "year": 1849,
+       "jd": 2396747
+      },
+      "place": {
+       "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "6. Juli 1931",
+       "year": 1931,
+       "jd": 2426529
+      },
+      "place": {
+       "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "26. Dezember 1849",
+       "year": 1849,
+       "jd": 2396753
+      },
+      "place": {
+       "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "10. Juli 1931",
+       "year": 1931,
+       "jd": 2426533
+      },
+      "place": {
+       "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 1
+    },
+    "spouse": null,
+    "marriage": {
+     "date": {
+      "text": "14. Januar 1872",
+      "year": 1872,
+      "jd": 2404807
+     },
+     "place": {
+      "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+      "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#8>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Kirchliche Trauung",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "RELIGIOUS",
+      "typeLabel": "Kirchliche Trauung",
+      "date": {
+       "text": "14. Januar 1872",
+       "year": 1872,
+       "jd": 2404807,
+       "gedcom": "14 JAN 1872"
+      },
+      "place": {
+       "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": 51.7189,
+       "lng": 8.7575
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [
+       {
+        "xref": "S137",
+        "title": "KB Paderborn kath. Trauungen 1855-1886",
+        "page": "Trauung 1872/23",
+        "quality": 3,
+        "date": null,
+        "text": "",
+        "notes": [],
+        "media": []
+       }
+      ],
+      "associates": [
+       {
+        "xref": "I343",
+        "name": "Wilhelm Kleine",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       },
+       {
+        "xref": "I344",
+        "name": "Franz Anton Kleine",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       }
+      ],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I111",
+      "name": "Anna Maria Kleine",
+      "sortName": "Kleine,Anna Maria",
+      "given": "Anna Maria",
+      "surname": "Kleine",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1874–1960",
+      "birth": {
+       "date": {
+        "text": "11. April 1874",
+        "year": 1874,
+        "jd": 2405625
+       },
+       "place": {
+        "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+        "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "23. Oktober 1960",
+        "year": 1960,
+        "jd": 2437231
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "15. April 1874",
+        "year": 1874,
+        "jd": 2405629
+       },
+       "place": {
+        "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+        "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "27. Oktober 1960",
+        "year": 1960,
+        "jd": 2437235
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": "<bild>",
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 3,
+      "marriages": [
+       {
+        "family": "F42",
+        "spouse": "August Hagedorn",
+        "date": {
+         "text": "26. April 1901",
+         "year": 1901,
+         "jd": 2415501
+        },
+        "place": {
+         "name": "Lüneburg, Niedersachsen, Deutschland",
+         "short": "Lüneburg, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     }
+    ],
+    "access": "visitor",
+    "uids": [
+     "CF4248E7C059598C8A0653686138930EC386"
+    ]
+   }
+  ],
+  "spouseFamilies": [
+   {
+    "xref": "F42",
+    "name": "August Hagedorn + Anna Maria Kleine",
+    "url": "<url>",
+    "husband": {
+     "xref": "I110",
+     "name": "August Hagedorn",
+     "sortName": "Hagedorn,August",
+     "given": "August",
+     "surname": "Hagedorn",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1870–1937",
+     "birth": {
+      "date": {
+       "text": "11. Oktober 1870",
+       "year": 1870,
+       "jd": 2404347
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "2. Februar 1937",
+       "year": 1937,
+       "jd": 2428567
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "18. Oktober 1870",
+       "year": 1870,
+       "jd": 2404354
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "5. Februar 1937",
+       "year": 1937,
+       "jd": 2428570
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Salzsieder",
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 3
+    },
+    "wife": {
+     "xref": "I111",
+     "name": "Anna Maria Kleine",
+     "sortName": "Kleine,Anna Maria",
+     "given": "Anna Maria",
+     "surname": "Kleine",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1874–1960",
+     "birth": {
+      "date": {
+       "text": "11. April 1874",
+       "year": 1874,
+       "jd": 2405625
+      },
+      "place": {
+       "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "23. Oktober 1960",
+       "year": 1960,
+       "jd": 2437231
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "15. April 1874",
+       "year": 1874,
+       "jd": 2405629
+      },
+      "place": {
+       "name": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "short": "Paderborn, Nordrhein-Westfalen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "27. Oktober 1960",
+       "year": 1960,
+       "jd": 2437235
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 3
+    },
+    "spouse": {
+     "xref": "I110",
+     "name": "August Hagedorn",
+     "sortName": "Hagedorn,August",
+     "given": "August",
+     "surname": "Hagedorn",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1870–1937",
+     "birth": {
+      "date": {
+       "text": "11. Oktober 1870",
+       "year": 1870,
+       "jd": 2404347
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "2. Februar 1937",
+       "year": 1937,
+       "jd": 2428567
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "18. Oktober 1870",
+       "year": 1870,
+       "jd": 2404354
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "5. Februar 1937",
+       "year": 1937,
+       "jd": 2428570
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Salzsieder",
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 3
+    },
+    "marriage": {
+     "date": {
+      "text": "26. April 1901",
+      "year": 1901,
+      "jd": 2415501
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#9>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Standesamtliche Heirat",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "CIVIL",
+      "typeLabel": "Standesamtliche Heirat",
+      "date": {
+       "text": "26. April 1901",
+       "year": 1901,
+       "jd": 2415501,
+       "gedcom": "26 APR 1901"
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": 53.2509,
+       "lng": 10.4141
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [
+       {
+        "xref": "S194",
+        "title": "StA Lüneburg Heiraten 1874-1946",
+        "page": "Heirat 1901/18",
+        "quality": 3,
+        "date": null,
+        "text": "",
+        "notes": [],
+        "media": []
+       }
+      ],
+      "associates": [
+       {
+        "xref": "I293",
+        "name": "Wilhelm Hagedorn",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       }
+      ],
+      "freeAssociates": [
+       {
+        "role": "witness",
+        "name": "Hermann Bruns",
+        "detail": "Maurer, Lüneburg",
+        "text": "Hermann Bruns, Maurer, Lüneburg"
+       }
+      ],
+      "noteXref": null,
+      "details": []
+     },
+     {
+      "id": "<fact#10>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Kirchliche Trauung",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "RELIGIOUS",
+      "typeLabel": "Kirchliche Trauung",
+      "date": {
+       "text": "27. April 1901",
+       "year": 1901,
+       "jd": 2415502,
+       "gedcom": "27 APR 1901"
+      },
+      "place": {
+       "name": "Lüneburg, Niedersachsen, Deutschland",
+       "short": "Lüneburg, Niedersachsen, Deutschland",
+       "lat": 53.2509,
+       "lng": 10.4141
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [
+       {
+        "xref": "S130",
+        "title": "KB Lüneburg ev. Trauungen 1851-1936",
+        "page": "Trauung 1901/3",
+        "quality": 3,
+        "date": null,
+        "text": "",
+        "notes": [],
+        "media": []
+       }
+      ],
+      "associates": [],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I268",
+      "name": "Hans Hagedorn",
+      "sortName": "Hagedorn,Hans",
+      "given": "Hans",
+      "surname": "Hagedorn",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1903–1985",
+      "birth": {
+       "date": {
+        "text": "11. Oktober 1903",
+        "year": 1903,
+        "jd": 2416399
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "20. Februar 1985",
+        "year": 1985,
+        "jd": 2446117
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "20. Oktober 1903",
+        "year": 1903,
+        "jd": 2416408
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": null,
+      "occupation": "Tischler",
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I33",
+      "name": "Berta Hagedorn",
+      "sortName": "Hagedorn,Berta",
+      "given": "Berta",
+      "surname": "Hagedorn",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1905–1993",
+      "birth": {
+       "date": {
+        "text": "24. Dezember 1905",
+        "year": 1905,
+        "jd": 2417204
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "8. Juli 1993",
+        "year": 1993,
+        "jd": 2449177
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "30. Dezember 1905",
+        "year": 1905,
+        "jd": 2417210
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": null,
+      "occupation": null,
+      "thumb": "<bild>",
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 3,
+      "marriages": [
+       {
+        "family": "F13",
+        "spouse": "Paul Krümmel",
+        "date": {
+         "text": "12. Oktober 1928",
+         "year": 1928,
+         "jd": 2425532
+        },
+        "place": {
+         "name": "Lüneburg, Niedersachsen, Deutschland",
+         "short": "Lüneburg, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     },
+     {
+      "xref": "I269",
+      "name": "Rudolf Hagedorn",
+      "sortName": "Hagedorn,Rudolf",
+      "given": "Rudolf",
+      "surname": "Hagedorn",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1913–1918",
+      "birth": {
+       "date": {
+        "text": "7. Juli 1913",
+        "year": 1913,
+        "jd": 2419956
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "6. August 1918",
+        "year": 1918,
+        "jd": 2421812
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "10. Juli 1913",
+        "year": 1913,
+        "jd": 2419959
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "9. August 1918",
+        "year": 1918,
+        "jd": 2421815
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     }
+    ],
+    "access": "visitor",
+    "uids": [
+     "CEFE3BEF9D9F5410A33F751D7FC249C65AE2"
+    ]
+   }
+  ],
+  "stepFamilies": [],
+  "media": [
+   {
+    "xref": "M42",
+    "title": "Anna Maria Kleine, Portrait",
+    "mime": "image/jpeg",
+    "isImage": true,
+    "thumb": "<bild>",
+    "file": "<datei>",
+    "url": "<url>",
+    "path": "portrait-i111.jpg",
+    "type": "photo",
+    "format": "jpg",
+    "factId": "<fact#11>",
+    "primary": true,
+    "highlighted": false,
+    "crop": null
+   }
+  ],
+  "associatedIn": [],
+  "tasks": [],
+  "lastChange": {
+   "time": "<zeit>",
+   "user": "verwalter"
+  },
+  "uids": [
+   "55680C40D6085D849FD2AE9C1DB6152590B1"
+  ]
+ }
+}

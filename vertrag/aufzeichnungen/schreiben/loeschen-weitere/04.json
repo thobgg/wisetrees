@@ -1,0 +1,1088 @@
+{
+ "nr": 4,
+ "art": "lesen",
+ "rolle": "verwalter",
+ "fall": "Individual__xref=I271",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "person": {
+   "xref": "I271",
+   "name": "Wilhelm Rosskamp",
+   "sortName": "Rosskamp,Wilhelm",
+   "given": "Wilhelm",
+   "surname": "Rosskamp",
+   "sex": "M",
+   "isDead": true,
+   "private": false,
+   "access": "visitor",
+   "nameAccess": "visitor",
+   "restricted": [],
+   "lifespan": "1872–1954",
+   "birth": {
+    "date": {
+     "text": "8. November 1872",
+     "year": 1872,
+     "jd": 2405106
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": {
+    "date": {
+     "text": "20. Juli 1954",
+     "year": 1954,
+     "jd": 2434944
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "call": "",
+   "chr": {
+    "date": {
+     "text": "10. November 1872",
+     "year": 1872,
+     "jd": 2405108
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "buri": {
+    "date": {
+     "text": "25. Juli 1954",
+     "year": 1954,
+     "jd": 2434949
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "occupation": "Landwirt",
+   "thumb": "<bild>",
+   "url": "<url>",
+   "hasParents": true,
+   "partnersCount": 0,
+   "childrenCount": 0
+  },
+  "relationship": "",
+  "canEdit": true,
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "BIRT",
+    "label": "Geburt",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "8. November 1872",
+     "year": 1872,
+     "jd": 2405106,
+     "gedcom": "8 NOV 1872"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [
+     {
+      "xref": "S81",
+      "title": "KB Celle ev. Taufen 1863-1905",
+      "page": "Taufe 1872/14",
+      "quality": null,
+      "date": null,
+      "text": "",
+      "notes": [],
+      "media": []
+     }
+    ],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#2>",
+    "pending": false,
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "10. November 1872",
+     "year": 1872,
+     "jd": 2405108,
+     "gedcom": "10 NOV 1872"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [
+     {
+      "xref": "S81",
+      "title": "KB Celle ev. Taufen 1863-1905",
+      "page": "Taufe 1872/14",
+      "quality": null,
+      "date": null,
+      "text": "",
+      "notes": [],
+      "media": []
+     }
+    ],
+    "associates": [
+     {
+      "xref": "I123",
+      "name": "Johann Heinrich Behnke",
+      "sex": "M",
+      "rela": "godparent",
+      "role": "godparent",
+      "label": "Pate",
+      "private": false,
+      "access": "visitor",
+      "level1": false,
+      "notes": [],
+      "sources": []
+     }
+    ],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#3>",
+    "pending": false,
+    "tag": "OCCU",
+    "label": "Beruf",
+    "known": true,
+    "value": "Landwirt",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#4>",
+    "pending": false,
+    "tag": "NAME",
+    "label": "Name",
+    "known": true,
+    "value": "Wilhelm /Rosskamp/",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#5>",
+    "pending": false,
+    "tag": "SEX",
+    "label": "Geschlecht",
+    "known": true,
+    "value": "männlich",
+    "gedcomValue": "M",
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#6>",
+    "pending": false,
+    "tag": "DEAT",
+    "label": "Tod",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "20. Juli 1954",
+     "year": 1954,
+     "jd": 2434944,
+     "gedcom": "20 JUL 1954"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [
+     {
+      "xref": "S14",
+      "title": "StA Celle Tode 1874-1996",
+      "page": "Tod 1954/5",
+      "quality": null,
+      "date": null,
+      "text": "",
+      "notes": [],
+      "media": []
+     }
+    ],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#7>",
+    "pending": false,
+    "tag": "BURI",
+    "label": "Bestattung",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "25. Juli 1954",
+     "year": 1954,
+     "jd": 2434949,
+     "gedcom": "25 JUL 1954"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#8>",
+    "pending": false,
+    "tag": "RELI",
+    "label": "Religion",
+    "known": true,
+    "value": "evangelisch-lutherisch",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "parentFamilies": [
+   {
+    "xref": "F43",
+    "name": "Johann Friedrich Rosskamp + Charlotte Behnke",
+    "url": "<url>",
+    "husband": {
+     "xref": "I112",
+     "name": "Johann Friedrich Rosskamp",
+     "sortName": "Rosskamp,Johann Friedrich",
+     "given": "Johann Friedrich",
+     "surname": "Rosskamp",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1831–1913",
+     "birth": {
+      "date": {
+       "text": "9. November 1831",
+       "year": 1831,
+       "jd": 2390131
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "18. Juli 1913",
+       "year": 1913,
+       "jd": 2419967
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "Friedrich",
+     "chr": {
+      "date": {
+       "text": "18. November 1831",
+       "year": 1831,
+       "jd": 2390140
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "23. Juli 1913",
+       "year": 1913,
+       "jd": 2419972
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Stellmacher",
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 5
+    },
+    "wife": {
+     "xref": "I113",
+     "name": "Charlotte Behnke",
+     "sortName": "Behnke,Charlotte",
+     "given": "Charlotte",
+     "surname": "Behnke",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1838–1883",
+     "birth": {
+      "date": {
+       "text": "4. Oktober 1838",
+       "year": 1838,
+       "jd": 2392652
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "25. April 1883",
+       "year": 1883,
+       "jd": 2408926
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "6. Oktober 1838",
+       "year": 1838,
+       "jd": 2392654
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "28. April 1883",
+       "year": 1883,
+       "jd": 2408929
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 5
+    },
+    "spouse": null,
+    "marriage": {
+     "date": {
+      "text": "16. August 1863",
+      "year": 1863,
+      "jd": 2401734
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#9>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Kirchliche Trauung",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "RELIGIOUS",
+      "typeLabel": "Kirchliche Trauung",
+      "date": {
+       "text": "16. August 1863",
+       "year": 1863,
+       "jd": 2401734,
+       "gedcom": "16 AUG 1863"
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": 52.6226,
+       "lng": 10.0815
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [
+       {
+        "xref": "S84",
+        "title": "KB Celle ev. Trauungen 1855-1934",
+        "page": "Trauung 1863/26",
+        "quality": 3,
+        "date": null,
+        "text": "",
+        "notes": [],
+        "media": []
+       }
+      ],
+      "associates": [
+       {
+        "xref": "I123",
+        "name": "Johann Heinrich Behnke",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       },
+       {
+        "xref": "I301",
+        "name": "Friedrich Rosskamp",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       }
+      ],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I42",
+      "name": "August Rosskamp",
+      "sortName": "Rosskamp,August",
+      "given": "August",
+      "surname": "Rosskamp",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1868–1931",
+      "birth": {
+       "date": {
+        "text": "30. Januar 1868",
+        "year": 1868,
+        "jd": 2403362
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "12. August 1931",
+        "year": 1931,
+        "jd": 2426566
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "3. Februar 1868",
+        "year": 1868,
+        "jd": 2403366
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "17. August 1931",
+        "year": 1931,
+        "jd": 2426571
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": "Gastwirt",
+      "thumb": "<bild>",
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 3,
+      "marriages": [
+       {
+        "family": "F16",
+        "spouse": "Sophie Lüders",
+        "date": {
+         "text": "8. Mai 1896",
+         "year": 1896,
+         "jd": 2413688
+        },
+        "place": {
+         "name": "Celle, Niedersachsen, Deutschland",
+         "short": "Celle, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     },
+     {
+      "xref": "I273",
+      "name": "Walter Rosskamp",
+      "sortName": "Rosskamp,Walter",
+      "given": "Walter",
+      "surname": "Rosskamp",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1870–1928",
+      "birth": {
+       "date": {
+        "text": "19. Juni 1870",
+        "year": 1870,
+        "jd": 2404233
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "9. Dezember 1928",
+        "year": 1928,
+        "jd": 2425590
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "25. Juni 1870",
+        "year": 1870,
+        "jd": 2404239
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "12. Dezember 1928",
+        "year": 1928,
+        "jd": 2425593
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": "Schmied",
+      "thumb": "<bild>",
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I271",
+      "name": "Wilhelm Rosskamp",
+      "sortName": "Rosskamp,Wilhelm",
+      "given": "Wilhelm",
+      "surname": "Rosskamp",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1872–1954",
+      "birth": {
+       "date": {
+        "text": "8. November 1872",
+        "year": 1872,
+        "jd": 2405106
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "20. Juli 1954",
+        "year": 1954,
+        "jd": 2434944
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "10. November 1872",
+        "year": 1872,
+        "jd": 2405108
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "25. Juli 1954",
+        "year": 1954,
+        "jd": 2434949
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": "Landwirt",
+      "thumb": "<bild>",
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I270",
+      "name": "Minna Rosskamp",
+      "sortName": "Rosskamp,Minna",
+      "given": "Minna",
+      "surname": "Rosskamp",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1876–1879",
+      "birth": {
+       "date": {
+        "text": "5. Dezember 1876",
+        "year": 1876,
+        "jd": 2406594
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "7. März 1879",
+        "year": 1879,
+        "jd": 2407416
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "7. Dezember 1876",
+        "year": 1876,
+        "jd": 2406596
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "9. März 1879",
+        "year": 1879,
+        "jd": 2407418
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I272",
+      "name": "August Rosskamp",
+      "sortName": "Rosskamp,August",
+      "given": "August",
+      "surname": "Rosskamp",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1880–1956",
+      "birth": {
+       "date": {
+        "text": "17. März 1880",
+        "year": 1880,
+        "jd": 2407792
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "26. Dezember 1956",
+        "year": 1956,
+        "jd": 2435834
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "23. März 1880",
+        "year": 1880,
+        "jd": 2407798
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "30. Dezember 1956",
+        "year": 1956,
+        "jd": 2435838
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": "Sattler",
+      "thumb": "<bild>",
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     }
+    ],
+    "access": "visitor",
+    "uids": [
+     "AFD53C09EF965F1F99D9AFCA7056E8AD129D"
+    ]
+   }
+  ],
+  "spouseFamilies": [],
+  "stepFamilies": [],
+  "media": [
+   {
+    "xref": "M94",
+    "title": "Wilhelm Rosskamp, Portrait",
+    "mime": "image/jpeg",
+    "isImage": true,
+    "thumb": "<bild>",
+    "file": "<datei>",
+    "url": "<url>",
+    "path": "portrait-i271.jpg",
+    "type": "photo",
+    "format": "jpg",
+    "factId": "<fact#10>",
+    "primary": true,
+    "highlighted": true,
+    "crop": null
+   },
+   {
+    "xref": "M135",
+    "title": "Hochzeit von Heinrich und Anna, 1924",
+    "mime": "image/jpeg",
+    "isImage": true,
+    "thumb": "<bild>",
+    "file": "<datei>",
+    "url": "<url>",
+    "path": "hochzeit-1924.jpg",
+    "type": "photo",
+    "format": "jpg",
+    "factId": "<fact#11>",
+    "primary": false,
+    "highlighted": false,
+    "crop": null
+   }
+  ],
+  "associatedIn": [
+   {
+    "record": "I79",
+    "recordType": "INDI",
+    "name": "Ludwig Rosskamp",
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "factId": "<fact#12>",
+    "date": {
+     "text": "19. März 1898",
+     "year": 1898,
+     "jd": 2414368
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    },
+    "rela": "godparent",
+    "role": "godparent",
+    "label2": "Pate",
+    "level1": false,
+    "url": "<url>",
+    "husband": null,
+    "wife": null
+   },
+   {
+    "record": "I22",
+    "recordType": "INDI",
+    "name": "Anna Rosskamp",
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "factId": "<fact#13>",
+    "date": {
+     "text": "21. August 1901",
+     "year": 1901,
+     "jd": 2415618
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    },
+    "rela": "godparent",
+    "role": "godparent",
+    "label2": "Pate",
+    "level1": false,
+    "url": "<url>",
+    "husband": null,
+    "wife": null
+   }
+  ],
+  "tasks": [],
+  "lastChange": {
+   "time": "<zeit>",
+   "user": "verwalter"
+  },
+  "uids": [
+   "9409E47F7B665852B7D21777087B09D0FEF0"
+  ]
+ }
+}

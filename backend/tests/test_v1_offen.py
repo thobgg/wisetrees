@@ -104,8 +104,8 @@ def test_lesen_mit_offenem_stand_aendert_die_datei_nicht(app, einstellungen, ser
     con = datei.oeffnen(einstellungen.baeume / "probe.wise")
     try:
         assert len(ae.offene_saetze(con)) == 4
-        with ae.offener_stand(con) as beruehrt:
-            assert "event" in beruehrt and "name" in beruehrt
+        with ae.offener_stand(con) as stand:
+            assert "event" in stand.beruehrt and "name" in stand.beruehrt
         assert len(ae.offene_saetze(con)) == 4
     finally:
         con.close()

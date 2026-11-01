@@ -1,0 +1,1274 @@
+{
+ "nr": 4,
+ "art": "lesen",
+ "rolle": "besucher",
+ "fall": "Individual__xref=I71",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "person": {
+   "xref": "I71",
+   "name": "Martha Falkenrath",
+   "sortName": "Falkenrath,Martha",
+   "given": "Martha",
+   "surname": "Falkenrath",
+   "sex": "F",
+   "isDead": true,
+   "private": false,
+   "access": "visitor",
+   "nameAccess": "visitor",
+   "restricted": [],
+   "lifespan": "1902–1988",
+   "birth": {
+    "date": {
+     "text": "14. Februar 1902",
+     "year": 1902,
+     "jd": 2415795
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": {
+    "date": {
+     "text": "30. September 1988",
+     "year": 1988,
+     "jd": 2447435
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "call": "",
+   "chr": {
+    "date": {
+     "text": "17. Februar 1902",
+     "year": 1902,
+     "jd": 2415798
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "buri": null,
+   "occupation": "Näherin",
+   "thumb": null,
+   "url": "<url>",
+   "hasParents": true,
+   "partnersCount": 1,
+   "childrenCount": 2
+  },
+  "relationship": "",
+  "canEdit": false,
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "BIRT",
+    "label": "Geburt",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "14. Februar 1902",
+     "year": 1902,
+     "jd": 2415795,
+     "gedcom": "14 FEB 1902"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#2>",
+    "pending": false,
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "17. Februar 1902",
+     "year": 1902,
+     "jd": 2415798,
+     "gedcom": "17 FEB 1902"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [
+     {
+      "xref": "I62",
+      "name": "Louise Falkenrath",
+      "sex": "F",
+      "rela": "godparent",
+      "role": "godparent",
+      "label": "Patin",
+      "private": false,
+      "access": "visitor",
+      "level1": false,
+      "notes": [],
+      "sources": []
+     }
+    ],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#3>",
+    "pending": false,
+    "tag": "OCCU",
+    "label": "Beruf",
+    "known": true,
+    "value": "Näherin",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#4>",
+    "pending": false,
+    "tag": "NAME",
+    "label": "Name",
+    "known": true,
+    "value": "Martha /Falkenrath/",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#5>",
+    "pending": false,
+    "tag": "SEX",
+    "label": "Geschlecht",
+    "known": true,
+    "value": "weiblich",
+    "gedcomValue": "F",
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#6>",
+    "pending": false,
+    "tag": "DEAT",
+    "label": "Tod",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "30. September 1988",
+     "year": 1988,
+     "jd": 2447435,
+     "gedcom": "30 SEP 1988"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#7>",
+    "pending": false,
+    "tag": "RELI",
+    "label": "Religion",
+    "known": true,
+    "value": "evangelisch-lutherisch",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "parentFamilies": [
+   {
+    "xref": "F15",
+    "name": "Carl Falkenrath + Dorothea Wichmann",
+    "url": "<url>",
+    "husband": {
+     "xref": "I39",
+     "name": "Carl Falkenrath",
+     "sortName": "Falkenrath,Carl",
+     "given": "Carl",
+     "surname": "Falkenrath",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1866–1938",
+     "birth": {
+      "date": {
+       "text": "19. November 1866",
+       "year": 1866,
+       "jd": 2402925
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "4. März 1938",
+       "year": 1938,
+       "jd": 2428962
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "28. November 1866",
+       "year": 1866,
+       "jd": 2402934
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "8. März 1938",
+       "year": 1938,
+       "jd": 2428966
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Zimmermann",
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 4
+    },
+    "wife": {
+     "xref": "I40",
+     "name": "Dorothea Wichmann",
+     "sortName": "Wichmann,Dorothea",
+     "given": "Dorothea",
+     "surname": "Wichmann",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1870–1949",
+     "birth": {
+      "date": {
+       "text": "8. Juni 1870",
+       "year": 1870,
+       "jd": 2404222
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "15. Dezember 1949",
+       "year": 1949,
+       "jd": 2433266
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "12. Juni 1870",
+       "year": 1870,
+       "jd": 2404226
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "20. Dezember 1949",
+       "year": 1949,
+       "jd": 2433271
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 4
+    },
+    "spouse": null,
+    "marriage": {
+     "date": {
+      "text": "14. September 1893",
+      "year": 1893,
+      "jd": 2412721
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#8>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Standesamtliche Heirat",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "CIVIL",
+      "typeLabel": "Standesamtliche Heirat",
+      "date": {
+       "text": "14. September 1893",
+       "year": 1893,
+       "jd": 2412721,
+       "gedcom": "14 SEP 1893"
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": 52.6226,
+       "lng": 10.0815
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [],
+      "associates": [
+       {
+        "xref": "I50",
+        "name": "Christian Wichmann",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       }
+      ],
+      "freeAssociates": [
+       {
+        "role": "witness",
+        "name": "Christian Wiese",
+        "detail": "Hofbesitzer zu Celle",
+        "text": "Christian Wiese, Hofbesitzer zu Celle"
+       }
+      ],
+      "noteXref": null,
+      "details": []
+     },
+     {
+      "id": "<fact#9>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Kirchliche Trauung",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "RELIGIOUS",
+      "typeLabel": "Kirchliche Trauung",
+      "date": {
+       "text": "15. September 1893",
+       "year": 1893,
+       "jd": 2412722,
+       "gedcom": "15 SEP 1893"
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": 52.6226,
+       "lng": 10.0815
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [],
+      "associates": [],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I41",
+      "name": "Marie Falkenrath",
+      "sortName": "Falkenrath,Marie",
+      "given": "Marie",
+      "surname": "Falkenrath",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1894–1975",
+      "birth": {
+       "date": {
+        "text": "27. September 1894",
+        "year": 1894,
+        "jd": 2413099
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "3. Mai 1975",
+        "year": 1975,
+        "jd": 2442536
+       },
+       "place": {
+        "name": "Hannover, Niedersachsen, Deutschland",
+        "short": "Hannover, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "1. Oktober 1894",
+        "year": 1894,
+        "jd": 2413103
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": null,
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 2,
+      "marriages": [
+       {
+        "family": "F30",
+        "spouse": "Albert Timmermann",
+        "date": {
+         "text": "27. März 1919",
+         "year": 1919,
+         "jd": 2422045
+        },
+        "place": {
+         "name": "Hannover, Niedersachsen, Deutschland",
+         "short": "Hannover, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     },
+     {
+      "xref": "I21",
+      "name": "Heinrich Falkenrath",
+      "sortName": "Falkenrath,Heinrich",
+      "given": "Heinrich",
+      "surname": "Falkenrath",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1897–1969",
+      "birth": {
+       "date": {
+        "text": "26. April 1897",
+        "year": 1897,
+        "jd": 2414041
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "9. Januar 1969",
+        "year": 1969,
+        "jd": 2440231
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "1. Mai 1897",
+        "year": 1897,
+        "jd": 2414046
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "14. Januar 1969",
+        "year": 1969,
+        "jd": 2440236
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": "Tischler",
+      "thumb": "<bild>",
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 3,
+      "marriages": [
+       {
+        "family": "F8",
+        "spouse": "Anna Rosskamp",
+        "date": {
+         "text": "17. Mai 1924",
+         "year": 1924,
+         "jd": 2423923
+        },
+        "place": {
+         "name": "Celle, Niedersachsen, Deutschland",
+         "short": "Celle, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     },
+     {
+      "xref": "I70",
+      "name": "Wilhelm Falkenrath",
+      "sortName": "Falkenrath,Wilhelm",
+      "given": "Wilhelm",
+      "surname": "Falkenrath",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1899–1918",
+      "birth": {
+       "date": {
+        "text": "3. Juli 1899",
+        "year": 1899,
+        "jd": 2414839
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "27. Oktober 1918",
+        "year": 1918,
+        "jd": 2421894
+       },
+       "place": {
+        "name": "Cambrai, Nord, Frankreich",
+        "short": "Cambrai, Nord, Frankreich",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "5. Juli 1899",
+        "year": 1899,
+        "jd": 2414841
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": null,
+      "occupation": "Zimmermannslehrling",
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I71",
+      "name": "Martha Falkenrath",
+      "sortName": "Falkenrath,Martha",
+      "given": "Martha",
+      "surname": "Falkenrath",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1902–1988",
+      "birth": {
+       "date": {
+        "text": "14. Februar 1902",
+        "year": 1902,
+        "jd": 2415795
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "30. September 1988",
+        "year": 1988,
+        "jd": 2447435
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "17. Februar 1902",
+        "year": 1902,
+        "jd": 2415798
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": null,
+      "occupation": "Näherin",
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 2,
+      "marriages": [
+       {
+        "family": "F28",
+        "spouse": "Karl Behrens",
+        "date": {
+         "text": "3. Juli 1926",
+         "year": 1926,
+         "jd": 2424700
+        },
+        "place": {
+         "name": "Celle, Niedersachsen, Deutschland",
+         "short": "Celle, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     }
+    ],
+    "access": "visitor",
+    "uids": [
+     "DCDC53A3262A5AD1B5A1D97BAE1AC4F554F7"
+    ]
+   }
+  ],
+  "spouseFamilies": [
+   {
+    "xref": "F28",
+    "name": "Karl Behrens + Martha Falkenrath",
+    "url": "<url>",
+    "husband": {
+     "xref": "I72",
+     "name": "Karl Behrens",
+     "sortName": "Behrens,Karl",
+     "given": "Karl",
+     "surname": "Behrens",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1898–1970",
+     "birth": {
+      "date": {
+       "text": "8. Mai 1898",
+       "year": 1898,
+       "jd": 2414418
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "21. März 1970",
+       "year": 1970,
+       "jd": 2440667
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "13. Mai 1898",
+       "year": 1898,
+       "jd": 2414423
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "26. März 1970",
+       "year": 1970,
+       "jd": 2440672
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Postschaffner",
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": false,
+     "partnersCount": 1,
+     "childrenCount": 2
+    },
+    "wife": {
+     "xref": "I71",
+     "name": "Martha Falkenrath",
+     "sortName": "Falkenrath,Martha",
+     "given": "Martha",
+     "surname": "Falkenrath",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1902–1988",
+     "birth": {
+      "date": {
+       "text": "14. Februar 1902",
+       "year": 1902,
+       "jd": 2415795
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "30. September 1988",
+       "year": 1988,
+       "jd": 2447435
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "17. Februar 1902",
+       "year": 1902,
+       "jd": 2415798
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": null,
+     "occupation": "Näherin",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 2
+    },
+    "spouse": {
+     "xref": "I72",
+     "name": "Karl Behrens",
+     "sortName": "Behrens,Karl",
+     "given": "Karl",
+     "surname": "Behrens",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1898–1970",
+     "birth": {
+      "date": {
+       "text": "8. Mai 1898",
+       "year": 1898,
+       "jd": 2414418
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "21. März 1970",
+       "year": 1970,
+       "jd": 2440667
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "13. Mai 1898",
+       "year": 1898,
+       "jd": 2414423
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "26. März 1970",
+       "year": 1970,
+       "jd": 2440672
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Postschaffner",
+     "thumb": "<bild>",
+     "url": "<url>",
+     "hasParents": false,
+     "partnersCount": 1,
+     "childrenCount": 2
+    },
+    "marriage": {
+     "date": {
+      "text": "3. Juli 1926",
+      "year": 1926,
+      "jd": 2424700
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#10>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Standesamtliche Heirat",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "CIVIL",
+      "typeLabel": "Standesamtliche Heirat",
+      "date": {
+       "text": "3. Juli 1926",
+       "year": 1926,
+       "jd": 2424700,
+       "gedcom": "3 JUL 1926"
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": 52.6226,
+       "lng": 10.0815
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [],
+      "associates": [
+       {
+        "xref": "I21",
+        "name": "Heinrich Falkenrath",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       }
+      ],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I73",
+      "name": "Hildegard Behrens",
+      "sortName": "Behrens,Hildegard",
+      "given": "Hildegard",
+      "surname": "Behrens",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1928–2015",
+      "birth": {
+       "date": {
+        "text": "20. März 1928",
+        "year": 1928,
+        "jd": 2425326
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "8. Dezember 2015",
+        "year": 2015,
+        "jd": 2457365
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": null,
+      "buri": null,
+      "occupation": "Buchhalterin",
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I74",
+      "name": "Günter Behrens",
+      "sortName": "Behrens,Günter",
+      "given": "Günter",
+      "surname": "Behrens",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1931–2009",
+      "birth": {
+       "date": {
+        "text": "11. August 1931",
+        "year": 1931,
+        "jd": 2426565
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "27. Januar 2009",
+        "year": 2009,
+        "jd": 2454859
+       },
+       "place": {
+        "name": "Celle, Niedersachsen, Deutschland",
+        "short": "Celle, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": null,
+      "buri": null,
+      "occupation": "Elektriker",
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 1,
+      "marriages": [
+       {
+        "family": "F29",
+        "spouse": "",
+        "date": null,
+        "place": null
+       }
+      ]
+     }
+    ],
+    "access": "visitor",
+    "uids": [
+     "80DFDAB6E5755FF0AF4A47E8C009ED34AAFD"
+    ]
+   }
+  ],
+  "stepFamilies": [],
+  "media": [],
+  "associatedIn": [
+   {
+    "record": "I78",
+    "recordType": "INDI",
+    "name": "Hans Timmermann",
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "factId": "<fact#11>",
+    "date": {
+     "text": "17. Juni 1923",
+     "year": 1923,
+     "jd": 2423588
+    },
+    "place": {
+     "name": "Hannover, Niedersachsen, Deutschland",
+     "short": "Hannover, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    },
+    "rela": "godparent",
+    "role": "godparent",
+    "label2": "Patin",
+    "level1": false,
+    "url": "<url>",
+    "husband": null,
+    "wife": null
+   }
+  ],
+  "tasks": [],
+  "lastChange": null,
+  "uids": [
+   "1E92EE2449A2536389AD6F69D345C8C6177C"
+  ]
+ }
+}

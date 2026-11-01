@@ -74,6 +74,7 @@ class Person:
     fams: list[int] = field(default_factory=list)  # Familien als Partner, nach person_sort
     weitere_daten: list[int] = field(default_factory=list)  # weitere „2 DATE“ (Aufgaben, CHAN): spätester Tag
     medien: list[tuple[int, bool]] = field(default_factory=list)  # (media.id, Hauptbild) nach Reihenfolge
+    mit_sex: bool = True       # Geschlecht angegeben (E22); ohne Angabe steht in sex „U“
 
 
 @dataclass(slots=True)
@@ -127,7 +128,7 @@ class Modell:
         pe, na, fa, fm = T("person"), T("name"), T("family"), T("family_member")
         er, me, mf, ml = T("event_role"), T("media"), T("media_file"), T("media_link")
         for r in con.execute(select(pe.c.id, pe.c.xref, pe.c.sex, pe.c.resn, pe.c.uid)):
-            self.personen[r[0]] = Person(r[0], r[1], r[2], r[3], r[4])
+            self.personen[r[0]] = Person(r[0], r[1], r[2] or "U", r[3], r[4], mit_sex=r[2] is not None)
             self.person_xref[r[1]] = r[0]
         for r in con.execute(select(na).order_by(na.c.person_id, na.c.sort)):
             self.personen[r.person_id].namen.append(Zeile(r))

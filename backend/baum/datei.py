@@ -115,9 +115,23 @@ def oeffnen(pfad: Path) -> Connection:
                 if version not in UMBAU:
                     con.close()
                     raise FalscheVersion(f"{pfad}: Schemaversion {version}, diese Fassung kennt {SCHEMA_VERSION}")
-                with con.begin():
-                    UMBAU[version](con)
-                    con.exec_driver_sql(f"PRAGMA user_version = {version + 1}")
+                umbau = UMBAU[version]
+                neu_aufbauen = getattr(umbau, "tabellen_neu", False)
+                if neu_aufbauen:
+                    # Tabellen neu aufbauen: Fremdschlüssel aus, sonst löscht DROP TABLE abhängige Zeilen mit
+                    con.exec_driver_sql("PRAGMA foreign_keys = OFF")
+                    con.rollback()
+                try:
+                    with con.begin():
+                        con.exec_driver_sql("BEGIN")   # ausdrücklich: auch Tabellenänderungen in einer Transaktion
+                        umbau(con)
+                        if neu_aufbauen and (fehler := verweise_pruefen(con)):
+                            raise RuntimeError(f"{pfad}: Umbau {version} → {version + 1}: {fehler[:3]}")
+                        con.exec_driver_sql(f"PRAGMA user_version = {version + 1}")
+                finally:
+                    if neu_aufbauen:
+                        con.exec_driver_sql("PRAGMA foreign_keys = ON")
+                        con.rollback()
                 umgebaut = True
             if umgebaut:
                 con.exec_driver_sql("PRAGMA wal_checkpoint(TRUNCATE)")  # neue Version gleich in den Dateikopf
@@ -147,6 +161,27 @@ def _von_2(con: Connection) -> None:
 
 
 UMBAU[2] = _von_2
+
+
+def _von_3(con: Connection) -> None:
+    """3 → 4: Geschlecht darf leer sein (E22). SQLite ändert NOT NULL nicht an Ort und Stelle: die Tabelle wird nach
+    der Definition im Schema neu angelegt und umgefüllt. Vorhandene Werte bleiben."""
+    from sqlalchemy.schema import CreateIndex, CreateTable
+
+    from .schema import person
+
+    ddl = str(CreateTable(person).compile(dialect=con.dialect)).strip()
+    con.exec_driver_sql(ddl.replace("CREATE TABLE person ", "CREATE TABLE person_neu ", 1))
+    spalten = ", ".join(c.name for c in person.columns)
+    con.exec_driver_sql(f"INSERT INTO person_neu ({spalten}) SELECT {spalten} FROM person")
+    con.exec_driver_sql("DROP TABLE person")
+    con.exec_driver_sql("ALTER TABLE person_neu RENAME TO person")
+    for i in person.indexes:
+        con.execute(CreateIndex(i))
+
+
+_von_3.tabellen_neu = True
+UMBAU[3] = _von_3
 
 
 def verweise_pruefen(con: Connection) -> list[str]:

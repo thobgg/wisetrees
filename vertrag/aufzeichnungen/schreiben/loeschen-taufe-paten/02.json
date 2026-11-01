@@ -1,0 +1,555 @@
+{
+ "nr": 2,
+ "art": "lesen",
+ "rolle": "verwalter",
+ "fall": "Individual__xref=I77",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "person": {
+   "xref": "I77",
+   "name": "Gertrud Timmermann",
+   "sortName": "Timmermann,Gertrud",
+   "given": "Gertrud",
+   "surname": "Timmermann",
+   "sex": "F",
+   "isDead": true,
+   "private": false,
+   "access": "visitor",
+   "nameAccess": "visitor",
+   "restricted": [],
+   "lifespan": "1920–2001",
+   "birth": {
+    "date": {
+     "text": "2. Februar 1920",
+     "year": 1920,
+     "jd": 2422357
+    },
+    "place": {
+     "name": "Hannover, Niedersachsen, Deutschland",
+     "short": "Hannover, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": {
+    "date": {
+     "text": "18. Oktober 2001",
+     "year": 2001,
+     "jd": 2452201
+    },
+    "place": {
+     "name": "Hannover, Niedersachsen, Deutschland",
+     "short": "Hannover, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "call": "",
+   "chr": null,
+   "buri": null,
+   "occupation": "Fernmeldegehilfin",
+   "thumb": null,
+   "url": "<url>",
+   "hasParents": true,
+   "partnersCount": 0,
+   "childrenCount": 0
+  },
+  "relationship": "",
+  "canEdit": true,
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "BIRT",
+    "label": "Geburt",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "2. Februar 1920",
+     "year": 1920,
+     "jd": 2422357,
+     "gedcom": "2 FEB 1920"
+    },
+    "place": {
+     "name": "Hannover, Niedersachsen, Deutschland",
+     "short": "Hannover, Niedersachsen, Deutschland",
+     "lat": 52.3759,
+     "lng": 9.732
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#2>",
+    "pending": false,
+    "tag": "OCCU",
+    "label": "Beruf",
+    "known": true,
+    "value": "Fernmeldegehilfin",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#3>",
+    "pending": false,
+    "tag": "NAME",
+    "label": "Name",
+    "known": true,
+    "value": "Gertrud /Timmermann/",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#4>",
+    "pending": false,
+    "tag": "SEX",
+    "label": "Geschlecht",
+    "known": true,
+    "value": "weiblich",
+    "gedcomValue": "F",
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#5>",
+    "pending": false,
+    "tag": "DEAT",
+    "label": "Tod",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "18. Oktober 2001",
+     "year": 2001,
+     "jd": 2452201,
+     "gedcom": "18 OCT 2001"
+    },
+    "place": {
+     "name": "Hannover, Niedersachsen, Deutschland",
+     "short": "Hannover, Niedersachsen, Deutschland",
+     "lat": 52.3759,
+     "lng": 9.732
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#6>",
+    "pending": false,
+    "tag": "RELI",
+    "label": "Religion",
+    "known": true,
+    "value": "evangelisch-lutherisch",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "parentFamilies": [
+   {
+    "xref": "F30",
+    "name": "Albert Timmermann + Marie Falkenrath",
+    "url": "<url>",
+    "husband": {
+     "xref": "I76",
+     "name": "Albert Timmermann",
+     "sortName": "Timmermann,Albert",
+     "given": "Albert",
+     "surname": "Timmermann",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1890–1962",
+     "birth": {
+      "date": {
+       "text": "25. Januar 1890",
+       "year": 1890,
+       "jd": 2411393
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "17. August 1962",
+       "year": 1962,
+       "jd": 2437894
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "3. Februar 1890",
+       "year": 1890,
+       "jd": 2411402
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "20. August 1962",
+       "year": 1962,
+       "jd": 2437897
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Postbeamter",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": false,
+     "partnersCount": 1,
+     "childrenCount": 2
+    },
+    "wife": {
+     "xref": "I41",
+     "name": "Marie Falkenrath",
+     "sortName": "Falkenrath,Marie",
+     "given": "Marie",
+     "surname": "Falkenrath",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1894–1975",
+     "birth": {
+      "date": {
+       "text": "27. September 1894",
+       "year": 1894,
+       "jd": 2413099
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "3. Mai 1975",
+       "year": 1975,
+       "jd": 2442536
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "1. Oktober 1894",
+       "year": 1894,
+       "jd": 2413103
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": null,
+     "occupation": null,
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 2
+    },
+    "spouse": null,
+    "marriage": {
+     "date": {
+      "text": "27. März 1919",
+      "year": 1919,
+      "jd": 2422045
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#7>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Standesamtliche Heirat",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "CIVIL",
+      "typeLabel": "Standesamtliche Heirat",
+      "date": {
+       "text": "27. März 1919",
+       "year": 1919,
+       "jd": 2422045,
+       "gedcom": "27 MAR 1919"
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": 52.3759,
+       "lng": 9.732
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [],
+      "associates": [
+       {
+        "xref": "I21",
+        "name": "Heinrich Falkenrath",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       }
+      ],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I77",
+      "name": "Gertrud Timmermann",
+      "sortName": "Timmermann,Gertrud",
+      "given": "Gertrud",
+      "surname": "Timmermann",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1920–2001",
+      "birth": {
+       "date": {
+        "text": "2. Februar 1920",
+        "year": 1920,
+        "jd": 2422357
+       },
+       "place": {
+        "name": "Hannover, Niedersachsen, Deutschland",
+        "short": "Hannover, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "18. Oktober 2001",
+        "year": 2001,
+        "jd": 2452201
+       },
+       "place": {
+        "name": "Hannover, Niedersachsen, Deutschland",
+        "short": "Hannover, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": null,
+      "buri": null,
+      "occupation": "Fernmeldegehilfin",
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I78",
+      "name": "Hans Timmermann",
+      "sortName": "Timmermann,Hans",
+      "given": "Hans",
+      "surname": "Timmermann",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1923–1990",
+      "birth": {
+       "date": {
+        "text": "9. Juni 1923",
+        "year": 1923,
+        "jd": 2423580
+       },
+       "place": {
+        "name": "Hannover, Niedersachsen, Deutschland",
+        "short": "Hannover, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "5. März 1990",
+        "year": 1990,
+        "jd": 2447956
+       },
+       "place": {
+        "name": "Hannover, Niedersachsen, Deutschland",
+        "short": "Hannover, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "17. Juni 1923",
+        "year": 1923,
+        "jd": 2423588
+       },
+       "place": {
+        "name": "Hannover, Niedersachsen, Deutschland",
+        "short": "Hannover, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": null,
+      "occupation": "Kaufmann",
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     }
+    ],
+    "access": "visitor",
+    "uids": [
+     "B03503CFEAD55A12B55C0D25DE37AEC0A879"
+    ]
+   }
+  ],
+  "spouseFamilies": [],
+  "stepFamilies": [],
+  "media": [],
+  "associatedIn": [],
+  "tasks": [],
+  "lastChange": {
+   "time": "<zeit>",
+   "user": "verwalter"
+  },
+  "uids": [
+   "4E608156D36550B1A00C48A84455D6824B09"
+  ]
+ }
+}

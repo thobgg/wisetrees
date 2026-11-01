@@ -39,7 +39,7 @@ LABEL = {
     "PROB": "Testamentseröffnung", "WILL": "Testament", "ADOP": "Adoption", "BLES": "Segnung", "BARM": "Bar Mitzwa",
     "BASM": "Bat Mitzwa", "CHRA": "Erwachsenentaufe", "ORDN": "Ordination", "NCHI": "Anzahl der Kinder",
     "NMR": "Anzahl der Ehen", "NATI": "Nationalität", "TITL": "Titel", "CAST": "Kaste", "DSCR": "Beschreibung",
-    "IDNO": "Kennnummer", "SSN": "Sozialversicherungsnummer", "ASSO": "Beziehung", "RESN": "Einschränkung",
+    "IDNO": "Kennnummer", "SSN": "Sozialversicherungsnummer", "ASSO": "Verbundene Person", "RESN": "Einschränkung",
 }
 # Beschriftung an Familien, wo sie anders lautet als an Personen
 LABEL_FAMILIE = {"CENS": "Familienvolkszählung", "RESI": "Familienwohnsitz"}
@@ -136,12 +136,13 @@ def sortieren(fakten: list[dict]) -> list[dict]:
 # ── Bausteine ──────────────────────────────────────────────────────────────────────────────────────
 
 class Fakten:
-    def __init__(self, bau: Bau, con: Connection, offen: dict[str, set[int]] | None = None):
-        """offen: berührte Objekte der offenen Änderungen, wenn con den Stand mit ihnen zeigt (offener_stand)."""
+    def __init__(self, bau: Bau, con: Connection, stand: ae.OffenerStand | None = None):
+        """stand: die offenen Änderungen, wenn con den Stand mit ihnen zeigt (offener_stand)."""
         self.bau, self.s, self.m, self.con = bau, bau.s, bau.m, con
         self.quellen = {r["id"]: r for r in zeilen(con, select(T("source")))}
         self._xref: str | None = None
-        self.offen = offen or {}
+        self.offen = stand.beruehrt if stand else {}
+        self._neu = stand.neu if stand else {}
         # Ereignisse und Namen, an denen etwas offen ist – auch über Notizen, Zitate, Beteiligungen und Ortsangaben
         self.offen_ereignisse = set(self.offen.get("event", ()))
         self.offen_namen = set(self.offen.get("name", ()))
@@ -156,6 +157,11 @@ class Fakten:
 
     def ist_offen(self, tab: str, oid: int) -> bool:
         return oid in self.offen.get(tab, ())
+
+    def kennung(self, art: str, tab: str, oid: int) -> str:
+        """factId: Art und Kennung; ein noch offen angelegtes Objekt über seinen Schritt („En12“ = neu:12)."""
+        schritt = self._neu.get((tab, oid))
+        return f"{art}n{schritt}" if schritt is not None else f"{art}{oid}"
 
     def q(self, abfrage) -> list[Zeile]:
         return zeilen(self.con, abfrage)
@@ -309,7 +315,7 @@ class Fakten:
         wert = WERT.get(e.type, {}).get(roh.upper(), roh) if roh else ""
         if roh.upper() == "Y" and e.type not in WERT:
             wert = "ja"   # „1 DEAT Y“: Ereignis ohne Angaben, angezeigt wie in den Aufzeichnungen
-        f = self.leer(f"E{e.rolle_id}", e.type, label, wert, roh if roh else None,
+        f = self.leer(self.kennung("E", "event_role", e.rolle_id), e.type, label, wert, roh if roh else None,
                       self.zugang_fakt(e.type, e.resn, self._xref))
         f["type"], f["typeLabel"] = typ, typ_label
         f["date"] = anzeige.datum_json(e.date_text, mit_gedcom=True)
@@ -353,7 +359,7 @@ class Fakten:
             zugang = self.zugang(lambda st: self.s.quelle_darf(z["source_id"], st))
         else:
             zugang = self.zugang_fakt("SOUR", z["resn"], self._xref)
-        f = self.leer(f"Q{z['id']}", "SOUR", LABEL["SOUR"], titel or "", roh, zugang)
+        f = self.leer(self.kennung("Q", "citation", z["id"]), "SOUR", LABEL["SOUR"], titel or "", roh, zugang)
         f["notes"] = self.notiz_texte("citation_id", z["id"])
         f["noteKinds"] = ["note"] * len(f["notes"])
         j = self.zitat_json(z)
@@ -371,7 +377,7 @@ class Fakten:
         if spalte == "person_id":
             p = self.m.personen[wert]
             for n in (namen_aus(self.con, wert) if self.offen else p.namen):
-                f = self.leer(f"N{n['id']}", "NAME", LABEL["NAME"], n["value"], None,
+                f = self.leer(self.kennung("N", "name", n["id"]), "NAME", LABEL["NAME"], n["value"], None,
                               self.zugang_fakt("NAME", n["resn"], self._xref))
                 f["notes"] = self.notiz_texte("name_id", n["id"])
                 f["noteKinds"] = ["note"] * len(f["notes"])
@@ -381,8 +387,14 @@ class Fakten:
                 f["pending"] = n["id"] in self.offen_namen
                 if self.s.fakt_darf("NAME", n["resn"], xref=self._xref):
                     fakten.append(f)
-            sex = self.leer(f"X{p.id}", "SEX", LABEL["SEX"], WERT["SEX"].get(p.sex, p.sex), p.sex, "visitor")
-            fakten.append(sex)
+            sex = p.sex if p.mit_sex else None
+            if self.offen:
+                pe = T("person")
+                sex = self.con.execute(select(pe.c.sex).where(pe.c.id == wert)).scalar()
+            if sex is not None:                     # ohne Angabe kein Fakt (E22)
+                f = self.leer(f"X{p.id}", "SEX", LABEL["SEX"], WERT["SEX"].get(sex, sex), sex, "visitor")
+                f["pending"] = self.ist_offen("person", p.id)
+                fakten.append(f)
         for e in ereignisse:
             if not e.negated and self.s.fakt_darf(e.type, e.resn, xref=self._xref):
                 f = self.ereignis_fakt(e)
@@ -395,7 +407,7 @@ class Fakten:
             else:
                 darf = lambda st: self.s.fakt_darf("NOTE", None, st, self._xref)  # noqa: E731
             if darf(self.s.stufe):
-                f = self.leer(f"T{n['link']}", "NOTE", LABEL["NOTE"], n["text"], None, self.zugang(darf))
+                f = self.leer(self.kennung("T", "note_link", n["link"]), "NOTE", LABEL["NOTE"], n["text"], None, self.zugang(darf))
                 f["noteXref"] = n["xref"]
                 f["pending"] = self.ist_offen("note_link", n["link"]) or self.ist_offen("note", n["id"])
                 fakten.append(f)
@@ -412,7 +424,7 @@ class Fakten:
                     continue
                 q = self.m.personen[a["other_person_id"]]
                 privat = not self.s.person_darf(q.id)
-                f = self.leer(f"A{a['id']}", "ASSO", LABEL["ASSO"], self.bau.name(q), f"@{q.xref}@", "visitor")
+                f = self.leer(self.kennung("A", "person_association", a["id"]), "ASSO", LABEL["ASSO"], self.bau.name(q), f"@{q.xref}@", "visitor")
                 rolle = rolle_v1(a["relation"])
                 f["associates"] = [{"xref": q.xref, "name": None if privat else self.bau.name(q),
                                     "sex": None if privat else q.sex, "rela": a["relation"] or "", "role": rolle,
@@ -559,7 +571,7 @@ def _stand(ctx: Kontext, con):
     """Bearbeiter und höher lesen den Stand mit offenen Änderungen (E21), alle anderen den angenommenen."""
     if sieht_offenes(ctx.konten.rolle(ctx.konto, ctx.baum_name)):
         return ae.offener_stand(con)
-    return contextlib.nullcontext({})
+    return contextlib.nullcontext(None)
 
 
 def family(ctx: Kontext):
@@ -665,7 +677,7 @@ def _gegenrichtung(fk: Fakten, pid: int) -> list[dict]:
         datum = anzeige.datum_json(r["date_text"])
         eintraege.append({
             "record": rec.xref, "recordType": art, "name": name, "tag": r["type"], "label": label,
-            "factId": f"E{r['haupt']}", "date": datum, "place": bau.ort_json(r["place_text"]), "rela": r["rela"] or "",
+            "factId": fk.kennung("E", "event_role", r["haupt"]), "date": datum, "place": bau.ort_json(r["place_text"]), "rela": r["rela"] or "",
             "role": rolle, "label2": rolle_label(r["rela"], rolle, p.sex), "level1": False,
             "url": bau.seiten_url(), "husband": mann, "wife": frau,
         })

@@ -1,0 +1,23 @@
+{
+ "nr": 4,
+ "art": "lesen",
+ "rolle": "moderator",
+ "fall": "Pending",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "data": [
+   {
+    "xref": "I22",
+    "type": "INDI",
+    "name": "Anna Rosskamp",
+    "kind": "changed",
+    "changes": 2,
+    "users": [
+     "bearbeiter"
+    ],
+    "time": "<zeit>"
+   }
+  ]
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "nr": 4,
+ "art": "lesen",
+ "rolle": "moderator",
+ "fall": "Pending",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "data": [
+   {
+    "xref": "I21",
+    "type": "INDI",
+    "name": "Heinrich Falkenrath",
+    "kind": "changed",
+    "changes": 1,
+    "users": [
+     "bearbeiter"
+    ],
+    "time": "<zeit>"
+   }
+  ]
+ }
+}

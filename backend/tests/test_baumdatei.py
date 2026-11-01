@@ -116,3 +116,47 @@ def test_rollencodes(tmp_path):
         with pytest.raises(IntegrityError):
             con.exec_driver_sql("INSERT INTO event_role(event_id, free_name, role, sort) VALUES (1, 'a', ?, 1)", (rolle,))
     con.close()
+
+
+def test_umbau_3_auf_4_geschlecht_darf_leer_sein(tmp_path):
+    """Schemaversion 3 → 4 (E22): person wird neu aufgebaut; Werte, Namen und Verweise bleiben."""
+    from sqlalchemy import func, insert, select
+
+    from baum.schema import tabelle as T
+
+    pfad = tmp_path / "alt.wise"
+    con = datei.anlegen(pfad)
+    with con.begin():
+        con.execute(insert(T("person")).values(xref="I1", sex="F"))
+        con.execute(insert(T("name")).values(person_id=1, sort=1, value="Anna /Alt/"))
+    # Stand 3 nachbilden: Geschlecht als Pflichtangabe mit Vorgabe U
+    con.exec_driver_sql("PRAGMA foreign_keys = OFF")
+    con.rollback()
+    with con.begin():
+        con.exec_driver_sql("BEGIN")
+        ddl = con.exec_driver_sql("SELECT sql FROM sqlite_master WHERE name = 'person'").scalar()
+        con.exec_driver_sql(ddl.replace("CREATE TABLE person", "CREATE TABLE person_alt", 1)
+                            .replace("sex TEXT,", "sex TEXT DEFAULT 'U' NOT NULL,"))
+        con.exec_driver_sql("INSERT INTO person_alt SELECT * FROM person")
+        con.exec_driver_sql("DROP TABLE person")
+        con.exec_driver_sql("ALTER TABLE person_alt RENAME TO person")
+        con.exec_driver_sql("PRAGMA user_version = 3")
+    con.close()
+
+    con = datei.oeffnen(pfad)
+    try:
+        assert con.exec_driver_sql("PRAGMA user_version").scalar() == SCHEMA_VERSION
+        pe, na = T("person"), T("name")
+        assert con.execute(select(pe.c.xref, pe.c.sex)).all() == [("I1", "F")]
+        assert con.execute(select(func.count()).select_from(na)).scalar() == 1     # nichts mitgelöscht
+        con.rollback()
+        with con.begin():
+            con.execute(insert(pe).values(xref="I2"))
+        assert con.execute(select(pe.c.sex).where(pe.c.xref == "I2")).scalar() is None
+        assert datei.verweise_pruefen(con) == []
+        assert con.exec_driver_sql("PRAGMA foreign_keys").scalar() == 1
+        indizes = {r[0] for r in con.exec_driver_sql("SELECT name FROM sqlite_master WHERE tbl_name = 'person' "
+                                                     "AND type = 'index' AND name NOT LIKE 'sqlite_%'")}
+        assert indizes == {i.name for i in pe.indexes}
+    finally:
+        con.close()

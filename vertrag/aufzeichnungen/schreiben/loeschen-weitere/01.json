@@ -1,0 +1,19 @@
+{
+ "nr": 1,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "DeleteFact",
+ "params": {
+  "xref": "I111"
+ },
+ "rumpf": {
+  "factId": "<fakt:NOTE:0>"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "I111",
+  "pending": false
+ }
+}
