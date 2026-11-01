@@ -364,10 +364,10 @@ def test_mehrdeutiger_ortsname(klein):
     assert eins(con, "SELECT xref FROM place WHERE id = ?", ort) is None
 
 
-def test_gedcom7_wird_hier_abgelehnt_und_hinterlaesst_nichts(tmp_path):
-    ziel = tmp_path / "sieben.wise"
-    with pytest.raises(NichtLesbar, match="7.0"):
-        importieren(KLEIN.replace("2 VERS 5.5.1", "2 VERS 7.0").encode(), ziel)
+def test_unbekannte_fassung_wird_abgelehnt_und_hinterlaesst_nichts(tmp_path):
+    ziel = tmp_path / "sechs.wise"
+    with pytest.raises(NichtLesbar, match="6.0"):
+        importieren(KLEIN.replace("2 VERS 5.5.1", "2 VERS 6.0").encode(), ziel)
     assert not ziel.exists()
 
 
@@ -403,3 +403,20 @@ def test_geburt_in_bienenbuettel_nennt_nur_die_damalige_postleitzahl(falkenrath)
                        LEFT JOIN place_attribute a ON a.id = d.place_attribute_id WHERE d.event_id = ? ORDER BY d.sort""",
                 geburt) == [("map", None, None), ("gov", None, None), ("postal", "29553", "FROM 1 JUL 1993"),
                             ("maidenhead", None, None)]
+
+
+def test_doppelte_kennung_nur_als_rest(tmp_path):
+    """Ein zweiter Datensatz mit derselben Kennung bleibt ganz als Rest und mischt sich nicht in den ersten."""
+    text = ("0 HEAD\n1 GEDC\n2 VERS 5.5.1\n1 CHAR UTF-8\n"
+            "0 @I1@ INDI\n1 NAME Hinrich /Prieß/\n1 BIRT\n2 DATE 1850\n"
+            "0 @I1@ INDI\n1 NAME Ludwig /Prieß/\n1 BIRT\n2 DATE 1852\n0 TRLR\n")
+    b = importieren(text.encode(), tmp_path / "d.wise")
+    con = datei.oeffnen(tmp_path / "d.wise")
+    try:
+        assert alle(con, "SELECT value FROM name") == [("Hinrich /Prieß/",)]
+        assert eins(con, "SELECT COUNT(*) FROM event") == 1
+        assert eins(con, "SELECT gedcom FROM gedcom_rest WHERE on_tree = 1").startswith("0 @I1@ INDI\n1 NAME Ludwig")
+    finally:
+        con.close()
+    assert b.zeilen_uebernommen + b.zeilen_rest == b.zeilen_gesamt
+    assert any("I1 doppelt" in v for v in b.verweis_fehlt)
