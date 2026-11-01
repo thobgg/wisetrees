@@ -32,7 +32,7 @@ TOD = ("DEAT", "BURI", "CREM")
 GEBURT = ("BIRT", "CHR", "BAPM")
 
 
-@dataclass
+@dataclass(slots=True)
 class Ereignis:
     id: int
     type: str
@@ -59,7 +59,7 @@ class Ereignis:
         return self.date_to if self.date_to is not None else self.date_from
 
 
-@dataclass
+@dataclass(slots=True)
 class Person:
     id: int
     xref: str
@@ -74,7 +74,7 @@ class Person:
     medien: list[tuple[int, bool]] = field(default_factory=list)  # (media.id, Hauptbild) nach Reihenfolge
 
 
-@dataclass
+@dataclass(slots=True)
 class Medium:
     id: int
     xref: str | None
@@ -86,7 +86,7 @@ class Medium:
 BILDFORMATE = {"jpg", "jpeg", "png", "gif", "webp", "bmp", "tif", "tiff"}
 
 
-@dataclass
+@dataclass(slots=True)
 class Familie:
     id: int
     xref: str
@@ -117,6 +117,11 @@ class Modell:
         # Was nur vom Baum abhängt (Sortierung der Personenliste, Suchtexte): einmal berechnet, gilt bis zum
         # Neuladen des Modells
         self.zwischen: dict = {}
+        gleich: dict[str, str] = {}
+
+        def g(text):
+            return gleich.setdefault(text, text) if text else text
+
         pe, na, fa, fm = T("person"), T("name"), T("family"), T("family_member")
         ev, er, me, mf, ml = T("event"), T("event_role"), T("media"), T("media_file"), T("media_link")
         for r in con.execute(select(pe.c.id, pe.c.xref, pe.c.sex, pe.c.resn, pe.c.uid)):
@@ -148,8 +153,9 @@ class Modell:
                 .select_from(er.join(ev, ev.c.id == er.c.event_id))
                 .where(er.c.role == "PRINCIPAL", (er.c.person_id.is_not(None)) | (er.c.family_id.is_not(None)))
                 .order_by(er.c.fact_sort)):
-            e = Ereignis(r[0], r[1], r[2], r[3], bool(r[4]), r[5], r[6], r[7], r[8], r[9], r[10], r[11], r[12],
-                         rolle_id=r[13], fact_sort=r[14])
+            # Wiederkehrende Texte (Art, Ort, Ursache, Sperrvermerk …) nur einmal im Speicher halten
+            e = Ereignis(r[0], g(r[1]), g(r[2]), g(r[3]), bool(r[4]), r[5], g(r[6]), g(r[7]), g(r[8]), g(r[9]),
+                         r[10], r[11], g(r[12]), rolle_id=r[13], fact_sort=r[14])
             (self.personen[r[15]] if r[15] else self.familien[r[16]]).fakten.append(e)
         for r in con.execute(select(me.c.id, me.c.xref, me.c.title, me.c.resn)):
             self.medien[r[0]] = Medium(r[0], r[1], r[2], r[3])
