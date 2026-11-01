@@ -153,8 +153,8 @@ Bevor die erste Schreibroute geht, braucht wisetrees:
 | Einstellungen der Anmeldeseite | Felder `Info.loginForm` (`welcomeMessage`, `isSelfRegistrationAllowed`, `registrationTerms`) | 26 | nicht ausgewertet | Einstellung je Server; vorerst feste Werte (`false`, `null`) | später – nur Felder, Stufe 26 |
 | Sprache des Kontos | Feld `Info.user.language` | 41 | nicht ausgewertet | `konto.language` (vorhanden) | später – Stufe 41 |
 | Registrierung | keine Route | – | nicht aufgerufen; die Apps bieten sie nicht an | Formular im Browser, Freischaltung durch Verwalter, E-Mail-Bestätigung | **nie** – Konten legt der Verwalter an (KONZEPT 7: eigene Familie, kein offener Dienst); `isSelfRegistrationAllowed` bleibt `false` |
-| Passwort vergessen / ändern | keine Route | – | nicht aufgerufen; die Apps bieten es nicht an | Browser-Seite; „vergessen“ zusätzlich E-Mail-Versand mit Einmal-Link | später, nur im Browser – nicht Teil der Schnittstelle; Ändern zuerst, „vergessen“ erst mit E-Mail |
-| Konten und Rollen verwalten | keine Route | – | nicht aufgerufen | Browser-Seite oder `werkzeuge/konten.py` (vorhanden) | später, nur im Browser |
+| Passwort vergessen / ändern | keine Route | – | nicht aufgerufen; die Apps bieten es nicht an | Browser-Seite; „vergessen“ zusätzlich E-Mail-Versand mit Einmal-Link | Ändern **vorhanden** in der Verwaltung (E18); „vergessen“ später, erst mit E-Mail |
+| Konten und Rollen verwalten | keine Route | – | nicht aufgerufen | Verwaltung im Browser (E18) oder `werkzeuge/konten.py` | **vorhanden** – nicht Teil der Schnittstelle |
 
 ### 2.2 Stammbaum lesen
 

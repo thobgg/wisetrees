@@ -1,0 +1,16 @@
+{% extends "rahmen.html" %}
+{% block titel %}Eigenes Passwort{% endblock %}
+{% block inhalt %}
+<h2>Eigenes Passwort ändern</h2>
+<form method="post" action="{{ ort.url('/passwort') }}">
+  <input type="hidden" name="_csrf" value="{{ csrf }}">
+  <label for="bisher">Bisheriges Passwort</label>
+  <input type="password" id="bisher" name="bisher" autocomplete="current-password" required>
+  <label for="passwort">Neues Passwort (mindestens {{ min_passwort }} Zeichen)</label>
+  <input type="password" id="passwort" name="passwort" autocomplete="new-password" minlength="{{ min_passwort }}" required>
+  <label for="passwort2">Neues Passwort wiederholen</label>
+  <input type="password" id="passwort2" name="passwort2" autocomplete="new-password" minlength="{{ min_passwort }}" required>
+  <p><button type="submit">Passwort ändern</button></p>
+</form>
+<p class="leise">Danach gelten alle bisherigen Anmeldungen dieses Kontos nicht mehr, auch die in den Apps.</p>
+{% endblock %}

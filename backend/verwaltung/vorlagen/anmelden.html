@@ -1,0 +1,13 @@
+{% extends "rahmen.html" %}
+{% block titel %}Anmelden{% endblock %}
+{% block inhalt %}
+<form method="post" action="{{ ort.url('/anmelden') }}">
+  <input type="hidden" name="_csrf" value="{{ csrf }}">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" autocomplete="username" required autofocus>
+  <label for="passwort">Passwort</label>
+  <input type="password" id="passwort" name="passwort" autocomplete="current-password" required>
+  <p><button type="submit">Anmelden</button></p>
+</form>
+<p class="leise">Bäume und Konten verwalten nur Administratoren. Das eigene Passwort lässt sich nach dem Anmelden mit jedem Konto ändern.</p>
+{% endblock %}

@@ -20,6 +20,8 @@ and the godparents attached in their roles; places have dated names and a dated 
 - wtTux shows the Falkenrath demo tree from wisetrees: tree, navigator, person panel with godparents, sources
   and photos. wtAnd uses the same core; a test on a device is still to come.
 - Accounts, roles per tree, sessions; runs as a Docker container (not as root).
+- Administration in the browser for administrators: create accounts, set passwords and roles, upload and import
+  GEDCOM with the import report, delete trees. Every account can change its own password there.
 
 **What is missing**
 
@@ -39,10 +41,10 @@ decisions is in [docs/KONZEPT.md](docs/KONZEPT.md) (German).
 mkdir -p data
 docker compose up -d --build
 docker compose exec wisetrees python3 /app/werkzeuge/konten.py anlegen admin --admin
-cp mytree.ged data/ && docker compose exec wisetrees python3 /app/werkzeuge/importieren.py mytree /data/mytree.ged
 ```
 
-Then `http://<host>:8099/index.php` shows the start page; the page “App verbinden” gives the address for the apps.
+Then `http://<host>:8099/index.php` shows the start page. Under “Verwaltung” (administration) the account `admin`
+can create further accounts and import GEDCOM files; the page “App verbinden” gives the address for the apps.
 Trees are stored as `data/baeume/<name>.wise` (SQLite), images under `data/medien/<name>/`.
 
 Tests (Python 3.11):

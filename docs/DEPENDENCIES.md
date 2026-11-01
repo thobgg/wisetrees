@@ -13,6 +13,7 @@ Abhängigkeit kommt hier mit Lizenz hinein, auch mitgezogene.
 | argon2-cffi | 25.1.0 | MIT | Passwort-Hashes (Argon2id) |
 | python-multipart | 0.0.33 | Apache-2.0 | Formulare (Anmeldung in v1) |
 | sqlalchemy | 2.1.6 | MIT | Datenbankzugriff über SQLAlchemy Core (E16); zieht nur typing_extensions mit |
+| jinja2 | 3.1.6 | BSD-3-Clause | Seiten der Verwaltung im Browser (E18) |
 | *mitgezogen:* starlette | 1.10.0 | BSD-3-Clause | fastapi |
 | *mitgezogen:* pydantic, pydantic_core | 2.14.2, 2.50.2 | MIT | fastapi |
 | *mitgezogen:* annotated-types, annotated-doc, typing-inspection | 0.8.0, 0.0.5, 0.4.4 | MIT | pydantic, fastapi |
@@ -25,6 +26,7 @@ Abhängigkeit kommt hier mit Lizenz hinein, auch mitgezogene.
 | *mitgezogen:* argon2-cffi-bindings | 26.1.0 | MIT | argon2-cffi |
 | *mitgezogen:* cffi | 2.1.1 | MIT-0 (MIT ohne Pflicht zur Namensnennung) | argon2-cffi-bindings |
 | *mitgezogen:* pycparser | 3.12 | BSD-3-Clause | cffi |
+| *mitgezogen:* markupsafe | 3.0.4 | BSD-3-Clause | jinja2 |
 
 Nicht nötig: `httpx` für FastAPIs TestClient (zöge `certifi`, MPL-2.0, mit). Die Tests sprechen einen echten uvicorn
 über den Client aus `vertrag/client.py` an (nur Standardbibliothek).

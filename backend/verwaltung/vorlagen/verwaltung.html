@@ -1,0 +1,149 @@
+{% extends "rahmen.html" %}
+{% macro csrf_feld() %}<input type="hidden" name="_csrf" value="{{ csrf }}">{% endmacro %}
+{% block inhalt %}
+
+<h2>Bäume</h2>
+{% if baeume %}
+<table>
+  <thead><tr><th>Name</th><th>Titel</th><th>Personen</th><th>Importbericht</th><th></th></tr></thead>
+  <tbody>
+  {% for b in baeume %}
+  <tr>
+    <td><code>{{ b.name }}</code></td>
+    <td>{{ b.titel }}</td>
+    <td>{% if b.fehler %}<span class="leise">nicht lesbar: {{ b.fehler }}</span>{% else %}{{ b.personen }}{% endif %}</td>
+    <td>
+      {% if b.bericht %}{% set r = b.bericht %}
+      <details>
+        <summary>{{ r.datei or "Datei" }}: {{ r.zeilen_gesamt }} Zeilen, als Rest {{ r.zeilen_rest }}</summary>
+        <p class="leise">GEDCOM {{ r.gedcom_version }}, {{ r.zeichensatz }}; übernommen {{ r.zeilen_uebernommen }}.</p>
+        {% if r.orte_unsicher %}<p>Unsichere Ortszuordnungen:</p><ul>
+          {% for o in r.orte_unsicher %}<li>{{ o.ortstext }} ({{ o.ereignisse }} Ereignisse) – {{ o.grund }}</li>{% endfor %}
+        </ul>{% endif %}
+        {% if r.verweis_fehlt %}<p>Verweise und Kennungen:</p><ul>
+          {% for z in r.verweis_fehlt[:50] %}<li>{{ z }}</li>{% endfor %}
+        </ul>{% endif %}
+        {% if r.datum_unverstanden %}<p>Nicht verstandene Daten:</p><ul>
+          {% for z in r.datum_unverstanden[:50] %}<li>{{ z }}</li>{% endfor %}
+        </ul>{% endif %}
+        {% if r.rest_pfade %}<p>Als GEDCOM aufgehoben:</p><ul>
+          {% for pfad, zahl in r.rest_pfade.items() %}<li><code>{{ pfad }}</code>: {{ zahl }}</li>{% endfor %}
+        </ul>{% endif %}
+      </details>
+      {% else %}<span class="leise">–</span>{% endif %}
+    </td>
+    <td>
+      <details>
+        <summary>Löschen …</summary>
+        <form method="post" action="{{ ort.url('/baum-loeschen') }}">
+          {{ csrf_feld() }}
+          <input type="hidden" name="baum" value="{{ b.name }}">
+          <label for="best-{{ b.name }}">Zum Bestätigen den Namen <code>{{ b.name }}</code> eintippen:</label>
+          <input type="text" class="kurz" id="best-{{ b.name }}" name="bestaetigung" autocomplete="off" required>
+          <button type="submit" class="gefahr">Baum endgültig löschen</button>
+          <p class="leise">Die Baumdatei wird gelöscht, die Rollen in diesem Baum ebenfalls. Der Bildordner bleibt liegen.</p>
+        </form>
+      </details>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="leise">Noch kein Baum.</p>
+{% endif %}
+
+<fieldset>
+  <legend>GEDCOM einlesen</legend>
+  <form method="post" action="{{ ort.url('/baum-hochladen') }}" enctype="multipart/form-data">
+    {{ csrf_feld() }}
+    <label for="baum">Name des Baums (Buchstaben, Ziffern, - und _; erscheint in der Adresse)</label>
+    <input type="text" class="kurz" id="baum" name="baum" pattern="[A-Za-z0-9_\-]+" required>
+    <label for="titel">Titel (frei, optional)</label>
+    <input type="text" id="titel" name="titel">
+    <label for="datei">GEDCOM-Datei (5.5.1)</label>
+    <input type="file" id="datei" name="datei" accept=".ged,.GED" required>
+    <p><button type="submit">Einlesen</button></p>
+  </form>
+  <p class="leise">Bilder gehören nach <code>medien/&lt;Name des Baums&gt;/</code> im Datenordner, mit den Pfaden aus den FILE-Zeilen der Datei.</p>
+</fieldset>
+
+<h2>Konten</h2>
+<table>
+  <thead><tr><th>Name</th><th>Anzeigename</th><th>Rollen je Baum</th><th></th></tr></thead>
+  <tbody>
+  {% for k in konten %}
+  <tr>
+    <td><code>{{ k.name }}</code>{% if k.is_admin %}<br><span class="leise">Administrator</span>{% endif %}</td>
+    <td>{{ k.real_name }}</td>
+    <td>
+      {% if k.is_admin %}
+      <span class="leise">Verwalter in allen Bäumen</span>
+      {% elif baeume %}
+      <form method="post" action="{{ ort.url('/rollen-setzen') }}">
+        {{ csrf_feld() }}
+        <input type="hidden" name="name" value="{{ k.name }}">
+        {% for b in baeume %}
+        <div class="zeile">
+          <label class="inline" for="r-{{ k.name }}-{{ b.name }}"><code>{{ b.name }}</code></label>
+          <select id="r-{{ k.name }}-{{ b.name }}" name="rolle:{{ b.name }}">
+            {% set jetzt = rollen.get(k.name, {}).get(b.name, "visitor") %}
+            {% for r in rollen_wahl %}<option value="{{ r }}"{% if r == jetzt %} selected{% endif %}>{{ rollen_text[r] }}</option>{% endfor %}
+          </select>
+        </div>
+        {% endfor %}
+        <button type="submit">Rollen speichern</button>
+      </form>
+      {% else %}<span class="leise">kein Baum</span>{% endif %}
+    </td>
+    <td>
+      <details>
+        <summary>Passwort setzen …</summary>
+        <form method="post" action="{{ ort.url('/passwort-setzen') }}">
+          {{ csrf_feld() }}
+          <input type="hidden" name="name" value="{{ k.name }}">
+          <label for="pw-{{ k.name }}">Neues Passwort (mindestens {{ min_passwort }} Zeichen)</label>
+          <input type="password" id="pw-{{ k.name }}" name="passwort" autocomplete="new-password" minlength="{{ min_passwort }}" required>
+          <label for="pw2-{{ k.name }}">Wiederholen</label>
+          <input type="password" id="pw2-{{ k.name }}" name="passwort2" autocomplete="new-password" minlength="{{ min_passwort }}" required>
+          <p><button type="submit">Setzen</button></p>
+        </form>
+      </details>
+      {% if k.name != konto.name %}
+      <details>
+        <summary>Löschen …</summary>
+        <form method="post" action="{{ ort.url('/konto-loeschen') }}">
+          {{ csrf_feld() }}
+          <input type="hidden" name="name" value="{{ k.name }}">
+          <button type="submit" class="gefahr">Konto {{ k.name }} löschen</button>
+        </form>
+      </details>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<fieldset>
+  <legend>Neues Konto</legend>
+  <form method="post" action="{{ ort.url('/konto-anlegen') }}">
+    {{ csrf_feld() }}
+    <label for="k-name">Name (zum Anmelden)</label>
+    <input type="text" class="kurz" id="k-name" name="name" autocomplete="off" required>
+    <label for="k-anzeige">Anzeigename (optional)</label>
+    <input type="text" id="k-anzeige" name="anzeigename">
+    <label for="k-email">E-Mail (optional)</label>
+    <input type="email" id="k-email" name="email">
+    <label for="k-pw">Passwort (mindestens {{ min_passwort }} Zeichen)</label>
+    <input type="password" id="k-pw" name="passwort" autocomplete="new-password" minlength="{{ min_passwort }}" required>
+    <label for="k-pw2">Passwort wiederholen</label>
+    <input type="password" id="k-pw2" name="passwort2" autocomplete="new-password" minlength="{{ min_passwort }}" required>
+    <p><label class="inline"><input type="checkbox" name="admin" value="1"> Administrator (Verwalter in allen Bäumen, darf diese Seite nutzen)</label></p>
+    <p><button type="submit">Anlegen</button></p>
+  </form>
+  <p class="leise">Rollen in den Bäumen danach in der Tabelle setzen. Schreiben gibt es noch nicht; Tester vorerst als Mitglied anlegen.</p>
+</fieldset>
+
+<p class="leise">wisetrees {{ version }}</p>
+{% endblock %}

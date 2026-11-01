@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{% block titel %}Verwaltung{% endblock %} – wisetrees</title>
+<style>
+:root { --text: #222; --leise: #666; --rand: #ddd; --flaeche: #f6f6f6; --link: #1f5f99; --ok: #1e6b35; --fehler: #a32020; }
+body { font-family: system-ui, sans-serif; max-width: 60rem; margin: 2rem auto; padding: 0 1rem; color: var(--text); background: #fff; line-height: 1.45; }
+header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .5rem; border-bottom: 1px solid var(--rand); margin-bottom: 1.5rem; }
+header h1 { font-size: 1.4rem; margin: 0 0 .5rem; }
+header nav { display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+h2 { font-size: 1.15rem; margin-top: 2rem; }
+a { color: var(--link); }
+.leise { color: var(--leise); font-size: .9rem; }
+.meldung { padding: .6rem .8rem; border-radius: 4px; margin-bottom: 1rem; }
+.meldung.ok { background: #e7f4ea; color: var(--ok); }
+.meldung.fehler { background: #fbeaea; color: var(--fehler); }
+table { border-collapse: collapse; width: 100%; margin: .5rem 0 1rem; }
+th, td { text-align: left; padding: .4rem .5rem; border-bottom: 1px solid var(--rand); vertical-align: top; }
+th { font-weight: 600; }
+form.zeile { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin: .2rem 0; }
+fieldset { border: 1px solid var(--rand); border-radius: 4px; padding: .8rem 1rem; margin: .5rem 0 1rem; }
+legend { font-weight: 600; padding: 0 .3rem; }
+label { display: block; margin: .4rem 0 .1rem; }
+label.inline { display: inline; margin: 0; }
+input[type=text], input[type=password], input[type=email] { width: 100%; max-width: 22rem; padding: .3rem; box-sizing: border-box; }
+input.kurz { max-width: 10rem; }
+button { padding: .3rem .8rem; cursor: pointer; }
+button.gefahr { color: var(--fehler); }
+details { margin: .3rem 0; }
+code { background: var(--flaeche); padding: .1rem .3rem; border-radius: 3px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>{% block kopf %}wisetrees – Verwaltung{% endblock %}</h1>
+  <nav>
+    <a href="{{ startseite }}">Startseite</a>
+    {% if konto %}
+    <a href="{{ ort.url('/passwort') }}">Eigenes Passwort</a>
+    <span class="leise">Angemeldet als {{ konto.name }}</span>
+    <form method="post" action="{{ ort.url('/abmelden') }}">
+      <input type="hidden" name="_csrf" value="{{ csrf }}">
+      <button type="submit">Abmelden</button>
+    </form>
+    {% endif %}
+  </nav>
+</header>
+{% if meldung %}<p class="meldung {{ meldung.art }}" role="status">{{ meldung.text }}</p>{% endif %}
+{% block inhalt %}{% endblock %}
+</body>
+</html>

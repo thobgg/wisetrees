@@ -20,6 +20,8 @@ Täufling, Eltern und Paten mit ihrer Rolle hängen; Orte haben datierte Namen u
 - wtTux zeigt den Falkenrath-Demobaum aus wisetrees: Baum, Navigator, Personentafel mit Paten, Quellen und Fotos.
   wtAnd nutzt denselben Kern; der Test am Gerät steht aus.
 - Konten, Rollen je Baum, Sitzungen; Betrieb als Docker-Container (nicht als root).
+- Verwaltung im Browser für Administratoren: Konten anlegen, Passwörter und Rollen setzen, GEDCOM hochladen und
+  einlesen mit Importbericht, Bäume löschen. Jedes Konto kann dort sein Passwort ändern.
 
 **Was fehlt**
 
@@ -39,11 +41,10 @@ mit allen Entscheidungen steht in [docs/KONZEPT.md](docs/KONZEPT.md).
 mkdir -p data
 docker compose up -d --build
 docker compose exec wisetrees python3 /app/werkzeuge/konten.py anlegen admin --admin
-cp meinbaum.ged data/ && docker compose exec wisetrees python3 /app/werkzeuge/importieren.py meinbaum /data/meinbaum.ged
 ```
 
-Danach zeigt `http://<host>:8099/index.php` die Startseite; die Seite „App verbinden“ nennt die Adresse für die
-Apps. Bäume liegen als `data/baeume/<name>.wise` (SQLite), Bilder unter `data/medien/<name>/`.
+Danach zeigt `http://<host>:8099/index.php` die Startseite. Über „Verwaltung“ lassen sich mit dem Konto `admin`
+weitere Konten anlegen und GEDCOM-Dateien einlesen; die Seite „App verbinden“ nennt die Adresse für die Apps. Bäume liegen als `data/baeume/<name>.wise` (SQLite), Bilder unter `data/medien/<name>/`.
 
 Tests (Python 3.11):
 

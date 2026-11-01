@@ -4,6 +4,7 @@ Alles läuft über /index.php?route=…:
   …/login, …/logout                       Anmelden/Abmelden mit dem Formular
   …/module/_api4webtrees_/{Aktion}[/{Baum}]  die Schnittstelle (JSON)
   …/wisetrees/medien/{Baum}/{Medium}       Bilder (eigene Adressen, für die Apps undurchsichtig)
+  …/wisetrees/verwaltung[/…]               Verwaltung im Browser (E18, backend/verwaltung)
 Vor diesen Teilen darf ein beliebiger Pfad stehen ({pfad} der Basisadresse, docs/API-V1.md 1).
 
 Sitzung über ein Cookie, auch für Besucher (CSRF-Token schon vor der Anmeldung). Fachliche Fehler: HTTP 200 mit
@@ -82,9 +83,11 @@ def _startseite(request: Request, sitzung: Sitzung) -> HTMLResponse:
 
     wer = (f"Angemeldet als <strong>{html.escape(sitzung.konto.name)}</strong>." if sitzung.konto
            else "Nicht angemeldet.")
-    app = html.escape(str(request.url.replace(query="")) + "?" + urlencode({"route": "/wisetrees/app"}))
+    basis = str(request.url.replace(query=""))
+    app = html.escape(basis + "?" + urlencode({"route": "/wisetrees/app"}))
+    verwaltung = html.escape(basis + "?" + urlencode({"route": "/wisetrees/verwaltung"}))
     return _seite("wisetrees", f"<h1>wisetrees läuft</h1><p>Version {html.escape(VERSION)}. {wer}</p>"
-                               f'<p><a href="{app}">App verbinden</a></p>')
+                               f'<p><a href="{app}">App verbinden</a> · <a href="{verwaltung}">Verwaltung</a></p>')
 
 
 def _app_seite(request: Request) -> HTMLResponse:
@@ -114,7 +117,7 @@ def _sitzung(request: Request) -> tuple[Sitzung, str | None]:
     return konten.sitzung(neu), neu
 
 
-def _cookie(resp: Response, request: Request, token: str | None) -> Response:
+def cookie(resp: Response, request: Request, token: str | None) -> Response:
     if token:
         pfad = request.url.path.rsplit("/index.php", 1)[0] or "/"
         resp.set_cookie(COOKIE, token, max_age=request.app.state.einstellungen.sitzung_sekunden, httponly=True,
@@ -136,56 +139,72 @@ def router() -> APIRouter:
             if route.endswith("/logout") or route == "/logout":
                 return _abmelden(request, neues_token)
         if request.method == "GET" and not route.strip("/"):
-            return _cookie(_startseite(request, sitzung), request, neues_token)
+            return cookie(_startseite(request, sitzung), request, neues_token)
         if request.method == "GET" and route.endswith("/wisetrees/app"):
-            return _cookie(_app_seite(request), request, neues_token)
+            return cookie(_app_seite(request), request, neues_token)
+        if "/wisetrees/verwaltung" in route:
+            from verwaltung.seiten import behandeln
+
+            return await behandeln(request, sitzung, neues_token, route)
         m = _API.search(route)
         if m is None:
             m_medien = _MEDIEN.search(route)
             if m_medien and request.method == "GET" and "medien" in GET_AKTIONEN:
                 ctx = Kontext(request, sitzung, m_medien.group(1), {"xref": m_medien.group(2), **request.query_params})
-                return _cookie(GET_AKTIONEN["medien"](ctx), request, neues_token)
-            return _cookie(_nicht_gefunden(), request, neues_token)
+                return cookie(GET_AKTIONEN["medien"](ctx), request, neues_token)
+            return cookie(_nicht_gefunden(), request, neues_token)
         aktion, baum = m.group(1), m.group(2)
         params = {k: v for k, v in request.query_params.items() if k not in ("route", "lang")}
         if request.method == "POST":
             if request.headers.get("x-csrf-token") != sitzung.csrf:
-                return _cookie(_umleitung(request), request, neues_token)
+                return cookie(_umleitung(request), request, neues_token)
             tabelle = POST_AKTIONEN
         else:
             tabelle = GET_AKTIONEN
         f = tabelle.get(aktion)
         if f is None:
-            return _cookie(_nicht_gefunden(), request, neues_token)
+            return cookie(_nicht_gefunden(), request, neues_token)
         ctx = Kontext(request, sitzung, baum, params)
         antwort = f(ctx)
         if not isinstance(antwort, Response):
             antwort = JSONResponse(antwort)
-        return _cookie(antwort, request, neues_token)
+        return cookie(antwort, request, neues_token)
 
     return r
+
+
+def anmeldung_pruefen(request: Request, name: str, passwort: str):
+    """Name und Passwort prüfen, mit Sperre nach Fehlversuchen. Liefert das Konto, None oder "gesperrt"."""
+    sperre = request.app.state.sperre
+    schluessel = f"login:{request.client.host if request.client else ''}"
+    if sperre.rest(schluessel) > 0:
+        return "gesperrt"
+    konto = request.app.state.konten.pruefen(name, passwort)
+    if konto is None:
+        sperre.fehlschlag(schluessel)
+        return None
+    sperre.freigeben(schluessel)
+    return konto
+
+
+def sitzung_wechseln(request: Request, konto) -> str:
+    """Nach erfolgreicher Anmeldung: alte Sitzung beenden, neue anlegen; gibt das neue Token zurück."""
+    konten: KontenDB = request.app.state.konten
+    konten.sitzung_beenden(request.cookies.get(COOKIE))
+    return konten.sitzung_anlegen(konto, request.app.state.einstellungen.sitzung_sekunden,
+                                  ip=request.client.host if request.client else None,
+                                  user_agent=request.headers.get("user-agent"))
 
 
 async def _anmelden(request: Request, sitzung: Sitzung, neues_token: str | None) -> Response:
     form = await request.form()
     ziel = _umleitung(request)
     if form.get("_csrf") != sitzung.csrf:
-        return _cookie(ziel, request, neues_token)
-    sperre = request.app.state.sperre
-    schluessel = f"login:{request.client.host if request.client else ''}"
-    if sperre.rest(schluessel) > 0:
-        return _cookie(ziel, request, neues_token)
-    konten: KontenDB = request.app.state.konten
-    konto = konten.pruefen(str(form.get("username", "")), str(form.get("password", "")))
-    if konto is None:
-        sperre.fehlschlag(schluessel)
-        return _cookie(ziel, request, neues_token)
-    sperre.freigeben(schluessel)
-    konten.sitzung_beenden(request.cookies.get(COOKIE))
-    token = konten.sitzung_anlegen(konto, request.app.state.einstellungen.sitzung_sekunden,
-                                   ip=request.client.host if request.client else None,
-                                   user_agent=request.headers.get("user-agent"))
-    return _cookie(ziel, request, token)
+        return cookie(ziel, request, neues_token)
+    konto = anmeldung_pruefen(request, str(form.get("username", "")), str(form.get("password", "")))
+    if konto is None or konto == "gesperrt":
+        return cookie(ziel, request, neues_token)
+    return cookie(ziel, request, sitzung_wechseln(request, konto))
 
 
 def _abmelden(request: Request, neues_token: str | None) -> Response:

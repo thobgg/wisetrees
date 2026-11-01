@@ -169,6 +169,11 @@ class KontenDB:
         if not n:
             raise KeyError(name)
 
+    def loeschen(self, name: str) -> bool:
+        """Konto löschen; Rollen und Sitzungen gehen mit (Fremdschlüssel)."""
+        with self._lock, self._con.begin():
+            return self._con.execute(delete(konto_t).where(konto_t.c.name == name)).rowcount > 0
+
     def pruefen(self, name: str, passwort: str) -> Konto | None:
         """Name und Passwort prüfen. Unbekannte Namen kosten dieselbe Rechenzeit (Dummy-Hash)."""
         with self._lock:
@@ -200,6 +205,19 @@ class KontenDB:
             r = self._lesen(select(baumrolle_t.c.rolle).where(baumrolle_t.c.konto == konto.name,
                                                                baumrolle_t.c.baum == baum))
         return r["rolle"] if r else "visitor"
+
+    def rollen(self) -> dict[str, dict[str, str]]:
+        """Alle gespeicherten Rollen: Konto → {Baum: Rolle}."""
+        aus: dict[str, dict[str, str]] = {}
+        with self._lock, self._con.begin():
+            for r in self._con.execute(select(baumrolle_t)):
+                aus.setdefault(r.konto, {})[r.baum] = r.rolle
+        return aus
+
+    def rollen_entfernen(self, baum: str) -> None:
+        """Alle Rollen in einem Baum entfernen (wenn der Baum gelöscht wird)."""
+        with self._lock, self._con.begin():
+            self._con.execute(delete(baumrolle_t).where(baumrolle_t.c.baum == baum))
 
     # Sitzungen ------------------------------------------------------------------------------------
 
