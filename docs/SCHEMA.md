@@ -6,7 +6,7 @@
 
 ## Baumdatei (.wise)
 
-Jeder Stammbaum ist eine SQLite-Datei mit `PRAGMA application_id = 0x57495345` („WISE“) und `PRAGMA user_version = 1` (Schemaversion). Die Datei lässt sich mit jedem SQLite-Werkzeug lesen. Das Schema ist portabel für PostgreSQL und MariaDB (KONZEPT.md E16): Kennungen haben höchstens 255 Zeichen, Textspalten mit Index bekommen in MariaDB einen Präfix-Index (191 Zeichen).
+Jeder Stammbaum ist eine SQLite-Datei mit `PRAGMA application_id = 0x57495345` („WISE“) und `PRAGMA user_version = 2` (Schemaversion). Die Datei lässt sich mit jedem SQLite-Werkzeug lesen. Das Schema ist portabel für PostgreSQL und MariaDB (KONZEPT.md E16): Kennungen haben höchstens 255 Zeichen, Textspalten mit Index bekommen in MariaDB einen Präfix-Index (191 Zeichen).
 
 Gemeinsame Bausteine:
 
@@ -640,6 +640,24 @@ Regeln:
 - `on_tree = 1`
 
 Indizes: `gedcom_rest_citation` (citation_id); `gedcom_rest_event` (event_id); `gedcom_rest_event_role` (event_role_id); `gedcom_rest_family` (family_id); `gedcom_rest_media` (media_id); `gedcom_rest_name` (name_id); `gedcom_rest_note` (note_id); `gedcom_rest_person` (person_id); `gedcom_rest_person_association` (person_association_id); `gedcom_rest_place` (place_id); `gedcom_rest_repository` (repository_id); `gedcom_rest_source` (source_id); `gedcom_rest_task` (task_id)
+
+### privacy_rule
+
+Datenschutz-Regel ohne Sperrvermerk in den Daten: je Fakt- oder Datensatzart (tag), je Datensatz (xref) oder je Faktart an einem Datensatz (beides).
+
+| Spalte | Typ | Pflicht | Vorgabe | Verweis | Bedeutung |
+|---|---|---|---|---|---|
+| `id` | Ganzzahl | Schlüssel |  |  | interne Kennung, ändert sich nie (E1) |
+| `xref` | Text (255) |  |  |  | Kennung des Datensatzes; leer = alle Datensätze |
+| `tag` | Text (255) |  |  |  | Fakt- oder Datensatzart (SSN, SOUR, _TODO …); leer = der ganze Datensatz |
+| `resn` | Text | ja |  |  | none = alle, privacy = ab Mitglied, confidential = nur Verwalter, hidden = niemand |
+
+Regeln:
+
+- `resn IN ('none', 'privacy', 'confidential', 'hidden')`
+- `xref IS NOT NULL OR tag IS NOT NULL`
+
+Indizes: `privacy_rule_xref` (xref)
 
 ### change_set
 

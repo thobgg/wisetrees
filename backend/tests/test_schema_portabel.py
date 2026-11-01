@@ -43,8 +43,12 @@ def _bild(con: sqlite3.Connection) -> dict:
 
 
 def test_gleiches_schema_wie_in_0_1(tmp_path):
-    alt = sqlite3.connect(tmp_path / "alt.sqlite")
-    alt.executescript(ALT.read_text(encoding="utf-8"))
+    """Eine 0.1-Datei, beim Öffnen auf die aktuelle Version umgebaut, hat dasselbe Schema wie eine neue Datei."""
+    pfad = tmp_path / "alt.wise"
+    _alte_datei(pfad)
+    datei.oeffnen(pfad).close()
+    alt = sqlite3.connect(pfad)
+    assert alt.execute("PRAGMA user_version").fetchone()[0] == SCHEMA_VERSION
     neu_pfad = tmp_path / "neu.wise"
     datei.anlegen(neu_pfad).close()
     neu = sqlite3.connect(neu_pfad)
@@ -60,7 +64,7 @@ def _alte_datei(pfad: Path) -> None:
     """Eine Baumdatei, wie wisetrees 0.1 sie angelegt hat."""
     con = sqlite3.connect(pfad)
     con.execute(f"PRAGMA application_id = {APPLICATION_ID}")
-    con.execute(f"PRAGMA user_version = {SCHEMA_VERSION}")
+    con.execute("PRAGMA user_version = 1")  # Schemaversion von 0.1
     con.executescript(ALT.read_text(encoding="utf-8"))
     con.execute("INSERT INTO meta(key, value) VALUES ('title', 'Alt')")
     con.execute("INSERT INTO person(xref, sex) VALUES ('I1', 'F')")
@@ -184,3 +188,44 @@ def test_schema_doku_passt_zum_code():
     r = subprocess.run([sys.executable, str(repo / "werkzeuge" / "schema_doku.py"), "--pruefen"],
                        capture_output=True, text=True)
     assert r.returncode == 0, r.stderr
+
+
+def test_umbau_von_1_legt_vorgaberegeln_an(tmp_path):
+    from baum import datenschutz
+
+    pfad = tmp_path / "alt.wise"
+    _alte_datei(pfad)
+    assert datei.kopf(pfad)[1] == 1
+    con = datei.oeffnen(pfad)
+    assert datei.kopf(pfad)[1] == SCHEMA_VERSION
+    e, r = datenschutz.laden(con)
+    assert e == datenschutz.Einstellungen()
+    assert r.art == {"SSN": 0, "SOUR": 1, "REPO": 1, "SUBM": 0, "SUBN": 0}
+    con.close()
+    datei.oeffnen(pfad).close()  # zweites Öffnen baut nichts mehr um
+    con = sqlite3.connect(pfad)
+    assert con.execute("SELECT COUNT(*) FROM privacy_rule").fetchone()[0] == 5
+
+
+def test_datenschutz_einstellungen_und_regeln(tmp_path):
+    from baum import datenschutz
+
+    con = datei.anlegen(tmp_path / "d.wise")
+    e, r = datenschutz.laden(con)
+    assert e.enabled and e.max_alive_age == 120 and r.art["SOUR"] == 1
+    con.rollback()
+    with con.begin():
+        datenschutz.einstellungen_speichern(con, datenschutz.Einstellungen(members_only=True, max_alive_age=100,
+                                                                          show_dead_people=1))
+        datenschutz.regel_setzen(con, None, "SOUR", None)           # Vorgaberegel entfernen
+        datenschutz.regel_setzen(con, "I1", None, "confidential")   # ein Datensatz
+        datenschutz.regel_setzen(con, "I1", "OCCU", "privacy")      # eine Faktart an einem Datensatz
+        datenschutz.regel_setzen(con, "I1", "OCCU", "none")         # ersetzt, nicht doppelt
+    e, r = datenschutz.laden(con)
+    assert (e.members_only, e.max_alive_age, e.show_dead_people, e.enabled) == (True, 100, 1, True)
+    assert "SOUR" not in r.art and r.datensatz == {"I1": 0} and r.fakt_am_datensatz == {("I1", "OCCU"): 2}
+    with pytest.raises(ValueError):
+        datenschutz.regel_setzen(con, None, None, "privacy")
+    with pytest.raises(ValueError):
+        datenschutz.regel_setzen(con, None, "SSN", "geheim")
+    con.close()

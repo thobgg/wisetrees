@@ -11,12 +11,17 @@ Transaktion (`with con.begin():`), sonst bleibt nichts gespeichert.
 from __future__ import annotations
 
 import struct
+import threading
 from pathlib import Path
 
 from sqlalchemy import Connection, Engine, create_engine, event, insert
 from sqlalchemy.pool import NullPool
 
-from .schema import APPLICATION_ID, SCHEMA_VERSION, meta, metadata
+from .schema import APPLICATION_ID, SCHEMA_VERSION, meta, metadata, privacy_rule
+
+# Schemaversionen, die oeffnen() umbaut: alte Version → Funktion(con), danach steht user_version eins höher.
+UMBAU: dict = {}
+_UMBAU_SPERRE = threading.Lock()  # zwei Anfragen bauen dieselbe Datei nicht gleichzeitig um
 
 ENDUNG = ".wise"
 _SQLITE_KOPF = b"SQLite format 3\x00"
@@ -59,6 +64,9 @@ def anlegen(pfad: Path, titel: str = "") -> Connection:
         con.exec_driver_sql(f"PRAGMA user_version = {SCHEMA_VERSION}")
         metadata.create_all(con)
         con.execute(insert(meta).values(key="title", value=titel))
+        from .datenschutz import vorgaben_anlegen
+
+        vorgaben_anlegen(con)
     return con
 
 
@@ -81,9 +89,41 @@ def oeffnen(pfad: Path) -> Connection:
     application_id, version = kopf(pfad)
     if application_id != APPLICATION_ID:
         raise KeineBaumdatei(f"{pfad}: application_id {application_id:#010x} statt {APPLICATION_ID:#010x}")
-    if version != SCHEMA_VERSION:
+    if version > SCHEMA_VERSION or (version < SCHEMA_VERSION and version not in UMBAU):
         raise FalscheVersion(f"{pfad}: Schemaversion {version}, diese Fassung kennt {SCHEMA_VERSION}")
-    return engine(pfad).connect()
+    con = engine(pfad).connect()
+    # Maßgeblich ist die Version, die SQLite selbst meldet: Im WAL-Modus kann der Dateikopf noch die alte zeigen.
+    def _version() -> int:
+        v = con.exec_driver_sql("PRAGMA user_version").scalar()
+        con.rollback()
+        return v
+
+    if _version() < SCHEMA_VERSION:
+        with _UMBAU_SPERRE:
+            umgebaut = False
+            while (version := _version()) < SCHEMA_VERSION:
+                if version not in UMBAU:
+                    con.close()
+                    raise FalscheVersion(f"{pfad}: Schemaversion {version}, diese Fassung kennt {SCHEMA_VERSION}")
+                with con.begin():
+                    UMBAU[version](con)
+                    con.exec_driver_sql(f"PRAGMA user_version = {version + 1}")
+                umgebaut = True
+            if umgebaut:
+                con.exec_driver_sql("PRAGMA wal_checkpoint(TRUNCATE)")  # neue Version gleich in den Dateikopf
+            con.rollback()
+    return con
+
+
+def _von_1(con: Connection) -> None:
+    """1 → 2: Datenschutz-Regeln (E19) mit den Vorgaben eines neuen Baums."""
+    from .datenschutz import vorgaben_anlegen
+
+    privacy_rule.create(con, checkfirst=True)
+    vorgaben_anlegen(con)
+
+
+UMBAU[1] = _von_1
 
 
 def verweise_pruefen(con: Connection) -> list[str]:

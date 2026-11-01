@@ -18,7 +18,7 @@ from sqlalchemy import (CheckConstraint, Column, Double, ForeignKey, Index, Inte
                         UniqueConstraint, text)
 
 APPLICATION_ID = 0x57495345  # ASCII "WISE", E12
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2   # 2: Datenschutz-Regeln (E19); Dateien der Version 1 baut datei.oeffnen() um
 
 XREF_LAENGE = 255     # GEDCOM-Kennung ohne @ (E16); längere lehnt der Import ab
 PRAEFIX = 191         # Länge des Präfix-Index für Textspalten in MariaDB (utf8mb4)
@@ -470,6 +470,22 @@ gedcom_rest = _tabelle(
     Column("gedcom", Text, nullable=False, comment="mit den Stufen aus der Datei"),
     _traeger_regel("gedcom_rest"),
     *_traeger_index("gedcom_rest"),
+)
+
+# Datenschutz (E19) ---------------------------------------------------------------------------------------------
+# Regeln, die ohne Sperrvermerk in den Daten gelten. Die Einstellungen je Baum stehen in meta (privacy.*).
+RESN_REGEL = ("none", "privacy", "confidential", "hidden")
+
+privacy_rule = _tabelle(
+    "privacy_rule", "Datenschutz-Regel ohne Sperrvermerk in den Daten: je Fakt- oder Datensatzart (tag), je Datensatz "
+    "(xref) oder je Faktart an einem Datensatz (beides)",
+    Column("xref", String(XREF_LAENGE), comment="Kennung des Datensatzes; leer = alle Datensätze"),
+    Column("tag", String(XREF_LAENGE), comment="Fakt- oder Datensatzart (SSN, SOUR, _TODO …); leer = der ganze Datensatz"),
+    Column("resn", Text, nullable=False,
+           comment="none = alle, privacy = ab Mitglied, confidential = nur Verwalter, hidden = niemand"),
+    CheckConstraint(f"resn IN ({_liste(RESN_REGEL)})"),
+    CheckConstraint("xref IS NOT NULL OR tag IS NOT NULL"),
+    Index("privacy_rule_xref", "xref"),
 )
 
 # Offene Änderungen (E4 a) --------------------------------------------------------------------------------------
