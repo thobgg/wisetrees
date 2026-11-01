@@ -257,3 +257,31 @@ def test_das_bin_ich_und_verwandtschaft_einstellen(admin, einstellungen):
                                                        "person:probe": "I1; x"}))[0] == "regel-ungueltig"
     assert 'value="I1"' in b.seite()
     db.schliessen()
+
+
+def test_ersteinrichtung_mit_code(einstellungen, app, server):
+    b = Browser(server)
+    text = b.seite()
+    assert "Ersteinrichtung" in text and 'name="code"' in text
+    # Den Code kennt nur, wer das Protokoll sieht; hier aus dem laufenden Server gelesen
+    code = app.state.einrichtungscode
+    felder = {"name": "chef", "passwort": "chef-passwort", "passwort2": "chef-passwort"}
+    assert meldung(b.senden_formular("einrichten", {"code": "FALSCH", **felder}))[0] == "code-falsch"
+    assert KontenDB(einstellungen.konten_db).alle() == []
+    a = b.senden_formular("einrichten", {"code": code.lower(), **felder})
+    assert meldung(a) == ("eingerichtet", "chef")
+    db = KontenDB(einstellungen.konten_db)
+    assert db.konto("chef").is_admin
+    text = b.seite()
+    assert "Angemeldet als chef" in text and "Neues Konto" in text           # gleich angemeldet
+    # Danach ist die Einrichtung zu, auch mit dem richtigen Code
+    fremd = Browser(server)
+    assert "Ersteinrichtung" not in fremd.seite()
+    a = fremd.senden_formular("einrichten", {"code": code, "name": "boese", "passwort": "boese-pw-1",
+                                              "passwort2": "boese-pw-1"})
+    assert meldung(a)[0] == "" and db.konto("boese") is None
+    db.schliessen()
+
+
+def test_keine_einrichtung_wenn_konten_da(admin, server):
+    assert "Ersteinrichtung" not in Browser(server).seite()

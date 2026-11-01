@@ -25,16 +25,21 @@ def einstellungen(tmp_path) -> config.Einstellungen:
 
 
 @pytest.fixture
-def server(einstellungen):
+def app(einstellungen):
+    import main
+
+    return main.erstellen(einstellungen)
+
+
+@pytest.fixture
+def server(app):
     """wisetrees unter uvicorn in einem Thread; liefert die Basisadresse."""
     import uvicorn
-
-    import main
 
     with socket.socket() as s:
         s.bind(("127.0.0.1", 0))
         port = s.getsockname()[1]
-    srv = uvicorn.Server(uvicorn.Config(main.erstellen(einstellungen), host="127.0.0.1", port=port, log_level="warning"))
+    srv = uvicorn.Server(uvicorn.Config(app, host="127.0.0.1", port=port, log_level="warning"))
     t = threading.Thread(target=srv.run, daemon=True)
     t.start()
     ende = time.time() + 10

@@ -1,8 +1,8 @@
 # wisetrees mit Docker Compose
 #
 #   mkdir -p data && docker compose up -d --build
-#   docker compose exec wisetrees python3 /app/werkzeuge/konten.py anlegen admin --admin
-#   → http://<host>:8099/healthz
+#   docker compose logs wisetrees   → Einrichtungscode beim ersten Start
+#   → http://<host>:8099/index.php, „Verwaltung“: erstes Administratorkonto mit dem Code anlegen
 #
 # ./data enthält konten.sqlite (Konten, Rollen, Sitzungen) und baeume/*.wise (je Baum eine Datei).
 # Beides ist unersetzlich – sichern.

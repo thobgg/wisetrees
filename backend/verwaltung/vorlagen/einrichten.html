@@ -1,0 +1,22 @@
+{% extends "rahmen.html" %}
+{% block titel %}Einrichten{% endblock %}
+{% block inhalt %}
+<h2>Ersteinrichtung</h2>
+<p>Es gibt noch kein Konto. Hier entsteht das erste Administratorkonto. Der Einrichtungscode steht im Protokoll des
+Servers (beim Container: <code>docker compose logs wisetrees</code>, auf der Synology im Container Manager unter
+Protokoll).</p>
+<form method="post" action="{{ ort.url('/einrichten') }}">
+  <input type="hidden" name="_csrf" value="{{ csrf }}">
+  <label for="code">Einrichtungscode</label>
+  <input type="text" class="kurz" id="code" name="code" autocomplete="off" required autofocus>
+  <label for="name">Name des Kontos (zum Anmelden)</label>
+  <input type="text" class="kurz" id="name" name="name" autocomplete="username" required>
+  <label for="anzeigename">Anzeigename (optional)</label>
+  <input type="text" id="anzeigename" name="anzeigename">
+  <label for="passwort">Passwort (mindestens {{ min_passwort }} Zeichen)</label>
+  <input type="password" id="passwort" name="passwort" autocomplete="new-password" minlength="{{ min_passwort }}" required>
+  <label for="passwort2">Passwort wiederholen</label>
+  <input type="password" id="passwort2" name="passwort2" autocomplete="new-password" minlength="{{ min_passwort }}" required>
+  <p><button type="submit">Konto anlegen</button></p>
+</form>
+{% endblock %}

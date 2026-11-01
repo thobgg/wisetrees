@@ -40,11 +40,12 @@ decisions is in [docs/KONZEPT.md](docs/KONZEPT.md) (German).
 ```sh
 mkdir -p data
 docker compose up -d --build
-docker compose exec wisetrees python3 /app/werkzeuge/konten.py anlegen admin --admin
+docker compose logs wisetrees     # shows the setup code on first start
 ```
 
-Then `http://<host>:8099/index.php` shows the start page. Under “Verwaltung” (administration) the account `admin`
-can create further accounts and import GEDCOM files; the page “App verbinden” gives the address for the apps.
+Then open `http://<host>:8099/index.php` and go to “Verwaltung” (administration): on first use, the setup code
+creates the first administrator account. After that, further accounts and GEDCOM imports are done there; the page
+“App verbinden” gives the address for the apps.
 Trees are stored as `data/baeume/<name>.wise` (SQLite), images under `data/medien/<name>/`.
 
 Tests (Python 3.11):

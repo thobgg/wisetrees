@@ -18,6 +18,15 @@ def erstellen(einstellungen: config.Einstellungen) -> FastAPI:
     app.state.einstellungen = einstellungen
     app.state.konten = KontenDB(einstellungen.konten_db)
     app.state.sperre = Sperre()
+    # Ersteinrichtung (E18): Ohne Konto legt die Verwaltungsseite das erste Administratorkonto an – nur mit diesem
+    # Einmal-Code aus dem Protokoll. Er gilt bis zum nächsten Start und verfällt, sobald es ein Konto gibt.
+    app.state.einrichtungscode = None
+    if not app.state.konten.alle():
+        import secrets
+
+        app.state.einrichtungscode = "-".join(secrets.token_hex(2).upper() for _ in range(3))
+        print(f"wisetrees: noch kein Konto. Einrichtungscode für die Verwaltung im Browser: "
+              f"{app.state.einrichtungscode}", flush=True)
     einstellungen.baeume.mkdir(parents=True, exist_ok=True)
     # Quelle der Bäume: ein Verzeichnis mit *.wise. Im Desktop-Modus (E14) tritt hier eine einzelne Datei mit
     # derselben Schnittstelle (alle(), baum(name)) an die Stelle.

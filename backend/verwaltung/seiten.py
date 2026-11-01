@@ -59,6 +59,8 @@ MELDUNGEN = {
     "baum-geloescht": ("Baum {name} gelöscht. Der Bildordner bleibt liegen.", "ok"),
     "bestaetigung-fehlt": ("Zum Löschen bitte den Baumnamen genau eintippen.", "fehler"),
     "unbekannt": ("{name} gibt es nicht.", "fehler"),
+    "code-falsch": ("Der Einrichtungscode stimmt nicht.", "fehler"),
+    "eingerichtet": ("Konto {name} angelegt und angemeldet.", "ok"),
     "datenschutz-gespeichert": ("Datenschutz für {name} gespeichert.", "ok"),
     "regel-gesetzt": ("Regel gespeichert.", "ok"),
     "regel-entfernt": ("Regel entfernt.", "ok"),
@@ -135,6 +137,8 @@ async def behandeln(request: Request, sitzung: Sitzung, neues_token: str | None,
     if form.get("_csrf") != sitzung.csrf:
         return cookie(RedirectResponse(ort.url(), status_code=303), request, neues_token)
     aktion = teil.strip("/")
+    if aktion == "einrichten":
+        return _einrichten(request, form, ort)
     if aktion == "anmelden":
         konto = anmeldung_pruefen(request, str(form.get("name", "")), str(form.get("passwort", "")))
         if konto == "gesperrt":
@@ -161,6 +165,34 @@ async def behandeln(request: Request, sitzung: Sitzung, neues_token: str | None,
     return cookie(antwort, request, neues_token)
 
 
+def _einrichten(request: Request, form, ort: _Ort) -> Response:
+    """Erstes Administratorkonto anlegen – nur ohne Konto und mit dem Einrichtungscode aus dem Protokoll."""
+    import hmac
+
+    code = request.app.state.einrichtungscode
+    konten: KontenDB = request.app.state.konten
+    if not code or konten.alle():
+        return RedirectResponse(ort.url(), status_code=303)
+    sperre = request.app.state.sperre
+    schluessel = f"einrichten:{request.client.host if request.client else ''}"
+    if sperre.rest(schluessel) > 0:
+        return _zurueck(ort, "gesperrt")
+    eingabe = str(form.get("code", "")).strip().upper()
+    if not hmac.compare_digest(eingabe.encode(), code.encode()):
+        sperre.fehlschlag(schluessel)
+        return _zurueck(ort, "code-falsch")
+    name = str(form.get("name", "")).strip()
+    if not name or len(name) > NAME_LAENGE:
+        return _zurueck(ort, "name-ungueltig")
+    passwort, fehler = _passwort_neu(form)
+    if fehler:
+        return _zurueck(ort, fehler)
+    sperre.freigeben(schluessel)
+    konto = konten.anlegen(name, passwort, real_name=str(form.get("anzeigename", "")).strip(), is_admin=True)
+    request.app.state.einrichtungscode = None
+    return cookie(_zurueck(ort, "eingerichtet", name), request, sitzung_wechseln(request, konto))
+
+
 def _meldung(request: Request) -> dict | None:
     code = request.query_params.get("meldung")
     if code not in MELDUNGEN:
@@ -176,6 +208,8 @@ def _uebersicht(request: Request, sitzung: Sitzung, ort: _Ort) -> HTMLResponse:
     werte = {"ort": ort, "csrf": sitzung.csrf, "konto": konto, "meldung": _meldung(request), "version": VERSION,
              "startseite": ort.basis}
     if konto is None:
+        if request.app.state.einrichtungscode and not request.app.state.konten.alle():
+            return _seite("einrichten.html", min_passwort=MIN_PASSWORT, **werte)
         return _seite("anmelden.html", **werte)
     if not konto.is_admin:
         return _seite("kein_admin.html", **werte)
