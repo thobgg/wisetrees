@@ -1,0 +1,22 @@
+{
+ "nr": 1,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "Fact",
+ "params": {
+  "xref": "I21"
+ },
+ "rumpf": {
+  "tag": "RESI",
+  "date": "1930",
+  "place": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+  "note": "laut Adressbuch"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "I21",
+  "pending": false
+ }
+}

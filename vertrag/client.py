@@ -80,6 +80,14 @@ class Sitzung:
     def get(self, aktion: str, baum: str | None = None, params: dict | None = None) -> Antwort:
         return self.holen(self.url(self.api_route(aktion, baum), params))
 
+    def post(self, aktion: str, baum: str | None = None, params: dict | None = None, rumpf: dict | None = None) -> Antwort:
+        """Schreibende Aktion wie die Apps: JSON-Rumpf, CSRF-Token im Kopf X-CSRF-TOKEN."""
+        req = urllib.request.Request(self.url(self.api_route(aktion, baum), params),
+                                     data=json.dumps(rumpf or {}, ensure_ascii=False).encode(), method="POST")
+        req.add_header("Content-Type", "application/json")
+        req.add_header("X-CSRF-TOKEN", self.csrf)
+        return self.senden(req)
+
     def formular(self, route: str, felder: dict) -> Antwort:
         rumpf = urllib.parse.urlencode(felder).encode()
         req = urllib.request.Request(self.url(route), data=rumpf, method="POST")

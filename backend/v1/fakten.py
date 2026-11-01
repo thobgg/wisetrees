@@ -288,6 +288,8 @@ class Fakten:
         label = typ_label if (typ_label and e.type in ("MARR", "EVEN", "FACT")) else standard or LABEL.get(e.type, e.type)
         roh = e.value or ""
         wert = WERT.get(e.type, {}).get(roh.upper(), roh) if roh else ""
+        if roh.upper() == "Y" and e.type not in WERT:
+            wert = "ja"   # „1 DEAT Y“: Ereignis ohne Angaben, angezeigt wie in den Aufzeichnungen
         f = self.leer(f"E{e.rolle_id}", e.type, label, wert, roh if roh else None,
                       self.zugang_fakt(e.type, e.resn, self._xref))
         f["type"], f["typeLabel"] = typ, typ_label
@@ -510,6 +512,14 @@ class Fakten:
         }
 
 
+def letzte_aenderung(con, xref: str) -> dict | None:
+    """Zeit und Konto der letzten angenommenen Änderung an diesem Datensatz (aus dem Protokoll der Schreibschicht)."""
+    cs = T("change_set")
+    r = con.execute(select(cs.c.created_at, cs.c.author).where(cs.c.record_xref == xref, cs.c.status == "accepted")
+                    .order_by(cs.c.id.desc()).limit(1)).first()
+    return {"time": r.created_at, "user": r.author} if r else None
+
+
 # ── GET Family ────────────────────────────────────────────────────────────────────────────────────────
 
 def _oeffnen(ctx: Kontext):
@@ -534,7 +544,7 @@ def family(ctx: Kontext):
         f = s.m.familien[fid]
         j["media"] = fk.medien_json("family_id", fid, None)
         j["tasks"] = fk.aufgaben("family_id", fid, f.xref, "FAM", j["name"])
-        j["lastChange"] = None
+        j["lastChange"] = letzte_aenderung(con, f.xref)
         return j
     finally:
         con.close()
@@ -668,7 +678,7 @@ def individual(ctx: Kontext):
             "media": fk.medien_json("person_id", pid, haupt[0].xref if haupt else None),
             "associatedIn": _gegenrichtung(fk, pid),
             "tasks": fk.aufgaben("person_id", pid, p.xref, "INDI", name),
-            "lastChange": None,
+            "lastChange": letzte_aenderung(con, p.xref),
             "uids": fk.uids("person", pid),
         }
     finally:

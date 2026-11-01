@@ -23,6 +23,7 @@ PLATZHALTER = {
     "thumb": "<bild>",
     "file": "<datei>",
     "api": "<api>",
+    "time": "<zeit>",    # Zeitpunkt einer Änderung (lastChange, Pending)
 }
 
 # Angaben über den Server selbst (Module, Upload-Grenze, Kurzadressen): wisetrees meldet eigene Werte, verglichen

@@ -79,3 +79,4 @@ GET_AKTIONEN["Info"] = info
 
 from . import personen  # noqa: E402, F401 – trägt Individuals ein
 from . import fakten  # noqa: E402, F401 – trägt Family und Individual ein
+from . import schreiben  # noqa: E402, F401 – trägt die schreibenden Aktionen ein

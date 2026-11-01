@@ -1,0 +1,20 @@
+{
+ "nr": 3,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "Fact",
+ "params": {
+  "xref": "I99999"
+ },
+ "rumpf": {
+  "tag": "OCCU",
+  "value": "x"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-found",
+  "status": 404
+ }
+}

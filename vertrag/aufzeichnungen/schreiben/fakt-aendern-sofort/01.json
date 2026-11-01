@@ -1,0 +1,20 @@
+{
+ "nr": 1,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "Fact",
+ "params": {
+  "xref": "I21"
+ },
+ "rumpf": {
+  "factId": "<fakt:OCCU:0>",
+  "value": "Schmied"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "I21",
+  "pending": false
+ }
+}

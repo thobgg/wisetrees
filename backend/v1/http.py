@@ -14,6 +14,7 @@ Sitzung über ein Cookie, auch für Besucher (CSRF-Token schon vor der Anmeldung
 from __future__ import annotations
 
 import html
+import json
 import re
 from collections.abc import Callable
 from urllib.parse import urlencode
@@ -38,6 +39,7 @@ class Kontext:
 
     def __init__(self, request: Request, sitzung: Sitzung, baum: str | None, params: dict):
         self.request, self.sitzung, self.baum_name, self.params = request, sitzung, baum, params
+        self.rumpf: dict = {}
         self.app = request.app
         self.konten: KontenDB = request.app.state.konten
         self.einstellungen = request.app.state.einstellungen
@@ -179,6 +181,13 @@ def router() -> APIRouter:
         if f is None:
             return cookie(_nicht_gefunden(), request, neues_token)
         ctx = Kontext(request, sitzung, baum, params)
+        if request.method == "POST":
+            # Rumpf der schreibenden Aktionen: JSON-Objekt wie bei den Apps; alles andere gilt als leer
+            try:
+                rumpf = json.loads(await request.body() or b"{}")
+            except ValueError:
+                rumpf = {}
+            ctx.rumpf = rumpf if isinstance(rumpf, dict) else {}
         antwort = f(ctx)
         if not isinstance(antwort, Response):
             antwort = JSONResponse(antwort)

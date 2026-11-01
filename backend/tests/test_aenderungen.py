@@ -145,3 +145,25 @@ def test_ohne_aenderung_kein_satz(con):
         a.aendern("name", 1, given="Hans")                              # gleicher Wert
         assert a.speichern() is None
     assert _anzahl(con, "change_set") == 0
+
+
+def test_ort_zuordnen_findet_vorhandenes_und_legt_fehlendes_an(con):
+    from baum import orte
+
+    with tx(con):
+        a = ae.Aenderung(con, "I1", "verwalter")
+        neu = orte.zuordnen(con, a, "Neudorf, Uelzen, Niedersachsen")
+        assert isinstance(neu, str)                       # wird erst mit der Änderung angelegt
+        a.speichern(sofort=True)
+    assert _anzahl(con, "place") == 3 and _anzahl(con, "place_link") == 2
+    with tx(con):
+        b = ae.Aenderung(con, "I1", "verwalter")
+        wieder = orte.zuordnen(con, b, "neudorf, UELZEN, Niedersachsen")
+        assert isinstance(wieder, int) and b.schritte == []   # vorhanden: nichts Neues
+        orte.zuordnen(con, b, "Altdorf, Uelzen, Niedersachsen")
+        b.speichern(sofort=True)
+    assert _anzahl(con, "place") == 4                         # nur Altdorf kam dazu
+    pl, pn = T("place_link"), T("place_name")
+    altdorf = con.execute(select(pn.c.place_id).where(pn.c.name == "Altdorf")).scalar()
+    oben = select(pl.c.parent_id).where(pl.c.place_id == altdorf)
+    assert con.execute(oben).scalar() == con.execute(select(pl.c.parent_id).where(pl.c.place_id == wieder)).scalar()

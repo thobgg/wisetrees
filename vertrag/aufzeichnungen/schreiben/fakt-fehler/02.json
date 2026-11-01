@@ -1,0 +1,20 @@
+{
+ "nr": 2,
+ "art": "schreiben",
+ "rolle": "besucher",
+ "aktion": "Fact",
+ "params": {
+  "xref": "I21"
+ },
+ "rumpf": {
+  "tag": "OCCU",
+  "value": "x"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-editable",
+  "status": 403
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "nr": 3,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "Fact",
+ "params": {
+  "xref": "I130"
+ },
+ "rumpf": {
+  "factId": "<fakt:DEAT:0>",
+  "date": "ABT 1900"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "I130",
+  "pending": false
+ }
+}

@@ -316,12 +316,13 @@ def _nachkommen(bau: Bau, pid: int, gen: int) -> dict:
 
 
 def _heirat(bau: Bau, f) -> tuple[str | None, str | None] | None:
-    """Datum und Ort der Heirat: erstes gültiges Datum, erster Ort der sichtbaren Heiraten."""
+    """Datum und Ort der Heirat: erstes gültiges Datum der sichtbaren Heiraten, Ort der ersten Heirat (auch wenn er
+    leer ist – wie in den Aufzeichnungen)."""
     if not bau.s.familie_darf(f.id):
         return None
     heiraten = [e for e in f.fakten if e.type == "MARR" and not e.negated and bau.s.fakt_darf(e.type, e.resn, xref=f.xref)]
     datum = next((e.date_text for e in heiraten if anzeige.datum_grenzen(e.date_text)), None)
-    ort = next((e.place_text for e in heiraten if e.place_text), None)
+    ort = heiraten[0].place_text if heiraten else None
     return datum, ort
 
 
