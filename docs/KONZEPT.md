@@ -349,8 +349,9 @@ Einzelantwort noch in Liste oder Suche.
 
 ## 6. GEDCOM-Ein- und Ausgabe
 
-- **GEDCOM 7.0 und GEDZIP**: lesen und schreiben mit `gedcom7`
-  (python-gedcom7, MIT, keine weiteren Abhängigkeiten).
+- **GEDCOM 7.0 und GEDZIP**: lesen und schreiben mit eigenem Code (E23).
+  Der Leser für 5.5.1 wird erweitert; GEDZIP ist ein ZIP-Archiv und geht
+  mit der Standardbibliothek.
 - **GEDCOM 5.5.1 mit GEDCOM-L**: eigener Importer. Zeichensätze UTF-8
   (mit und ohne BOM), UTF-16, ANSEL, ANSI; `CONT`/`CONC`.
 - Prüfstein ist der Falkenrath-Baum 1.7.1. Er enthält jede Angabe des
@@ -367,7 +368,17 @@ Einzelantwort noch in Liste oder Suche.
   `0 HEAD`, damit Leser den Zeichensatz sofort finden. `RIN` trägt die
   interne Kennung mit dem Präfix `WISE:` (z. B. `1 RIN WISE:4711`).
 - **Rundlauf-Test**: Import → Export → Import ergibt dasselbe Modell. Ein
-  zeilengleicher Export ist kein Ziel.
+  zeilengleicher Export ist kein Ziel. Verglichen wird der **Modellauszug**
+  (`backend/baum/auszug.py`): der ganze Baum als verschachtelte Struktur,
+  Datensätze über ihre GEDCOM-Kennung, ohne interne Kennungen und ohne
+  Sortiernummern, nur die Reihenfolge zählt. Nicht Teil des Vergleichs:
+  Kopf und Importbericht der eingelesenen Datei, Datenschutz-Regeln und
+  Änderungssätze (beides kein GEDCOM).
+- **Export** (E25, E26): der angenommene Stand, vollständig, für Verwalter
+  und als nächtliche Sicherung. Ein **Exportbericht** nennt, was sich nicht
+  gültig oder nicht verlustfrei schreiben ließ.
+- **Wechsel der Fassung** (E24): Bekanntes wird umgesetzt, Erweiterungen mit
+  Unterstrich gehen unverändert durch, der Rest steht im Exportbericht.
 - **WTX – „wisetrees exchange“** (E13, nur vorgesehen): ein offenes,
   dokumentiertes Austauschformat. ZIP mit JSON nach eigener Spezifikation
   und den Medien, ähnlich GEDZIP, aber mit dem vollen Modell (Rollen,
@@ -436,6 +447,10 @@ Entschieden am 01.11.2026.
 | E19 | Datenschutz einstellbar | **Alle Ebenen wie bewährt** (entschieden 01.11.2026), Vorgaben = Verhalten eines neuen Baums wie bisher. **A, je Baum:** Schutz an/aus, Baum nur für Mitglieder, Verstorbene zeigen ab Rolle, Namen privater Personen zeigen ab Rolle, private Beziehungen zeigen, Höchstalter, Schutz nach Geburt bzw. Tod um Jahre verlängern; Regeln je Fakt- oder Datensatzart, je einzelnem Datensatz und je Faktart an einem Datensatz. Ablage in der `.wise` (Schemaversion 2: Tabelle `privacy_rule`, Werte in `meta`; Dateien der Version 1 werden beim Öffnen umgebaut). **B, je Konto und Baum:** „Das bin ich“ (Verknüpfung mit einer Person), Verwandtschaftsschutz (Lebende nur bis *N* Schritte), Änderungen sofort annehmen; Ablage in der Kontendatei. Belegt durch Aufzeichnungen der Referenz mit denselben Einstellungen. Vor E16 Teil 2 |
 | E20 | Zielgruppe und Einsatzwege | **Technisch interessierte Betreiber** (entschieden 01.11.2026): Betrieb als Container (Docker, auch auf NAS über den Container Manager), später Synology-Paket und Desktop-Modus (E14). Python bleibt; reiner PHP-Webspace ist kein Ziel – dort bleibt der bewährte Weg mit den Apps. Hoster mit Python-Anwendungen werden bei Gelegenheit geprüft. Datenbanken nach E16 |
 | E21 | Schreiben mit Moderation, Einzelheiten | (entschieden 02.11.2026) Wer schreibt und wer freigibt wie in der Referenz: offen ohne „sofort annehmen“, auch für Moderatoren und Verwalter; Suche und Personenliste für Bearbeiter auf dem angenommenen Stand; nach dem Annehmen wird das Modell neu geladen, gezieltes Nachführen erst bei Bedarf; Eingabe nur über die Felder der Apps. Plan: [PLAN-M2.md](PLAN-M2.md) |
+| E23 | GEDCOM 7.0 lesen und schreiben | (entschieden 02.11.2026) **eigener Code**, keine Bibliothek: der Leser für 5.5.1 wird um 7.0 erweitert, GEDZIP über `zipfile` aus der Standardbibliothek. Prüfstein ist die 7.0-Fassung des Falkenrath-Baums 1.7.1 |
+| E24 | Reste beim Wechsel der Fassung | (entschieden 02.11.2026) **b** – GEDCOM-Reste aus einer anderen Fassung werden mechanisch umgesetzt (z. B. `CONC`, Kalender im Datum, `RELA` → `ROLE`); Erweiterungs-Tags mit Unterstrich gehen unverändert durch, wie GEDCOM 7 es erlaubt. Was danach nicht gültig ist, steht im Exportbericht |
+| E25 | Umfang des Exports | (entschieden 02.11.2026) Verwalter und nächtliche Sicherung bekommen den **vollständigen** Baum, nur den angenommenen Stand, ohne Filter nach Datenschutz. Ein gefilterter Export für Dritte kommt später |
+| E26 | Ereignis mit mehreren Hauptbeteiligten | (entschieden 02.11.2026) GEDCOM kennt keine geteilten Ereignisse: Der Export schreibt das Ereignis **bei jedem Hauptbeteiligten** als eigene Angabe; Paten, Zeugen und andere Beteiligte bei jeder Kopie. Der Exportbericht nennt jedes so geteilte Ereignis. Nach einem erneuten Import sind es getrennte Ereignisse |
 
 **Prüfung zu E12 (01.11.2026):**
 

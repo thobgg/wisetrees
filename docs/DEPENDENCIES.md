@@ -46,12 +46,6 @@ Nicht nötig: `httpx` für FastAPIs TestClient (zöge `certifi`, MPL-2.0, mit). 
 | *mitgezogen:* referencing | 0.37.0 | MIT | jsonschema |
 | *mitgezogen:* rpds-py | 2026.9.1 | MIT | jsonschema |
 
-## Server (geplant, noch nicht eingebunden)
-
-| Paket | Lizenz | Wofür |
-|---|---|---|
-| gedcom7 (python-gedcom7) | MIT, keine eigenen Abhängigkeiten | GEDCOM 7.0 und GEDZIP lesen und schreiben |
-
 ## Daten im Repository
 
 | Datei | Inhalt | Lizenz |
