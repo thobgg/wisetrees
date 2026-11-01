@@ -28,3 +28,4 @@ services:
     environment:
       - TZ=${TZ:-Europe/Berlin}
       - WISETREES_PORT=${WISETREES_PORT:-8099}
+      - WISETREES_PROXY=${WISETREES_PROXY:-127.0.0.1,172.16.0.0/12}

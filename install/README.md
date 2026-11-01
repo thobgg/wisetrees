@@ -35,9 +35,15 @@ Images belong in `data/medien/<tree name>/`, with the paths from the FILE lines 
 3. In `.env`, enter the user wisetrees should run as (`WISETREES_UID`, `WISETREES_GID`). This user needs write
    access to `data`.
 4. In Container Manager: **Project** › **Create**, choose the path `docker/wisetrees`, use the existing
-   `docker-compose.yml` and start the project.
+   `docker-compose.yml`. Leave the step **Web portal via Web Station** empty; set up access from outside afterwards
+   with the reverse proxy (see below). Start the project.
 5. The setup code is shown in Container Manager under the container `wisetrees` › **Log**.
 6. Continue in the browser as above.
+
+## Data folder
+
+On start, wisetrees sets the folder `data` to owner only (mode 700), so nobody else can read accounts and trees.
+Put images into `data/medien/` as the user from `WISETREES_UID`, on a Synology with your own account in File Station.
 
 ## Updating and backup
 
@@ -50,3 +56,8 @@ Images belong in `data/medien/<tree name>/`, with the paths from the FILE lines 
 wisetrees itself does not speak HTTPS. Within the home network the address above is enough. For access from outside,
 put a reverse proxy with a certificate in front (on a Synology: Control Panel › Login Portal › Advanced › Reverse
 Proxy). The apps accept addresses without HTTPS only within the home network.
+
+The reverse proxy forwards to `http://localhost:8099`. wisetrees trusts its headers (HTTPS, visitor address) only
+from this machine and the internal Docker networks (`WISETREES_PROXY` in `.env`). If nobody in the home network
+should reach port 8099 directly, use `"127.0.0.1:8099:8099"` under `ports` in `docker-compose.yml`; then the only
+way in is through the reverse proxy.
