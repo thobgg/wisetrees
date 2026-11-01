@@ -50,5 +50,8 @@ def erstellen(einstellungen: config.Einstellungen) -> FastAPI:
 def __getattr__(name):
     # `uvicorn main:app` – erst beim Zugriff bauen, damit Tests das Modul ohne /data importieren können.
     if name == "app":
-        return erstellen(config.laden())
+        # Einmal bauen und merken: uvicorn greift mehrfach zu, und jede neue App hätte eigene Konten-Verbindung und
+        # einen eigenen Einrichtungscode.
+        globals()["app"] = erstellen(config.laden())
+        return globals()["app"]
     raise AttributeError(name)
