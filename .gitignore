@@ -1,0 +1,13 @@
+.~lock.*#
+data/
+intern/
+*.pyc
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.venv/
+wisetrees.env
+.work/

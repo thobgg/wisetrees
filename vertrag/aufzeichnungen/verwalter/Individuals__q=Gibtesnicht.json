@@ -1,0 +1,15 @@
+{
+ "rolle": "verwalter",
+ "aktion": "Individuals",
+ "params": {
+  "q": "Gibtesnicht"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Gibtesnicht",
+  "page": 1,
+  "nextPage": null,
+  "data": []
+ }
+}

@@ -1,0 +1,189 @@
+{
+ "rolle": "mitglied",
+ "aktion": "Descendants",
+ "params": {
+  "xref": "I1"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "root": "I1",
+  "generations": 3,
+  "tree": {
+   "person": {
+    "xref": "I1",
+    "name": "Jonas Falkenrath",
+    "sortName": "Falkenrath,Jonas",
+    "given": "Jonas",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "member",
+    "nameAccess": "member",
+    "restricted": [],
+    "lifespan": "1985–",
+    "birth": {
+     "date": {
+      "text": "14. März 1985",
+      "year": 1985,
+      "jd": 2446139
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "2. Juni 1985",
+      "year": 1985,
+      "jd": 2446219
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Bauingenieur",
+    "thumb": null,
+    "url": "<url>"
+   },
+   "families": [
+    {
+     "xref": "F1",
+     "spouse": {
+      "xref": "I2",
+      "name": "Mira Sandvoss",
+      "sortName": "Sandvoss,Mira",
+      "given": "Mira",
+      "surname": "Sandvoss",
+      "sex": "F",
+      "isDead": false,
+      "private": false,
+      "access": "member",
+      "nameAccess": "member",
+      "restricted": [],
+      "lifespan": "1987–",
+      "birth": {
+       "date": {
+        "text": "2. September 1987",
+        "year": 1987,
+        "jd": 2447041
+       },
+       "place": {
+        "name": "Bremen, Deutschland",
+        "short": "Bremen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": null,
+      "call": "",
+      "chr": null,
+      "buri": null,
+      "occupation": "Buchhändlerin",
+      "thumb": null,
+      "url": "<url>"
+     },
+     "marriage": {
+      "date": {
+       "text": "18. Juni 2015",
+       "year": 2015,
+       "jd": 2457192
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "children": [
+      {
+       "person": {
+        "xref": "I3",
+        "name": "Emil Falkenrath",
+        "sortName": "Falkenrath,Emil",
+        "given": "Emil",
+        "surname": "Falkenrath",
+        "sex": "M",
+        "isDead": false,
+        "private": false,
+        "access": "member",
+        "nameAccess": "member",
+        "restricted": [],
+        "lifespan": "2017–",
+        "birth": {
+         "date": {
+          "text": "9. Mai 2017",
+          "year": 2017,
+          "jd": 2457883
+         },
+         "place": {
+          "name": "Hannover, Niedersachsen, Deutschland",
+          "short": "Hannover, Niedersachsen, Deutschland",
+          "lat": null,
+          "lng": null
+         }
+        },
+        "death": null,
+        "call": "",
+        "chr": null,
+        "buri": null,
+        "occupation": null,
+        "thumb": null,
+        "url": "<url>"
+       },
+       "families": []
+      },
+      {
+       "person": {
+        "xref": "I4",
+        "name": "Ida Falkenrath",
+        "sortName": "Falkenrath,Ida",
+        "given": "Ida",
+        "surname": "Falkenrath",
+        "sex": "F",
+        "isDead": false,
+        "private": false,
+        "access": "member",
+        "nameAccess": "member",
+        "restricted": [],
+        "lifespan": "2020–",
+        "birth": {
+         "date": {
+          "text": "23. November 2020",
+          "year": 2020,
+          "jd": 2459177
+         },
+         "place": {
+          "name": "Hannover, Niedersachsen, Deutschland",
+          "short": "Hannover, Niedersachsen, Deutschland",
+          "lat": null,
+          "lng": null
+         }
+        },
+        "death": null,
+        "call": "",
+        "chr": null,
+        "buri": null,
+        "occupation": null,
+        "thumb": null,
+        "url": "<url>"
+       },
+       "families": []
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "rolle": "besucher",
+ "aktion": "Family",
+ "params": {
+  "xref": "F99999"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-found",
+  "status": 404
+ }
+}

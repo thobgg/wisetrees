@@ -1,0 +1,1965 @@
+{
+ "rolle": "bearbeiter",
+ "aktion": "Individuals",
+ "params": {
+  "q": "Bienenbüttel",
+  "scope": "all"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Bienenbüttel",
+  "page": 1,
+  "nextPage": null,
+  "data": [
+   {
+    "xref": "I245",
+    "name": "Catharine Elisabeth Dammann",
+    "sortName": "Dammann,Catharine Elisabeth",
+    "given": "Catharine Elisabeth",
+    "surname": "Dammann",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1767–1837",
+    "birth": {
+     "date": {
+      "text": "3. Mai 1767",
+      "year": 1767,
+      "jd": 2366566
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "28. September 1837",
+      "year": 1837,
+      "jd": 2392281
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "12. Mai 1767",
+      "year": 1767,
+      "jd": 2366575
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "2. Oktober 1837",
+      "year": 1837,
+      "jd": 2392285
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I419",
+    "name": "Elfriede Ebeling",
+    "sortName": "Ebeling,Elfriede",
+    "given": "Elfriede",
+    "surname": "Ebeling",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1928–1966",
+    "birth": {
+     "date": {
+      "text": "1. Februar 1928",
+      "year": 1928,
+      "jd": 2425278
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. August 1966",
+      "year": 1966,
+      "jd": 2439347
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": {
+     "date": {
+      "text": "14. August 1966",
+      "year": 1966,
+      "jd": 2439352
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I187",
+    "name": "Johanne Harms",
+    "sortName": "Harms,Johanne",
+    "given": "Johanne",
+    "surname": "Harms",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1805–1887",
+    "birth": {
+     "date": {
+      "text": "1. Juni 1805",
+      "year": 1805,
+      "jd": 2380474
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "14. Oktober 1887",
+      "year": 1887,
+      "jd": 2410559
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "3. Juni 1805",
+      "year": 1805,
+      "jd": 2380476
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "19. Oktober 1887",
+      "year": 1887,
+      "jd": 2410564
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I365",
+    "name": "Carl Hinrichs",
+    "sortName": "Hinrichs,Carl",
+    "given": "Carl",
+    "surname": "Hinrichs",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1810–1889",
+    "birth": {
+     "date": {
+      "text": "17. Juni 1810",
+      "year": 1810,
+      "jd": 2382316
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "13. September 1889",
+      "year": 1889,
+      "jd": 2411259
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "25. Juni 1810",
+      "year": 1810,
+      "jd": 2382324
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "18. September 1889",
+      "year": 1889,
+      "jd": 2411264
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Schmied",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I179",
+    "name": "Friederike Hinrichs",
+    "sortName": "Hinrichs,Friederike",
+    "given": "Friederike",
+    "surname": "Hinrichs",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1802–1878",
+    "birth": {
+     "date": {
+      "text": "20. März 1802",
+      "year": 1802,
+      "jd": 2379305
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. Mai 1878",
+      "year": 1878,
+      "jd": 2407108
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "29. März 1802",
+      "year": 1802,
+      "jd": 2379314
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "5. Mai 1878",
+      "year": 1878,
+      "jd": 2407110
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I246",
+    "name": "Heinrich Christoph Hinrichs",
+    "sortName": "Hinrichs,Heinrich Christoph",
+    "given": "Heinrich Christoph",
+    "surname": "Hinrichs",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1763–1842",
+    "birth": {
+     "date": {
+      "text": "25. März 1763",
+      "year": 1763,
+      "jd": 2365066
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "11. Juli 1842",
+      "year": 1842,
+      "jd": 2394028
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "30. März 1763",
+      "year": 1763,
+      "jd": 2365071
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "15. Juli 1842",
+      "year": 1842,
+      "jd": 2394032
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Müller",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I364",
+    "name": "Sophie Hinrichs",
+    "sortName": "Hinrichs,Sophie",
+    "given": "Sophie",
+    "surname": "Hinrichs",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1807–1886",
+    "birth": {
+     "date": {
+      "text": "4. August 1807",
+      "year": 1807,
+      "jd": 2381268
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "27. Dezember 1886",
+      "year": 1886,
+      "jd": 2410268
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "10. August 1807",
+      "year": 1807,
+      "jd": 2381274
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "29. Dezember 1886",
+      "year": 1886,
+      "jd": 2410270
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Dienstmagd",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I185",
+    "name": "Auguste Klingebiel",
+    "sortName": "Klingebiel,Auguste",
+    "given": "Auguste",
+    "surname": "Klingebiel",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1813–1858",
+    "birth": {
+     "date": {
+      "text": "24. Oktober 1813",
+      "year": 1813,
+      "jd": 2383541
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "1. Mai 1858",
+      "year": 1858,
+      "jd": 2399801
+     },
+     "place": {
+      "name": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "27. Oktober 1813",
+      "year": 1813,
+      "jd": 2383544
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "5. Mai 1858",
+      "year": 1858,
+      "jd": 2399805
+     },
+     "place": {
+      "name": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I331",
+    "name": "August Mohwinkel",
+    "sortName": "Mohwinkel,August",
+    "given": "August",
+    "surname": "Mohwinkel",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1836–1838",
+    "birth": {
+     "date": {
+      "text": "9. Dezember 1836",
+      "year": 1836,
+      "jd": 2391988
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. Februar 1838",
+      "year": 1838,
+      "jd": 2392415
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "14. Dezember 1836",
+      "year": 1836,
+      "jd": 2391993
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "11. Februar 1838",
+      "year": 1838,
+      "jd": 2392417
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I178",
+    "name": "Carl Mohwinkel",
+    "sortName": "Mohwinkel,Carl",
+    "given": "Carl",
+    "surname": "Mohwinkel",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1802–1872",
+    "birth": {
+     "date": {
+      "text": "17. September 1802",
+      "year": 1802,
+      "jd": 2379486
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "1. September 1872",
+      "year": 1872,
+      "jd": 2405038
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "24. September 1802",
+      "year": 1802,
+      "jd": 2379493
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "5. September 1872",
+      "year": 1872,
+      "jd": 2405042
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Schmied",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I288",
+    "name": "Emilie Mohwinkel",
+    "sortName": "Mohwinkel,Emilie",
+    "given": "Emilie",
+    "surname": "Mohwinkel",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1885–1964",
+    "birth": {
+     "date": {
+      "text": "18. März 1885",
+      "year": 1885,
+      "jd": 2409619
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "21. April 1964",
+      "year": 1964,
+      "jd": 2438507
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "21. März 1885",
+      "year": 1885,
+      "jd": 2409622
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "25. April 1964",
+      "year": 1964,
+      "jd": 2438511
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I330",
+    "name": "Ernst Mohwinkel",
+    "sortName": "Mohwinkel,Ernst",
+    "given": "Ernst",
+    "surname": "Mohwinkel",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1842–1845",
+    "birth": {
+     "date": {
+      "text": "18. Dezember 1842",
+      "year": 1842,
+      "jd": 2394188
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "23. März 1845",
+      "year": 1845,
+      "jd": 2395014
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "20. Dezember 1842",
+      "year": 1842,
+      "jd": 2394190
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "28. März 1845",
+      "year": 1845,
+      "jd": 2395019
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I244",
+    "name": "Friedrich Mohwinkel",
+    "sortName": "Mohwinkel,Friedrich",
+    "given": "Friedrich",
+    "surname": "Mohwinkel",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1763–1826",
+    "birth": {
+     "date": {
+      "text": "17. April 1763",
+      "year": 1763,
+      "jd": 2365089
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "20. Juni 1826",
+      "year": 1826,
+      "jd": 2388163
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "21. April 1763",
+      "year": 1763,
+      "jd": 2365093
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "22. Juni 1826",
+      "year": 1826,
+      "jd": 2388165
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Häusling",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I130",
+    "name": "Georg Mohwinkel",
+    "sortName": "Mohwinkel,Georg",
+    "given": "Georg",
+    "surname": "Mohwinkel",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1833–1919",
+    "birth": {
+     "date": {
+      "text": "24. Februar 1833",
+      "year": 1833,
+      "jd": 2390604
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "7. September 1919",
+      "year": 1919,
+      "jd": 2422209
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "3. März 1833",
+      "year": 1833,
+      "jd": 2390611
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "12. September 1919",
+      "year": 1919,
+      "jd": 2422214
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Landwirt",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I287",
+    "name": "Marie Mohwinkel",
+    "sortName": "Mohwinkel,Marie",
+    "given": "Marie",
+    "surname": "Mohwinkel",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1879–1917",
+    "birth": {
+     "date": {
+      "text": "28. Februar 1879",
+      "year": 1879,
+      "jd": 2407409
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "27. Oktober 1917",
+      "year": 1917,
+      "jd": 2421529
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "5. März 1879",
+      "year": 1879,
+      "jd": 2407414
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "31. Oktober 1917",
+      "year": 1917,
+      "jd": 2421533
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Dienstmagd",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I107",
+    "name": "Minna Mohwinkel",
+    "sortName": "Mohwinkel,Minna",
+    "given": "Minna",
+    "surname": "Mohwinkel",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1871–1929",
+    "birth": {
+     "date": {
+      "text": "24. November 1871",
+      "year": 1871,
+      "jd": 2404756
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "27. April 1929",
+      "year": 1929,
+      "jd": 2425729
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "3. Dezember 1871",
+      "year": 1871,
+      "jd": 2404765
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "2. Mai 1929",
+      "year": 1929,
+      "jd": 2425734
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I290",
+    "name": "Paul Mohwinkel",
+    "sortName": "Mohwinkel,Paul",
+    "given": "Paul",
+    "surname": "Mohwinkel",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1873–1949",
+    "birth": {
+     "date": {
+      "text": "3. Dezember 1873",
+      "year": 1873,
+      "jd": 2405496
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "2. April 1949",
+      "year": 1949,
+      "jd": 2433009
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "8. Dezember 1873",
+      "year": 1873,
+      "jd": 2405501
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "4. April 1949",
+      "year": 1949,
+      "jd": 2433011
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Bahnarbeiter",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I289",
+    "name": "Richard Mohwinkel",
+    "sortName": "Mohwinkel,Richard",
+    "given": "Richard",
+    "surname": "Mohwinkel",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1869–1914",
+    "birth": {
+     "date": {
+      "text": "18. April 1869",
+      "year": 1869,
+      "jd": 2403806
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "8. Januar 1914",
+      "year": 1914,
+      "jd": 2420141
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "24. April 1869",
+      "year": 1869,
+      "jd": 2403812
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "13. Januar 1914",
+      "year": 1914,
+      "jd": 2420146
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Schmied",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I247",
+    "name": "Margarethe Oetzmann",
+    "sortName": "Oetzmann,Margarethe",
+    "given": "Margarethe",
+    "surname": "Oetzmann",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1770–1856",
+    "birth": {
+     "date": {
+      "text": "5. Juli 1770",
+      "year": 1770,
+      "jd": 2367725
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "2. September 1856",
+      "year": 1856,
+      "jd": 2399195
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "12. Juli 1770",
+      "year": 1770,
+      "jd": 2367732
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "5. September 1856",
+      "year": 1856,
+      "jd": 2399198
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I135",
+    "name": "Dorothee Riebesell",
+    "sortName": "Riebesell,Dorothee",
+    "given": "Dorothee",
+    "surname": "Riebesell",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1841–1911",
+    "birth": {
+     "date": {
+      "text": "10. Januar 1841",
+      "year": 1841,
+      "jd": 2393481
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. August 1911",
+      "year": 1911,
+      "jd": 2419252
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "15. Januar 1841",
+      "year": 1841,
+      "jd": 2393486
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "8. August 1911",
+      "year": 1911,
+      "jd": 2419257
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I193",
+    "name": "Sophie Dorothee Riebesell",
+    "sortName": "Riebesell,Sophie Dorothee",
+    "given": "Sophie Dorothee",
+    "surname": "Riebesell",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1817–1887",
+    "birth": {
+     "date": {
+      "text": "1. Januar 1817",
+      "year": 1817,
+      "jd": 2384706
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "15. Dezember 1887",
+      "year": 1887,
+      "jd": 2410621
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Dorothee",
+    "chr": {
+     "date": {
+      "text": "10. Januar 1817",
+      "year": 1817,
+      "jd": 2384715
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "20. Dezember 1887",
+      "year": 1887,
+      "jd": 2410626
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I131",
+    "name": "Catharine Schulze",
+    "sortName": "Schulze,Catharine",
+    "given": "Catharine",
+    "surname": "Schulze",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1848–1886",
+    "birth": {
+     "date": {
+      "text": "21. August 1848",
+      "year": 1848,
+      "jd": 2396261
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "6. Juni 1886",
+      "year": 1886,
+      "jd": 2410064
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "27. August 1848",
+      "year": 1848,
+      "jd": 2396267
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "10. Juni 1886",
+      "year": 1886,
+      "jd": 2410068
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I109",
+    "name": "Anna Winkelmann",
+    "sortName": "Winkelmann,Anna",
+    "given": "Anna",
+    "surname": "Winkelmann",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1868–1938",
+    "birth": {
+     "date": {
+      "text": "19. Mai 1868",
+      "year": 1868,
+      "jd": 2403472
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "20. Februar 1938",
+      "year": 1938,
+      "jd": 2428950
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "28. Mai 1868",
+      "year": 1868,
+      "jd": 2403481
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "22. Februar 1938",
+      "year": 1938,
+      "jd": 2428952
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I291",
+    "name": "Anna Winkelmann",
+    "sortName": "Winkelmann,Anna",
+    "given": "Anna",
+    "surname": "Winkelmann",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1877–1953",
+    "birth": {
+     "date": {
+      "text": "5. Oktober 1877",
+      "year": 1877,
+      "jd": 2406898
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "21. Juli 1953",
+      "year": 1953,
+      "jd": 2434580
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "14. Oktober 1877",
+      "year": 1877,
+      "jd": 2406907
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "24. Juli 1953",
+      "year": 1953,
+      "jd": 2434583
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I338",
+    "name": "Catharine Winkelmann",
+    "sortName": "Winkelmann,Catharine",
+    "given": "Catharine",
+    "surname": "Winkelmann",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1842–1845",
+    "birth": {
+     "date": {
+      "text": "9. Oktober 1842",
+      "year": 1842,
+      "jd": 2394118
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "8. November 1845",
+      "year": 1845,
+      "jd": 2395244
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "14. Oktober 1842",
+      "year": 1842,
+      "jd": 2394123
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "12. November 1845",
+      "year": 1845,
+      "jd": 2395248
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I292",
+    "name": "Gustav Winkelmann",
+    "sortName": "Winkelmann,Gustav",
+    "given": "Gustav",
+    "surname": "Winkelmann",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1874–1874",
+    "birth": {
+     "date": {
+      "text": "8. November 1874",
+      "year": 1874,
+      "jd": 2405836
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "5. Dezember 1874",
+      "year": 1874,
+      "jd": 2405863
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "16. November 1874",
+      "year": 1874,
+      "jd": 2405844
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "10. Dezember 1874",
+      "year": 1874,
+      "jd": 2405868
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I134",
+    "name": "Hermann Winkelmann",
+    "sortName": "Winkelmann,Hermann",
+    "given": "Hermann",
+    "surname": "Winkelmann",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1839–1897",
+    "birth": {
+     "date": {
+      "text": "20. Dezember 1839",
+      "year": 1839,
+      "jd": 2393094
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "10. Januar 1897",
+      "year": 1897,
+      "jd": 2413935
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "28. Dezember 1839",
+      "year": 1839,
+      "jd": 2393102
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "13. Januar 1897",
+      "year": 1897,
+      "jd": 2413938
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Müller",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I186",
+    "name": "Johann Heinrich Winkelmann",
+    "sortName": "Winkelmann,Johann Heinrich",
+    "given": "Johann Heinrich",
+    "surname": "Winkelmann",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1806–1888",
+    "birth": {
+     "date": {
+      "text": "25. April 1806",
+      "year": 1806,
+      "jd": 2380802
+     },
+     "place": {
+      "name": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. Oktober 1888",
+      "year": 1888,
+      "jd": 2410920
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "27. April 1806",
+      "year": 1806,
+      "jd": 2380804
+     },
+     "place": {
+      "name": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "14. Oktober 1888",
+      "year": 1888,
+      "jd": 2410925
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Holzhauer",
+    "thumb": "<bild>",
+    "url": "<url>"
+   }
+  ]
+ }
+}

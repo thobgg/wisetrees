@@ -1,0 +1,10 @@
+{
+ "schnittstelle": "api4wisetrees v1",
+ "api_stufe": 42,
+ "baum": "falkenrath",
+ "falkenrath": "1.7.1",
+ "falkenrath_sha256": "fcde8d2e948a9e2249a2ab511769b78f27199302595e06fcc4cbd0462b78b1e7",
+ "datum": "2026-11-01",
+ "faelle": 160,
+ "hinweis": "Lebend/verstorben und Altersangaben hängen vom Datum der Aufzeichnung ab."
+}

@@ -1,0 +1,238 @@
+{
+ "rolle": "moderator",
+ "aktion": "Pedigree",
+ "params": {
+  "xref": "I130",
+  "generations": 2
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "root": "I130",
+  "generations": 2,
+  "ancestors": [
+   {
+    "n": 1,
+    "person": {
+     "xref": "I130",
+     "name": "Georg Mohwinkel",
+     "sortName": "Mohwinkel,Georg",
+     "given": "Georg",
+     "surname": "Mohwinkel",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1833–1919",
+     "birth": {
+      "date": {
+       "text": "24. Februar 1833",
+       "year": 1833,
+       "jd": 2390604
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "7. September 1919",
+       "year": 1919,
+       "jd": 2422209
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "3. März 1833",
+       "year": 1833,
+       "jd": 2390611
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "12. September 1919",
+       "year": 1919,
+       "jd": 2422214
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Landwirt",
+     "thumb": "<bild>",
+     "url": "<url>"
+    },
+    "hasParents": true
+   },
+   {
+    "n": 2,
+    "person": {
+     "xref": "I178",
+     "name": "Carl Mohwinkel",
+     "sortName": "Mohwinkel,Carl",
+     "given": "Carl",
+     "surname": "Mohwinkel",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1802–1872",
+     "birth": {
+      "date": {
+       "text": "17. September 1802",
+       "year": 1802,
+       "jd": 2379486
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "1. September 1872",
+       "year": 1872,
+       "jd": 2405038
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "24. September 1802",
+       "year": 1802,
+       "jd": 2379493
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "5. September 1872",
+       "year": 1872,
+       "jd": 2405042
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": "Schmied",
+     "thumb": "<bild>",
+     "url": "<url>"
+    },
+    "hasParents": true
+   },
+   {
+    "n": 3,
+    "person": {
+     "xref": "I179",
+     "name": "Friederike Hinrichs",
+     "sortName": "Hinrichs,Friederike",
+     "given": "Friederike",
+     "surname": "Hinrichs",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1802–1878",
+     "birth": {
+      "date": {
+       "text": "20. März 1802",
+       "year": 1802,
+       "jd": 2379305
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "3. Mai 1878",
+       "year": 1878,
+       "jd": 2407108
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "29. März 1802",
+       "year": 1802,
+       "jd": 2379314
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "5. Mai 1878",
+       "year": 1878,
+       "jd": 2407110
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": null,
+     "url": "<url>"
+    },
+    "hasParents": true
+   }
+  ]
+ }
+}

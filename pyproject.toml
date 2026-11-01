@@ -1,0 +1,20 @@
+[project]
+name = "wisetrees"
+version = "0.0.0"
+description = "Selbst gehosteter Genealogie-Server mit eigener API"
+authors = [{ name = "Thomas Bugge", email = "thomas@bgg-mail.de" }]
+license = "AGPL-3.0-only"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+exclude = [".git", ".venv", ".work", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP", "SIM"]
+ignore = ["E501", "B008", "SIM108"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests", "vertrag"]
+addopts = "-q --tb=short"

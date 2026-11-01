@@ -1,0 +1,30 @@
+# wisetrees mit Docker Compose
+#
+#   mkdir -p data && docker compose up -d --build
+#   docker compose exec wisetrees python3 /app/werkzeuge/konten.py anlegen admin --admin
+#   → http://<host>:8099/healthz
+#
+# ./data enthält konten.sqlite (Konten, Rollen, Sitzungen) und baeume/*.wise (je Baum eine Datei).
+# Beides ist unersetzlich – sichern.
+#
+# Der Container läuft nicht als root, sondern als WISETREES_UID:WISETREES_GID (Standard 1000:1000).
+# ./data muss diesem Benutzer gehören, z. B.:  sudo chown 1000:1000 data
+# Port: WISETREES_PORT (Standard 8099).
+
+services:
+  wisetrees:
+    container_name: wisetrees
+    build:
+      context: .
+      args:
+        WISETREES_UID: ${WISETREES_UID:-1000}
+        WISETREES_GID: ${WISETREES_GID:-1000}
+    user: "${WISETREES_UID:-1000}:${WISETREES_GID:-1000}"
+    restart: unless-stopped
+    ports:
+      - "${WISETREES_PORT:-8099}:${WISETREES_PORT:-8099}"
+    volumes:
+      - ${WISETREES_DATA:-./data}:/data
+    environment:
+      - TZ=${TZ:-Europe/Berlin}
+      - WISETREES_PORT=${WISETREES_PORT:-8099}

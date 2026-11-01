@@ -1,0 +1,15 @@
+{
+ "rolle": "besucher",
+ "aktion": "Pedigree",
+ "params": {
+  "xref": "I1",
+  "generations": 5
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "private",
+  "status": 403
+ }
+}

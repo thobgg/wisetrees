@@ -1,0 +1,435 @@
+{
+ "rolle": "bearbeiter",
+ "aktion": "Individual",
+ "params": {
+  "xref": "I2"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "person": {
+   "xref": "I2",
+   "name": "Mira Sandvoss",
+   "sortName": "Sandvoss,Mira",
+   "given": "Mira",
+   "surname": "Sandvoss",
+   "sex": "F",
+   "isDead": false,
+   "private": false,
+   "access": "member",
+   "nameAccess": "member",
+   "restricted": [],
+   "lifespan": "1987–",
+   "birth": {
+    "date": {
+     "text": "2. September 1987",
+     "year": 1987,
+     "jd": 2447041
+    },
+    "place": {
+     "name": "Bremen, Deutschland",
+     "short": "Bremen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": null,
+   "call": "",
+   "chr": null,
+   "buri": null,
+   "occupation": "Buchhändlerin",
+   "thumb": null,
+   "url": "<url>",
+   "hasParents": false,
+   "partnersCount": 1,
+   "childrenCount": 2
+  },
+  "relationship": "",
+  "canEdit": true,
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "BIRT",
+    "label": "Geburt",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "2. September 1987",
+     "year": 1987,
+     "jd": 2447041,
+     "gedcom": "2 SEP 1987"
+    },
+    "place": {
+     "name": "Bremen, Deutschland",
+     "short": "Bremen, Deutschland",
+     "lat": 53.0793,
+     "lng": 8.8017
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#2>",
+    "pending": false,
+    "tag": "OCCU",
+    "label": "Beruf",
+    "known": true,
+    "value": "Buchhändlerin",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#3>",
+    "pending": false,
+    "tag": "NAME",
+    "label": "Name",
+    "known": true,
+    "value": "Mira /Sandvoss/",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#4>",
+    "pending": false,
+    "tag": "SEX",
+    "label": "Geschlecht",
+    "known": true,
+    "value": "weiblich",
+    "gedcomValue": "F",
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "parentFamilies": [],
+  "spouseFamilies": [
+   {
+    "xref": "F1",
+    "name": "Jonas Falkenrath + Mira Sandvoss",
+    "url": "<url>",
+    "husband": {
+     "xref": "I1",
+     "name": "Jonas Falkenrath",
+     "sortName": "Falkenrath,Jonas",
+     "given": "Jonas",
+     "surname": "Falkenrath",
+     "sex": "M",
+     "isDead": false,
+     "private": false,
+     "access": "member",
+     "nameAccess": "member",
+     "restricted": [],
+     "lifespan": "1985–",
+     "birth": {
+      "date": {
+       "text": "14. März 1985",
+       "year": 1985,
+       "jd": 2446139
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": null,
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "2. Juni 1985",
+       "year": 1985,
+       "jd": 2446219
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": null,
+     "occupation": "Bauingenieur",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 2
+    },
+    "wife": {
+     "xref": "I2",
+     "name": "Mira Sandvoss",
+     "sortName": "Sandvoss,Mira",
+     "given": "Mira",
+     "surname": "Sandvoss",
+     "sex": "F",
+     "isDead": false,
+     "private": false,
+     "access": "member",
+     "nameAccess": "member",
+     "restricted": [],
+     "lifespan": "1987–",
+     "birth": {
+      "date": {
+       "text": "2. September 1987",
+       "year": 1987,
+       "jd": 2447041
+      },
+      "place": {
+       "name": "Bremen, Deutschland",
+       "short": "Bremen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": null,
+     "call": "",
+     "chr": null,
+     "buri": null,
+     "occupation": "Buchhändlerin",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": false,
+     "partnersCount": 1,
+     "childrenCount": 2
+    },
+    "spouse": {
+     "xref": "I1",
+     "name": "Jonas Falkenrath",
+     "sortName": "Falkenrath,Jonas",
+     "given": "Jonas",
+     "surname": "Falkenrath",
+     "sex": "M",
+     "isDead": false,
+     "private": false,
+     "access": "member",
+     "nameAccess": "member",
+     "restricted": [],
+     "lifespan": "1985–",
+     "birth": {
+      "date": {
+       "text": "14. März 1985",
+       "year": 1985,
+       "jd": 2446139
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": null,
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "2. Juni 1985",
+       "year": 1985,
+       "jd": 2446219
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": null,
+     "occupation": "Bauingenieur",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 2
+    },
+    "marriage": {
+     "date": {
+      "text": "18. Juni 2015",
+      "year": 2015,
+      "jd": 2457192
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#5>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Standesamtliche Heirat",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "CIVIL",
+      "typeLabel": "Standesamtliche Heirat",
+      "date": {
+       "text": "18. Juni 2015",
+       "year": 2015,
+       "jd": 2457192,
+       "gedcom": "18 JUN 2015"
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": 52.3759,
+       "lng": 9.732
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [],
+      "associates": [],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I3",
+      "name": "Emil Falkenrath",
+      "sortName": "Falkenrath,Emil",
+      "given": "Emil",
+      "surname": "Falkenrath",
+      "sex": "M",
+      "isDead": false,
+      "private": false,
+      "access": "member",
+      "nameAccess": "member",
+      "restricted": [],
+      "lifespan": "2017–",
+      "birth": {
+       "date": {
+        "text": "9. Mai 2017",
+        "year": 2017,
+        "jd": 2457883
+       },
+       "place": {
+        "name": "Hannover, Niedersachsen, Deutschland",
+        "short": "Hannover, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": null,
+      "call": "",
+      "chr": null,
+      "buri": null,
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I4",
+      "name": "Ida Falkenrath",
+      "sortName": "Falkenrath,Ida",
+      "given": "Ida",
+      "surname": "Falkenrath",
+      "sex": "F",
+      "isDead": false,
+      "private": false,
+      "access": "member",
+      "nameAccess": "member",
+      "restricted": [],
+      "lifespan": "2020–",
+      "birth": {
+       "date": {
+        "text": "23. November 2020",
+        "year": 2020,
+        "jd": 2459177
+       },
+       "place": {
+        "name": "Hannover, Niedersachsen, Deutschland",
+        "short": "Hannover, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": null,
+      "call": "",
+      "chr": null,
+      "buri": null,
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     }
+    ],
+    "access": "member",
+    "uids": [
+     "0A17AD566A3E5D8A8799975FF728DFD89FA1"
+    ]
+   }
+  ],
+  "stepFamilies": [],
+  "media": [],
+  "associatedIn": [],
+  "tasks": [],
+  "lastChange": null,
+  "uids": [
+   "D19CB6451ADA540CAB54E68D6B21ADE84F0D"
+  ]
+ }
+}

@@ -1,0 +1,3114 @@
+{
+ "rolle": "besucher",
+ "aktion": "Individuals",
+ "params": {
+  "page": 2
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "",
+  "page": 2,
+  "nextPage": 3,
+  "data": [
+   {
+    "xref": "I162",
+    "name": "Hermann Cordes",
+    "sortName": "Cordes,Hermann",
+    "given": "Hermann",
+    "surname": "Cordes",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1810–1848",
+    "birth": {
+     "date": {
+      "text": "8. März 1810",
+      "year": 1810,
+      "jd": 2382215
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "24. September 1848",
+      "year": 1848,
+      "jd": 2396295
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "14. März 1810",
+      "year": 1810,
+      "jd": 2382221
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "27. September 1848",
+      "year": 1848,
+      "jd": 2396298
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Leinweber",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I211",
+    "name": "Ilse Cordes",
+    "sortName": "Cordes,Ilse",
+    "given": "Ilse",
+    "surname": "Cordes",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1787–1869",
+    "birth": {
+     "date": {
+      "text": "13. Juni 1787",
+      "year": 1787,
+      "jd": 2373912
+     },
+     "place": {
+      "name": "Soltau, Heidekreis, Niedersachsen, Deutschland",
+      "short": "Soltau, Heidekreis, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "22. Juni 1869",
+      "year": 1869,
+      "jd": 2403871
+     },
+     "place": {
+      "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "19. Juni 1787",
+      "year": 1787,
+      "jd": 2373918
+     },
+     "place": {
+      "name": "Soltau, Heidekreis, Niedersachsen, Deutschland",
+      "short": "Soltau, Heidekreis, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "24. Juni 1869",
+      "year": 1869,
+      "jd": 2403873
+     },
+     "place": {
+      "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Näherin",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I105",
+    "name": "Martha Cordes",
+    "sortName": "Cordes,Martha",
+    "given": "Martha",
+    "surname": "Cordes",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1873–1946",
+    "birth": {
+     "date": {
+      "text": "8. September 1873",
+      "year": 1873,
+      "jd": 2405410
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "18. März 1946",
+      "year": 1946,
+      "jd": 2431898
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "17. September 1873",
+      "year": 1873,
+      "jd": 2405419
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "23. März 1946",
+      "year": 1946,
+      "jd": 2431903
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I124",
+    "name": "Wilhelm Cordes",
+    "sortName": "Cordes,Wilhelm",
+    "given": "Wilhelm",
+    "surname": "Cordes",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1843–1888",
+    "birth": {
+     "date": {
+      "text": "18. Januar 1843",
+      "year": 1843,
+      "jd": 2394219
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "5. März 1888",
+      "year": 1888,
+      "jd": 2410702
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "26. Januar 1843",
+      "year": 1843,
+      "jd": 2394227
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "7. März 1888",
+      "year": 1888,
+      "jd": 2410704
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Maurer",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I283",
+    "name": "Wilhelm Cordes",
+    "sortName": "Cordes,Wilhelm",
+    "given": "Wilhelm",
+    "surname": "Cordes",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1885–1943",
+    "birth": {
+     "date": {
+      "text": "22. Oktober 1885",
+      "year": 1885,
+      "jd": 2409837
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "7. Dezember 1943",
+      "year": 1943,
+      "jd": 2431066
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "29. Oktober 1885",
+      "year": 1885,
+      "jd": 2409844
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "12. Dezember 1943",
+      "year": 1943,
+      "jd": 2431071
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Zimmermann",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I245",
+    "name": "Catharine Elisabeth Dammann",
+    "sortName": "Dammann,Catharine Elisabeth",
+    "given": "Catharine Elisabeth",
+    "surname": "Dammann",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1767–1837",
+    "birth": {
+     "date": {
+      "text": "3. Mai 1767",
+      "year": 1767,
+      "jd": 2366566
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "28. September 1837",
+      "year": 1837,
+      "jd": 2392281
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "12. Mai 1767",
+      "year": 1767,
+      "jd": 2366575
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "2. Oktober 1837",
+      "year": 1837,
+      "jd": 2392285
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I257",
+    "name": "Ilsabe Dammann",
+    "sortName": "Dammann,Ilsabe",
+    "given": "Ilsabe",
+    "surname": "Dammann",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1787–1869",
+    "birth": {
+     "date": {
+      "text": "5. Juli 1787",
+      "year": 1787,
+      "jd": 2373934
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "10. Januar 1869",
+      "year": 1869,
+      "jd": 2403708
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "14. Juli 1787",
+      "year": 1787,
+      "jd": 2373943
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "13. Januar 1869",
+      "year": 1869,
+      "jd": 2403711
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I227",
+    "name": "Margarethe Dammann",
+    "sortName": "Dammann,Margarethe",
+    "given": "Margarethe",
+    "surname": "Dammann",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1795–1865",
+    "birth": {
+     "date": {
+      "text": "17. November 1795",
+      "year": 1795,
+      "jd": 2376991
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "6. Oktober 1865",
+      "year": 1865,
+      "jd": 2402516
+     },
+     "place": {
+      "name": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "short": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "19. November 1795",
+      "year": 1795,
+      "jd": 2376993
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "8. Oktober 1865",
+      "year": 1865,
+      "jd": 2402518
+     },
+     "place": {
+      "name": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "short": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I156",
+    "name": "Carl Drewes",
+    "sortName": "Drewes,Carl",
+    "given": "Carl",
+    "surname": "Drewes",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1802–1865",
+    "birth": {
+     "date": {
+      "text": "5. November 1802",
+      "year": 1802,
+      "jd": 2379535
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "18. November 1865",
+      "year": 1865,
+      "jd": 2402559
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "14. November 1802",
+      "year": 1802,
+      "jd": 2379544
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "21. November 1865",
+      "year": 1865,
+      "jd": 2402562
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Anbauer",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I118",
+    "name": "Christian Drewes",
+    "sortName": "Drewes,Christian",
+    "given": "Christian",
+    "surname": "Drewes",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1832–1870",
+    "birth": {
+     "date": {
+      "text": "23. Februar 1832",
+      "year": 1832,
+      "jd": 2390237
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. Oktober 1870",
+      "year": 1870,
+      "jd": 2404345
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "2. März 1832",
+      "year": 1832,
+      "jd": 2390245
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "14. Oktober 1870",
+      "year": 1870,
+      "jd": 2404350
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Förster",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I280",
+    "name": "Emma Drewes",
+    "sortName": "Drewes,Emma",
+    "given": "Emma",
+    "surname": "Drewes",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1871–1916",
+    "birth": {
+     "date": {
+      "text": "18. Juni 1871",
+      "year": 1871,
+      "jd": 2404597
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "4. Mai 1916",
+      "year": 1916,
+      "jd": 2420988
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "24. Juni 1871",
+      "year": 1871,
+      "jd": 2404603
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "6. Mai 1916",
+      "year": 1916,
+      "jd": 2420990
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I218",
+    "name": "Friedrich Drewes",
+    "sortName": "Drewes,Friedrich",
+    "given": "Friedrich",
+    "surname": "Drewes",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1772–1854",
+    "birth": {
+     "date": {
+      "text": "2. Mai 1772",
+      "year": 1772,
+      "jd": 2368392
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "26. März 1854",
+      "year": 1854,
+      "jd": 2398304
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "5. Mai 1772",
+      "year": 1772,
+      "jd": 2368395
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "30. März 1854",
+      "year": 1854,
+      "jd": 2398308
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Tagelöhner",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I45",
+    "name": "Wilhelmine Drewes",
+    "sortName": "Drewes,Wilhelmine",
+    "given": "Wilhelmine",
+    "surname": "Drewes",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1869–1947",
+    "birth": {
+     "date": {
+      "text": "16. Oktober 1869",
+      "year": 1869,
+      "jd": 2403987
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "28. Januar 1947",
+      "year": 1947,
+      "jd": 2432214
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "23. Oktober 1869",
+      "year": 1869,
+      "jd": 2403994
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "1. Februar 1947",
+      "year": 1947,
+      "jd": 2432218
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I231",
+    "name": "Anna Maria Ebeling",
+    "sortName": "Ebeling,Anna Maria",
+    "given": "Anna Maria",
+    "surname": "Ebeling",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1800–1838",
+    "birth": {
+     "date": {
+      "text": "4. Juni 1800",
+      "year": 1800,
+      "jd": 2378651
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "23. September 1838",
+      "year": 1838,
+      "jd": 2392641
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Maria",
+    "chr": {
+     "date": {
+      "text": "12. Juni 1800",
+      "year": 1800,
+      "jd": 2378659
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "27. September 1838",
+      "year": 1838,
+      "jd": 2392645
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I151",
+    "name": "Dorothee Ebeling",
+    "sortName": "Ebeling,Dorothee",
+    "given": "Dorothee",
+    "surname": "Ebeling",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1815–1888",
+    "birth": {
+     "date": {
+      "text": "7. November 1815",
+      "year": 1815,
+      "jd": 2384285
+     },
+     "place": {
+      "name": "Bergen, Celle, Niedersachsen, Deutschland",
+      "short": "Bergen, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "12. Februar 1888",
+      "year": 1888,
+      "jd": 2410680
+     },
+     "place": {
+      "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "10. November 1815",
+      "year": 1815,
+      "jd": 2384288
+     },
+     "place": {
+      "name": "Bergen, Celle, Niedersachsen, Deutschland",
+      "short": "Bergen, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "16. Februar 1888",
+      "year": 1888,
+      "jd": 2410684
+     },
+     "place": {
+      "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I419",
+    "name": "Elfriede Ebeling",
+    "sortName": "Ebeling,Elfriede",
+    "given": "Elfriede",
+    "surname": "Ebeling",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1928–1966",
+    "birth": {
+     "date": {
+      "text": "1. Februar 1928",
+      "year": 1928,
+      "jd": 2425278
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. August 1966",
+      "year": 1966,
+      "jd": 2439347
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": {
+     "date": {
+      "text": "14. August 1966",
+      "year": 1966,
+      "jd": 2439352
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I205",
+    "name": "Ilsabe Ebeling",
+    "sortName": "Ebeling,Ilsabe",
+    "given": "Ilsabe",
+    "surname": "Ebeling",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1785–1823",
+    "birth": {
+     "date": {
+      "text": "24. März 1785",
+      "year": 1785,
+      "jd": 2373101
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "13. Januar 1823",
+      "year": 1823,
+      "jd": 2386909
+     },
+     "place": {
+      "name": "Wietze, Celle, Niedersachsen, Deutschland",
+      "short": "Wietze, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "29. März 1785",
+      "year": 1785,
+      "jd": 2373106
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "15. Januar 1823",
+      "year": 1823,
+      "jd": 2386911
+     },
+     "place": {
+      "name": "Wietze, Celle, Niedersachsen, Deutschland",
+      "short": "Wietze, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I212",
+    "name": "Johann Hinrich Ebeling",
+    "sortName": "Ebeling,Johann Hinrich",
+    "given": "Johann Hinrich",
+    "surname": "Ebeling",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1787–1863",
+    "birth": {
+     "date": {
+      "text": "2. Juli 1787",
+      "year": 1787,
+      "jd": 2373931
+     },
+     "place": {
+      "name": "Winsen (Aller), Celle, Niedersachsen, Deutschland",
+      "short": "Winsen (Aller), Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "18. November 1863",
+      "year": 1863,
+      "jd": 2401828
+     },
+     "place": {
+      "name": "Bergen, Celle, Niedersachsen, Deutschland",
+      "short": "Bergen, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Hinrich",
+    "chr": {
+     "date": {
+      "text": "10. Juli 1787",
+      "year": 1787,
+      "jd": 2373939
+     },
+     "place": {
+      "name": "Winsen (Aller), Celle, Niedersachsen, Deutschland",
+      "short": "Winsen (Aller), Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "21. November 1863",
+      "year": 1863,
+      "jd": 2401831
+     },
+     "place": {
+      "name": "Bergen, Celle, Niedersachsen, Deutschland",
+      "short": "Bergen, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Schmied",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I225",
+    "name": "Anna Catharina Eggers",
+    "sortName": "Eggers,Anna Catharina",
+    "given": "Anna Catharina",
+    "surname": "Eggers",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1787–1850",
+    "birth": {
+     "date": {
+      "text": "16. Dezember 1787",
+      "year": 1787,
+      "jd": 2374098
+     },
+     "place": {
+      "name": "Beedenbostel, Celle, Niedersachsen, Deutschland",
+      "short": "Beedenbostel, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. Dezember 1850",
+      "year": 1850,
+      "jd": 2397101
+     },
+     "place": {
+      "name": "Wietze, Celle, Niedersachsen, Deutschland",
+      "short": "Wietze, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "18. Dezember 1787",
+      "year": 1787,
+      "jd": 2374100
+     },
+     "place": {
+      "name": "Beedenbostel, Celle, Niedersachsen, Deutschland",
+      "short": "Beedenbostel, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "13. Dezember 1850",
+      "year": 1850,
+      "jd": 2397105
+     },
+     "place": {
+      "name": "Wietze, Celle, Niedersachsen, Deutschland",
+      "short": "Wietze, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I53",
+    "name": "Catharine Sophie Eggers",
+    "sortName": "Eggers,Catharine Sophie",
+    "given": "Catharine Sophie",
+    "surname": "Eggers",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1806–1880",
+    "birth": {
+     "date": {
+      "text": "28. März 1806",
+      "year": 1806,
+      "jd": 2380774
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "19. Juni 1880",
+      "year": 1880,
+      "jd": 2407886
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "3. April 1806",
+      "year": 1806,
+      "jd": 2380780
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "24. Juni 1880",
+      "year": 1880,
+      "jd": 2407891
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I373",
+    "name": "Charlotte Eggers",
+    "sortName": "Eggers,Charlotte",
+    "given": "Charlotte",
+    "surname": "Eggers",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1841–1923",
+    "birth": {
+     "date": {
+      "text": "23. April 1841",
+      "year": 1841,
+      "jd": 2393584
+     },
+     "place": {
+      "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "15. Oktober 1923",
+      "year": 1923,
+      "jd": 2423708
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "29. April 1841",
+      "year": 1841,
+      "jd": 2393590
+     },
+     "place": {
+      "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "17. Oktober 1923",
+      "year": 1923,
+      "jd": 2423710
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I349",
+    "name": "Heinrich Wilhelm Eggers",
+    "sortName": "Eggers,Heinrich Wilhelm",
+    "given": "Heinrich Wilhelm",
+    "surname": "Eggers",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1808–1875",
+    "birth": {
+     "date": {
+      "text": "27. Juni 1808",
+      "year": 1808,
+      "jd": 2381596
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "18. April 1875",
+      "year": 1875,
+      "jd": 2405997
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "4. Juli 1808",
+      "year": 1808,
+      "jd": 2381603
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "21. April 1875",
+      "year": 1875,
+      "jd": 2406000
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Müller",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I202",
+    "name": "Hinrich Eggers",
+    "sortName": "Eggers,Hinrich",
+    "given": "Hinrich",
+    "surname": "Eggers",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1787–1845",
+    "birth": {
+     "date": {
+      "text": "25. Februar 1787",
+      "year": 1787,
+      "jd": 2373804
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "7. Februar 1845",
+      "year": 1845,
+      "jd": 2394970
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "27. Februar 1787",
+      "year": 1787,
+      "jd": 2373806
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "9. Februar 1845",
+      "year": 1845,
+      "jd": 2394972
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Schmied",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I198",
+    "name": "Johann Christoph Eggers",
+    "sortName": "Eggers,Johann Christoph",
+    "given": "Johann Christoph",
+    "surname": "Eggers",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1776–1858",
+    "birth": {
+     "date": {
+      "text": "24. März 1776",
+      "year": 1776,
+      "jd": 2369814
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "17. Dezember 1858",
+      "year": 1858,
+      "jd": 2400031
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "27. März 1776",
+      "year": 1776,
+      "jd": 2369817
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "19. Dezember 1858",
+      "year": 1858,
+      "jd": 2400033
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Leinweber",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I352",
+    "name": "Johann Friedrich Eggers",
+    "sortName": "Eggers,Johann Friedrich",
+    "given": "Johann Friedrich",
+    "surname": "Eggers",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1822–1874",
+    "birth": {
+     "date": {
+      "text": "2. Mai 1822",
+      "year": 1822,
+      "jd": 2386653
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "26. Januar 1874",
+      "year": 1874,
+      "jd": 2405550
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Friedrich",
+    "chr": {
+     "date": {
+      "text": "5. Mai 1822",
+      "year": 1822,
+      "jd": 2386656
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "28. Januar 1874",
+      "year": 1874,
+      "jd": 2405552
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Tischler",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I350",
+    "name": "Louise Eggers",
+    "sortName": "Eggers,Louise",
+    "given": "Louise",
+    "surname": "Eggers",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1813–1876",
+    "birth": {
+     "date": {
+      "text": "15. Januar 1813",
+      "year": 1813,
+      "jd": 2383259
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "7. April 1876",
+      "year": 1876,
+      "jd": 2406352
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "22. Januar 1813",
+      "year": 1813,
+      "jd": 2383266
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "9. April 1876",
+      "year": 1876,
+      "jd": 2406354
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I143",
+    "name": "Marie Eggers",
+    "sortName": "Eggers,Marie",
+    "given": "Marie",
+    "surname": "Eggers",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1813–1851",
+    "birth": {
+     "date": {
+      "text": "5. Oktober 1813",
+      "year": 1813,
+      "jd": 2383522
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "21. Juni 1851",
+      "year": 1851,
+      "jd": 2397295
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "9. Oktober 1813",
+      "year": 1813,
+      "jd": 2383526
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "25. Juni 1851",
+      "year": 1851,
+      "jd": 2397299
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I351",
+    "name": "Wilhelmine Eggers",
+    "sortName": "Eggers,Wilhelmine",
+    "given": "Wilhelmine",
+    "surname": "Eggers",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1817–1875",
+    "birth": {
+     "date": {
+      "text": "24. September 1817",
+      "year": 1817,
+      "jd": 2384972
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "13. August 1875",
+      "year": 1875,
+      "jd": 2406114
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "26. September 1817",
+      "year": 1817,
+      "jd": 2384974
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "18. August 1875",
+      "year": 1875,
+      "jd": 2406119
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I372",
+    "name": "Anna Catharina Falkenrath",
+    "sortName": "Falkenrath,Anna Catharina",
+    "given": "Anna Catharina",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1840–1842",
+    "birth": {
+     "date": {
+      "text": "23. August 1840",
+      "year": 1840,
+      "jd": 2393341
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "2. März 1842",
+      "year": 1842,
+      "jd": 2393897
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "25. August 1840",
+      "year": 1840,
+      "jd": 2393343
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "4. März 1842",
+      "year": 1842,
+      "jd": 2393899
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I55",
+    "name": "Anna Margarethe Falkenrath",
+    "sortName": "Falkenrath,Anna Margarethe",
+    "given": "Anna Margarethe",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1804–1871",
+    "birth": {
+     "date": {
+      "text": "6. Januar 1804",
+      "year": 1804,
+      "jd": 2379962
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "12. März 1871",
+      "year": 1871,
+      "jd": 2404499
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "11. Januar 1804",
+      "year": 1804,
+      "jd": 2379967
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "15. März 1871",
+      "year": 1871,
+      "jd": 2404502
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I387",
+    "name": "Anneliese Falkenrath",
+    "sortName": "Falkenrath,Anneliese",
+    "given": "Anneliese",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1909–1991",
+    "birth": {
+     "date": {
+      "text": "27. September 1909",
+      "year": 1909,
+      "jd": 2418577
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "4. Februar 1991",
+      "year": 1991,
+      "jd": 2448292
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "1. Oktober 1909",
+      "year": 1909,
+      "jd": 2418581
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I39",
+    "name": "Carl Falkenrath",
+    "sortName": "Falkenrath,Carl",
+    "given": "Carl",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1866–1938",
+    "birth": {
+     "date": {
+      "text": "19. November 1866",
+      "year": 1866,
+      "jd": 2402925
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "4. März 1938",
+      "year": 1938,
+      "jd": 2428962
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "28. November 1866",
+      "year": 1866,
+      "jd": 2402934
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "8. März 1938",
+      "year": 1938,
+      "jd": 2428966
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Zimmermann",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I18",
+    "name": "Dieter Falkenrath",
+    "sortName": "Falkenrath,Dieter",
+    "given": "Dieter",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1952–1952",
+    "birth": {
+     "date": {
+      "text": "2. März 1952",
+      "year": 1952,
+      "jd": 2434074
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "19. März 1952",
+      "year": 1952,
+      "jd": 2434091
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": {
+     "date": {
+      "text": "24. März 1952",
+      "year": 1952,
+      "jd": 2434096
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I23",
+    "name": "Elfriede Falkenrath",
+    "sortName": "Falkenrath,Elfriede",
+    "given": "Elfriede",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1925–2010",
+    "birth": {
+     "date": {
+      "text": "6. Januar 1925",
+      "year": 1925,
+      "jd": 2424157
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "14. Februar 2010",
+      "year": 2010,
+      "jd": 2455242
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Kontoristin",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I399",
+    "name": "Elfriede Falkenrath",
+    "sortName": "Falkenrath,Elfriede",
+    "given": "Elfriede",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1929–2002",
+    "birth": {
+     "date": {
+      "text": "28. September 1929",
+      "year": 1929,
+      "jd": 2425883
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "27. März 2002",
+      "year": 2002,
+      "jd": 2452361
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I385",
+    "name": "Erich Falkenrath",
+    "sortName": "Falkenrath,Erich",
+    "given": "Erich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1904–1990",
+    "birth": {
+     "date": {
+      "text": "17. Dezember 1904",
+      "year": 1904,
+      "jd": 2416832
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. November 1990",
+      "year": 1990,
+      "jd": 2448205
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "26. Dezember 1904",
+      "year": 1904,
+      "jd": 2416841
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Tischler",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I400",
+    "name": "Erna Falkenrath",
+    "sortName": "Falkenrath,Erna",
+    "given": "Erna",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1931–1998",
+    "birth": {
+     "date": {
+      "text": "7. November 1931",
+      "year": 1931,
+      "jd": 2426653
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "6. Oktober 1998",
+      "year": 1998,
+      "jd": 2451093
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Kontoristin",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I68",
+    "name": "Ernest Falkenrath",
+    "sortName": "Falkenrath,Ernest",
+    "given": "Ernest",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1895–1970",
+    "birth": {
+     "date": {
+      "text": "27. November 1895",
+      "year": 1895,
+      "jd": 2413525
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. April 1970",
+      "year": 1970,
+      "jd": 2440680
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Brewery worker",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I65",
+    "name": "Ernst Falkenrath",
+    "sortName": "Falkenrath,Ernst",
+    "given": "Ernst",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1869–1941",
+    "birth": {
+     "date": {
+      "text": "7. August 1869",
+      "year": 1869,
+      "jd": 2403917
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "14. Mai 1941",
+      "year": 1941,
+      "jd": 2430129
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "12. August 1869",
+      "year": 1869,
+      "jd": 2403922
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Zimmermann, später Bauunternehmer",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I375",
+    "name": "Frieda Falkenrath",
+    "sortName": "Falkenrath,Frieda",
+    "given": "Frieda",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1871–1929",
+    "birth": {
+     "date": {
+      "text": "28. August 1871",
+      "year": 1871,
+      "jd": 2404668
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "14. Oktober 1929",
+      "year": 1929,
+      "jd": 2425899
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "6. September 1871",
+      "year": 1871,
+      "jd": 2404677
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "17. Oktober 1929",
+      "year": 1929,
+      "jd": 2425902
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Dienstmagd",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I377",
+    "name": "Frieda Falkenrath",
+    "sortName": "Falkenrath,Frieda",
+    "given": "Frieda",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1876–1949",
+    "birth": {
+     "date": {
+      "text": "14. August 1876",
+      "year": 1876,
+      "jd": 2406481
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "8. November 1949",
+      "year": 1949,
+      "jd": 2433229
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "17. August 1876",
+      "year": 1876,
+      "jd": 2406484
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "13. November 1949",
+      "year": 1949,
+      "jd": 2433234
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I376",
+    "name": "Friedrich Falkenrath",
+    "sortName": "Falkenrath,Friedrich",
+    "given": "Friedrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1874–1874",
+    "birth": {
+     "date": {
+      "text": "24. August 1874",
+      "year": 1874,
+      "jd": 2405760
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "12. Mai 1874",
+      "year": 1874,
+      "jd": 2405656
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "28. August 1874",
+      "year": 1874,
+      "jd": 2405764
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "15. Mai 1874",
+      "year": 1874,
+      "jd": 2405659
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I48",
+    "name": "Friedrich Wilhelm Falkenrath",
+    "sortName": "Falkenrath,Friedrich Wilhelm",
+    "given": "Friedrich Wilhelm",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1834–1901",
+    "birth": {
+     "date": {
+      "text": "6. Juli 1834",
+      "year": 1834,
+      "jd": 2391101
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "22. Februar 1901",
+      "year": 1901,
+      "jd": 2415438
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "9. Juli 1834",
+      "year": 1834,
+      "jd": 2391104
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "27. Februar 1901",
+      "year": 1901,
+      "jd": 2415443
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Zimmermann",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I54",
+    "name": "Hans Jürgen Falkenrath",
+    "sortName": "Falkenrath,Hans Jürgen",
+    "given": "Hans Jürgen",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1770–1831",
+    "birth": {
+     "date": {
+      "text": "um 1770",
+      "year": 1770,
+      "jd": 2367540
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "11. Dezember 1831",
+      "year": 1831,
+      "jd": 2390163
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": {
+     "date": {
+      "text": "16. Dezember 1831",
+      "year": 1831,
+      "jd": 2390168
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Häusling",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I21",
+    "name": "Heinrich Falkenrath",
+    "sortName": "Falkenrath,Heinrich",
+    "given": "Heinrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1897–1969",
+    "birth": {
+     "date": {
+      "text": "26. April 1897",
+      "year": 1897,
+      "jd": 2414041
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. Januar 1969",
+      "year": 1969,
+      "jd": 2440231
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "1. Mai 1897",
+      "year": 1897,
+      "jd": 2414046
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "14. Januar 1969",
+      "year": 1969,
+      "jd": 2440236
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Tischler",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I60",
+    "name": "Heinrich Falkenrath",
+    "sortName": "Falkenrath,Heinrich",
+    "given": "Heinrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1837–1864",
+    "birth": {
+     "date": {
+      "text": "21. Juni 1837",
+      "year": 1837,
+      "jd": 2392182
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "4. August 1864",
+      "year": 1864,
+      "jd": 2402088
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "26. Juni 1837",
+      "year": 1837,
+      "jd": 2392187
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "7. August 1864",
+      "year": 1864,
+      "jd": 2402091
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Zimmergeselle",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I69",
+    "name": "Helen Falkenrath",
+    "sortName": "Falkenrath,Helen",
+    "given": "Helen",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1920–2005",
+    "birth": {
+     "date": {
+      "text": "12. August 1920",
+      "year": 1920,
+      "jd": 2422549
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "6. Januar 2005",
+      "year": 2005,
+      "jd": 2453377
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Teacher",
+    "thumb": null,
+    "url": "<url>"
+   }
+  ]
+ }
+}

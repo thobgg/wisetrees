@@ -1,0 +1,796 @@
+{
+ "rolle": "moderator",
+ "aktion": "Individuals",
+ "params": {
+  "q": "Rosskamp"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Rosskamp",
+  "page": 1,
+  "nextPage": null,
+  "data": [
+   {
+    "xref": "I22",
+    "name": "Anna Rosskamp",
+    "sortName": "Rosskamp,Anna",
+    "given": "Anna",
+    "surname": "Rosskamp",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1901–1985",
+    "birth": {
+     "date": {
+      "text": "13. August 1901",
+      "year": 1901,
+      "jd": 2415610
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "30. November 1985",
+      "year": 1985,
+      "jd": 2446400
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "21. August 1901",
+      "year": 1901,
+      "jd": 2415618
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I272",
+    "name": "August Rosskamp",
+    "sortName": "Rosskamp,August",
+    "given": "August",
+    "surname": "Rosskamp",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1880–1956",
+    "birth": {
+     "date": {
+      "text": "17. März 1880",
+      "year": 1880,
+      "jd": 2407792
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "26. Dezember 1956",
+      "year": 1956,
+      "jd": 2435834
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "23. März 1880",
+      "year": 1880,
+      "jd": 2407798
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "30. Dezember 1956",
+      "year": 1956,
+      "jd": 2435838
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Sattler",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I42",
+    "name": "August Rosskamp",
+    "sortName": "Rosskamp,August",
+    "given": "August",
+    "surname": "Rosskamp",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1868–1931",
+    "birth": {
+     "date": {
+      "text": "30. Januar 1868",
+      "year": 1868,
+      "jd": 2403362
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "12. August 1931",
+      "year": 1931,
+      "jd": 2426566
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "3. Februar 1868",
+      "year": 1868,
+      "jd": 2403366
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "17. August 1931",
+      "year": 1931,
+      "jd": 2426571
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Gastwirt",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I301",
+    "name": "Friedrich Rosskamp",
+    "sortName": "Rosskamp,Friedrich",
+    "given": "Friedrich",
+    "surname": "Rosskamp",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1846–1916",
+    "birth": {
+     "date": {
+      "text": "16. September 1846",
+      "year": 1846,
+      "jd": 2395556
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "13. März 1916",
+      "year": 1916,
+      "jd": 2420936
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "22. September 1846",
+      "year": 1846,
+      "jd": 2395562
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "15. März 1916",
+      "year": 1916,
+      "jd": 2420938
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Landwirt",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I146",
+    "name": "Georg Rosskamp",
+    "sortName": "Rosskamp,Georg",
+    "given": "Georg",
+    "surname": "Rosskamp",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1802–1860",
+    "birth": {
+     "date": {
+      "text": "11. Februar 1802",
+      "year": 1802,
+      "jd": 2379268
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "11. Mai 1860",
+      "year": 1860,
+      "jd": 2400542
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "17. Februar 1802",
+      "year": 1802,
+      "jd": 2379274
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "14. Mai 1860",
+      "year": 1860,
+      "jd": 2400545
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Holzhauer",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I81",
+    "name": "Herbert Rosskamp",
+    "sortName": "Rosskamp,Herbert",
+    "given": "Herbert",
+    "surname": "Rosskamp",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1926–2001",
+    "birth": {
+     "date": {
+      "text": "30. Juli 1926",
+      "year": 1926,
+      "jd": 2424727
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "14. April 2001",
+      "year": 2001,
+      "jd": 2452014
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Gastwirt",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I112",
+    "name": "Johann Friedrich Rosskamp",
+    "sortName": "Rosskamp,Johann Friedrich",
+    "given": "Johann Friedrich",
+    "surname": "Rosskamp",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1831–1913",
+    "birth": {
+     "date": {
+      "text": "9. November 1831",
+      "year": 1831,
+      "jd": 2390131
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "18. Juli 1913",
+      "year": 1913,
+      "jd": 2419967
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Friedrich",
+    "chr": {
+     "date": {
+      "text": "18. November 1831",
+      "year": 1831,
+      "jd": 2390140
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "23. Juli 1913",
+      "year": 1913,
+      "jd": 2419972
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Stellmacher",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I79",
+    "name": "Ludwig Rosskamp",
+    "sortName": "Rosskamp,Ludwig",
+    "given": "Ludwig",
+    "surname": "Rosskamp",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1898–1975",
+    "birth": {
+     "date": {
+      "text": "11. März 1898",
+      "year": 1898,
+      "jd": 2414360
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "2. Juni 1975",
+      "year": 1975,
+      "jd": 2442566
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "19. März 1898",
+      "year": 1898,
+      "jd": 2414368
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Gastwirt",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I270",
+    "name": "Minna Rosskamp",
+    "sortName": "Rosskamp,Minna",
+    "given": "Minna",
+    "surname": "Rosskamp",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1876–1879",
+    "birth": {
+     "date": {
+      "text": "5. Dezember 1876",
+      "year": 1876,
+      "jd": 2406594
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "7. März 1879",
+      "year": 1879,
+      "jd": 2407416
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "7. Dezember 1876",
+      "year": 1876,
+      "jd": 2406596
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "9. März 1879",
+      "year": 1879,
+      "jd": 2407418
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I38",
+    "name": "Pauline Rosskamp",
+    "sortName": "Rosskamp,Pauline",
+    "given": "Pauline",
+    "surname": "Rosskamp",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1903–1999",
+    "birth": {
+     "date": {
+      "text": "5. September 1903",
+      "year": 1903,
+      "jd": 2416363
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "21. Juni 1999",
+      "year": 1999,
+      "jd": 2451351
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "9. September 1903",
+      "year": 1903,
+      "jd": 2416367
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Lehrerin",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I273",
+    "name": "Walter Rosskamp",
+    "sortName": "Rosskamp,Walter",
+    "given": "Walter",
+    "surname": "Rosskamp",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1870–1928",
+    "birth": {
+     "date": {
+      "text": "19. Juni 1870",
+      "year": 1870,
+      "jd": 2404233
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. Dezember 1928",
+      "year": 1928,
+      "jd": 2425590
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "25. Juni 1870",
+      "year": 1870,
+      "jd": 2404239
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "12. Dezember 1928",
+      "year": 1928,
+      "jd": 2425593
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Schmied",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I271",
+    "name": "Wilhelm Rosskamp",
+    "sortName": "Rosskamp,Wilhelm",
+    "given": "Wilhelm",
+    "surname": "Rosskamp",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1872–1954",
+    "birth": {
+     "date": {
+      "text": "8. November 1872",
+      "year": 1872,
+      "jd": 2405106
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "20. Juli 1954",
+      "year": 1954,
+      "jd": 2434944
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "10. November 1872",
+      "year": 1872,
+      "jd": 2405108
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "25. Juli 1954",
+      "year": 1954,
+      "jd": 2434949
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Landwirt",
+    "thumb": "<bild>",
+    "url": "<url>"
+   }
+  ]
+ }
+}

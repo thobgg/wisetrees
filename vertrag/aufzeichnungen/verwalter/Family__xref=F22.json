@@ -1,0 +1,314 @@
+{
+ "rolle": "verwalter",
+ "aktion": "Family",
+ "params": {
+  "xref": "F22"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "xref": "F22",
+  "name": "Hans Jürgen Falkenrath + … …",
+  "url": "<url>",
+  "husband": {
+   "xref": "I54",
+   "name": "Hans Jürgen Falkenrath",
+   "sortName": "Falkenrath,Hans Jürgen",
+   "given": "Hans Jürgen",
+   "surname": "Falkenrath",
+   "sex": "M",
+   "isDead": true,
+   "private": false,
+   "access": "visitor",
+   "nameAccess": "visitor",
+   "restricted": [],
+   "lifespan": "1770–1831",
+   "birth": {
+    "date": {
+     "text": "um 1770",
+     "year": 1770,
+     "jd": 2367540
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": {
+    "date": {
+     "text": "11. Dezember 1831",
+     "year": 1831,
+     "jd": 2390163
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "call": "",
+   "chr": null,
+   "buri": {
+    "date": {
+     "text": "16. Dezember 1831",
+     "year": 1831,
+     "jd": 2390168
+    },
+    "place": {
+     "name": "Eschede, Celle, Niedersachsen, Deutschland",
+     "short": "Eschede, Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "occupation": "Häusling",
+   "thumb": null,
+   "url": "<url>"
+  },
+  "wife": null,
+  "spouse": null,
+  "marriage": null,
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "_STAT",
+    "label": "Familienstatus",
+    "known": true,
+    "value": "Unbekannt",
+    "gedcomValue": "UNKNOWN",
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [
+     "Die Mutter der Kinder ist unbekannt, eine Heirat ist nicht belegt."
+    ],
+    "noteKinds": [
+     "note"
+    ],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "children": [
+   {
+    "xref": "I52",
+    "name": "Johann Heinrich Falkenrath",
+    "sortName": "Falkenrath,Johann Heinrich",
+    "given": "Johann Heinrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1801–1872",
+    "birth": {
+     "date": {
+      "text": "12. Oktober 1801",
+      "year": 1801,
+      "jd": 2379146
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. Januar 1872",
+      "year": 1872,
+      "jd": 2404796
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Heinrich",
+    "chr": {
+     "date": {
+      "text": "18. Oktober 1801",
+      "year": 1801,
+      "jd": 2379152
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "5. Januar 1872",
+      "year": 1872,
+      "jd": 2404798
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Häusling und Tagelöhner",
+    "thumb": "<bild>",
+    "url": "<url>",
+    "marriages": [
+     {
+      "family": "F21",
+      "spouse": "Catharine Sophie Eggers",
+      "date": {
+       "text": "15. November 1829",
+       "year": 1829,
+       "jd": 2389407
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     }
+    ]
+   },
+   {
+    "xref": "I55",
+    "name": "Anna Margarethe Falkenrath",
+    "sortName": "Falkenrath,Anna Margarethe",
+    "given": "Anna Margarethe",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1804–1871",
+    "birth": {
+     "date": {
+      "text": "6. Januar 1804",
+      "year": 1804,
+      "jd": 2379962
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "12. März 1871",
+      "year": 1871,
+      "jd": 2404499
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "11. Januar 1804",
+      "year": 1804,
+      "jd": 2379967
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "15. März 1871",
+      "year": 1871,
+      "jd": 2404502
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>",
+    "marriages": [
+     {
+      "family": "F23",
+      "spouse": "Jürgen Hinrich Bostelmann",
+      "date": {
+       "text": "11. November 1827",
+       "year": 1827,
+       "jd": 2388672
+      },
+      "place": {
+       "name": "Eschede, Celle, Niedersachsen, Deutschland",
+       "short": "Eschede, Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     }
+    ]
+   }
+  ],
+  "access": "visitor",
+  "uids": [
+   "427E844543035D4FA4064F52BCC5750BC7DB"
+  ],
+  "media": [],
+  "tasks": [
+   {
+    "record": "F22",
+    "recordType": "FAM",
+    "name": "Hans Jürgen Falkenrath + … …",
+    "factId": "<fact#2>",
+    "text": "Heirat von Hans Jürgen Falkenrath suchen",
+    "date": {
+     "text": "1. Oktober 2026",
+     "year": 2026,
+     "jd": 2461315,
+     "gedcom": "1 OCT 2026"
+    },
+    "jd": 2461315,
+    "user": "",
+    "note": "Anfrage an das Kirchenbuchamt Celle gestellt.",
+    "pending": false,
+    "description": null,
+    "category": "Kirchenbuch",
+    "priority": "2",
+    "taskType": "1",
+    "status": "open",
+    "reminder": null,
+    "completed": null,
+    "solution": null,
+    "repository": null
+   }
+  ],
+  "lastChange": null
+ }
+}

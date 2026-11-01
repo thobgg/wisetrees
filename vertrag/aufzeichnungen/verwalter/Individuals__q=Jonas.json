@@ -1,0 +1,198 @@
+{
+ "rolle": "verwalter",
+ "aktion": "Individuals",
+ "params": {
+  "q": "Jonas"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Jonas",
+  "page": 1,
+  "nextPage": null,
+  "data": [
+   {
+    "xref": "I1",
+    "name": "Jonas Falkenrath",
+    "sortName": "Falkenrath,Jonas",
+    "given": "Jonas",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "member",
+    "nameAccess": "member",
+    "restricted": [],
+    "lifespan": "1985–",
+    "birth": {
+     "date": {
+      "text": "14. März 1985",
+      "year": 1985,
+      "jd": 2446139
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "2. Juni 1985",
+      "year": 1985,
+      "jd": 2446219
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Bauingenieur",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I488",
+    "name": "Jonas Schnehage",
+    "sortName": "Schnehage,Jonas",
+    "given": "Jonas",
+    "surname": "Schnehage",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "member",
+    "nameAccess": "member",
+    "restricted": [],
+    "lifespan": "1997–",
+    "birth": {
+     "date": {
+      "text": "14. Dezember 1997",
+      "year": 1997,
+      "jd": 2450797
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Elektroniker",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I469",
+    "name": "Jonas Schulze",
+    "sortName": "Schulze,Jonas",
+    "given": "Jonas",
+    "surname": "Schulze",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "member",
+    "nameAccess": "member",
+    "restricted": [],
+    "lifespan": "1986–",
+    "birth": {
+     "date": {
+      "text": "2. November 1986",
+      "year": 1986,
+      "jd": 2446737
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Kaufmann",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I485",
+    "name": "Jonas Wittkopf",
+    "sortName": "Wittkopf,Jonas",
+    "given": "Jonas",
+    "surname": "Wittkopf",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "member",
+    "nameAccess": "member",
+    "restricted": [],
+    "lifespan": "1987–",
+    "birth": {
+     "date": {
+      "text": "17. Juli 1987",
+      "year": 1987,
+      "jd": 2446994
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Kaufmann",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I465",
+    "name": "Jonas Wrede",
+    "sortName": "Wrede,Jonas",
+    "given": "Jonas",
+    "surname": "Wrede",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "member",
+    "nameAccess": "member",
+    "restricted": [],
+    "lifespan": "1979–",
+    "birth": {
+     "date": {
+      "text": "11. September 1979",
+      "year": 1979,
+      "jd": 2444128
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Elektroniker",
+    "thumb": null,
+    "url": "<url>"
+   }
+  ]
+ }
+}

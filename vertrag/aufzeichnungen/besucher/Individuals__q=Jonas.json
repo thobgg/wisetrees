@@ -1,0 +1,15 @@
+{
+ "rolle": "besucher",
+ "aktion": "Individuals",
+ "params": {
+  "q": "Jonas"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Jonas",
+  "page": 1,
+  "nextPage": null,
+  "data": []
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "rolle": "verwalter",
+ "aktion": "Tags",
+ "params": {
+  "type": "FAM"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "type": "FAM",
+  "data": [
+   {
+    "tag": "MARR",
+    "label": "Heirat",
+    "isEvent": true
+   },
+   {
+    "tag": "ENGA",
+    "label": "Verlobung",
+    "isEvent": true
+   },
+   {
+    "tag": "MARB",
+    "label": "Aufgebot",
+    "isEvent": false
+   },
+   {
+    "tag": "DIV",
+    "label": "Scheidung",
+    "isEvent": true
+   },
+   {
+    "tag": "CENS",
+    "label": "Familienvolkszählung",
+    "isEvent": false
+   },
+   {
+    "tag": "RESI",
+    "label": "Familienwohnsitz",
+    "isEvent": false
+   },
+   {
+    "tag": "EVEN",
+    "label": "Ereignis",
+    "isEvent": false
+   },
+   {
+    "tag": "NOTE",
+    "label": "Notiz",
+    "isEvent": false
+   }
+  ]
+ }
+}
