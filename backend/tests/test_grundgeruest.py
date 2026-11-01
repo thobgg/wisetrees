@@ -148,3 +148,36 @@ def test_werkzeug_importieren(tmp_path, monkeypatch, capsys):
     assert "492 Personen" in aus and (tmp_path / "baeume" / "falkenrath.wise").is_file()
     with pytest.raises(SystemExit):
         mod.main(["falkenrath", str(ged)])  # gibt es schon
+
+
+def test_kontendatei_aus_0_1_bleibt_nutzbar(tmp_path):
+    """Eine konten.sqlite, wie wisetrees 0.1 sie anlegte, funktioniert weiter (E16 Teil 1)."""
+    from pathlib import Path
+
+    alt = sqlite3.connect(tmp_path / "konten.sqlite")
+    alt.executescript((Path(__file__).parent / "daten" / "konten-0.1.sql").read_text(encoding="utf-8"))
+    alt.close()
+    db = KontenDB(tmp_path / "konten.sqlite")
+    anna = db.anlegen("anna", "pw", language="de")
+    db.rolle_setzen("anna", "falkenrath", "editor")
+    db.rolle_setzen("anna", "falkenrath", "moderator")
+    assert db.rolle(anna, "falkenrath") == "moderator" and db.konto("anna").language == "de"
+    token = db.sitzung_anlegen(anna, 60)
+    assert db.sitzung(token).konto.name == "anna"
+    assert db.sitzung_beenden(token) and db.sitzung(token) is None
+    db.schliessen()
+
+
+def test_kontenschema_fuer_andere_datenbanken():
+    from sqlalchemy.dialects import mysql, postgresql
+    from sqlalchemy.schema import CreateTable
+
+    from core.konten import metadata
+
+    for dialekt in (postgresql.dialect(), mysql.dialect(is_mariadb=True)):
+        for t in metadata.sorted_tables:
+            ddl = str(CreateTable(t).compile(dialect=dialekt)).upper()
+            assert "FLOAT" not in ddl and "OR REPLACE" not in ddl
+            for spalte in ("NAME", "KONTO", "BAUM", "TOKEN_HASH"):
+                if f"\t{spalte} TEXT" in ddl:
+                    raise AssertionError(f"{t.name}.{spalte} ist Schlüssel und braucht eine feste Länge")

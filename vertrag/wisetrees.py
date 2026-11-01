@@ -51,8 +51,7 @@ def aufsetzen() -> Path:
     shutil.copytree(medien, daten / "medien" / "falkenrath")
     db = KontenDB(daten / "konten.sqlite")
     for name, k in KONTEN.items():
-        db.anlegen(name, PASSWORT, real_name=k["real_name"], is_admin=k["admin"])
-        db._con.execute("UPDATE konto SET language = ? WHERE name = ?", (k["language"], name))
+        db.anlegen(name, PASSWORT, real_name=k["real_name"], language=k["language"], is_admin=k["admin"])
         if k["rolle"]:
             db.rolle_setzen(name, "falkenrath", k["rolle"])
     db.schliessen()
