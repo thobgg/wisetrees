@@ -20,7 +20,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from sqlalchemy import func, select
 from starlette.concurrency import run_in_threadpool
 
-from baum import datei
+from baum import datei, datenschutz
 from baum.schema import tabelle as T
 from core.konten import NAME_LAENGE, ROLLEN, KontenDB, Sitzung
 from gedcom.import551 import importieren
@@ -59,7 +59,16 @@ MELDUNGEN = {
     "baum-geloescht": ("Baum {name} gelöscht. Der Bildordner bleibt liegen.", "ok"),
     "bestaetigung-fehlt": ("Zum Löschen bitte den Baumnamen genau eintippen.", "fehler"),
     "unbekannt": ("{name} gibt es nicht.", "fehler"),
+    "datenschutz-gespeichert": ("Datenschutz für {name} gespeichert.", "ok"),
+    "regel-gesetzt": ("Regel gespeichert.", "ok"),
+    "regel-entfernt": ("Regel entfernt.", "ok"),
+    "regel-ungueltig": ("Eine Regel braucht eine Kennung oder eine Art (Buchstaben, Ziffern, _).", "fehler"),
 }
+
+# Wer sieht etwas: Stufe → Text (Einstellungen „Verstorbene“ und „Namen privater Personen“)
+STUFE_TEXT = {2: "Besucher", 1: "Mitglieder", 0: "nur Verwalter"}
+RESN_TEXT = {"none": "alle", "privacy": "ab Mitglied", "confidential": "nur Verwalter", "hidden": "niemand"}
+_KENNUNG = re.compile(r"^[A-Za-z0-9_]{1,255}$")
 
 
 class _Ort:
@@ -117,6 +126,8 @@ async def behandeln(request: Request, sitzung: Sitzung, neues_token: str | None,
             return cookie(_uebersicht(request, sitzung, ort), request, neues_token)
         if teil == "/passwort":
             return cookie(_passwortseite(request, sitzung, ort), request, neues_token)
+        if teil == "/datenschutz":
+            return cookie(_datenschutzseite(request, sitzung, ort), request, neues_token)
         return cookie(HTMLResponse("<!DOCTYPE html><title>404</title><p>Nicht gefunden.</p>", status_code=404),
                       request, neues_token)
 
@@ -203,6 +214,76 @@ def _eigenes_passwort(request: Request, sitzung: Sitzung, form, ort: _Ort) -> Re
         return _zurueck(ort, fehler, teil="/passwort")
     konten.passwort_setzen(sitzung.konto.name, neu)  # beendet alle Sitzungen des Kontos
     return _zurueck(ort, "passwort-geaendert")
+
+
+def _datenschutzseite(request: Request, sitzung: Sitzung, ort: _Ort) -> Response:
+    if sitzung.konto is None or not sitzung.konto.is_admin:
+        return RedirectResponse(ort.url(), status_code=303)
+    b = request.app.state.baeume.baum(request.query_params.get("baum", ""))
+    if b is None:
+        return _zurueck(ort, "unbekannt", request.query_params.get("baum", ""))
+    con = b.oeffnen()
+    try:
+        e, _ = datenschutz.laden(con)
+        regeln = datenschutz.regeln_auflisten(con)
+    finally:
+        con.close()
+    return _seite("datenschutz.html", ort=ort, csrf=sitzung.csrf, konto=sitzung.konto, meldung=_meldung(request),
+                  startseite=ort.basis, baum=b.name, e=e, regeln=regeln, stufe_text=STUFE_TEXT, resn_text=RESN_TEXT)
+
+
+def _zum_datenschutz(ort: _Ort, meldung: str, baum: str) -> RedirectResponse:
+    return RedirectResponse(ort.url("/datenschutz", baum=baum, meldung=meldung, name=baum), status_code=303)
+
+
+def _ganzzahl(form, feld: str, standard: int, unten: int, oben: int) -> int:
+    try:
+        return min(oben, max(unten, int(str(form.get(feld, standard)))))
+    except ValueError:
+        return standard
+
+
+async def _datenschutz_speichern(request, sitzung, form, ort):
+    b = request.app.state.baeume.baum(str(form.get("baum", "")))
+    if b is None:
+        return _zurueck(ort, "unbekannt", str(form.get("baum", "")))
+    e = datenschutz.Einstellungen(
+        enabled=form.get("enabled") == "1",
+        members_only=form.get("members_only") == "1",
+        show_dead_people=_ganzzahl(form, "show_dead_people", 2, 0, 2),
+        show_living_names=_ganzzahl(form, "show_living_names", 1, 0, 2),
+        show_private_relationships=form.get("show_private_relationships") == "1",
+        max_alive_age=_ganzzahl(form, "max_alive_age", 120, 1, 200),
+        keep_alive_years_birth=_ganzzahl(form, "keep_alive_years_birth", 0, 0, 200),
+        keep_alive_years_death=_ganzzahl(form, "keep_alive_years_death", 0, 0, 200),
+    )
+    con = b.oeffnen()
+    try:
+        with con.begin():
+            datenschutz.einstellungen_speichern(con, e)
+    finally:
+        con.close()
+    return _zum_datenschutz(ort, "datenschutz-gespeichert", b.name)
+
+
+async def _regel_setzen(request, sitzung, form, ort):
+    b = request.app.state.baeume.baum(str(form.get("baum", "")))
+    if b is None:
+        return _zurueck(ort, "unbekannt", str(form.get("baum", "")))
+    xref = str(form.get("xref", "")).strip().strip("@") or None
+    tag = str(form.get("tag", "")).strip().upper() or None
+    resn = str(form.get("resn", ""))
+    entfernen = form.get("entfernen") == "1"
+    if (not xref and not tag) or any(x and not _KENNUNG.match(x) for x in (xref, tag)) \
+            or (not entfernen and resn not in datenschutz.STUFE_VON_RESN):
+        return _zum_datenschutz(ort, "regel-ungueltig", b.name)
+    con = b.oeffnen()
+    try:
+        with con.begin():
+            datenschutz.regel_setzen(con, xref, tag, None if entfernen else resn)
+    finally:
+        con.close()
+    return _zum_datenschutz(ort, "regel-entfernt" if entfernen else "regel-gesetzt", b.name)
 
 
 # ── Aktionen der Administratoren ──────────────────────────────────────────────────────────────────────────────
@@ -295,4 +376,6 @@ _ADMIN = {
     "konto-loeschen": _konto_loeschen,
     "baum-hochladen": _baum_hochladen,
     "baum-loeschen": _baum_loeschen,
+    "datenschutz-speichern": _datenschutz_speichern,
+    "regel-setzen": _regel_setzen,
 }

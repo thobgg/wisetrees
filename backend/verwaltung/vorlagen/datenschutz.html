@@ -1,0 +1,92 @@
+{% extends "rahmen.html" %}
+{% block titel %}Datenschutz {{ baum }}{% endblock %}
+{% macro csrf_feld() %}<input type="hidden" name="_csrf" value="{{ csrf }}">{% endmacro %}
+{% macro stufe_wahl(name, wert) %}
+<select id="{{ name }}" name="{{ name }}">
+  {% for st, text in stufe_text.items() %}<option value="{{ st }}"{% if st == wert %} selected{% endif %}>{{ text }}</option>{% endfor %}
+</select>
+{% endmacro %}
+{% block inhalt %}
+<p><a href="{{ ort.url() }}">← Übersicht</a></p>
+<h2>Datenschutz im Baum <code>{{ baum }}</code></h2>
+
+<form method="post" action="{{ ort.url('/datenschutz-speichern') }}">
+  {{ csrf_feld() }}
+  <input type="hidden" name="baum" value="{{ baum }}">
+  <fieldset>
+    <legend>Baum</legend>
+    <p><label class="inline"><input type="checkbox" name="enabled" value="1"{% if e.enabled %} checked{% endif %}>
+      Datenschutz an</label><br>
+      <span class="leise">Aus: alle Personen und Datensätze sind für alle sichtbar. Nur für Bäume mit ausschließlich öffentlichen Angaben.</span></p>
+    <p><label class="inline"><input type="checkbox" name="members_only" value="1"{% if e.members_only %} checked{% endif %}>
+      Baum nur für Mitglieder</label><br>
+      <span class="leise">Besucher und Konten ohne Rolle im Baum sehen ihn gar nicht.</span></p>
+  </fieldset>
+  <fieldset>
+    <legend>Personen</legend>
+    <label for="show_dead_people">Verstorbene sehen</label>
+    {{ stufe_wahl("show_dead_people", e.show_dead_people) }}
+    <label for="show_living_names">Namen privater Personen sehen</label>
+    {{ stufe_wahl("show_living_names", e.show_living_names) }}
+    <p class="leise">Lebende Personen sehen Mitglieder; Besucher sehen dann höchstens den Namen.</p>
+    <p><label class="inline"><input type="checkbox" name="show_private_relationships" value="1"{% if e.show_private_relationships %} checked{% endif %}>
+      Private Beziehungen zeigen</label><br>
+      <span class="leise">Familien mit privaten Mitgliedern erscheinen als Struktur, ohne Einzelheiten.</span></p>
+    <label for="max_alive_age">Höchstalter in Jahren (wer älter wäre, gilt als verstorben)</label>
+    <input type="text" class="kurz" id="max_alive_age" name="max_alive_age" value="{{ e.max_alive_age }}" inputmode="numeric">
+    <label for="keep_alive_years_birth">Verstorbene privat, bis die Geburt so viele Jahre zurückliegt (0 = aus)</label>
+    <input type="text" class="kurz" id="keep_alive_years_birth" name="keep_alive_years_birth" value="{{ e.keep_alive_years_birth }}" inputmode="numeric">
+    <label for="keep_alive_years_death">Verstorbene privat, bis der Tod so viele Jahre zurückliegt (0 = aus)</label>
+    <input type="text" class="kurz" id="keep_alive_years_death" name="keep_alive_years_death" value="{{ e.keep_alive_years_death }}" inputmode="numeric">
+  </fieldset>
+  <p><button type="submit">Speichern</button></p>
+</form>
+
+<h2>Regeln</h2>
+<p class="leise">Regeln gelten, wo die Daten selbst keinen Sperrvermerk (RESN) tragen. Eine Regel für eine Kennung gilt
+für diesen einen Datensatz; mit Art dazu nur für diese Faktart an diesem Datensatz; nur mit Art für alle Fakten oder
+Datensätze dieser Art (zum Beispiel <code>SSN</code>, <code>SOUR</code>, <code>OCCU</code>).</p>
+{% if regeln %}
+<table>
+  <thead><tr><th>Kennung</th><th>Art</th><th>sichtbar für</th><th></th></tr></thead>
+  <tbody>
+  {% for r in regeln %}
+  <tr>
+    <td>{% if r.xref %}<code>{{ r.xref }}</code>{% else %}<span class="leise">alle</span>{% endif %}</td>
+    <td>{% if r.tag %}<code>{{ r.tag }}</code>{% else %}<span class="leise">ganzer Datensatz</span>{% endif %}</td>
+    <td>{{ resn_text[r.resn] }}</td>
+    <td>
+      <form method="post" action="{{ ort.url('/regel-setzen') }}">
+        {{ csrf_feld() }}
+        <input type="hidden" name="baum" value="{{ baum }}">
+        <input type="hidden" name="xref" value="{{ r.xref or '' }}">
+        <input type="hidden" name="tag" value="{{ r.tag or '' }}">
+        <input type="hidden" name="entfernen" value="1">
+        <button type="submit" class="gefahr">Entfernen</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="leise">Keine Regeln.</p>
+{% endif %}
+
+<fieldset>
+  <legend>Regel hinzufügen oder ändern</legend>
+  <form method="post" action="{{ ort.url('/regel-setzen') }}">
+    {{ csrf_feld() }}
+    <input type="hidden" name="baum" value="{{ baum }}">
+    <label for="r-xref">Kennung (optional, z. B. I21)</label>
+    <input type="text" class="kurz" id="r-xref" name="xref" autocomplete="off">
+    <label for="r-tag">Art (optional, z. B. OCCU)</label>
+    <input type="text" class="kurz" id="r-tag" name="tag" autocomplete="off">
+    <label for="r-resn">sichtbar für</label>
+    <select id="r-resn" name="resn">
+      {% for k, text in resn_text.items() %}<option value="{{ k }}">{{ text }}</option>{% endfor %}
+    </select>
+    <p><button type="submit">Speichern</button></p>
+  </form>
+</fieldset>
+{% endblock %}

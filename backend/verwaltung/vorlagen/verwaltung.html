@@ -33,6 +33,7 @@
       {% else %}<span class="leise">–</span>{% endif %}
     </td>
     <td>
+      <a href="{{ ort.url('/datenschutz', baum=b.name) }}">Datenschutz …</a>
       <details>
         <summary>Löschen …</summary>
         <form method="post" action="{{ ort.url('/baum-loeschen') }}">

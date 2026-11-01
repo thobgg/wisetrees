@@ -191,3 +191,47 @@ def test_seiten_nicht_einbettbar_und_nicht_zwischengespeichert(server):
     with urllib.request.urlopen(url) as r:
         assert r.headers["X-Frame-Options"] == "DENY" and r.headers["Cache-Control"] == "no-store"
         assert "Neues Konto" not in r.read().decode()
+
+
+def test_datenschutz_einstellen(admin, einstellungen, server):
+    from baum import datei, datenschutz
+
+    b = admin
+    b.seite()
+    b.hochladen("probe", KLEIN)
+    text = b.seite("/datenschutz", baum="probe")
+    assert "Datenschutz an" in text and "<code>SSN</code>" in text      # Vorgaberegeln stehen da
+    a = b.senden_formular("datenschutz-speichern", {"baum": "probe", "enabled": "1", "members_only": "1",
+                                                    "show_dead_people": "1", "show_living_names": "0",
+                                                    "max_alive_age": "90", "keep_alive_years_birth": "100",
+                                                    "keep_alive_years_death": "x"})
+    assert meldung(a)[0] == "datenschutz-gespeichert"
+    assert meldung(b.senden_formular("regel-setzen", {"baum": "probe", "xref": "@I1@", "tag": "occu",
+                                                      "resn": "confidential"}))[0] == "regel-gesetzt"
+    assert meldung(b.senden_formular("regel-setzen", {"baum": "probe", "tag": "SOUR", "entfernen": "1"}))[0] \
+        == "regel-entfernt"
+    assert meldung(b.senden_formular("regel-setzen", {"baum": "probe", "resn": "privacy"}))[0] == "regel-ungueltig"
+    assert meldung(b.senden_formular("regel-setzen", {"baum": "probe", "tag": "X; DROP", "resn": "privacy"}))[0] \
+        == "regel-ungueltig"
+    con = datei.oeffnen(einstellungen.baeume / "probe.wise")
+    e, r = datenschutz.laden(con)
+    con.close()
+    assert (e.members_only, e.show_dead_people, e.show_living_names, e.show_private_relationships) == (True, 1, 0, False)
+    assert (e.max_alive_age, e.keep_alive_years_birth, e.keep_alive_years_death) == (90, 100, 0)
+    assert r.fakt_am_datensatz == {("I1", "OCCU"): 0} and "SOUR" not in r.art
+
+    # wirkt sofort: Besucher sehen den Baum nicht mehr
+    app = Sitzung(server)
+    assert app.info()["trees"] == []
+    assert app.get("Individuals", "probe").status == 302
+
+
+def test_datenschutz_nur_fuer_administratoren(einstellungen, server):
+    KontenDB(einstellungen.konten_db).anlegen("anna", "anna-passwort")
+    b = Browser(server)
+    b.seite()
+    b.senden_formular("anmelden", {"name": "anna", "passwort": "anna-passwort"})
+    a = b.holen(b.url("/wisetrees/verwaltung/datenschutz", {"baum": "probe"}))
+    assert a.status == 303
+    a = b.senden_formular("datenschutz-speichern", {"baum": "probe", "enabled": "0"})
+    assert meldung(a)[0] == ""
