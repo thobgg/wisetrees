@@ -44,8 +44,8 @@ DETAIL_LABEL = {"CAUS": "Ursache", "AGE": "Alter", "AGNC": "Institution", "ADDR"
 WERT = {"SEX": {"M": "männlich", "F": "weiblich", "U": "unbekannt", "X": "divers"},
         "_STAT": {"UNKNOWN": "Unbekannt", "NOT MARRIED": "unverheiratet", "NEVER MARRIED": "nie verheiratet"}}
 MARR_TYP = {"CIVIL": "Standesamtliche Heirat", "RELIGIOUS": "Kirchliche Trauung", "PARTNERS": "Partnerschaft"}
-# Wortlaut der Aufzeichnungen: Paten nach Geschlecht, unbekannt oder verborgen „Pate/Patin“; Zeugen immer „Zeuge“
-ROLLE_LABEL = {"godparent": {"M": "Pate", "F": "Patin", "U": "Pate/Patin"},
+# Generisches Maskulinum: „Patin“ nur bei sichtbar weiblichem Geschlecht, sonst „Pate“; Zeugen immer „Zeuge“
+ROLLE_LABEL = {"godparent": {"M": "Pate", "F": "Patin", "U": "Pate"},
                "witness": {"M": "Zeuge", "F": "Zeuge", "U": "Zeuge"}}
 PATEN = {"godparent", "godfather", "godmother", "pate", "patin", "taufpate", "taufpatin", "gevatter", "gevatterin"}
 ZEUGEN = {"witness", "trauzeuge", "trauzeugin", "zeuge", "zeugin"}

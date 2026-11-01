@@ -32,6 +32,10 @@ SERVERWERTE = {"availableModules", "maxUpload", "rewriteUrls"}
 # Felder, die erst api4wisetrees v1 kennt (E17); im Vergleich mit den Aufzeichnungen ausgelassen, Form per Schema.
 NUR_WISETREES = {"features"}
 
+# Bewusste Abweichungen im Wortlaut: wisetrees schreibt im generischen Maskulinum, ohne Paarformen.
+# Bei unbekanntem oder verborgenem Geschlecht heißt ein Pate „Pate“. Entschieden am 01.11.2026.
+WORTLAUT = {"label": {"Pate/Patin": "Pate"}}
+
 # Schlüssel mit Kennungen, die je Antwort durchnummeriert werden. Ein Fakt heißt in `facts[]` „id“,
 # in Verweisen darauf „factId“ – beide teilen sich eine Nummerierung.
 KENNUNGEN = {"factId": "fact", "id": "fact"}
@@ -61,6 +65,8 @@ def normalisieren(wert, basis: str):
                 return PLATZHALTER[schluessel]
             if schluessel in KENNUNGEN and x != "":
                 return kennung(KENNUNGEN[schluessel], x)
+            if x in WORTLAUT.get(schluessel, {}):
+                return WORTLAUT[schluessel][x]
             return re.sub(re.escape(basis) + r"/?", "<basis>/", x)
         return x
 
