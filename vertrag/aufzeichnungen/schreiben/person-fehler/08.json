@@ -1,0 +1,19 @@
+{
+ "nr": 8,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "AddIndividual",
+ "params": {},
+ "rumpf": {
+  "relation": "child",
+  "relativeTo": "I99999",
+  "given": "X"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-found",
+  "status": 404
+ }
+}

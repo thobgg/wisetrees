@@ -296,7 +296,7 @@ def _hat_unterzeilen(con, event_id, stand: dict, notiz_neu: bool | None) -> bool
                 or con.execute(select(func.count()).select_from(ci).where(ci.c.event_id == event_id)).scalar())
 
 
-def _ereignis_neu(con, a: ae.Aenderung, tag: str, r: dict, pid, fid):
+def _ereignis_neu(con, a: ae.Aenderung, tag: str, r: dict, pid, fid, platz: int | None = None):
     w = _ereignis_werte(tag, r, {})
     if not isinstance(w, dict):
         return w
@@ -307,7 +307,8 @@ def _ereignis_neu(con, a: ae.Aenderung, tag: str, r: dict, pid, fid):
     w.update(_y_regel(tag, w, _hat_unterzeilen(con, None, w, bool(notiz))))
     eid = a.anlegen("event", type=tag, **w)
     traeger = {"person_id": pid} if pid is not None else {"family_id": fid}
-    a.anlegen("event_role", event_id=eid, role="PRINCIPAL", sort=0, fact_sort=_naechster_platz(con, pid, fid),
+    a.anlegen("event_role", event_id=eid, role="PRINCIPAL", sort=0,
+              fact_sort=platz if platz is not None else _naechster_platz(con, pid, fid),
               **traeger)
     if notiz:
         nid = a.anlegen("note", text=notiz)

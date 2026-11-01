@@ -1,0 +1,129 @@
+{
+ "nr": 2,
+ "art": "lesen",
+ "rolle": "verwalter",
+ "fall": "Family__xref=<familie>",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "xref": "<neu1>",
+  "name": "Leon Marwede + Ida Falkenrath",
+  "url": "<url>",
+  "husband": {
+   "xref": "I91",
+   "name": "Leon Marwede",
+   "sortName": "Marwede,Leon",
+   "given": "Leon",
+   "surname": "Marwede",
+   "sex": "M",
+   "isDead": false,
+   "private": false,
+   "access": "member",
+   "nameAccess": "member",
+   "restricted": [],
+   "lifespan": "2014–",
+   "birth": {
+    "date": {
+     "text": "28. August 2014",
+     "year": 2014,
+     "jd": 2456898
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": null,
+   "call": "",
+   "chr": null,
+   "buri": null,
+   "occupation": null,
+   "thumb": null,
+   "url": "<url>"
+  },
+  "wife": {
+   "xref": "I4",
+   "name": "Ida Falkenrath",
+   "sortName": "Falkenrath,Ida",
+   "given": "Ida",
+   "surname": "Falkenrath",
+   "sex": "F",
+   "isDead": false,
+   "private": false,
+   "access": "member",
+   "nameAccess": "member",
+   "restricted": [],
+   "lifespan": "2020–",
+   "birth": {
+    "date": {
+     "text": "23. November 2020",
+     "year": 2020,
+     "jd": 2459177
+    },
+    "place": {
+     "name": "Hannover, Niedersachsen, Deutschland",
+     "short": "Hannover, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": null,
+   "call": "",
+   "chr": null,
+   "buri": null,
+   "occupation": null,
+   "thumb": null,
+   "url": "<url>"
+  },
+  "spouse": null,
+  "marriage": {
+   "date": {
+    "text": "1950",
+    "year": 1950,
+    "jd": 2433283
+   },
+   "place": null
+  },
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "MARR",
+    "label": "Heirat",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "1950",
+     "year": 1950,
+     "jd": 2433283,
+     "gedcom": "1950"
+    },
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "children": [],
+  "access": "member",
+  "uids": [],
+  "media": [],
+  "tasks": [],
+  "lastChange": {
+   "time": "<zeit>",
+   "user": "verwalter"
+  }
+ }
+}

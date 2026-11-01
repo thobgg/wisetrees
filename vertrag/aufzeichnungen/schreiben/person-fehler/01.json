@@ -1,0 +1,17 @@
+{
+ "nr": 1,
+ "art": "schreiben",
+ "rolle": "mitglied",
+ "aktion": "AddIndividual",
+ "params": {},
+ "rumpf": {
+  "given": "X"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-editor",
+  "status": 403
+ }
+}

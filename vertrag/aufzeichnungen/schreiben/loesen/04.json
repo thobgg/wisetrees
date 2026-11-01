@@ -1,0 +1,18 @@
+{
+ "nr": 4,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "Unlink",
+ "params": {},
+ "rumpf": {
+  "family": "F8",
+  "individual": "I23"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "link-not-found",
+  "status": 404
+ }
+}

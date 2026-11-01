@@ -1,0 +1,19 @@
+{
+ "nr": 5,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "Link",
+ "params": {},
+ "rumpf": {
+  "individual": "I4",
+  "relation": "child",
+  "relativeTo": "I4"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "invalid-relation",
+  "status": 400
+ }
+}

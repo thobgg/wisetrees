@@ -1,0 +1,13 @@
+{
+ "nr": 10,
+ "art": "lesen",
+ "rolle": "besucher",
+ "fall": "Family__xref=F8",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "private",
+  "status": 403
+ }
+}

@@ -10,7 +10,7 @@ import unicodedata
 
 from . import anzeige
 from .http import GET_AKTIONEN, Kontext, fehler
-from .sicht import BILDFORMATE, Person, Sicht, sicht_fuer
+from .sicht import BILDFORMATE, Lesestand, Person, Sicht, sicht_fuer
 
 SEITE = 50
 GEBURT = ("BIRT", "CHR", "BAPM")
@@ -126,6 +126,8 @@ class Bau:
         name_ok = self.s.name_darf(pid)
         n = p.namen[0] if p.namen else None
         geburt, tod = self.erstes_datum(p, GEBURT), self.erstes_datum(p, TOD)
+        if pid in self.m.geloescht:
+            geburt = tod = None        # offen gelöscht: Orte ja, Daten nicht (wie die Referenz)
         tot = self.s.ist_tot(pid)
         chr_ = next(iter(self.sichtbare_fakten(p, ("CHR",))), None) or next(iter(self.sichtbare_fakten(p, ("BAPM",))), None)
         buri = next(iter(self.sichtbare_fakten(p, ("BURI",))), None) or next(iter(self.sichtbare_fakten(p, ("CREM",))), None)
@@ -242,12 +244,13 @@ def _int(wert, vorgabe: int) -> int:
         return vorgabe
 
 
-def baum_und_person(ctx: Kontext):
+def baum_und_person(ctx: Kontext, s: Sicht | None = None):
     """(Bau, person.id) oder eine Fehlerantwort: not-found (404), private (403)."""
-    try:
-        s = sicht_fuer(ctx, ctx.baum_name or "")
-    except Exception:  # noqa: BLE001
-        return fehler(404, "tree-not-found")
+    if s is None:
+        try:
+            s = sicht_fuer(ctx, ctx.baum_name or "")
+        except Exception:  # noqa: BLE001
+            return fehler(404, "tree-not-found")
     pid = s.m.person_xref.get(ctx.params.get("xref") or "")
     if pid is None:
         return fehler(404, "not-found")
@@ -262,10 +265,20 @@ MAX_PEDIGREE = 12
 MAX_DESCENDANTS = 10
 
 
-def pedigree(ctx: Kontext):
-    r = baum_und_person(ctx)
-    if not isinstance(r, tuple):
-        return r
+def _mit_offenem(aktion):
+    """Diagramme für Bearbeiter mit den offenen Verknüpfungen (sicht.Lesestand), wie Individual und Family."""
+    def mit(ctx: Kontext):
+        try:
+            ls = Lesestand(ctx, ctx.baum_name or "")
+        except Exception:  # noqa: BLE001
+            return fehler(404, "tree-not-found")
+        with ls:
+            r = baum_und_person(ctx, ls.sicht)
+            return aktion(ctx, r) if isinstance(r, tuple) else r
+    return mit
+
+
+def pedigree(ctx: Kontext, r: tuple):
     bau, wurzel = r
     m = bau.m
     gen = min(MAX_PEDIGREE, max(1, _int(ctx.params.get("generations"), 4)))
@@ -328,14 +341,11 @@ def _heirat(bau: Bau, f) -> tuple[str | None, str | None] | None:
     return datum, ort
 
 
-def descendants(ctx: Kontext):
-    r = baum_und_person(ctx)
-    if not isinstance(r, tuple):
-        return r
+def descendants(ctx: Kontext, r: tuple):
     bau, wurzel = r
     gen = min(MAX_DESCENDANTS, max(1, _int(ctx.params.get("generations"), 3)))
     return {"root": bau.m.personen[wurzel].xref, "generations": gen, "tree": _nachkommen(bau, wurzel, gen)}
 
 
-GET_AKTIONEN["Pedigree"] = pedigree
-GET_AKTIONEN["Descendants"] = descendants
+GET_AKTIONEN["Pedigree"] = _mit_offenem(pedigree)
+GET_AKTIONEN["Descendants"] = _mit_offenem(descendants)

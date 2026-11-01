@@ -1,0 +1,17 @@
+{
+ "nr": 5,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "DeleteRecord",
+ "params": {
+  "xref": "I99999"
+ },
+ "rumpf": {},
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-found",
+  "status": 404
+ }
+}

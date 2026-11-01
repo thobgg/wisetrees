@@ -1,0 +1,14 @@
+{
+ "nr": 6,
+ "art": "schreiben",
+ "rolle": "moderator",
+ "aktion": "Reject",
+ "params": {},
+ "rumpf": {},
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "pending": 0
+ }
+}

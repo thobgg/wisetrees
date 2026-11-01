@@ -31,6 +31,10 @@ from .schema import tabelle as T
 
 NEU = re.compile(r"^neu:(\d+)$")
 
+# Kommentar eines Satzes, der nur Verweise auf einen gelöschten Datensatz entfernt: zählt nicht als letzte Änderung
+# des Datensatzes (lastChange), so wie dort auch kein Änderungsdatum gesetzt wird.
+NUR_VERWEISE = "Verweise auf einen gelöschten Datensatz entfernt"
+
 
 class Konflikt(Exception):
     """Der angenommene Stand hat sich seit der Änderung geändert, oder ein Schritt hängt an einem noch offenen."""
@@ -51,6 +55,8 @@ class Aenderung:
     def __init__(self, con: Connection, record_xref: str, autor: str):
         self.con, self.record_xref, self.autor = con, record_xref, autor
         self.schritte: list[Schritt] = []
+        self._gespeichert: dict[str, str] = {}   # lokaler Schlüssel → "neu:<Schritt>", nach speichern()
+        self.kommentar: str | None = None
 
     def anlegen(self, tabelle: str, **werte) -> str:
         """Neues Objekt; Rückgabe ist ein lokaler Schlüssel, den weitere Werte als Verweis nutzen können."""
@@ -79,7 +85,8 @@ class Aenderung:
             return None
         jetzt = _jetzt()
         sid = self.con.execute(insert(change_set).values(
-            author=self.autor, created_at=jetzt, status="pending", record_xref=self.record_xref)).inserted_primary_key[0]
+            author=self.autor, created_at=jetzt, status="pending", record_xref=self.record_xref,
+            comment=self.kommentar)).inserted_primary_key[0]
         global_von: dict[str, str] = {}
         for nr, s in enumerate(self.schritte, 1):
             neu = {k: global_von.get(v, v) if isinstance(v, str) else v for k, v in s.neu.items()}
@@ -94,9 +101,17 @@ class Aenderung:
                 # Verweis auf ein noch nicht angenommenes Objekt: in new_json mitführen, object_id bleibt leer
                 self.con.execute(update(change_step).where(change_step.c.id == schritt_id)
                                  .values(new_json=_json({**neu, "_objekt": objekt})))
+        self._gespeichert = global_von
         if sofort:
             annehmen(self.con, [sid], self.autor)
         return sid
+
+    def kennung(self, lokal: str) -> int | str:
+        """Nach speichern(): wie spätere Sätze ein hier angelegtes Objekt ansprechen – die Kennung, wenn der Satz
+        schon angenommen ist, sonst "neu:<Schritt>"."""
+        neu = self._gespeichert[lokal]
+        oid = self.con.execute(select(change_step.c.object_id).where(change_step.c.id == int(neu[4:]))).scalar()
+        return oid if oid is not None else neu
 
 
 # ── Lesen ──────────────────────────────────────────────────────────────────────────────────────────────────
@@ -236,7 +251,8 @@ def offene_datensaetze(con: Connection) -> list[dict]:
                if s["object_type"] in ("person", "family") and s["operation"] in ("create", "delete")}
     for satz in offen:
         d = aus.setdefault(satz["record_xref"], {"xref": satz["record_xref"], "changes": 0, "users": [],
-                                                 "time": satz["created_at"], "new": False, "deleted": False})
+                                                 "time": satz["created_at"], "new": False, "deleted": False,
+                                                 "tabelle": None})
         d["changes"] += 1
         d["time"] = satz["created_at"]
         if satz["author"] not in d["users"]:
@@ -245,7 +261,38 @@ def offene_datensaetze(con: Connection) -> list[dict]:
         xref = s["neu"].get("xref") if s["operation"] == "create" else s["alt"].get("xref")
         if xref in aus:
             aus[xref]["new" if s["operation"] == "create" else "deleted"] = True
+            aus[xref]["tabelle"] = s["object_type"]
     return list(aus.values())
+
+
+def abhaengige(con: Connection, satz_ids: list[int], richtung: str) -> list[int]:
+    """Offene Sätze samt denen, die sie brauchen ("vor") oder die sie brauchen ("nach"), nach Reihenfolge. Ein Satz
+    braucht einen früheren, wenn er ein dort angelegtes Objekt verwendet oder dasselbe Objekt ändert – er baut dann
+    auf dessen Stand auf."""
+    offen = [x["id"] for x in offene_saetze(con)]
+    alle = schritte(con, offen)
+    satz_von = {s["id"]: s["change_set_id"] for s in alle}
+    braucht: dict[int, set[int]] = {sid: set() for sid in offen}
+    zuletzt: dict[tuple[str, object], int] = {}
+    for s in alle:
+        sid = s["change_set_id"]
+        for v in [*s["neu"].values(), s["objekt"]]:
+            m = NEU.match(v) if isinstance(v, str) else None
+            if m and satz_von.get(int(m.group(1)), sid) != sid:
+                braucht[sid].add(satz_von[int(m.group(1))])
+        if s["operation"] != "create":
+            frueher = zuletzt.get((s["object_type"], s["objekt"]))
+            if frueher is not None and frueher != sid:
+                braucht[sid].add(frueher)
+            zuletzt[(s["object_type"], s["objekt"])] = sid
+    ergebnis, stapel = set(satz_ids), list(satz_ids)
+    while stapel:
+        sid = stapel.pop()
+        naechste = braucht.get(sid, set()) if richtung == "vor" else {k for k, v in braucht.items() if sid in v}
+        for n in naechste - ergebnis:
+            ergebnis.add(n)
+            stapel.append(n)
+    return sorted(ergebnis)
 
 
 def verwerfen(con: Connection, satz_ids: list[int], wer: str) -> None:

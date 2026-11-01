@@ -1,0 +1,19 @@
+{
+ "nr": 6,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "AddIndividual",
+ "params": {},
+ "rumpf": {
+  "relation": "father",
+  "relativeTo": "I6",
+  "given": "X"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "parent-exists",
+  "status": 409
+ }
+}

@@ -1,0 +1,493 @@
+{
+ "nr": 7,
+ "art": "lesen",
+ "rolle": "bearbeiter",
+ "fall": "Individuals__q=Marie",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Marie",
+  "page": 1,
+  "nextPage": null,
+  "data": [
+   {
+    "xref": "I143",
+    "name": "Marie Eggers",
+    "sortName": "Eggers,Marie",
+    "given": "Marie",
+    "surname": "Eggers",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1813–1851",
+    "birth": {
+     "date": {
+      "text": "5. Oktober 1813",
+      "year": 1813,
+      "jd": 2383522
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "21. Juni 1851",
+      "year": 1851,
+      "jd": 2397295
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "9. Oktober 1813",
+      "year": 1813,
+      "jd": 2383526
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "25. Juni 1851",
+      "year": 1851,
+      "jd": 2397299
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I41",
+    "name": "Marie Falkenrath",
+    "sortName": "Falkenrath,Marie",
+    "given": "Marie",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1894–1975",
+    "birth": {
+     "date": {
+      "text": "27. September 1894",
+      "year": 1894,
+      "jd": 2413099
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. Mai 1975",
+      "year": 1975,
+      "jd": 2442536
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "1. Oktober 1894",
+      "year": 1894,
+      "jd": 2413103
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I287",
+    "name": "Marie Mohwinkel",
+    "sortName": "Mohwinkel,Marie",
+    "given": "Marie",
+    "surname": "Mohwinkel",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1879–1917",
+    "birth": {
+     "date": {
+      "text": "28. Februar 1879",
+      "year": 1879,
+      "jd": 2407409
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "27. Oktober 1917",
+      "year": 1917,
+      "jd": 2421529
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "5. März 1879",
+      "year": 1879,
+      "jd": 2407414
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "31. Oktober 1917",
+      "year": 1917,
+      "jd": 2421533
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Dienstmagd",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I276",
+    "name": "Marie Oberlin",
+    "sortName": "Oberlin,Marie",
+    "given": "Marie",
+    "surname": "Oberlin",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1875–1954",
+    "birth": {
+     "date": {
+      "text": "27. Februar 1875",
+      "year": 1875,
+      "jd": 2405947
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "16. November 1954",
+      "year": 1954,
+      "jd": 2435063
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "3. März 1875",
+      "year": 1875,
+      "jd": 2405951
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "21. November 1954",
+      "year": 1954,
+      "jd": 2435068
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I161",
+    "name": "Marie Riebesell",
+    "sortName": "Riebesell,Marie",
+    "given": "Marie",
+    "surname": "Riebesell",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1818–1900",
+    "birth": {
+     "date": {
+      "text": "4. Juli 1818",
+      "year": 1818,
+      "jd": 2385255
+     },
+     "place": {
+      "name": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "short": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "7. November 1900",
+      "year": 1900,
+      "jd": 2415331
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "8. Juli 1818",
+      "year": 1818,
+      "jd": 2385259
+     },
+     "place": {
+      "name": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "short": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "11. November 1900",
+      "year": 1900,
+      "jd": 2415335
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Dienstmagd",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I333",
+    "name": "Marie Schulze",
+    "sortName": "Schulze,Marie",
+    "given": "Marie",
+    "surname": "Schulze",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1852–1934",
+    "birth": {
+     "date": {
+      "text": "15. Dezember 1852",
+      "year": 1852,
+      "jd": 2397838
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "16. Mai 1934",
+      "year": 1934,
+      "jd": 2427574
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "20. Dezember 1852",
+      "year": 1852,
+      "jd": 2397843
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "21. Mai 1934",
+      "year": 1934,
+      "jd": 2427579
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I366",
+    "name": "Marie Schulze",
+    "sortName": "Schulze,Marie",
+    "given": "Marie",
+    "surname": "Schulze",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1816–1868",
+    "birth": {
+     "date": {
+      "text": "27. September 1816",
+      "year": 1816,
+      "jd": 2384610
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "18. Juni 1868",
+      "year": 1868,
+      "jd": 2403502
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "29. September 1816",
+      "year": 1816,
+      "jd": 2384612
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "22. Juni 1868",
+      "year": 1868,
+      "jd": 2403506
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   }
+  ]
+ }
+}

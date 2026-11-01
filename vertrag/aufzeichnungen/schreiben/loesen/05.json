@@ -1,0 +1,18 @@
+{
+ "nr": 5,
+ "art": "schreiben",
+ "rolle": "mitglied",
+ "aktion": "Unlink",
+ "params": {},
+ "rumpf": {
+  "family": "F8",
+  "individual": "I15"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-editable",
+  "status": 403
+ }
+}

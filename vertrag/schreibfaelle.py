@@ -4,6 +4,10 @@ Vor jedem Ablauf steht der Baum auf dem Ausgangsstand (Falkenrath 1.7.1). Eine f
 im Rumpf steht darum ein Platzhalter "<fakt:TAG:n>" – der n-te Fakt dieser Art am Datensatz aus `xref`, so wie ihn
 die schreibende Rolle sieht. Er wird vor dem Schreiben bei dem jeweiligen Server nachgeschlagen.
 
+Neu angelegte Datensätze werden über Platzhalter angesprochen: "<neu>" ist die xref, "<familie>" die Familie aus der
+letzten Schreibantwort, die eine solche Angabe hatte. Ihre Kennungen vergibt jeder Server selbst; in den Antworten
+stehen sie darum als "<neu1>", "<neu2>" … in der Reihenfolge, in der sie in Schreibantworten auftauchten.
+
 Aufgezeichnet nach aufzeichnungen/schreiben/<ablauf>/<nr>.json.
 """
 
@@ -163,6 +167,86 @@ ABLAEUFE: list[Ablauf] = [
             Schreiben("verwalter", "DeleteFact", {"xref": "I21"}, {}),
             Lesen("verwalter", _i("I21"))),
            sofort=("verwalter",)),
+    # Schritt 5: Personen anlegen, verknüpfen, lösen, Datensätze löschen
+    Ablauf("person-neu-sofort", "Person ohne Verwandte mit Geburt und Tod",
+           (Schreiben("verwalter", "AddIndividual", {}, {"given": "Karl", "surname": "Probst", "sex": "M",
+                                                         "birthDate": "1901", "birthPlace": "Celle", "dead": True}),
+            Lesen("verwalter", _i("<neu>")), Lesen("besucher", Fall("Individuals", {"q": "Probst"}))),
+           sofort=("verwalter",)),
+    Ablauf("person-kind-offen", "Bearbeiter legt ein Kind offen an; wer sieht was; Moderator nimmt an",
+           (Schreiben("bearbeiter", "AddIndividual", {}, {"relation": "child", "relativeTo": "I21", "family": "F8",
+                                                          "given": "Marie", "surname": "Falkenrath", "sex": "F",
+                                                          "birthDate": "1930"}),
+            Lesen("bearbeiter", _i("<neu>")), Lesen("mitglied", _i("<neu>")),
+            Lesen("bearbeiter", Fall("Family", {"xref": "F8"})), Lesen("mitglied", Fall("Family", {"xref": "F8"})),
+            Lesen("bearbeiter", _i("I21")), Lesen("bearbeiter", Fall("Individuals", {"q": "Marie"})),
+            Lesen("moderator", Fall("Pending")),
+            Schreiben("moderator", "Accept"),
+            Lesen("besucher", Fall("Family", {"xref": "F8"})), Lesen("besucher", _i("<neu>")))),
+    Ablauf("person-eltern", "Vater und Mutter zu einer Person ohne Eltern",
+           (Schreiben("verwalter", "AddIndividual", {}, {"relation": "father", "relativeTo": "I6", "given": "Jan",
+                                                         "surname": "Wolniak"}),
+            Lesen("verwalter", Fall("Family", {"xref": "<familie>"})),
+            Schreiben("verwalter", "AddIndividual", {}, {"relation": "mother", "relativeTo": "I6", "given": "Ewa",
+                                                         "surname": "Nowak", "sex": "M"}),
+            Lesen("verwalter", Fall("Family", {"xref": "<familie>"})), Lesen("verwalter", _i("I6")),
+            Schreiben("verwalter", "AddIndividual", {}, {"relation": "father", "relativeTo": "I6", "given": "X"})),
+           sofort=("verwalter",)),
+    Ablauf("person-partner", "Partner mit Heirat anlegen",
+           (Schreiben("verwalter", "AddIndividual", {}, {"relation": "spouse", "relativeTo": "I130", "given": "Sophie",
+                                                         "surname": "Meyer", "sex": "F", "marriageDate": "1870",
+                                                         "marriagePlace": "Celle"}),
+            Lesen("verwalter", Fall("Family", {"xref": "<familie>"})), Lesen("verwalter", _i("I130"))),
+           sofort=("verwalter",)),
+    Ablauf("person-fehler", "Fehlerwege beim Anlegen",
+           (Schreiben("mitglied", "AddIndividual", {}, {"given": "X"}),
+            Schreiben("verwalter", "AddIndividual", {}, {"relation": "cousin", "given": "X"}),
+            Schreiben("verwalter", "AddIndividual", {}, {"given": " ", "surname": ""}),
+            Schreiben("verwalter", "AddIndividual", {}, {"given": "X", "birthDate": "irgendwann"}),
+            Schreiben("verwalter", "AddIndividual", {}, {"given": "X", "birthPlace": "@P1@"}),
+            Schreiben("verwalter", "AddIndividual", {}, {"relation": "child", "relativeTo": "I15", "given": "X"}),
+            Schreiben("verwalter", "AddIndividual", {}, {"relation": "child", "relativeTo": "I15", "family": "F1",
+                                                         "given": "X"}),
+            Schreiben("verwalter", "AddIndividual", {}, {"relation": "child", "relativeTo": "I99999", "given": "X"}),
+            Lesen("verwalter", Fall("Individuals", {"q": "X"}))),
+           sofort=("verwalter",)),
+    Ablauf("verknuepfen", "Zwei Personen als Paar verknüpfen, dann doppelt",
+           (Schreiben("verwalter", "Link", {}, {"individual": "I4", "relation": "spouse", "relativeTo": "I91",
+                                                "marriageDate": "1950"}),
+            Lesen("verwalter", Fall("Family", {"xref": "<familie>"})), Lesen("verwalter", _i("I4")),
+            Schreiben("verwalter", "Link", {}, {"individual": "I4", "relation": "spouse", "relativeTo": "I91"}),
+            Schreiben("verwalter", "Link", {}, {"individual": "I4", "relation": "child", "relativeTo": "I4"}),
+            Schreiben("verwalter", "Link", {}, {"individual": "I4", "relation": "sibling", "relativeTo": "I91"})),
+           sofort=("verwalter",)),
+    Ablauf("verknuepfen-offen", "Kind offen in eine Familie verknüpfen",
+           (Schreiben("bearbeiter", "Link", {}, {"individual": "I7", "relation": "child", "relativeTo": "I21",
+                                                 "family": "F8"}),
+            Lesen("bearbeiter", Fall("Family", {"xref": "F8"})), Lesen("mitglied", Fall("Family", {"xref": "F8"})),
+            Lesen("bearbeiter", _i("I7")), Lesen("moderator", Fall("Pending")))),
+    Ablauf("loesen", "Kind aus der Familie lösen, dann noch einmal",
+           (Schreiben("verwalter", "Unlink", {}, {"family": "F8", "individual": "I23"}),
+            Lesen("verwalter", Fall("Family", {"xref": "F8"})), Lesen("verwalter", _i("I23")),
+            Schreiben("verwalter", "Unlink", {}, {"family": "F8", "individual": "I23"}),
+            Schreiben("mitglied", "Unlink", {}, {"family": "F8", "individual": "I15"})),
+           sofort=("verwalter",)),
+    Ablauf("datensatz-loeschen", "Person löschen: Verweise verschwinden",
+           (Schreiben("verwalter", "DeleteRecord", {"xref": "I25"}),
+            Lesen("verwalter", Fall("Family", {"xref": "F8"})), Lesen("verwalter", _i("I25")),
+            Lesen("verwalter", _i("I21")),
+            Schreiben("verwalter", "DeleteRecord", {"xref": "I99999"})),
+           sofort=("verwalter",)),
+    Ablauf("datensatz-loeschen-familie", "Partner ohne Heirat anlegen und wieder löschen: Familie fällt weg",
+           (Schreiben("verwalter", "AddIndividual", {}, {"relation": "spouse", "relativeTo": "I130", "given": "Lene",
+                                                         "surname": "Busch", "sex": "F"}),
+            Schreiben("verwalter", "DeleteRecord", {"xref": "<neu>"}),
+            Lesen("verwalter", _i("I130")), Lesen("verwalter", Fall("Family", {"xref": "<familie>"}))),
+           sofort=("verwalter",)),
+    Ablauf("datensatz-loeschen-offen", "Bearbeiter löscht eine Person offen",
+           (Schreiben("bearbeiter", "DeleteRecord", {"xref": "I25"}),
+            Lesen("bearbeiter", _i("I25")), Lesen("bearbeiter", Fall("Family", {"xref": "F8"})),
+            Lesen("mitglied", Fall("Family", {"xref": "F8"})), Lesen("moderator", Fall("Pending")),
+            Schreiben("moderator", "Reject"),
+            Lesen("bearbeiter", Fall("Family", {"xref": "F8"})))),
     Ablauf("fakt-fehler", "Fehlerwege",
            (Schreiben("mitglied", "Fact", {"xref": "I21"}, {"tag": "OCCU", "value": "x"}),
             Schreiben("besucher", "Fact", {"xref": "I21"}, {"tag": "OCCU", "value": "x"}),
@@ -191,19 +275,49 @@ def _platzhalter(sitzung, aktion_xref: str, rumpf: dict) -> dict:
     return aus
 
 
+def _neue(werte: dict, merk: dict) -> dict:
+    return {k: merk.get(v, v) if isinstance(v, str) else v for k, v in werte.items()}
+
+
+def _kennungen(wert, neue: dict[str, str]):
+    """Vom Server vergebene Kennungen durch "<neuN>" ersetzen (auch als Verweis "@…@")."""
+    if isinstance(wert, dict):
+        return {k: _kennungen(v, neue) for k, v in wert.items()}
+    if isinstance(wert, list):
+        return [_kennungen(v, neue) for v in wert]
+    if isinstance(wert, str):
+        if wert in neue:
+            return neue[wert]
+        if wert.startswith("@") and wert.endswith("@") and wert[1:-1] in neue:
+            return f"@{neue[wert[1:-1]]}@"
+    return wert
+
+
 def ausfuehren(sitzungen: dict, ablauf: Ablauf, basis: str) -> list[dict]:
     """Ablauf gegen einen Server; je Schritt ein Eintrag wie in den Aufzeichnungen."""
     eintraege = []
+    merk: dict[str, str] = {}
+    neue: dict[str, str] = {}
     for nr, s in enumerate(ablauf.schritte, 1):
         if isinstance(s, Schreiben):
             sitzung = sitzungen[s.rolle]
-            rumpf = _platzhalter(sitzungen["verwalter"], s.params.get("xref", ""), s.rumpf)
-            a = sitzung.post(s.aktion, BAUM, s.params, rumpf)
+            params = _neue(s.params, merk)
+            rumpf = _platzhalter(sitzungen["verwalter"], params.get("xref", ""), _neue(s.rumpf, merk))
+            a = sitzung.post(s.aktion, BAUM, params, rumpf)
+            if a.ist_json and isinstance(a.json, dict) and a.json.get("ok"):
+                if s.aktion == "AddIndividual":
+                    merk["<neu>"] = a.json.get("xref") or ""
+                    neue.setdefault(merk["<neu>"], f"<neu{len(neue) + 1}>")
+                if a.json.get("family"):
+                    merk["<familie>"] = a.json["family"]
+                    # auch eine vorhandene Familie: harmlos, beide Server ersetzen sie gleich
+                    neue.setdefault(a.json["family"], f"<neu{len(neue) + 1}>")
             eintrag = {"nr": nr, "art": "schreiben", "rolle": s.rolle, "aktion": s.aktion, "params": s.params,
                        "rumpf": s.rumpf}
         else:
-            a = sitzungen[s.rolle].get(s.fall.aktion, BAUM if s.fall.mit_baum else None, s.fall.params)
+            a = sitzungen[s.rolle].get(s.fall.aktion, BAUM if s.fall.mit_baum else None, _neue(s.fall.params, merk))
             eintrag = {"nr": nr, "art": "lesen", "rolle": s.rolle, "fall": s.fall.name}
-        eintrag.update(status=a.status, json=a.ist_json, antwort=normalisieren(a.json, basis) if a.ist_json else None)
+        antwort = normalisieren(_kennungen(a.json, neue), basis) if a.ist_json else None
+        eintrag.update(status=a.status, json=a.ist_json, antwort=antwort)
         eintraege.append(eintrag)
     return eintraege

@@ -1,0 +1,24 @@
+{
+ "nr": 1,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "AddIndividual",
+ "params": {},
+ "rumpf": {
+  "relation": "spouse",
+  "relativeTo": "I130",
+  "given": "Sophie",
+  "surname": "Meyer",
+  "sex": "F",
+  "marriageDate": "1870",
+  "marriagePlace": "Celle"
+ },
+ "status": 201,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "<neu1>",
+  "pending": false,
+  "family": "<neu2>"
+ }
+}

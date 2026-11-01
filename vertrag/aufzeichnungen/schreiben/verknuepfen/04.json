@@ -1,0 +1,19 @@
+{
+ "nr": 4,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "Link",
+ "params": {},
+ "rumpf": {
+  "individual": "I4",
+  "relation": "spouse",
+  "relativeTo": "I91"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "link-exists",
+  "status": 409
+ }
+}

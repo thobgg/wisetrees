@@ -1,0 +1,21 @@
+{
+ "nr": 1,
+ "art": "schreiben",
+ "rolle": "bearbeiter",
+ "aktion": "Link",
+ "params": {},
+ "rumpf": {
+  "individual": "I7",
+  "relation": "child",
+  "relativeTo": "I21",
+  "family": "F8"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "I7",
+  "pending": true,
+  "family": "<neu1>"
+ }
+}

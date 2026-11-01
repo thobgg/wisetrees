@@ -7,7 +7,6 @@ Beschriftungen auf Deutsch, Wortlaut wie in den v1-Aufzeichnungen.
 
 from __future__ import annotations
 
-import contextlib
 
 import re
 from functools import cmp_to_key
@@ -22,7 +21,7 @@ from core.konten import ROLLEN
 from . import anzeige
 from .http import GET_AKTIONEN, Kontext, fehler
 from .personen import Bau, _heirat, baum_und_person
-from .sicht import BILDFORMATE, ereignisse_aus, namen_aus, sicht_fuer, sieht_offenes
+from .sicht import BILDFORMATE, Lesestand, ereignisse_aus, namen_aus, sicht_fuer
 
 # Tag-Reihenfolge der Fakten
 FAKT_REIHE = ["BIRT", "_HNM", "ALIA", "_AKA", "_AKAN", "ADOP", "_ADPF", "_ADPF", "_BRTM", "CHR", "BAPM", "FCOM", "CONF", "BARM", "BASM", "EDUC", "GRAD", "_DEG", "EMIG", "IMMI", "NATU", "_MILI", "_MILT", "ENGA", "MARB", "MARC", "MARL", "_MARI", "_MBON", "MARR", "_COML", "_STAT", "_SEPR", "DIVF", "MARS", "DIV", "ANUL", "CENS", "OCCU", "RESI", "PROP", "CHRA", "RETI", "FACT", "EVEN", "_NMR", "_NMAR", "NMR", "NCHI", "WILL", "_HOL", "_????_", "DEAT", "_FNRL", "CREM", "BURI", "_INTE", "_YART", "_NLIV", "PROB", "TITL", "COMM", "NATI", "CITN", "CAST", "RELI", "SSN", "IDNO", "TEMP", "SLGC", "BAPL", "CONL", "ENDL", "SLGS", "NO", "ADDR", "PHON", "EMAIL", "_EMAIL", "EMAL", "FAX", "WWW", "URL", "_URL", "_FSFTID", "AFN", "REFN", "_PRMN", "REF", "RIN", "_UID", "OBJE", "NOTE", "SOUR", "CREA", "CHAN", "_TODO"]
@@ -503,7 +502,10 @@ class Fakten:
 
     def uids(self, tabelle: str, wert: int) -> list[str]:
         t, gr = T(tabelle), T("gedcom_rest")
-        erste = self.q(select(t.c.uid).where(t.c.id == wert))[0][0]
+        zeile = self.q(select(t.c.uid).where(t.c.id == wert))
+        if not zeile:
+            return []                  # offen gelöscht
+        erste = zeile[0][0]
         # weitere _UID-Zeilen am Datensatz; Vergleich mit festem Anfang statt LIKE, damit er überall genau ist
         weitere = [r[0].split(" ", 2)[2] for r in self.q(
             select(gr.c.gedcom).where(gr.c[f"{tabelle}_id"] == wert, gr.c.under.is_(None),
@@ -556,8 +558,9 @@ class Fakten:
 def letzte_aenderung(con, xref: str) -> dict | None:
     """Zeit und Konto der letzten angenommenen Änderung an diesem Datensatz (aus dem Protokoll der Schreibschicht)."""
     cs = T("change_set")
-    r = con.execute(select(cs.c.created_at, cs.c.author).where(cs.c.record_xref == xref, cs.c.status == "accepted")
-                    .order_by(cs.c.id.desc()).limit(1)).first()
+    r = con.execute(select(cs.c.created_at, cs.c.author).where(
+        cs.c.record_xref == xref, cs.c.status == "accepted",
+        cs.c.comment.is_(None) | (cs.c.comment != ae.NUR_VERWEISE)).order_by(cs.c.id.desc()).limit(1)).first()
     return {"time": r.created_at, "user": r.author} if r else None
 
 
@@ -567,36 +570,25 @@ def _oeffnen(ctx: Kontext):
     return ctx.app.state.baeume.baum(ctx.baum_name).oeffnen()
 
 
-def _stand(ctx: Kontext, con):
-    """Bearbeiter und höher lesen den Stand mit offenen Änderungen (E21), alle anderen den angenommenen."""
-    if sieht_offenes(ctx.konten.rolle(ctx.konto, ctx.baum_name)):
-        return ae.offener_stand(con)
-    return contextlib.nullcontext(None)
-
-
 def family(ctx: Kontext):
     try:
-        s = sicht_fuer(ctx, ctx.baum_name or "")
+        ls = Lesestand(ctx, ctx.baum_name or "")
     except Exception:  # noqa: BLE001
         return fehler(404, "tree-not-found")
-    fid = s.m.familie_xref.get(ctx.params.get("xref") or "")
-    if fid is None:
-        return fehler(404, "not-found")
-    if not s.familie_darf(fid):
-        return fehler(403, "private")
-    bau = Bau(ctx, s)
-    con = _oeffnen(ctx)
-    try:
-        with _stand(ctx, con) as offen:
-            fk = Fakten(bau, con, offen)
-            j = fk.familie_json(fid)
-            f = s.m.familien[fid]
-            j["media"] = fk.medien_json("family_id", fid, None)
-            j["tasks"] = fk.aufgaben("family_id", fid, f.xref, "FAM", j["name"])
-            j["lastChange"] = letzte_aenderung(con, f.xref)
-            return j
-    finally:
-        con.close()
+    with ls:
+        s, con = ls.sicht, ls.con
+        fid = s.m.familie_xref.get(ctx.params.get("xref") or "")
+        if fid is None:
+            return fehler(404, "not-found")
+        if not s.familie_darf(fid):
+            return fehler(403, "private")
+        fk = Fakten(Bau(ctx, s), con, ls.stand)
+        j = fk.familie_json(fid)
+        f = s.m.familien[fid]
+        j["media"] = fk.medien_json("family_id", fid, None)
+        j["tasks"] = fk.aufgaben("family_id", fid, f.xref, "FAM", j["name"])
+        j["lastChange"] = letzte_aenderung(con, f.xref)
+        return j
 
 
 # ── GET Individual ────────────────────────────────────────────────────────────────────────────────────
@@ -686,53 +678,61 @@ def _gegenrichtung(fk: Fakten, pid: int) -> list[dict]:
 
 
 def individual(ctx: Kontext):
-    r = baum_und_person(ctx)
-    if not isinstance(r, tuple):
-        return r
-    bau, pid = r
-    s, m = bau.s, bau.m
-    p = m.personen[pid]
-    con = _oeffnen(ctx)
     try:
-        with _stand(ctx, con) as offen:
-            fk = Fakten(bau, con, offen)
-            eltern = [fk.familie_json(fid, None, True) for fid in s.als_kind(pid)]
-            partner = [fk.familie_json(fid, pid, True) for fid in s.als_partner(pid)]
-            eigene_eltern = {q for fid in s.als_kind(pid) for q in s.partner(fid).values()}
-            stief = []
-            for fid in s.als_kind(pid):
-                for q in s.partner(fid).values():
-                    for sf in s.als_partner(q):
-                        if sf not in p.famc and sf not in [x for x, _ in stief]:
-                            stief.append((sf, q))
-            stief_json = [{"parent": m.personen[q].xref if q in eigene_eltern else None, **fk.familie_json(sf, q, True)}
-                          for sf, q in stief]
-            # Bezugsperson: relativeTo, sonst die eigene Person des Kontos („Das bin ich“)
-            bezug = ctx.params.get("relativeTo") or ctx.konten.kontobaum(ctx.konto, ctx.baum_name).person
-            verwandt = ""
-            if bezug and bezug != p.xref:
-                other = m.person_xref.get(bezug)
-                if other is not None and s.person_darf(other):
-                    verwandt = _verwandtschaft(bau, other, pid)
-            rolle = ctx.konten.rolle(ctx.konto, ctx.baum_name)
-            haupt = bau.hauptbild(p)
-            name = bau.name(p)
-            return {
-                "person": bau.person_kurz(pid, True),
-                "relationship": verwandt,
-                "canEdit": ROLLEN.index(rolle) >= ROLLEN.index("editor") and p.resn != "locked" or rolle == "manager",
-                "facts": fk.datensatz_fakten("person_id", pid, p.fakten),
-                "parentFamilies": eltern,
-                "spouseFamilies": partner,
-                "stepFamilies": stief_json,
-                "media": fk.medien_json("person_id", pid, haupt[0].xref if haupt else None),
-                "associatedIn": _gegenrichtung(fk, pid),
-                "tasks": fk.aufgaben("person_id", pid, p.xref, "INDI", name),
-                "lastChange": letzte_aenderung(con, p.xref),
-                "uids": fk.uids("person", pid),
-            }
-    finally:
-        con.close()
+        ls = Lesestand(ctx, ctx.baum_name or "")
+    except Exception:  # noqa: BLE001
+        return fehler(404, "tree-not-found")
+    with ls:
+        r = baum_und_person(ctx, ls.sicht)
+        if not isinstance(r, tuple):
+            return r
+        bau, pid = r
+        s, m, con = bau.s, bau.m, ls.con
+        p = m.personen[pid]
+        fk = Fakten(bau, con, ls.stand)
+        eltern = [fk.familie_json(fid, None, True) for fid in s.als_kind(pid)]
+        partner = [fk.familie_json(fid, pid, True) for fid in s.als_partner(pid)]
+        eigene_eltern = {q for fid in s.als_kind(pid) for q in s.partner(fid).values()}
+        stief = []
+        for fid in s.als_kind(pid):
+            for q in s.partner(fid).values():
+                for sf in s.als_partner(q):
+                    if sf not in p.famc and sf not in [x for x, _ in stief]:
+                        stief.append((sf, q))
+        stief_json = [{"parent": m.personen[q].xref if q in eigene_eltern else None, **fk.familie_json(sf, q, True)}
+                      for sf, q in stief]
+        # Bezugsperson: relativeTo, sonst die eigene Person des Kontos („Das bin ich“)
+        bezug = ctx.params.get("relativeTo") or ctx.konten.kontobaum(ctx.konto, ctx.baum_name).person
+        verwandt = ""
+        if bezug and bezug != p.xref:
+            other = m.person_xref.get(bezug)
+            if other is not None and s.person_darf(other):
+                verwandt = _verwandtschaft(bau, other, pid)
+        rolle = ctx.konten.rolle(ctx.konto, ctx.baum_name)
+        haupt = bau.hauptbild(p)
+        name = bau.name(p)
+        geloescht = pid in m.geloescht
+        if geloescht:
+            # Offen gelöscht (nur Bearbeiter sehen das): ohne Fakten, nicht bearbeitbar; Medien vom angenommenen Stand
+            with Lesestand(ctx, ctx.baum_name, offen=False) as alt:
+                medien = Fakten(Bau(ctx, alt.sicht), alt.con).medien_json("person_id", pid, haupt[0].xref if haupt else None)
+        else:
+            medien = fk.medien_json("person_id", pid, haupt[0].xref if haupt else None)
+        return {
+            "person": bau.person_kurz(pid, True),
+            "relationship": verwandt,
+            "canEdit": not geloescht and (ROLLEN.index(rolle) >= ROLLEN.index("editor") and p.resn != "locked"
+                                          or rolle == "manager"),
+            "facts": fk.datensatz_fakten("person_id", pid, p.fakten),
+            "parentFamilies": eltern,
+            "spouseFamilies": partner,
+            "stepFamilies": stief_json,
+            "media": medien,
+            "associatedIn": _gegenrichtung(fk, pid),
+            "tasks": fk.aufgaben("person_id", pid, p.xref, "INDI", name),
+            "lastChange": None if geloescht else letzte_aenderung(con, p.xref),
+            "uids": fk.uids("person", pid),
+        }
 
 
 GET_AKTIONEN["Family"] = family

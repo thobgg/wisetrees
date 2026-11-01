@@ -1,0 +1,100 @@
+{
+ "nr": 2,
+ "art": "lesen",
+ "rolle": "verwalter",
+ "fall": "Family__xref=<familie>",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "xref": "<neu2>",
+  "name": "Jan Wolniak + … …",
+  "url": "<url>",
+  "husband": {
+   "xref": "<neu1>",
+   "name": "Jan Wolniak",
+   "sortName": "Wolniak,Jan",
+   "given": "Jan",
+   "surname": "Wolniak",
+   "sex": "M",
+   "isDead": false,
+   "private": false,
+   "access": "member",
+   "nameAccess": "member",
+   "restricted": [],
+   "lifespan": "…–",
+   "birth": null,
+   "death": null,
+   "call": "",
+   "chr": null,
+   "buri": null,
+   "occupation": null,
+   "thumb": null,
+   "url": "<url>"
+  },
+  "wife": null,
+  "spouse": null,
+  "marriage": null,
+  "facts": [],
+  "children": [
+   {
+    "xref": "I6",
+    "name": "Tomasz Wolniak",
+    "sortName": "Wolniak,Tomasz",
+    "given": "Tomasz",
+    "surname": "Wolniak",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "member",
+    "nameAccess": "member",
+    "restricted": [],
+    "lifespan": "1986–",
+    "birth": {
+     "date": {
+      "text": "11. Januar 1986",
+      "year": 1986,
+      "jd": 2446442
+     },
+     "place": {
+      "name": "Bremen, Deutschland",
+      "short": "Bremen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Informatiker",
+    "thumb": null,
+    "url": "<url>",
+    "marriages": [
+     {
+      "family": "F2",
+      "spouse": "Lena Falkenrath",
+      "date": {
+       "text": "3. Oktober 2017",
+       "year": 2017,
+       "jd": 2458030
+      },
+      "place": {
+       "name": "Bremen, Deutschland",
+       "short": "Bremen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     }
+    ]
+   }
+  ],
+  "access": "member",
+  "uids": [],
+  "media": [],
+  "tasks": [],
+  "lastChange": {
+   "time": "<zeit>",
+   "user": "verwalter"
+  }
+ }
+}

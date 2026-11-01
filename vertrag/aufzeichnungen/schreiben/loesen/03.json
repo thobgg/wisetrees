@@ -1,0 +1,487 @@
+{
+ "nr": 3,
+ "art": "lesen",
+ "rolle": "verwalter",
+ "fall": "Individual__xref=I23",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "person": {
+   "xref": "I23",
+   "name": "Elfriede Falkenrath",
+   "sortName": "Falkenrath,Elfriede",
+   "given": "Elfriede",
+   "surname": "Falkenrath",
+   "sex": "F",
+   "isDead": true,
+   "private": false,
+   "access": "visitor",
+   "nameAccess": "visitor",
+   "restricted": [],
+   "lifespan": "1925–2010",
+   "birth": {
+    "date": {
+     "text": "6. Januar 1925",
+     "year": 1925,
+     "jd": 2424157
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": {
+    "date": {
+     "text": "14. Februar 2010",
+     "year": 2010,
+     "jd": 2455242
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "call": "",
+   "chr": null,
+   "buri": null,
+   "occupation": "Kontoristin",
+   "thumb": null,
+   "url": "<url>",
+   "hasParents": false,
+   "partnersCount": 1,
+   "childrenCount": 0
+  },
+  "relationship": "",
+  "canEdit": true,
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "BIRT",
+    "label": "Geburt",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "6. Januar 1925",
+     "year": 1925,
+     "jd": 2424157,
+     "gedcom": "6 JAN 1925"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#2>",
+    "pending": false,
+    "tag": "OCCU",
+    "label": "Beruf",
+    "known": true,
+    "value": "Kontoristin",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#3>",
+    "pending": false,
+    "tag": "NAME",
+    "label": "Name",
+    "known": true,
+    "value": "Elfriede /Falkenrath/",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#4>",
+    "pending": false,
+    "tag": "SEX",
+    "label": "Geschlecht",
+    "known": true,
+    "value": "weiblich",
+    "gedcomValue": "F",
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#5>",
+    "pending": false,
+    "tag": "DEAT",
+    "label": "Tod",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "14. Februar 2010",
+     "year": 2010,
+     "jd": 2455242,
+     "gedcom": "14 FEB 2010"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#6>",
+    "pending": false,
+    "tag": "RELI",
+    "label": "Religion",
+    "known": true,
+    "value": "evangelisch-lutherisch",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "parentFamilies": [],
+  "spouseFamilies": [
+   {
+    "xref": "F9",
+    "name": "Kurt Sandmann + Elfriede Falkenrath",
+    "url": "<url>",
+    "husband": {
+     "xref": "I24",
+     "name": "Kurt Sandmann",
+     "sortName": "Sandmann,Kurt",
+     "given": "Kurt",
+     "surname": "Sandmann",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1921–1943",
+     "birth": {
+      "date": {
+       "text": "17. Oktober 1921",
+       "year": 1921,
+       "jd": 2422980
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "12. Juli 1943",
+       "year": 1943,
+       "jd": 2430918
+      },
+      "place": {
+       "name": "Orjol, Russland",
+       "short": "Orjol, Russland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "20. Oktober 1921",
+       "year": 1921,
+       "jd": 2422983
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": null,
+     "occupation": "Schriftsetzer",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": false,
+     "partnersCount": 1,
+     "childrenCount": 0
+    },
+    "wife": {
+     "xref": "I23",
+     "name": "Elfriede Falkenrath",
+     "sortName": "Falkenrath,Elfriede",
+     "given": "Elfriede",
+     "surname": "Falkenrath",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1925–2010",
+     "birth": {
+      "date": {
+       "text": "6. Januar 1925",
+       "year": 1925,
+       "jd": 2424157
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "14. Februar 2010",
+       "year": 2010,
+       "jd": 2455242
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": null,
+     "buri": null,
+     "occupation": "Kontoristin",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": false,
+     "partnersCount": 1,
+     "childrenCount": 0
+    },
+    "spouse": {
+     "xref": "I24",
+     "name": "Kurt Sandmann",
+     "sortName": "Sandmann,Kurt",
+     "given": "Kurt",
+     "surname": "Sandmann",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1921–1943",
+     "birth": {
+      "date": {
+       "text": "17. Oktober 1921",
+       "year": 1921,
+       "jd": 2422980
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "12. Juli 1943",
+       "year": 1943,
+       "jd": 2430918
+      },
+      "place": {
+       "name": "Orjol, Russland",
+       "short": "Orjol, Russland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "20. Oktober 1921",
+       "year": 1921,
+       "jd": 2422983
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": null,
+     "occupation": "Schriftsetzer",
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": false,
+     "partnersCount": 1,
+     "childrenCount": 0
+    },
+    "marriage": {
+     "date": {
+      "text": "5. Dezember 1942",
+      "year": 1942,
+      "jd": 2430699
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#7>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Standesamtliche Heirat",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "CIVIL",
+      "typeLabel": "Standesamtliche Heirat",
+      "date": {
+       "text": "5. Dezember 1942",
+       "year": 1942,
+       "jd": 2430699,
+       "gedcom": "5 DEC 1942"
+      },
+      "place": {
+       "name": "Celle, Niedersachsen, Deutschland",
+       "short": "Celle, Niedersachsen, Deutschland",
+       "lat": 52.6226,
+       "lng": 10.0815
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [],
+      "associates": [],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     },
+     {
+      "id": "<fact#8>",
+      "pending": false,
+      "tag": "NOTE",
+      "label": "Notiz",
+      "known": true,
+      "value": "Kriegstrauung während eines Fronturlaubs.",
+      "gedcomValue": null,
+      "type": "",
+      "typeLabel": null,
+      "date": null,
+      "place": null,
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [],
+      "associates": [],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [],
+    "access": "visitor",
+    "uids": [
+     "B9189CD864075BF88AAFE62748D07D8D6B12"
+    ]
+   }
+  ],
+  "stepFamilies": [],
+  "media": [],
+  "associatedIn": [],
+  "tasks": [],
+  "lastChange": {
+   "time": "<zeit>",
+   "user": "verwalter"
+  },
+  "uids": [
+   "B46A3573B4785656A62F2E5D43405BFDD90A"
+  ]
+ }
+}

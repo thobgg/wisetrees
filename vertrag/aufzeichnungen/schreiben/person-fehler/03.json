@@ -1,0 +1,18 @@
+{
+ "nr": 3,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "AddIndividual",
+ "params": {},
+ "rumpf": {
+  "given": " ",
+  "surname": ""
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "name-required",
+  "status": 400
+ }
+}

@@ -17,7 +17,7 @@ from baum import aenderungen as ae
 
 from .http import GET_AKTIONEN, POST_AKTIONEN, Kontext, fehler
 from .personen import Bau
-from .sicht import sicht_fuer
+from .sicht import Lesestand, sicht_fuer
 
 MODERATION = ("moderator", "manager")
 
@@ -42,27 +42,30 @@ def pending(ctx: Kontext):
     r = _pruefen(ctx)
     if not isinstance(r, tuple):
         return r
-    s, b = r
-    bau = Bau(ctx, s)
+    _, b = r
     con = b.oeffnen()
     try:
         offen = ae.offene_datensaetze(con)
     finally:
         con.close()
     daten = []
-    for d in offen:
-        xref = d["xref"]
-        pid, fid = s.m.person_xref.get(xref), s.m.familie_xref.get(xref)
-        if pid is not None:
-            name = bau.name(s.m.personen[pid])
-        elif fid is not None:
-            name = _familie(bau, fid)
-        else:
-            name = ""
-        art = "FAM" if fid is not None else "INDI"
-        kind = "new" if d["new"] else "deleted" if d["deleted"] else "changed"
-        daten.append({"xref": xref, "type": art, "name": name, "kind": kind, "changes": d["changes"],
-                      "users": d["users"], "time": d["time"]})
+    # Namen wie für Bearbeiter: vorhandene Datensätze mit dem angenommenen Namen, neue mit dem offenen
+    with Lesestand(ctx, ctx.baum_name, offen=True) as ls:
+        s = ls.sicht
+        bau = Bau(ctx, s)
+        for d in offen:
+            xref = d["xref"]
+            pid, fid = s.m.person_xref.get(xref), s.m.familie_xref.get(xref)
+            if pid is not None:
+                name = bau.name(s.m.personen[pid])
+            elif fid is not None:
+                name = _familie(bau, fid)
+            else:
+                name = ""
+            art = "FAM" if fid is not None or d["tabelle"] == "family" else "INDI"
+            kind = "new" if d["new"] else "deleted" if d["deleted"] else "changed"
+            daten.append({"xref": xref, "type": art, "name": name, "kind": kind, "changes": d["changes"],
+                          "users": d["users"], "time": d["time"]})
     return {"data": daten}
 
 
@@ -85,7 +88,9 @@ def _entscheiden(ctx: Kontext, annehmen: bool):
         saetze = ae.offene_saetze(con, xref) if xref else ae.offene_saetze(con)
         if xref and not saetze and xref not in s.m.person_xref and xref not in s.m.familie_xref:
             return fehler(404, "not-found")
-        ids = [x["id"] for x in saetze]
+        # Was zusammengehört, geht zusammen: Annehmen nimmt die Sätze mit, deren neu angelegte Objekte gebraucht
+        # werden; Verwerfen die, die auf verworfene neue Objekte bauen.
+        ids = ae.abhaengige(con, [x["id"] for x in saetze], "vor" if annehmen else "nach")
         if con.in_transaction():
             con.rollback()
         try:

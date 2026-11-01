@@ -1,0 +1,18 @@
+{
+ "nr": 5,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "AddIndividual",
+ "params": {},
+ "rumpf": {
+  "given": "X",
+  "birthPlace": "@P1@"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "invalid-value",
+  "status": 400
+ }
+}

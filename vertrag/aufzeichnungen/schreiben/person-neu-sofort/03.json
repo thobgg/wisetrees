@@ -1,0 +1,49 @@
+{
+ "nr": 3,
+ "art": "lesen",
+ "rolle": "besucher",
+ "fall": "Individuals__q=Probst",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Probst",
+  "page": 1,
+  "nextPage": null,
+  "data": [
+   {
+    "xref": "<neu1>",
+    "name": "Karl Probst",
+    "sortName": "Probst,Karl",
+    "given": "Karl",
+    "surname": "Probst",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1901–…",
+    "birth": {
+     "date": {
+      "text": "1901",
+      "year": 1901,
+      "jd": 2415386
+     },
+     "place": {
+      "name": "Celle",
+      "short": "Celle",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   }
+  ]
+ }
+}

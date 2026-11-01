@@ -1,0 +1,14 @@
+{
+ "nr": 9,
+ "art": "lesen",
+ "rolle": "verwalter",
+ "fall": "Individuals__q=X",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "X",
+  "page": 1,
+  "nextPage": null,
+  "data": []
+ }
+}

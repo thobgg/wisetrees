@@ -16,6 +16,9 @@ Sichtbarkeit nach den Datenschutz-Einstellungen des Baums (E19, baum/datenschutz
 
 from __future__ import annotations
 
+import contextlib
+import copy
+import dataclasses
 import datetime
 import os
 import threading
@@ -23,6 +26,7 @@ from dataclasses import dataclass, field
 
 from sqlalchemy import Connection, select
 
+from baum import aenderungen as ae
 from baum import datenschutz
 from baum.datei import Zeile
 from baum.schema import tabelle as T
@@ -104,6 +108,10 @@ class Familie:
 class Modell:
     """Der angenommene Stand eines Baums im Speicher."""
 
+    # Im Modell für Bearbeiter (ueberlagert): der angenommene Stand und die offen gelöschten Personen
+    angenommen: Modell
+    geloescht: frozenset[int] = frozenset()
+
     def __init__(self, con: Connection):
         self.personen: dict[int, Person] = {}
         self.familien: dict[int, Familie] = {}
@@ -120,6 +128,7 @@ class Modell:
         # Was nur vom Baum abhängt (Sortierung der Personenliste, Suchtexte): einmal berechnet, gilt bis zum
         # Neuladen des Modells
         self.zwischen: dict = {}
+        self.angenommen = self
         gleich: dict[str, str] = {}
 
         def g(text):
@@ -398,7 +407,8 @@ class Sicht:
     def familie_darf(self, fid: int, stufe: int | None = None) -> bool:
         """Familie: sichtbar, wenn alle Mitglieder sichtbar sind (nach Sperrvermerk und Regeln)."""
         stufe = self.stufe if stufe is None else stufe
-        f = self.m.familien[fid]
+        # Wer eine vorhandene Familie sehen darf, richtet sich nach dem angenommenen Stand (auch für Bearbeiter)
+        f = self.m.angenommen.familien.get(fid) or self.m.familien[fid]
         r = self._datensatz(f.xref, f.resn, stufe)
         if r is not None:
             return r
@@ -487,6 +497,106 @@ class Sicht:
 def nur_mitglieder(b) -> bool:
     """Ist der Baum nur für Mitglieder (Einstellung members_only)?"""
     return modell(str(b.pfad), b.oeffnen).einst.members_only
+
+
+def ueberlagert(m: Modell, con: Connection, stand: ae.OffenerStand | None) -> Modell:
+    """Modell für Bearbeiter, solange Änderungen offen sind (con zeigt den Stand mit ihnen, offener_stand).
+
+    Wie in der Referenz: Datensätze, die es schon gibt, behalten Namen und Ereignisse des angenommenen Stands (Kurzform,
+    Familienname); offen angelegte Personen und Familien kommen dazu. Verknüpfungen sind die angenommenen und die offen
+    angelegten zusammen – ein offen gelöstes Kind steht also noch in der Familie, bis die Änderung angenommen ist. Die
+    Fakten eines Datensatzes liest die Fakten-Schicht unmittelbar aus con.
+    """
+    if not stand:
+        return m
+    pe, fa, fm = T("person"), T("family"), T("family_member")
+    neue_personen = [i for i in stand.beruehrt.get("person", ()) if i not in m.personen]
+    neue_familien = [i for i in stand.beruehrt.get("family", ()) if i not in m.familien]
+    verknuepft = sorted(i for i in stand.beruehrt.get("family_member", ()) if ("family_member", i) in stand.neu)
+    alte = [i for i in stand.beruehrt.get("person", ()) if i in m.personen]
+    vorhanden = {r[0] for r in con.execute(select(pe.c.id).where(pe.c.id.in_(alte)))}
+    geloescht = frozenset(i for i in alte if i not in vorhanden)
+    if not (neue_personen or neue_familien or verknuepft or geloescht):
+        return m
+    u = copy.copy(m)
+    u.geloescht = geloescht
+    u.personen, u.familien = dict(m.personen), dict(m.familien)
+    u.person_xref, u.familie_xref = dict(m.person_xref), dict(m.familie_xref)
+    u.zwischen = {}
+    kopiert: set[tuple[str, int]] = set()
+    for r in con.execute(select(pe.c.id, pe.c.xref, pe.c.sex, pe.c.resn, pe.c.uid).where(pe.c.id.in_(neue_personen))):
+        p = Person(r[0], r[1], r[2] or "U", r[3], r[4], mit_sex=r[2] is not None)
+        p.namen, p.fakten = namen_aus(con, p.id), ereignisse_aus(con, "person_id", p.id)
+        u.personen[p.id], u.person_xref[p.xref] = p, p.id
+        kopiert.add(("p", p.id))
+    for r in con.execute(select(fa.c.id, fa.c.xref, fa.c.resn, fa.c.uid).where(fa.c.id.in_(neue_familien))):
+        f = Familie(r[0], r[1], r[2], r[3])
+        f.fakten = ereignisse_aus(con, "family_id", f.id)
+        u.familien[f.id], u.familie_xref[f.xref] = f, f.id
+        kopiert.add(("f", f.id))
+
+    def person(pid: int) -> Person:
+        if ("p", pid) not in kopiert:
+            p = u.personen[pid]
+            u.personen[pid] = dataclasses.replace(p, famc=list(p.famc), fams=list(p.fams))
+            kopiert.add(("p", pid))
+        return u.personen[pid]
+
+    def familie(fid: int) -> Familie:
+        if ("f", fid) not in kopiert:
+            f = u.familien[fid]
+            u.familien[fid] = dataclasses.replace(f, partner=dict(f.partner), kinder=list(f.kinder))
+            kopiert.add(("f", fid))
+        return u.familien[fid]
+
+    for r in con.execute(select(fm.c.family_id, fm.c.person_id, fm.c.role, fm.c.sort).where(fm.c.id.in_(verknuepft))
+                         .order_by(fm.c.person_id, fm.c.person_sort, fm.c.id)):
+        if r[0] not in u.familien or r[1] not in u.personen:
+            continue
+        p, f = person(r[1]), familie(r[0])
+        if r[2] == "partner":
+            if f.id not in p.fams:
+                p.fams.append(f.id)
+            f.partner.setdefault(r[3], p.id)
+        else:
+            if f.id not in p.famc:
+                p.famc.append(f.id)
+            if p.id not in f.kinder:
+                f.kinder.append(p.id)
+    return u
+
+
+class Lesestand:
+    """Sicht und Verbindung für eine Anfrage: für Bearbeiter und höher mit den offenen Änderungen (E21).
+
+    with Lesestand(ctx, baum) as ls: ls.sicht, ls.con, ls.stand (None ohne offene Sicht). Wirft KeyError, wenn es den
+    Baum nicht gibt."""
+
+    def __init__(self, ctx, baum_name: str, offen: bool | None = None):
+        b = ctx.app.state.baeume.baum(baum_name)
+        if b is None:
+            raise KeyError(baum_name)
+        m = modell(str(b.pfad), b.oeffnen)
+        rolle = ctx.konten.rolle(ctx.konto, baum_name)
+        kb = ctx.konten.kontobaum(ctx.konto, baum_name)
+        self._stapel = contextlib.ExitStack()
+        try:
+            self.con = b.oeffnen()
+            self._stapel.callback(self.con.close)
+            self.stand = None
+            if sieht_offenes(rolle) if offen is None else offen:
+                self.stand = self._stapel.enter_context(ae.offener_stand(self.con))
+                m = ueberlagert(m, self.con, self.stand)
+        except BaseException:
+            self._stapel.close()
+            raise
+        self.sicht = Sicht(m, STUFE[rolle], ctx.einstellungen.heute(), kb.person, kb.pfad)
+
+    def __enter__(self) -> Lesestand:
+        return self
+
+    def __exit__(self, *_) -> None:
+        self._stapel.close()
 
 
 def sieht_offenes(rolle: str) -> bool:

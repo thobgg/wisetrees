@@ -1,0 +1,67 @@
+{
+ "nr": 5,
+ "art": "lesen",
+ "rolle": "moderator",
+ "fall": "Pending",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "data": [
+   {
+    "xref": "F10",
+    "type": "FAM",
+    "name": "Otto Falkenrath + Dorothy Keller",
+    "kind": "changed",
+    "changes": 1,
+    "users": [
+     "bearbeiter"
+    ],
+    "time": "<zeit>"
+   },
+   {
+    "xref": "F5",
+    "type": "FAM",
+    "name": "Wilhelm Falkenrath + Gerda Thielbar",
+    "kind": "changed",
+    "changes": 1,
+    "users": [
+     "bearbeiter"
+    ],
+    "time": "<zeit>"
+   },
+   {
+    "xref": "F6",
+    "type": "FAM",
+    "name": "Wilhelm Falkenrath + Hannelore Oberlin",
+    "kind": "changed",
+    "changes": 1,
+    "users": [
+     "bearbeiter"
+    ],
+    "time": "<zeit>"
+   },
+   {
+    "xref": "F8",
+    "type": "FAM",
+    "name": "Heinrich Falkenrath + Anna Rosskamp",
+    "kind": "changed",
+    "changes": 1,
+    "users": [
+     "bearbeiter"
+    ],
+    "time": "<zeit>"
+   },
+   {
+    "xref": "I25",
+    "type": "INDI",
+    "name": "Otto Falkenrath",
+    "kind": "deleted",
+    "changes": 1,
+    "users": [
+     "bearbeiter"
+    ],
+    "time": "<zeit>"
+   }
+  ]
+ }
+}

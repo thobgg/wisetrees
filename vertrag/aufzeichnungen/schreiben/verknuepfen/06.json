@@ -1,0 +1,19 @@
+{
+ "nr": 6,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "Link",
+ "params": {},
+ "rumpf": {
+  "individual": "I4",
+  "relation": "sibling",
+  "relativeTo": "I91"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "invalid-relation",
+  "status": 400
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "nr": 3,
+ "art": "lesen",
+ "rolle": "verwalter",
+ "fall": "Individual__xref=I25",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-found",
+  "status": 404
+ }
+}

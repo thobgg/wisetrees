@@ -1,0 +1,22 @@
+{
+ "nr": 3,
+ "art": "schreiben",
+ "rolle": "verwalter",
+ "aktion": "AddIndividual",
+ "params": {},
+ "rumpf": {
+  "relation": "mother",
+  "relativeTo": "I6",
+  "given": "Ewa",
+  "surname": "Nowak",
+  "sex": "M"
+ },
+ "status": 201,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "<neu3>",
+  "pending": false,
+  "family": "<neu2>"
+ }
+}
