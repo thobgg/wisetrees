@@ -248,8 +248,10 @@ vollständig bauen, um eine einzelne Funktion freizugeben.
 
 **Routen von Meilenstein 1 (lesend):** `Info`, `/login`, `/logout`,
 `Individuals`, `Individual`, `Family`, `Pedigree`, `Descendants`, `Tags`
-und die Bildauslieferung für `thumb`. Danach `Pair`, `Anniversaries`,
-`MediaList`, `Bookmarks` und die Schreibrouten.
+und die Bildauslieferung für `thumb`. **Meilenstein 2, Schritt 1
+(Schreiben mit Moderation, E21):** `Fact`, `DeleteFact`,
+`AddIndividual`, `Link`, `Unlink`, `DeleteRecord`, `Pending`, `Accept`,
+`Reject`. Danach `MediaList`, `Pair`, `Bookmarks`, `Anniversaries`.
 
 **Grenzen von v1:** v1 kennt Fakten je Person und Familie. Rollen an
 Ereignissen, Ortshierarchie und Belege lassen sich über v1 nur so weit

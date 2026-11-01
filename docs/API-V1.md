@@ -5,7 +5,7 @@ Antwort steht maschinenlesbar in [`vertrag/api-v1.json`](../vertrag/api-v1.json)
 beschreibt, was darüber hinaus gilt: Adressen, Anmeldung, Fehler, Sicherheit. Jeder Punkt ist durch die
 Vertragstests ([`vertrag/`](../vertrag/README.md)) belegt.
 
-Stand: Stufe 1, **lesend vollständig** (siehe 6).
+Stand: Stufe 1 mit den Fähigkeiten `read`, `write` und `moderation` (siehe 6).
 
 ## 1. Adressen
 
@@ -53,6 +53,17 @@ Stand: Stufe 1, **lesend vollständig** (siehe 6).
 - Jeder ausgeführte Schreibzugriff antwortet mit JSON, auch im Fehlerfall. Eine Antwort ohne JSON und ohne
   Umleitung bedeutet für die App „Ausgang unklar“; sie wiederholt dann nicht.
 - Antwort auf Schreibzugriffe: `ok`, oft `xref`, und `pending: true`, wenn die Änderung auf Freigabe wartet.
+- **Moderation:** Änderungen von Bearbeitern bleiben offen, bis ein Moderator oder Verwalter sie mit `Accept` annimmt
+  oder mit `Reject` verwirft – ohne `xref` alle des Baums. Mit „sofort annehmen“ am Konto gelten sie gleich. `Pending`
+  listet die offenen Änderungen je Datensatz. Ändert eine Aktion mehrere Datensätze (ein neues Kind und seine
+  Familie), zählt sie bei jedem als eigene Änderung. Annehmen nimmt mit, worauf eine Änderung aufbaut; Verwerfen
+  nimmt mit, was auf ihr aufbaut.
+- Lässt sich eine offene Änderung nicht mehr anwenden, weil sich der Datensatz an der Moderation vorbei geändert hat
+  (etwa durch einen neuen Import), nimmt `Accept` nichts an und antwortet `conflict` (409). Die Änderung bleibt offen.
+- **Neue Datensätze** erhalten Kennungen im Stil des Baums (`I…`, `F…`). Ein offen angelegter Fakt hat bis zum
+  Annehmen eine eigene `factId`; damit lässt er sich schon ändern und löschen.
+- `DeleteRecord` löscht Personen und Familien; Verweise anderer Datensätze fallen mit weg, eine Familie mit höchstens
+  einem Mitglied und ohne Ereignisse ebenso. Andere Datensätze kommen mit ihren Fähigkeiten.
 
 ## 5. Inhalte
 
@@ -61,7 +72,10 @@ Stand: Stufe 1, **lesend vollständig** (siehe 6).
   nur sichtbare Medien.
 - **`factId`** ist eine stabile Kennung je Fakt, für die Apps nur eine Zeichenkette. Sie beginnt nie mit `assoc-`
   (dieses Präfix nutzen die Apps selbst). Nach einer Änderung bleibt sie gleich.
-- **Offene Änderungen** sehen nur Bearbeiter, Moderatoren und Verwalter; Fakten tragen dann `pending: true`.
+- **Offene Änderungen** sehen nur Bearbeiter, Moderatoren und Verwalter; Fakten tragen dann `pending: true`. In
+  `Individual`, `Family`, `Pedigree` und `Descendants` sehen sie Fakten und Verknüpfungen mit den offenen Änderungen;
+  Kurzformen (Name, Lebensdaten), Personenliste und Suche bleiben beim angenommenen Stand. Ein offen gelöstes Kind
+  steht bis zum Annehmen noch in der Familie, eine offen gelöschte Person erscheint ohne Fakten.
 - **Sichtbarkeit**: Lebende sehen erst Mitglieder, Verstorbene alle; Namen Lebender ab Mitglied. Quellen und
   Archive sehen erst Mitglieder (ein verborgenes Archiv erscheint mit Kennung, ohne Namen). Ein Medium ist
   verborgen, wenn ein Datensatz, der es verwendet, verborgen ist. Familien sind sichtbar, wenn alle Mitglieder es
@@ -69,10 +83,10 @@ Stand: Stufe 1, **lesend vollständig** (siehe 6).
 
 ## 6. Stufen und `Info`
 
-- `Info.api` meldet Stufe 1. Stufe 1 heißt vorerst **„lesend vollständig“**: Info, Individuals, Individual, Family,
-  Pedigree, Descendants, Tags. Die Schreibrouten der Stufe 1 (Fact, DeleteFact, AddIndividual, Media) fehlen noch.
-  **Bis es sie gibt, Konten für Tester nur als Mitglied anlegen, nicht als Bearbeiter** – die Apps böten sonst
-  Bearbeiten an, das scheitert.
+- `Info.api` meldet Stufe 1: alle Routen der Stufe 1 außer `Media` (Hochladen kommt mit der Fähigkeit `photos`).
+- `Info.features` nennt `read`, `write` und `moderation` (E17, [FUNKTIONEN.md](FUNKTIONEN.md) 1.4). Apps, die
+  `features` auswerten, bieten damit Bearbeiten und Freigeben an, Hochladen nicht. Ältere Apps richten sich nach der
+  Stufe und bieten nur, was zu Stufe 1 gehört.
 - Die Apps schalten mit Stufe 1 Fotos, Jahrestage, Orte usw. ab; nicht vorhandene Routen fangen sie ab.
 - `availableModules`, `maxUpload` und `rewriteUrls` beschreiben den Server selbst (Module: nur die Schnittstelle).
   Die Vertragstests prüfen sie nur auf ihre Form.

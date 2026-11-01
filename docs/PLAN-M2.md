@@ -1,6 +1,7 @@
 # Meilenstein 2, Schritt 1: Schreiben mit Moderation
 
-Stand: 02.11.2026. Grundlage: KONZEPT.md 5.3, E4 (a), E7, E17, E19 B, E21; FUNKTIONEN.md 1.4 (`write`, `moderation`).
+Stand: 02.11.2026, alle sechs Schritte erledigt (siehe „Ergebnis“). Grundlage: KONZEPT.md 5.3, E4 (a), E7, E17, E19 B,
+E21, E22; FUNKTIONEN.md 1.4 (`write`, `moderation`).
 
 ## Ziel
 
@@ -57,3 +58,23 @@ verwerfen sie. Mit „sofort annehmen“ am Konto gilt sie gleich. Danach meldet
   Verhalten wie die Referenz, belegt durch einen Schreibfall.
 - **Große Bäume:** Neuladen nach dem Annehmen kostet bei 50.000 Personen rund 3 Sekunden; gezieltes Nachführen erst,
   wenn es stört.
+
+## Ergebnis
+
+Belegt durch 33 Schreibabläufe aus der Referenz (`vertrag/schreibfaelle.py`) und Unit-Tests; `Info.features` meldet
+`read`, `write`, `moderation`.
+
+- **Überlagerung:** Die offenen Sätze werden für Bearbeiter in einer Transaktion probeweise angewendet, die immer
+  zurückgerollt wird. Verknüpfungen sind für sie die angenommenen und die offen angelegten zusammen, wie in der
+  Referenz.
+- **Ein Satz je Datensatz:** Eine Aktion, die mehrere Datensätze berührt, wird je Datensatz ein Satz, in der
+  Reihenfolge der Referenz; Annehmen und Verwerfen nehmen abhängige Sätze mit.
+- **Bewusst abweichend oder offen:**
+  - Neue Kennungen im Stil des Baums (`I…`, `F…`), in der Referenz `X…`; die Vertragstests vergleichen sie als
+    Platzhalter.
+  - `Accept` mit Konflikt: `conflict` (409), nichts wird angenommen.
+  - `DeleteRecord` nur für Personen und Familien.
+  - Eine Familie, die durch eine offene Löschung leer würde, bleibt nach dem Annehmen stehen.
+  - Offen angelegte Personen lassen sich noch nicht als Bezugsperson für `AddIndividual` und `Link` verwenden.
+  - Ein Datum wie „32 FOO 1900“ liest die Referenz großzügig als 1900, wisetrees lehnt es ab.
+  - Zwei offene Änderungen mit demselben neuen Ort legen ihn zweimal an.

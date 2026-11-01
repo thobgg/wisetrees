@@ -65,8 +65,14 @@ def pending(ctx: Kontext):
             art = "FAM" if fid is not None or d["tabelle"] == "family" else "INDI"
             kind = "new" if d["new"] else "deleted" if d["deleted"] else "changed"
             daten.append({"xref": xref, "type": art, "name": name, "kind": kind, "changes": d["changes"],
-                          "users": d["users"], "time": d["time"]})
+                          "users": list(dict.fromkeys(_anzeigename(ctx, u) for u in d["users"])), "time": d["time"]})
     return {"data": daten}
+
+
+def _anzeigename(ctx: Kontext, name: str) -> str:
+    """Anzeigename des Kontos (wie Info.user.realName); ein gelöschtes Konto bleibt mit seinem Namen stehen."""
+    k = ctx.konten.konto(name)
+    return (k.real_name or k.name) if k else name
 
 
 def _familie(bau: Bau, fid: int) -> str:

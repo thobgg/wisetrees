@@ -50,9 +50,6 @@ def main(argv=None) -> int:
         db.passwort_setzen(args.name, _passwort())
     elif args.befehl == "rolle":
         db.rolle_setzen(args.name, args.baum, args.rolle)
-        if args.rolle in ("editor", "moderator", "manager"):
-            print("Hinweis: Schreiben gibt es noch nicht (Stufe 1 lesend vollständig, docs/API-V1.md). "
-                  "Tester vorerst als member anlegen.", file=sys.stderr)
     else:
         for k in db.alle():
             print(f"{k.name}\t{'Administrator' if k.is_admin else ''}\t{k.real_name}")

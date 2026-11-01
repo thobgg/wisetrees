@@ -1,6 +1,6 @@
 # Funktionsinventur: was wtAnd und wtWin von api4wisetrees brauchen
 
-Stand: 01.11.2026. Grundlage:
+Stand: 02.11.2026. Grundlage:
 
 - die Schnittstellenbeschreibung `vertrag/api-v1.json` (Stufe 42) und
   [API-V1.md](API-V1.md);
@@ -61,7 +61,7 @@ Die Fähigkeiten sind in [KONZEPT.md](KONZEPT.md) E17 festgelegt. Die
 
 - **Meilenstein 2**, nach Nutzen in dieser Reihenfolge:
   1. **Schreiben mit Moderation** – Fakten, Personen, Verknüpfungen;
-     offene Änderungen, Annehmen, Verwerfen.
+     offene Änderungen, Annehmen, Verwerfen. Vorhanden.
   2. **Fotos** – Medienliste, Hochladen, Verknüpfen, Hauptbild,
      verkleinerte Vorschaubilder (Pillow).
   3. **Export** – der ganze Baum seitenweise; Grundlage fast aller
@@ -82,8 +82,8 @@ und durch Tests belegt ist.
 | Fähigkeit | Routen und Felder | Bausteine | wann |
 |---|---|---|---|
 | `read` | `Info`, `Individuals`, `Individual`, `Family`, `Pedigree`, `Descendants`, `Tags`, Bildauslieferung; `relativeTo` mit naher Verwandtschaft (direkte Linie, Geschwister, Partner) auf Deutsch | Leseschicht mit Sichtbarkeit je Rolle | **vorhanden** (Meilenstein 1) |
-| `write` | `Fact`, `DeleteFact`, `AddIndividual`, `Link`, `Unlink`, `DeleteRecord`; `Info.trees[].canEdit`, `autoAccept` | **Schreibschicht mit Moderation und Protokoll** (2.0); **Rechte je Baum** aus `baumrolle`; neue Kennungen (E1), stabile `factId` (E7); Ortstext einem Ort zuordnen (wie beim Import) | **Meilenstein 2 (1)** |
-| `moderation` | `Pending`, `Accept`, `Reject`; `pending` an Fakten; `Info.trees[].pending`, `canModerate` | Überlagerung offener Änderungen in der Leseschicht (E4); Konflikterkennung beim Annehmen; Test, dass Besucher und Mitglieder nie Offenes sehen | **Meilenstein 2 (1)**, zusammen mit `write` |
+| `write` | `Fact`, `DeleteFact`, `AddIndividual`, `Link`, `Unlink`, `DeleteRecord` (Personen und Familien); `Info.trees[].canEdit`, `autoAccept` | **Schreibschicht mit Moderation und Protokoll** (2.0); **Rechte je Baum** aus `baumrolle`; neue Kennungen (E1), stabile `factId` (E7); Ortstext einem Ort zuordnen (wie beim Import) | **vorhanden** (Meilenstein 2, Schritt 1) |
+| `moderation` | `Pending`, `Accept`, `Reject`; `pending` an Fakten; `Info.trees[].pending`, `canModerate` | Überlagerung offener Änderungen in der Leseschicht (E4); Konflikterkennung beim Annehmen; Test, dass Besucher und Mitglieder nie Offenes sehen | **vorhanden** (Meilenstein 2, Schritt 1), zusammen mit `write` |
 | `photos` | `MediaList`, `Media` (hochladen, Vorhandenes verknüpfen), `UnlinkMedia`, `PrimaryMedia`; verkleinerte Bilder in `thumb`; `Info.maxUpload`, `Info.trees[].canUpload` | **Dateiablage** unter `<daten>/medien/{Baum}/` (Namen ohne Kollision, Prüfung des Dateityps); **Vorschaubilder** mit Pillow; **Zeitstempel am Medium** (für „neueste zuerst“) | **Meilenstein 2 (2)** |
 | `export` | `Export` (250 Datensätze je Seite), `lastChange` je Baum | Leseschicht über alle Personen und Familien | **Meilenstein 2 (3)** |
 | `pair` | `Pair`; Seite „App verbinden“ mit Code und QR-Code | **Einmal-Codes** in der Kontendatei (nur Hash, 10 Minuten gültig, einmal einlösbar) | **Meilenstein 2 (4)** |
@@ -97,12 +97,18 @@ Nicht als Fähigkeit vorgesehen: **GEDCOM-Teilbaum als Eingabe bei
 Felder: Art, Wert, Datum, Ort, Notiz, Typ, Adresse). Er kommt erst, wenn
 ein Client ihn braucht.
 
-### 1.5 Was wisetrees schon hat (Meilenstein 1)
+### 1.5 Was wisetrees schon hat
 
-Routen: `Info`, `/login`, `/logout`, `Individuals`, `Individual`,
-`Family`, `Pedigree`, `Descendants`, `Tags`, Bildauslieferung
-`/wisetrees/medien/{Baum}/{Datei}`, Startseite und Seite „App
-verbinden“. Gemeldet wird Stufe 1 („lesend vollständig“).
+Meilenstein 1, Routen: `Info`, `/login`, `/logout`, `Individuals`,
+`Individual`, `Family`, `Pedigree`, `Descendants`, `Tags`,
+Bildauslieferung `/wisetrees/medien/{Baum}/{Datei}`, Startseite und
+Seite „App verbinden“.
+
+Meilenstein 2, Schritt 1 (Schreiben mit Moderation, E21): `Fact`,
+`DeleteFact`, `AddIndividual`, `Link`, `Unlink`, `DeleteRecord`,
+`Pending`, `Accept`, `Reject`; offene Änderungen in der Leseschicht für
+Bearbeiter und höher. Gemeldet werden Stufe 1 und die Fähigkeiten
+`read`, `write`, `moderation`.
 
 Tabellen im Baum (`.wise`): `person`, `name`, `event`, `event_role`,
 `event_place_detail`, `family`, `family_member`, `parentage`,
@@ -112,7 +118,7 @@ Tabellen im Baum (`.wise`): `person`, `name`, `event`, `event_role`,
 `media`, `media_file`, `media_link` (mit `is_primary` und
 `crop_top/left/height/width`), `task`, `gedcom_rest`, `change_set`,
 `change_step`, `meta`. In der Kontendatei: `konto`, `baumrolle`,
-`sitzung`.
+`kontobaum`, `sitzung`.
 
 ## 2. Routen von api4wisetrees
 
@@ -125,7 +131,8 @@ wiederholt wird.
 
 ### 2.0 Querschnitt für alles Schreibende
 
-Bevor die erste Schreibroute geht, braucht wisetrees:
+Für alles Schreibende braucht wisetrees (vorhanden seit Meilenstein 2,
+Schritt 1):
 
 - **Schreibschicht mit Moderation**: Änderungen von Bearbeitern ohne
   Freigaberecht als `change_set` / `change_step`, Annahme und Ablehnung,
@@ -175,12 +182,12 @@ Bevor die erste Schreibroute geht, braucht wisetrees:
 
 | Funktion | Route(n) | Stufe | wo (App) | wisetrees braucht | Einstufung |
 |---|---|---:|---|---|---|
-| Fakt anlegen oder ändern | `POST Fact` | 1 (20: `type`, 32: `_LOC`-Verweis, 35: GEDCOM-L) | `saveFact()`: `EditActions`, `GedcomLActions`, `ProfilePanel` (A+W); `PersonSheet`, `OrteFenster`, `PruefFenster` (W) | Schreibschicht (2.0); `event`, `event_role`, `name`, `note`, Ort zuordnen | **Meilenstein 2 (1. Schreiben)** |
-| Fakt löschen | `POST DeleteFact` | 1 | `deleteFact()`: `EditActions`, `GedcomLActions`, `ProfilePanel`, `Aufgaben` (A+W); `AufgabenFenster` (W) | Schreibschicht; geteilte Ereignisse: nur den Verweis lösen, wenn andere beteiligt sind | **Meilenstein 2 (1. Schreiben)** |
-| Person anlegen und verknüpfen | `POST AddIndividual` | 1 | `addIndividual()`: `EditActions` (A+W) | neue Person, ggf. neue Familie, `family_member`, `parentage` | **Meilenstein 2 (1. Schreiben)** |
-| Person aus Familie lösen | `POST Unlink` | 4 | `unlink()`: `EditActions`, `ProfilePanel` (A+W) | `family_member` löschen, leere Familie entfernen | **Meilenstein 2 (1. Schreiben)** |
-| Datensatz löschen | `POST DeleteRecord` | 4 | `deleteRecord()`: `EditActions` (A+W); `QuelleDialog`, `QuellenFenster` (W) | Löschen mit allen Verweisen (CASCADE ist vorbereitet), leere Familien mit | **Meilenstein 2 (1. Schreiben)** |
-| Zwei Personen verknüpfen | `POST Link` | 8 | `link()`: `EditActions` (A+W) | wie `AddIndividual` ohne neue Person | **Meilenstein 2 (1. Schreiben)** |
+| Fakt anlegen oder ändern | `POST Fact` | 1 (20: `type`, 32: `_LOC`-Verweis, 35: GEDCOM-L) | `saveFact()`: `EditActions`, `GedcomLActions`, `ProfilePanel` (A+W); `PersonSheet`, `OrteFenster`, `PruefFenster` (W) | Schreibschicht (2.0); `event`, `event_role`, `name`, `note`, Ort zuordnen | **vorhanden** (Meilenstein 2, Schritt 1) |
+| Fakt löschen | `POST DeleteFact` | 1 | `deleteFact()`: `EditActions`, `GedcomLActions`, `ProfilePanel`, `Aufgaben` (A+W); `AufgabenFenster` (W) | Schreibschicht; geteilte Ereignisse: nur den Verweis lösen, wenn andere beteiligt sind | **vorhanden** (Meilenstein 2, Schritt 1) |
+| Person anlegen und verknüpfen | `POST AddIndividual` | 1 | `addIndividual()`: `EditActions` (A+W) | neue Person, ggf. neue Familie, `family_member`, `parentage` | **vorhanden** (Meilenstein 2, Schritt 1) |
+| Person aus Familie lösen | `POST Unlink` | 4 | `unlink()`: `EditActions`, `ProfilePanel` (A+W) | `family_member` löschen, leere Familie entfernen | **vorhanden** (Meilenstein 2, Schritt 1) |
+| Datensatz löschen | `POST DeleteRecord` | 4 | `deleteRecord()`: `EditActions` (A+W); `QuelleDialog`, `QuellenFenster` (W) | Löschen mit allen Verweisen (CASCADE ist vorbereitet), leere Familien mit | **vorhanden** (Meilenstein 2, Schritt 1) für Personen und Familien; Quellen kommen mit den Quellen (Stufe 18) |
+| Zwei Personen verknüpfen | `POST Link` | 8 | `link()`: `EditActions` (A+W) | wie `AddIndividual` ohne neue Person | **vorhanden** (Meilenstein 2, Schritt 1) |
 | Paten, Zeugen, Beteiligte | `POST Association` | 20 | `association()`: `EditActions` (A+W, Ziel aus `PatenDialog` W) | `event_role` mit Rolle, auch ohne Datensatz (`free_name` …, E5) | später – Stufe 20; das Modell kann es schon |
 | Reihenfolge von Kindern, Partnerschaften, Namen, Medien | `POST Reorder` | 30 | `reorder()`: `BookmarkActions` (A+W); `PersonSheet` (W) | Spalten `sort` (vorhanden) | später – Stufe 30 |
 
@@ -188,10 +195,10 @@ Bevor die erste Schreibroute geht, braucht wisetrees:
 
 | Funktion | Route(n) | Stufe | wo (App) | wisetrees braucht | Einstufung |
 |---|---|---:|---|---|---|
-| Offene Änderungen anzeigen | `GET Pending` | 5 | `pending()`: `EditActions` (A+W); `AnniversaryWorker` (A, Benachrichtigung im Hintergrund) | `change_set`/`change_step` lesen; `Info.trees[].pending` zählen | **Meilenstein 2 (1. Schreiben)** – ohne Moderation kein Schreiben für Bearbeiter |
-| Annehmen | `POST Accept` | 5 | `moderate()`: `EditActions`, `HomeSection` (A+W) | Schritte anwenden, Konflikt mit geändertem Stand erkennen (Anhang A) | **Meilenstein 2 (1. Schreiben)** |
-| Verwerfen | `POST Reject` | 5 | `moderate()`: wie `Accept` | Satz auf `rejected` | **Meilenstein 2 (1. Schreiben)** |
-| Offene Fakten kennzeichnen | Feld `pending` an Fakten | 28 | Anzeige | Überlagerung in der Leseschicht (E4) | **Meilenstein 2 (1. Schreiben)** – das Feld gibt es schon (immer `false`), die Überlagerung kommt mit der Schreibschicht |
+| Offene Änderungen anzeigen | `GET Pending` | 5 | `pending()`: `EditActions` (A+W); `AnniversaryWorker` (A, Benachrichtigung im Hintergrund) | `change_set`/`change_step` lesen; `Info.trees[].pending` zählen | **vorhanden** (Meilenstein 2, Schritt 1) |
+| Annehmen | `POST Accept` | 5 | `moderate()`: `EditActions`, `HomeSection` (A+W) | Schritte anwenden, Konflikt mit geändertem Stand erkennen (Anhang A) | **vorhanden** (Meilenstein 2, Schritt 1) |
+| Verwerfen | `POST Reject` | 5 | `moderate()`: wie `Accept` | Satz auf `rejected` | **vorhanden** (Meilenstein 2, Schritt 1) |
+| Offene Fakten kennzeichnen | Feld `pending` an Fakten | 28 | Anzeige | Überlagerung in der Leseschicht (E4) | **vorhanden** (Meilenstein 2, Schritt 1) |
 | Änderungsverlauf | `GET Changes` | 30 | `changes()`: `AenderungenFenster` (W) | Protokoll aus `change_set` (angenommen, offen, verworfen) mit Verfasser und Zeit, je Baum und je Datensatz | später – Stufe 30 |
 
 ### 2.5 Medien, Hauptbild, Ausschnitte
@@ -339,8 +346,8 @@ bleibt damit aus. (3) Eine eigene, nur lesende Personenseite (Fähigkeit
 
 | Bereich | Meilenstein 2 | später | nie |
 |---|---|---|---|
-| Schreiben | `Fact`, `DeleteFact`, `AddIndividual`, `Unlink`, `DeleteRecord`, `Link` | `Association`, `Reorder` | – |
-| Moderation | `Pending`, `Accept`, `Reject`, `pending` an Fakten | `Changes` | – |
+| Schreiben | `Fact`, `DeleteFact`, `AddIndividual`, `Unlink`, `DeleteRecord`, `Link` – vorhanden | `Association`, `Reorder` | – |
+| Moderation | `Pending`, `Accept`, `Reject`, `pending` an Fakten – vorhanden | `Changes` | – |
 | Fotos | `MediaList`, `Media` (hochladen, verknüpfen), `UnlinkMedia`, `PrimaryMedia`, Vorschaubilder | `MediaFromFile`, `MediaObject`, `MediaCrop`, `Portrait`, `GET MediaObject` | – |
 | Lesen | `Export` | `lang`, `Relationship`, Bäume ausblenden | – |
 | Anmeldung, Konten | Koppeln (`Pair`) | `MyAccount`, Passwort im Browser | Registrierung |
@@ -354,10 +361,11 @@ bleibt damit aus. (3) Eine eigene, nur lesende Personenseite (Fähigkeit
 
 Neue Bausteine, die Meilenstein 2 braucht:
 
-1. Schreibschicht mit Moderation und Protokoll (2.0).
+1. Schreibschicht mit Moderation und Protokoll (2.0) – vorhanden.
 2. Dateiablage für hochgeladene Medien und verkleinerte Vorschaubilder
    mit Pillow (Lizenz MIT-CMU; vor dem Einbau in DEPENDENCIES.md prüfen).
 3. `Export`: Leseschicht über alle Personen und Familien, seitenweise.
 4. In der Kontendatei: Einmal-Codes zum Koppeln, Merkliste.
 5. Jahrestage: Suche nach Monat und Tag über die Datumsbereiche.
-6. `Info.features` (E17) mit jeder fertigen Fähigkeit erweitern.
+6. `Info.features` (E17) mit jeder fertigen Fähigkeit erweitern – bisher
+   `read`, `write`, `moderation`.

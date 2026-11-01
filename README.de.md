@@ -14,9 +14,13 @@ Täufling, Eltern und Paten mit ihrer Rolle hängen; Orte haben datierte Namen u
 
 - GEDCOM 5.5.1 mit GEDCOM-L einlesen. Jede Zeile wird übernommen oder bleibt als Rest an ihrer Stelle; der
   Importbericht zählt beides und nennt unsichere Ortszuordnungen.
-- Die Schnittstelle [api4wisetrees v1](docs/API-V1.md) lesend: Personenliste und Suche, Person, Familie, Vorfahren,
-  Nachkommen, Faktenarten, Bilder. Sichtbarkeit je Rolle (Besucher, Mitglied, Bearbeiter, Moderator, Verwalter)
-  einschließlich Schutz lebender Personen.
+- Die Schnittstelle [api4wisetrees v1](docs/API-V1.md) zum Lesen: Personenliste und Suche, Person, Familie,
+  Vorfahren, Nachkommen, Faktenarten, Bilder. Sichtbarkeit je Rolle (Besucher, Mitglied, Bearbeiter, Moderator,
+  Verwalter) einschließlich Schutz lebender Personen.
+- Schreiben über v1 mit Moderation: Fakten anlegen, ändern und löschen; Personen anlegen, verknüpfen und lösen,
+  Personen und Familien löschen. Änderungen von Bearbeitern bleiben offen, bis ein Moderator oder Verwalter sie
+  annimmt oder verwirft; offene Änderungen sehen Bearbeiter und höher, Besucher und Mitglieder nie. Mit Vertragstests
+  gegen die Referenz geprüft; in den Apps noch nicht ausprobiert.
 - wtTux zeigt den Falkenrath-Demobaum aus wisetrees: Baum, Navigator, Personentafel mit Paten, Quellen und Fotos.
   wtAnd nutzt denselben Kern; der Test am Gerät steht aus.
 - Konten, Rollen je Baum, Sitzungen; Betrieb als Docker-Container (nicht als root).
@@ -29,7 +33,8 @@ Täufling, Eltern und Paten mit ihrer Rolle hängen; Orte haben datierte Namen u
 
 **Was fehlt**
 
-- Schreiben (Fakten, Personen, Medien) und das Freigeben offener Änderungen.
+- Medien hochladen und die übrigen Teile von Meilenstein 2: der ganze Baum seitenweise für die Apps, Gerät koppeln,
+  Merkliste, Jahrestage.
 - GEDCOM-Export und der Rundlauf-Test Import → Export → Import.
 - GEDCOM 7.0, Zeichensatz ANSEL.
 - PostgreSQL und MariaDB als Alternative zu SQLite.
@@ -37,8 +42,9 @@ Täufling, Eltern und Paten mit ihrer Rolle hängen; Orte haben datierte Namen u
 
 **Als Nächstes**
 
-Schreiben in v1 (mit offenen Änderungen, die nur Bearbeiter und höher sehen), danach der GEDCOM-Export. Das Konzept
-mit allen Entscheidungen steht in [docs/KONZEPT.md](docs/KONZEPT.md).
+Die übrigen Teile von Meilenstein 2 in der Reihenfolge von [docs/FUNKTIONEN.md](docs/FUNKTIONEN.md) 1.3: Fotos
+(hochladen, verknüpfen, Hauptbild, Vorschaubilder), der ganze Baum seitenweise, Gerät koppeln, Merkliste, Jahrestage.
+Das Konzept mit allen Entscheidungen steht in [docs/KONZEPT.md](docs/KONZEPT.md).
 
 ## Ausprobieren
 

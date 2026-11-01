@@ -49,7 +49,7 @@ def _aufbauen(app, einstellungen, server):
     importieren(GED.encode(), einstellungen.baeume / "probe.wise")
     k = app.state.konten
     for name, rolle in (("mitglied", "member"), ("bearbeiter", "editor"), ("moderator", "moderator")):
-        k.anlegen(name, PASSWORT)
+        k.anlegen(name, PASSWORT, real_name="Probe-Bearbeiter" if name == "bearbeiter" else "")
         k.rolle_setzen(name, "probe", rolle)
     s = {r: _anmelden(server, r) for r in ("mitglied", "bearbeiter", "moderator")}
     s[None] = _anmelden(server, None)
@@ -116,8 +116,9 @@ def test_moderation(app, einstellungen, server):
     s = _aufbauen(app, einstellungen, server)
     m = s["moderator"]
     p = m.get("Pending", "probe", {}).json["data"]
+    # users: Anzeigenamen der Konten (wie Info.user.realName)
     assert [(d["xref"], d["type"], d["kind"], d["changes"], d["users"]) for d in p] == [
-        ("I1", "INDI", "changed", 3, ["bearbeiter"]), ("F1", "FAM", "changed", 1, ["bearbeiter"])]
+        ("I1", "INDI", "changed", 3, ["Probe-Bearbeiter"]), ("F1", "FAM", "changed", 1, ["Probe-Bearbeiter"])]
     assert m.get("Info", None, {}).json["trees"][0]["pending"] == 2
     assert s["bearbeiter"].post("Accept", "probe", {"xref": "I1"}, {}).json["error"] == "not-moderator"
     assert m.post("Accept", "probe", {"xref": "I9"}, {}).json["error"] == "not-found"

@@ -12,6 +12,12 @@ Prüfen einen Server darauf, ob er die Routen von v1 so beantwortet wie festgele
 - **Fehlerantworten**: HTTP 200 mit `{ok: false, error, status}`, nie 401/407.
 - **Abläufe**: Anmelden, Abmelden, falsches Passwort, falsches CSRF-Token beim Anmelden und beim Schreiben
   (302 ohne JSON), unbekannte Route (404 ohne JSON), Porträt lädt mit der Sitzung.
+- **Schreibfälle** (`schreibfaelle.py`, `aufzeichnungen/schreiben/`): 33 Abläufe aus Schreiben und Lesen mit
+  verschiedenen Rollen – Fakten ändern und löschen, Personen anlegen, verknüpfen und löschen, offene Änderungen
+  sehen, annehmen und verwerfen. Vor jedem Ablauf wird die Baumdatei auf den Ausgangsstand zurückgesetzt, „sofort
+  annehmen“ wird je Ablauf gesetzt. Kennungen, die ein Server selbst vergibt (neue Personen und Familien), stehen im
+  Vergleich als `<neu1>`, `<neu2>` …. Nur gegen wisetrees, mit `WT_VERTRAG_BAUMDATEI` (setzt
+  `vertrag.wisetrees`).
 
 `aufzeichnungen/stand.json` nennt Stufe, Baum, Prüfsumme der Datei und das Datum der Aufzeichnung. Lebend/verstorben
 und Altersangaben hängen vom Datum ab; wisetrees läuft in den Tests deshalb mit diesem Datum als „heute“.

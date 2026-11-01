@@ -56,8 +56,8 @@ def test_app_seite_nennt_die_adresse(server):
 
 
 def test_info_meldet_features(server):
-    """E17: Info.features nennt die vollständig angebotenen Fähigkeiten (Meilenstein 1: nur lesen)."""
-    assert Sitzung(server).info()["features"] == ["read"]
+    """E17: Info.features nennt die vollständig angebotenen Fähigkeiten (Meilenstein 2: Schreiben mit Moderation)."""
+    assert Sitzung(server).info()["features"] == ["read", "write", "moderation"]
 
 
 def test_url_felder_zeigen_auf_die_startseite(einstellungen, server):

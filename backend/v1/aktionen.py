@@ -10,10 +10,11 @@ from core.konten import ROLLEN
 from .http import GET_AKTIONEN, Kontext
 from .sicht import nur_mitglieder
 
-# Stufe, die wisetrees meldet (Info.api). Stufe 1: lesender Teil vollständig, Schreibrouten fehlen noch
-# (docs/API-V1.md 5). Die Zahl wird mit jeder erfüllten Stufe angehoben (KONZEPT.md 4.1).
+# Stufe, die wisetrees meldet (Info.api). Stufe 1: alle Routen der Stufe 1 außer Media (Hochladen kommt mit der
+# Fähigkeit photos; docs/API-V1.md 6). Die Zahl wird mit jeder erfüllten Stufe angehoben (KONZEPT.md 4.1).
 API_STUFE = 1
-FEATURES = ["read"]
+# E17: Fähigkeiten, die wisetrees vollständig anbietet (docs/FUNKTIONEN.md 1.4)
+FEATURES = ["read", "write", "moderation"]
 WILLKOMMEN = "Jeder mit einem Benutzerkonto kann auf diese Website zugreifen."
 
 
@@ -57,7 +58,6 @@ def info(ctx: Kontext) -> dict:
         })
     return {
         "api": API_STUFE,
-        # E17: Fähigkeiten, die wisetrees vollständig anbietet (docs/FUNKTIONEN.md 1.4)
         "features": FEATURES,
         "module": VERSION,
         "webtrees": f"wisetrees {VERSION}",

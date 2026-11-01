@@ -14,9 +14,13 @@ and the godparents attached in their roles; places have dated names and a dated 
 
 - Importing GEDCOM 5.5.1 with GEDCOM-L. Every line is either taken over or kept as a remainder in its place; the
   import report counts both and lists uncertain place assignments.
-- The interface [api4wisetrees v1](docs/API-V1.md), read-only: list and search of individuals, individual, family,
+- The interface [api4wisetrees v1](docs/API-V1.md) for reading: list and search of individuals, individual, family,
   ancestors, descendants, fact types, images. Visibility per role (visitor, member, editor, moderator, manager)
   including protection of living people.
+- Writing through v1 with moderation: add, change and delete facts; add individuals, link and unlink them, delete
+  individuals and families. Changes by editors stay pending until a moderator or manager accepts or rejects them;
+  editors and above see pending changes, visitors and members never do. Checked against the reference by contract
+  tests; not yet tried in the apps.
 - wtTux shows the Falkenrath demo tree from wisetrees: tree, navigator, person panel with godparents, sources
   and photos. wtAnd uses the same core; a test on a device is still to come.
 - Accounts, roles per tree, sessions; runs as a Docker container (not as root).
@@ -31,7 +35,8 @@ and the godparents attached in their roles; places have dated names and a dated 
 
 **What is missing**
 
-- Writing (facts, individuals, media) and accepting pending changes.
+- Uploading media and the other parts of milestone 2: the whole tree page by page for the apps, pairing a device,
+  bookmarks, anniversaries.
 - GEDCOM export and the round-trip test import → export → import.
 - GEDCOM 7.0, ANSEL character set.
 - PostgreSQL and MariaDB as alternatives to SQLite.
@@ -39,7 +44,8 @@ and the godparents attached in their roles; places have dated names and a dated 
 
 **Next**
 
-Writing in v1 (with pending changes visible only to editors and above), then GEDCOM export. The concept with all
+The other parts of milestone 2 in the order of [docs/FUNKTIONEN.md](docs/FUNKTIONEN.md) 1.3: photos (upload, link,
+main photo, thumbnails), the whole tree page by page, pairing a device, bookmarks, anniversaries. The concept with all
 decisions is in [docs/KONZEPT.md](docs/KONZEPT.md) (German).
 
 ## Try it
