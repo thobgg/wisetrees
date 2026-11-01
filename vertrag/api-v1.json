@@ -168,6 +168,24 @@
           },
           "webtrees": {
            "type": "string"
+          },
+          "features": {
+           "type": "array",
+           "items": {
+            "type": "string",
+            "enum": [
+             "read",
+             "write",
+             "moderation",
+             "photos",
+             "export",
+             "pair",
+             "bookmarks",
+             "anniversaries",
+             "languages",
+             "relationship"
+            ]
+           }
           }
          },
          "required": [

@@ -29,6 +29,9 @@ PLATZHALTER = {
 # wird nur die Form (Schema). Entschieden am 01.11.2026.
 SERVERWERTE = {"availableModules", "maxUpload", "rewriteUrls"}
 
+# Felder, die erst api4wisetrees v1 kennt (E17); im Vergleich mit den Aufzeichnungen ausgelassen, Form per Schema.
+NUR_WISETREES = {"features"}
+
 # Schlüssel mit Kennungen, die je Antwort durchnummeriert werden. Ein Fakt heißt in `facts[]` „id“,
 # in Verweisen darauf „factId“ – beide teilen sich eine Nummerierung.
 KENNUNGEN = {"factId": "fact", "id": "fact"}
@@ -48,7 +51,7 @@ def normalisieren(wert, basis: str):
         if schluessel in SERVERWERTE:
             return "<server>"
         if isinstance(x, dict):
-            return {k: lauf(v, k) for k, v in x.items()}
+            return {k: lauf(v, k) for k, v in x.items() if k not in NUR_WISETREES}
         if isinstance(x, list):
             return [lauf(v, schluessel) for v in x]
         if schluessel == "api" and isinstance(x, int):

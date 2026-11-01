@@ -53,3 +53,8 @@ def test_app_seite_nennt_die_adresse(server):
     a = s.holen(s.url("/familie/wisetrees/app"))
     text = a.daten.decode()
     assert a.status == 200 and f"<code>{server}/familie</code>" in text
+
+
+def test_info_meldet_features(server):
+    """E17: Info.features nennt die vollständig angebotenen Fähigkeiten (Meilenstein 1: nur lesen)."""
+    assert Sitzung(server).info()["features"] == ["read"]

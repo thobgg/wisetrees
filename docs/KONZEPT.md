@@ -224,6 +224,11 @@ Was über die Schemata hinaus gilt (Adressform, Anmeldeformular, Cookie,
 CSRF mit 302, Fehler als HTTP 200, Bildadressen, Sichtbarkeit), steht in
 [API-V1.md](API-V1.md).
 
+**Fähigkeiten (E17):** `Info.features` nennt, was wisetrees
+vollständig anbietet; die Apps richten sich zuerst danach und erst ohne
+dieses Feld nach der Stufe. So muss wisetrees nicht jede Stufe
+vollständig bauen, um eine einzelne Funktion freizugeben.
+
 **Routen von Meilenstein 1 (lesend):** `Info`, `/login`, `/logout`,
 `Individuals`, `Individual`, `Family`, `Pedigree`, `Descendants`, `Tags`
 und die Bildauslieferung für `thumb`. Danach `Pair`, `Anniversaries`,
@@ -408,6 +413,8 @@ Entschieden am 01.11.2026.
 | E13 | Austauschformat | WTX (ZIP + JSON + Medien, eigene offene Spezifikation), nur vorgesehen, Entwurf nach Meilenstein 1 |
 | E14 | Desktop-Modus | **vorgesehen, nach Meilenstein 1**: dasselbe Backend öffnet statt eines Verzeichnisses eine einzelne `.wise`-Datei, gestartet von wtWin, ohne Konten, nur auf 127.0.0.1 und mit Zufalls-Token erreichbar. Die Architektur darf das nicht verbauen (siehe 7) |
 | E15 | Ortsangaben am Ereignis | **a** – am Ereignis vermerken, welche Angaben des Ortes es nannte; Werte, die der Ort nicht kennt, bleiben Rest am Ereignis (3.5); v2 kann die zum Datum gültigen Angaben ableiten (4.2) |
+| E16 | Datenbank | **SQLite Standard**; **PostgreSQL als Option** mit dem Treiber `pg8000`; **MariaDB vorbereitet** mit `PyMySQL`, gebaut nur auf Nachfrage. Das Schema ist schon in Teil 1 MariaDB-tauglich: feste Längen, keine Indizes mit Bedingung, exakte Vergleiche. Die Eindeutigkeitsregeln bleiben dabei gleich streng, mit Tests belegt. Wie Bäume in MariaDB abgelegt werden (Datenbank je Baum oder Tabellenpräfix), wird erst entschieden, wenn MariaDB drankommt |
+| E17 | Fähigkeiten statt Stufen | `Info` meldet zusätzlich `features`: die Fähigkeiten, die wisetrees **vollständig** anbietet (`read`, `write`, `moderation`, `photos`, `export`, `pair`, `bookmarks`, `anniversaries`, `languages`, `relationship`; Umfang je Fähigkeit in [FUNKTIONEN.md](FUNKTIONEN.md) 1.4). Die Apps prüfen zuerst `features`, fehlt das Feld, gilt die Stufe. Änderung in den Apps erst nach Freigabe. Meilenstein 2 nach Nutzen: Schreiben mit Moderation, Fotos mit Hochladen und Vorschaubildern, Export, Koppeln, Merkliste, Jahrestage |
 
 **Prüfung zu E12 (01.11.2026):**
 
