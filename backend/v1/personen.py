@@ -111,8 +111,9 @@ class Bau:
     def bild_url(self, med) -> str:
         return self.ctx.adresse(f"/wisetrees/medien/{self.ctx.baum_name}/{med.xref or med.id}")
 
-    def seiten_url(self, art: str, xref: str) -> str:
-        return self.ctx.adresse(f"/tree/{self.ctx.baum_name}/{art}/{xref}")
+    def seiten_url(self) -> str:
+        """Ziel der url-Felder: die Startseite (wisetrees hat keine eigenen Datensatzseiten)."""
+        return self.ctx.basis() + "/index.php"
 
     # ── Kurzform ───────────────────────────────────────────────────────────────────────────────────
 
@@ -146,7 +147,7 @@ class Bau:
             "buri": self.ereignis_json(buri.date_text, buri.place_text) if buri else None,
             "occupation": beruf,
             "thumb": self.bild_url(bild[0]) if bild else None,
-            "url": self.seiten_url("individual", p.xref),
+            "url": self.seiten_url(),
         }
         if mit_zahlen:
             j["hasParents"] = bool(p.famc)

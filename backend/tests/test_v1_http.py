@@ -58,3 +58,13 @@ def test_app_seite_nennt_die_adresse(server):
 def test_info_meldet_features(server):
     """E17: Info.features nennt die vollständig angebotenen Fähigkeiten (Meilenstein 1: nur lesen)."""
     assert Sitzung(server).info()["features"] == ["read"]
+
+
+def test_url_felder_zeigen_auf_die_startseite(einstellungen, server):
+    from gedcom.import551 import importieren
+    ged = b"0 HEAD\n1 GEDC\n2 VERS 5.5.1\n1 CHAR UTF-8\n0 @I1@ INDI\n1 NAME Alt /Tot/\n1 DEAT Y\n0 TRLR\n"
+    importieren(ged, einstellungen.baeume / "probe.wise")
+    s = Sitzung(server + "/familie")
+    url = s.get("Individual", "probe", {"xref": "I1"}).json["person"]["url"]
+    assert url == server + "/familie/index.php"
+    assert "wisetrees läuft" in s.holen(url).daten.decode()

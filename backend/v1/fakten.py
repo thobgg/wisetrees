@@ -166,7 +166,7 @@ class Fakten:
             adresse = self.bau.bild_url(med)
             aus.append({"xref": med.xref, "title": titel or med.title or "", "mime": MIME.get(f, "application/octet-stream"),
                         "isImage": bild, "thumb": adresse if bild else None, "file": adresse,
-                        "url": self.bau.seiten_url("media", med.xref or str(med.id)), "path": pfad, "type": typ or None,
+                        "url": self.bau.seiten_url(), "path": pfad, "type": typ or None,
                         "format": fmt or None})
         return aus
 
@@ -461,7 +461,7 @@ class Fakten:
         return {
             "xref": f.xref,
             "name": self.familien_name(f),
-            "url": self.bau.seiten_url("family", f.xref),
+            "url": self.bau.seiten_url(),
             "husband": self.bau.person_kurz(f.partner[1], mit_zahlen) if 1 in f.partner else None,
             "wife": self.bau.person_kurz(f.partner[2], mit_zahlen) if 2 in f.partner else None,
             "spouse": self.bau.person_kurz(partner, mit_zahlen) if partner else None,
@@ -582,7 +582,7 @@ def _gegenrichtung(fk: Fakten, pid: int) -> list[dict]:
             "record": rec.xref, "recordType": art, "name": name, "tag": r["type"], "label": label,
             "factId": f"E{r['haupt']}", "date": datum, "place": bau.ort_json(r["place_text"]), "rela": r["rela"] or "",
             "role": rolle, "label2": rolle_label(r["rela"], rolle, p.sex), "level1": False,
-            "url": bau.seiten_url("individual" if art == "INDI" else "family", rec.xref), "husband": mann, "wife": frau,
+            "url": bau.seiten_url(), "husband": mann, "wife": frau,
         })
     reihe = sorted(range(len(eintraege)), key=lambda i: (eintraege[i]["date"]["jd"] if eintraege[i]["date"] else 2**63, i))
     return [eintraege[i] for i in reihe]

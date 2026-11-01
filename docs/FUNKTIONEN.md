@@ -326,18 +326,14 @@ Baum stehen und erst danach in die Dateien geschrieben werden.
 | GEDCOM oder GEDZIP speichern | `POST /tree/{Baum}/export-client` (Formular, Verwalter) | `exportGedcom()`: `GedcomSpeichernDialog` in `ArchivFenster` (W), nur für den Stammbaum auf diesem PC | **nie** in dieser Form – wisetrees exportiert GEDCOM über die eigene Browser-Seite; für den Desktop-Modus (E14) wird der Weg dort neu festgelegt |
 | Seiten im Browser öffnen | Felder `url` in den Antworten | Personentafel: Knopf „im Browser öffnen“, **immer sichtbar**, öffnet `url` in der eingebauten Browseransicht; Teilen einer Person nur mit nicht leerer `url` (sie steht im geteilten Text); Bildbetrachter: Knopf nur mit Adresse; PDF-Ansicht: `url` als Herkunft | siehe Vorschlag unten |
 
-**Vorschlag zu `url`:** Heute führt der immer sichtbare Knopf auf eine
-leere Seite. (1) **Sofort, ohne App-Änderung**: `url` zeigt auf die
-Startseite von wisetrees statt auf eine Adresse, unter der nichts liegt.
-(2) **Mit der App-Änderung zu E17**: Die Apps zeigen den Knopf nur, wenn
-`url` nicht leer ist; wisetrees liefert dann `""`, bis es eine Seite
-gibt. Teilen bleibt damit vorerst aus. (3) **Später, eigene Fähigkeit
-`web`**: eine schlichte, nur lesende Personenseite im Browser mit
-derselben Sichtbarkeit. Erst damit ergibt Teilen einen Sinn – ein
-geteilter Link öffnet bei Verwandten die Person. Das wäre eine kleine
-Ausnahme von KONZEPT 7 (keine Familien-Webseite) und vorher zu
-entscheiden.
 | Geteilte Links erkennen | Adressen `/tree/{Baum}/individual/{xref}` u. ä. | `GeteilteLinks.kt` (A+W) | später – nur nötig, wenn Nachrichten (Stufe 42) Links auf Datensätze enthalten |
+
+**Entschieden zu `url`:** (1) `url` zeigt auf die Startseite von
+wisetrees, nicht auf eine Adresse, unter der nichts liegt – umgesetzt.
+(2) Mit der App-Änderung zu E17 zeigen die Apps den Knopf nur, wenn
+`url` nicht leer ist; danach liefert wisetrees `""`. Teilen einer Person
+bleibt damit aus. (3) Eine eigene, nur lesende Personenseite (Fähigkeit
+`web`) vorerst nicht.
 
 ## 5. Zusammenfassung
 

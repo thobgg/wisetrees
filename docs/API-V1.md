@@ -80,4 +80,5 @@ Stand: Stufe 1, **lesend vollständig** (siehe 6).
 ## 7. Nicht Teil von v1
 
 Die Apps kennen noch weitere Wege (Export einer GEDCOM-Datei über eine Webseite, Archiv-Routen, Seiten im Browser
-über die `url`-Felder). wisetrees bietet sie nicht an; die Apps fangen ihr Fehlen ab.
+über die `url`-Felder). wisetrees bietet sie nicht an; die Apps fangen ihr Fehlen ab. Die `url`-Felder zeigen auf die
+Startseite von wisetrees.
