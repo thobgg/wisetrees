@@ -27,7 +27,7 @@ oder eine veröffentlichte Spezifikation ihn belegt.
 
 | Punkt | Belegt durch | Stand |
 | ----- | ------------ | ----- |
-| GEDCOM 5.5.1 ohne Verlust | Rundlauf-Test Import → Export → Import (Abschnitt 6) | Import da, Export und Rundlauf offen |
+| GEDCOM 5.5.1 ohne Verlust | Rundlauf-Test Import → Export → Import (Abschnitt 6) | erfüllt für Falkenrath 1.7.1: gleicher Modellauszug, Export → Import → Export bitgenau (`test_export551.py`) |
 | GEDCOM 7.0 ohne Verlust | Rundlauf-Test wie oben | offen |
 | `.wise` ist offenes SQLite | Datei mit jedem SQLite-Werkzeug lesbar; Schema dokumentiert (`docs/SCHEMA.md`, aus dem Code erzeugt, Test prüft den Stand) | erfüllt |
 | WTX mit offener Spezifikation | Spezifikation im Repository, Rundlauf-Test (E13) | vorgesehen |
