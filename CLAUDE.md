@@ -10,6 +10,8 @@ Diese Regeln gelten für jede Sitzung in diesem Repository.
 - Die Schnittstelle api4wisetrees v1: [docs/API-V1.md](docs/API-V1.md) und `vertrag/api-v1.json`. v1 ist fest; die
   Routen bleiben im Code unverändert und unkommentiert.
 - Abhängigkeiten mit Lizenz: [docs/DEPENDENCIES.md](docs/DEPENDENCIES.md).
+- Das Schema der Datenbanken steht in [docs/SCHEMA.md](docs/SCHEMA.md); die Datei wird mit
+  `python werkzeuge/schema_doku.py` aus dem Code erzeugt, nie von Hand bearbeitet.
 
 ## Arbeitsweise
 

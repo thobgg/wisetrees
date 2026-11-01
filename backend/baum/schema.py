@@ -52,8 +52,9 @@ def _genau_eine(spalten) -> str:
     return " + ".join(f"(CASE WHEN {s} IS NOT NULL THEN 1 ELSE 0 END)" for s in spalten) + " = 1"
 
 
-def _tabelle(name: str, *teile) -> Table:
-    return Table(name, metadata, Column("id", Integer, primary_key=True), *teile, sqlite_autoincrement=True)
+def _tabelle(name: str, kommentar: str, *teile) -> Table:
+    return Table(name, metadata, Column("id", Integer, primary_key=True, comment="interne Kennung, ändert sich nie (E1)"),
+                 *teile, sqlite_autoincrement=True, comment=kommentar)
 
 
 def _ref(tabelle: str, *, pflicht: bool = False, beim_loeschen: str = "CASCADE", spalte: str | None = None) -> Column:
@@ -61,12 +62,13 @@ def _ref(tabelle: str, *, pflicht: bool = False, beim_loeschen: str = "CASCADE",
                   nullable=not pflicht)
 
 
-def _sort(name: str = "sort") -> Column:
-    return Column(name, Integer, nullable=False)
+def _sort(name: str = "sort", kommentar: str | None = None) -> Column:
+    return Column(name, Integer, nullable=False, comment=kommentar or "Reihenfolge")
 
 
-def _flag(name: str) -> list:
-    return [Column(name, Integer, nullable=False, server_default=text("0")), CheckConstraint(f"{name} IN (0, 1)")]
+def _flag(name: str, kommentar: str | None = None) -> list:
+    return [Column(name, Integer, nullable=False, server_default=text("0"), comment=kommentar),
+            CheckConstraint(f"{name} IN (0, 1)")]
 
 
 def _datum(p: str = "") -> list:
@@ -87,8 +89,9 @@ def _resn() -> list:
     return [Column("resn", Text), CheckConstraint(f"resn IN ({_liste(('none', 'privacy', 'confidential', 'locked'))})")]
 
 
-def _xref(pflicht: bool = True) -> Column:
-    return Column("xref", String(XREF_LAENGE), nullable=not pflicht, unique=True)
+def _xref(pflicht: bool = True, kommentar: str | None = None) -> Column:
+    return Column("xref", String(XREF_LAENGE), nullable=not pflicht, unique=True,
+                  comment=kommentar or "GEDCOM-Kennung ohne @ (I12, F3 …)")
 
 
 def _traeger(tabelle: str) -> list:
@@ -121,11 +124,12 @@ meta = Table(
     "meta", metadata,
     Column("key", String(XREF_LAENGE), primary_key=True),
     Column("value", Text),
+    comment="Angaben zur Datei: title, gedcom_head (Kopf der eingelesenen Datei), import_report (Importbericht)",
 )
 
 # Personen und Namen (3.2) --------------------------------------------------------------------------------------
 person = _tabelle(
-    "person",
+    "person", "Person (3.2); Namen, Ereignisse und Familien hängen über eigene Tabellen an",
     _xref(),
     Column("sex", Text, nullable=False, server_default=text("'U'")),
     Column("uid", Text),
@@ -135,7 +139,7 @@ person = _tabelle(
 )
 
 name = _tabelle(
-    "name",
+    "name", "Name einer Person mit seinen Teilen (NAME mit GIVN, SURN, NICK, _RUFNAME …)",
     _ref("person", pflicht=True),
     _sort(),
     Column("type", Text),
@@ -155,7 +159,7 @@ name = _tabelle(
 
 # Familien und Abstammung (3.4) ---------------------------------------------------------------------------------
 family = _tabelle(
-    "family",
+    "family", "Familie als eigenes Objekt (E2); Mitglieder in family_member",
     _xref(),
     Column("uid", Text),
     Column("changed_at", Text),
@@ -163,12 +167,12 @@ family = _tabelle(
 )
 
 family_member = _tabelle(
-    "family_member",
+    "family_member", "Partner und Kinder einer Familie",
     _ref("family", pflicht=True),
     _ref("person", pflicht=True),
     Column("role", String(20), nullable=False),
-    _sort(),                 # Reihenfolge in der Familie (Partner 1 = HUSB, 2 = WIFE)
-    _sort("person_sort"),    # Reihenfolge in der Liste der Person (FAMS/FAMC)
+    _sort(kommentar="Reihenfolge in der Familie (Partner 1 = HUSB, 2 = WIFE)"),
+    _sort("person_sort", kommentar="Reihenfolge in der Liste der Person (FAMS/FAMC)"),
     CheckConstraint("role IN ('partner', 'child')"),
     UniqueConstraint("family_id", "person_id", "role"),
     Index("family_member_person", "person_id"),
@@ -176,12 +180,12 @@ family_member = _tabelle(
 
 # Abstammungsart je Paar aus Kind und Elternteil (3.4)
 parentage = _tabelle(
-    "parentage",
+    "parentage", "Abstammungsart je Paar aus Kind und Elternteil (leiblich, adoptiert, Pflege …)",
     _ref("family", pflicht=True),
     _ref("person", pflicht=True, spalte="child_id"),
     _ref("person", pflicht=True, spalte="parent_id"),
     Column("kind", Text, nullable=False, server_default=text("'birth'")),
-    Column("status", Text),  # GEDCOM FAMC:STAT (challenged, proven, disproven)
+    Column("status", Text, comment="GEDCOM FAMC:STAT (challenged, proven, disproven)"),
     CheckConstraint(f"kind IN ({_liste(('birth', 'adopted', 'foster', 'step', 'sealing', 'unknown'))})"),
     UniqueConstraint("family_id", "child_id", "parent_id"),
     Index("parentage_child", "child_id"),
@@ -190,8 +194,8 @@ parentage = _tabelle(
 
 # Orte (3.5) ----------------------------------------------------------------------------------------------------
 place = _tabelle(
-    "place",
-    _xref(pflicht=False),    # nur Orte, die als _LOC kamen oder als _LOC gehen
+    "place", "Ort (3.5); Namen, Arten, Zugehörigkeiten und Angaben datiert in eigenen Tabellen",
+    _xref(pflicht=False, kommentar="nur Orte, die als _LOC kamen oder als _LOC gehen"),
     Column("gov_id", Text),
     Column("lat", Double),   # Double: in MariaDB ist FLOAT nur einfach genau
     Column("lng", Double),
@@ -201,7 +205,7 @@ place = _tabelle(
 )
 
 place_name = _tabelle(
-    "place_name",
+    "place_name", "Name eines Ortes, datiert, mit Sprache und Kurzform",
     _ref("place", pflicht=True),
     _sort(),
     Column("name", Text, nullable=False),
@@ -213,7 +217,7 @@ place_name = _tabelle(
 )
 
 place_type = _tabelle(
-    "place_type",
+    "place_type", "Art eines Ortes, datiert, mit GOV-Typnummer",
     _ref("place", pflicht=True),
     _sort(),
     Column("type_text", Text),
@@ -223,7 +227,7 @@ place_type = _tabelle(
 
 # Ort A liegt in Ort B, datiert, mit Art der Zugehörigkeit (POLI, RELI …)
 place_link = _tabelle(
-    "place_link",
+    "place_link", "Ort A liegt in Ort B, datiert, mit Art der Zugehörigkeit (POLI, RELI …)",
     _ref("place", pflicht=True),
     _ref("place", pflicht=True, spalte="parent_id"),
     Column("kind", Text),
@@ -236,7 +240,7 @@ place_link = _tabelle(
 
 # Weitere datierte Angaben am Ort: postal, aidn, demographics, state, country, religion
 place_attribute = _tabelle(
-    "place_attribute",
+    "place_attribute", "Weitere datierte Angaben am Ort: Postleitzahl, Amtliche Kennung, Einwohner, Land, Religion",
     _ref("place", pflicht=True),
     Column("kind", Text, nullable=False),
     Column("value", Text, nullable=False),
@@ -248,14 +252,14 @@ place_attribute = _tabelle(
 
 # Ereignisse und Beteiligte (3.3) -------------------------------------------------------------------------------
 event = _tabelle(
-    "event",
-    Column("type", Text, nullable=False),     # GEDCOM-Tag: BIRT, CHR, MARR, OCCU, RESI, EVEN, _XYZ …
-    Column("subtype", Text),                  # 2 TYPE
-    Column("value", Text),                    # Wert (OCCU Bauer, RELI evangelisch, Y)
-    Column("description", Text),              # freie Beschreibung
-    *_flag("negated"),                        # hat nicht stattgefunden
+    "event", "Ereignis oder Merkmal (3.3); die Beteiligten stehen in event_role",
+    Column("type", Text, nullable=False, comment="GEDCOM-Tag: BIRT, CHR, MARR, OCCU, RESI, EVEN, _XYZ …"),
+    Column("subtype", Text, comment="2 TYPE"),
+    Column("value", Text, comment="Wert (OCCU Bauer, RELI evangelisch, Y)"),
+    Column("description", Text, comment="freie Beschreibung"),
+    *_flag("negated", kommentar="hat nicht stattgefunden"),
     _ref("place", beim_loeschen="SET NULL"),
-    Column("place_text", Text),               # PLAC wie in der Quelle (E6)
+    Column("place_text", Text, comment="PLAC wie in der Quelle (E6)"),
     Column("address", Text),
     Column("cause", Text),
     Column("agency", Text),
@@ -267,20 +271,20 @@ event = _tabelle(
 )
 
 event_role = _tabelle(
-    "event_role",
+    "event_role", "Beteiligung an einem Ereignis: Hauptbeteiligte (PRINCIPAL), Paten, Zeugen …",
     _ref("event", pflicht=True),
     _ref("person"),
     _ref("family"),
     _ref("place"),
-    Column("free_name", Text),       # Beteiligter ohne Datensatz (E5): Name …
-    Column("free_addition", Text),   # … Zusatz („Bauer in Hesel“) …
-    Column("free_text", Text),       # … und der Text, wie er kam
+    Column("free_name", Text, comment="Beteiligter ohne Datensatz (E5): Name …"),
+    Column("free_addition", Text, comment="… Zusatz („Bauer in Hesel“) …"),
+    Column("free_text", Text, comment="… und der Text, wie er kam"),
     Column("role", Text, nullable=False),
-    Column("rela", Text),            # Rollentext, wie er kam (RELA); bei OTHER der Freitext
-    _sort(),                         # Reihenfolge der Beteiligten am Ereignis (PRINCIPAL: 0)
-    Column("fact_sort", Integer),    # Stelle in der Faktenliste des Trägers (nur Hauptbeteiligte)
+    Column("rela", Text, comment="Rollentext, wie er kam (RELA); bei OTHER der Freitext"),
+    _sort(kommentar="Reihenfolge der Beteiligten am Ereignis (PRINCIPAL: 0)"),
+    Column("fact_sort", Integer, comment="Stelle in der Faktenliste des Trägers (nur Hauptbeteiligte)"),
     *_flag("preferred"),
-    Column("age", Text),             # Angaben zur Person laut Eintrag (3.3)
+    Column("age", Text, comment="Angaben zur Person laut Eintrag (3.3)"),
     Column("occupation", Text),
     Column("residence", Text),
     Column("remark", Text),
@@ -297,7 +301,7 @@ event_role = _tabelle(
 # Welche Angaben des Ortes am Ereignis standen (GEDCOM: PLAC mit MAP, _GOV, _MAIDENHEAD, _POST). Die Werte liegen
 # am Ort; hier steht nur, dass das Ereignis sie nannte. Abweichende Werte bleiben Rest am Ereignis (E9, E15).
 event_place_detail = _tabelle(
-    "event_place_detail",
+    "event_place_detail", "Welche Angaben des Ortes am Ereignis standen (MAP, _GOV, _MAIDENHEAD, _POST); die Werte liegen am Ort (E15)",
     _ref("event", pflicht=True),
     _sort(),
     Column("kind", Text, nullable=False),
@@ -310,7 +314,7 @@ event_place_detail = _tabelle(
 
 # Verbindung zweier Personen ohne Ereignis (GEDCOM 5.5.1 1 ASSO)
 person_association = _tabelle(
-    "person_association",
+    "person_association", "Verbindung zweier Personen ohne Ereignis (GEDCOM 5.5.1 1 ASSO)",
     _ref("person", pflicht=True),
     _ref("person", pflicht=True, spalte="other_person_id"),
     Column("relation", Text),
@@ -319,11 +323,11 @@ person_association = _tabelle(
 
 # Quellen (3.6) -------------------------------------------------------------------------------------------------
 repository = _tabelle(
-    "repository",
+    "repository", "Archiv",
     _xref(),
     Column("name", Text),
-    Column("address", Text),         # ADDR mit CONT, wie es kam
-    Column("address_name", Text),    # GEDCOM-L ADDR:_NAME
+    Column("address", Text, comment="ADDR mit CONT, wie es kam"),
+    Column("address_name", Text, comment="GEDCOM-L ADDR:_NAME"),
     Column("adr1", Text),
     Column("city", Text),
     Column("postal_code", Text),
@@ -336,7 +340,7 @@ repository = _tabelle(
 )
 
 source = _tabelle(
-    "source",
+    "source", "Quelle (3.6)",
     _xref(),
     Column("title", Text),
     Column("abbr", Text),
@@ -350,7 +354,7 @@ source = _tabelle(
 
 # Was eine Quelle abdeckt (SOUR:DATA:EVEN)
 source_coverage = _tabelle(
-    "source_coverage",
+    "source_coverage", "Was eine Quelle abdeckt (SOUR:DATA:EVEN)",
     _ref("source", pflicht=True),
     _sort(),
     Column("events", Text),
@@ -359,7 +363,7 @@ source_coverage = _tabelle(
 )
 
 source_repository = _tabelle(
-    "source_repository",
+    "source_repository", "Wo eine Quelle liegt: Archiv mit Signatur",
     _ref("source", pflicht=True),
     _ref("repository", beim_loeschen="SET NULL"),
     _sort(),
@@ -369,14 +373,14 @@ source_repository = _tabelle(
 
 # Notizen, Medien, Aufgaben (3.7) – vor den Tabellen mit Trägerspalten, die auf sie zeigen ------------------------
 note = _tabelle(
-    "note",
-    _xref(pflicht=False),            # NULL = eingebettete Notiz
+    "note", "Notiz, als Datensatz mit Kennung oder eingebettet",
+    _xref(pflicht=False, kommentar="NULL = eingebettete Notiz"),
     Column("text", Text, nullable=False),
     *_resn(),
 )
 
 media = _tabelle(
-    "media",
+    "media", "Medienobjekt (3.7); Dateien in media_file",
     _xref(pflicht=False),
     Column("title", Text),
     Column("uid", Text),
@@ -384,7 +388,7 @@ media = _tabelle(
 )
 
 media_file = _tabelle(
-    "media_file",
+    "media_file", "Datei eines Medienobjekts, Pfad relativ zum Medienordner des Baums",
     _ref("media", pflicht=True),
     _sort(),
     Column("path", Text, nullable=False),
@@ -394,7 +398,7 @@ media_file = _tabelle(
 )
 
 task = _tabelle(
-    "task",
+    "task", "Forschungsaufgabe (_TODO) an Person, Familie oder Ort",
     *_traeger("task"),
     _sort(),
     Column("text", Text),
@@ -414,18 +418,18 @@ task = _tabelle(
 )
 
 citation = _tabelle(
-    "citation",
+    "citation", "Zitat einer Quelle an seinem Träger, mit Seite, Qualität und Text",
     *_traeger("citation"),
     _sort(),
     _ref("source", beim_loeschen="SET NULL"),
-    Column("source_text", Text),     # Zitat ohne Quellendatensatz (2 SOUR Text)
+    Column("source_text", Text, comment="Zitat ohne Quellendatensatz (2 SOUR Text)"),
     Column("page", Text),
     Column("quality", Integer),
-    Column("event_type", Text),      # SOUR:EVEN
-    Column("event_role", Text),      # SOUR:EVEN:ROLE
-    Column("data_text", Text),       # SOUR:DATA:TEXT
+    Column("event_type", Text, comment="SOUR:EVEN"),
+    Column("event_role", Text, comment="SOUR:EVEN:ROLE"),
+    Column("data_text", Text, comment="SOUR:DATA:TEXT"),
     *_datum("data_"),
-    Column("entry_id", Integer),     # Eintrag der Belegebene (E10), vorerst immer leer
+    Column("entry_id", Integer, comment="Eintrag der Belegebene (E10), vorerst immer leer"),
     *_resn(),
     CheckConstraint("quality BETWEEN 0 AND 3"),
     _traeger_regel("citation"),
@@ -434,7 +438,7 @@ citation = _tabelle(
 )
 
 note_link = _tabelle(
-    "note_link",
+    "note_link", "Verweis eines Trägers auf eine Notiz",
     _ref("note", pflicht=True),
     *_traeger("note_link"),
     _sort(),
@@ -443,7 +447,7 @@ note_link = _tabelle(
 )
 
 media_link = _tabelle(
-    "media_link",
+    "media_link", "Verweis eines Trägers auf ein Medienobjekt, mit Ausschnitt",
     _ref("media", pflicht=True),
     *_traeger("media_link"),
     _sort(),
@@ -459,18 +463,18 @@ media_link = _tabelle(
 
 # Was das Modell nicht kennt, bleibt als GEDCOM an seiner Struktur (E9) -----------------------------------------
 gedcom_rest = _tabelle(
-    "gedcom_rest",
+    "gedcom_rest", "Was das Modell nicht kennt, bleibt als GEDCOM an seiner Struktur (E9)",
     *_traeger("gedcom_rest"),
     _sort(),
-    Column("under", Text),           # Zeile, unter der der Rest stand, wenn sie selbst in Spalten aufging (PLAC, _STAT …)
-    Column("gedcom", Text, nullable=False),  # mit den Stufen aus der Datei
+    Column("under", Text, comment="Zeile, unter der der Rest stand, wenn sie selbst in Spalten aufging (PLAC, _STAT …)"),
+    Column("gedcom", Text, nullable=False, comment="mit den Stufen aus der Datei"),
     _traeger_regel("gedcom_rest"),
     *_traeger_index("gedcom_rest"),
 )
 
 # Offene Änderungen (E4 a) --------------------------------------------------------------------------------------
 change_set = _tabelle(
-    "change_set",
+    "change_set", "Offene Änderungen: ein Satz je Bearbeitung (E4 a)",
     Column("author", Text, nullable=False),
     Column("created_at", Text, nullable=False),
     Column("status", Text, nullable=False, server_default=text("'pending'")),
@@ -481,11 +485,11 @@ change_set = _tabelle(
 )
 
 change_step = _tabelle(
-    "change_step",
+    "change_step", "Einzelschritt eines Änderungssatzes",
     _ref("change_set", pflicht=True),
     _sort(),
     Column("object_type", Text, nullable=False),
-    Column("object_id", Integer),    # NULL bei Objekten, die der Satz erst anlegt
+    Column("object_id", Integer, comment="NULL bei Objekten, die der Satz erst anlegt"),
     Column("operation", Text, nullable=False),
     Column("old_json", Text),
     Column("new_json", Text),

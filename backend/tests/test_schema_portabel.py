@@ -173,3 +173,14 @@ def test_import_lehnt_zu_lange_kennung_ab(tmp_path):
     con = datei.oeffnen(tmp_path / "k.wise")
     assert con.execute(select(T("person").c.xref)).scalars().all() == ["I2"]
     con.close()
+
+
+def test_schema_doku_passt_zum_code():
+    """docs/SCHEMA.md ist aus dem Schema erzeugt und auf dem Stand (python werkzeuge/schema_doku.py)."""
+    import subprocess
+    import sys
+
+    repo = Path(__file__).resolve().parents[2]
+    r = subprocess.run([sys.executable, str(repo / "werkzeuge" / "schema_doku.py"), "--pruefen"],
+                       capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr
