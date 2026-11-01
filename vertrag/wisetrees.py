@@ -92,7 +92,8 @@ def main(argv=None) -> int:
             print(f"wisetrees läuft: {basis}", flush=True)
             p.wait()
             return 0
-        env = {**os.environ, "WT_VERTRAG_URL": basis}
+        env = {**os.environ, "WT_VERTRAG_URL": basis,
+               "WT_VERTRAG_BAUMDATEI": str(ARBEIT / "daten" / "baeume" / "falkenrath.wise")}
         return subprocess.run([sys.executable, "-m", "pytest", str(REPO / "vertrag"), *args.pytest_args],
                               env=env).returncode
     finally:

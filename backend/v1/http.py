@@ -125,6 +125,15 @@ def cookie(resp: Response, request: Request, token: str | None) -> Response:
     return resp
 
 
+def _gesperrt(request: Request, sitzung: Sitzung, baum_name: str) -> bool:
+    b = request.app.state.baeume.baum(baum_name)
+    if b is None or request.app.state.konten.rolle(sitzung.konto, baum_name) != "visitor":
+        return False
+    from .sicht import nur_mitglieder
+
+    return nur_mitglieder(b)
+
+
 def router() -> APIRouter:
     r = APIRouter()
 
@@ -150,10 +159,15 @@ def router() -> APIRouter:
         if m is None:
             m_medien = _MEDIEN.search(route)
             if m_medien and request.method == "GET" and "medien" in GET_AKTIONEN:
+                if _gesperrt(request, sitzung, m_medien.group(1)):
+                    return cookie(_umleitung(request), request, neues_token)
                 ctx = Kontext(request, sitzung, m_medien.group(1), {"xref": m_medien.group(2), **request.query_params})
                 return cookie(GET_AKTIONEN["medien"](ctx), request, neues_token)
             return cookie(_nicht_gefunden(), request, neues_token)
         aktion, baum = m.group(1), m.group(2)
+        if baum and _gesperrt(request, sitzung, baum):
+            # Baum nur für Mitglieder: Besucher bekommen die Umleitung zur Anmeldung, kein JSON (E19)
+            return cookie(_umleitung(request), request, neues_token)
         params = {k: v for k, v in request.query_params.items() if k not in ("route", "lang")}
         if request.method == "POST":
             if request.headers.get("x-csrf-token") != sitzung.csrf:

@@ -1,0 +1,10 @@
+{
+ "rolle": "besucher",
+ "aktion": "Family",
+ "params": {
+  "xref": "F8"
+ },
+ "status": 302,
+ "json": false,
+ "antwort": null
+}

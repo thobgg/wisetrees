@@ -1,0 +1,10 @@
+{
+ "rolle": "besucher",
+ "aktion": "Individual",
+ "params": {
+  "xref": "I54"
+ },
+ "status": 302,
+ "json": false,
+ "antwort": null
+}

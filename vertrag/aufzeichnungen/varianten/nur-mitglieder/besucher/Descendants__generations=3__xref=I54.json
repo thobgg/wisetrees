@@ -1,0 +1,11 @@
+{
+ "rolle": "besucher",
+ "aktion": "Descendants",
+ "params": {
+  "xref": "I54",
+  "generations": 3
+ },
+ "status": 302,
+ "json": false,
+ "antwort": null
+}

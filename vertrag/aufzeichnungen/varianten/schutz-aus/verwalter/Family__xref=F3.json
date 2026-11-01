@@ -1,0 +1,330 @@
+{
+ "rolle": "verwalter",
+ "aktion": "Family",
+ "params": {
+  "xref": "F3"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "xref": "F3",
+  "name": "Bernd Falkenrath + Karin Ilgner",
+  "url": "<url>",
+  "husband": {
+   "xref": "I8",
+   "name": "Bernd Falkenrath",
+   "sortName": "Falkenrath,Bernd",
+   "given": "Bernd",
+   "surname": "Falkenrath",
+   "sex": "M",
+   "isDead": false,
+   "private": false,
+   "access": "visitor",
+   "nameAccess": "visitor",
+   "restricted": [],
+   "lifespan": "1955–",
+   "birth": {
+    "date": {
+     "text": "3. November 1955",
+     "year": 1955,
+     "jd": 2435415
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": null,
+   "call": "",
+   "chr": null,
+   "buri": null,
+   "occupation": "Lehrer",
+   "thumb": null,
+   "url": "<url>"
+  },
+  "wife": {
+   "xref": "I9",
+   "name": "Karin Ilgner",
+   "sortName": "Ilgner,Karin",
+   "given": "Karin",
+   "surname": "Ilgner",
+   "sex": "F",
+   "isDead": false,
+   "private": false,
+   "access": "visitor",
+   "nameAccess": "visitor",
+   "restricted": [],
+   "lifespan": "1958–",
+   "birth": {
+    "date": {
+     "text": "21. Januar 1958",
+     "year": 1958,
+     "jd": 2436225
+    },
+    "place": {
+     "name": "Lüneburg, Niedersachsen, Deutschland",
+     "short": "Lüneburg, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": null,
+   "call": "",
+   "chr": null,
+   "buri": null,
+   "occupation": "Bibliothekarin",
+   "thumb": null,
+   "url": "<url>"
+  },
+  "spouse": null,
+  "marriage": {
+   "date": {
+    "text": "12. Mai 1983",
+    "year": 1983,
+    "jd": 2445467
+   },
+   "place": {
+    "name": "Celle, Niedersachsen, Deutschland",
+    "short": "Celle, Niedersachsen, Deutschland",
+    "lat": null,
+    "lng": null
+   }
+  },
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "MARR",
+    "label": "Standesamtliche Heirat",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "CIVIL",
+    "typeLabel": "Standesamtliche Heirat",
+    "date": {
+     "text": "12. Mai 1983",
+     "year": 1983,
+     "jd": 2445467,
+     "gedcom": "12 MAY 1983"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [
+     {
+      "xref": "S203",
+      "title": "Urkundensammlung Familie Falkenrath",
+      "page": "Heiratsurkunde Falkenrath – Ilgner, 1983",
+      "quality": 3,
+      "date": null,
+      "text": "",
+      "notes": [],
+      "media": []
+     }
+    ],
+    "associates": [
+     {
+      "xref": "I14",
+      "name": "Holger Ilgner",
+      "sex": "M",
+      "rela": "witness",
+      "role": "witness",
+      "label": "Zeuge",
+      "private": false,
+      "access": "visitor",
+      "level1": false,
+      "notes": [],
+      "sources": []
+     }
+    ],
+    "freeAssociates": [
+     {
+      "role": "witness",
+      "name": "Horst Garbers",
+      "detail": "Elektriker, Celle",
+      "text": "Horst Garbers, Elektriker, Celle"
+     }
+    ],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#2>",
+    "pending": false,
+    "tag": "MARR",
+    "label": "Kirchliche Trauung",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "RELIGIOUS",
+    "typeLabel": "Kirchliche Trauung",
+    "date": {
+     "text": "13. Mai 1983",
+     "year": 1983,
+     "jd": 2445468,
+     "gedcom": "13 MAY 1983"
+    },
+    "place": {
+     "name": "Celle, Niedersachsen, Deutschland",
+     "short": "Celle, Niedersachsen, Deutschland",
+     "lat": 52.6226,
+     "lng": 10.0815
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [
+     {
+      "xref": "S203",
+      "title": "Urkundensammlung Familie Falkenrath",
+      "page": "Trauschein Falkenrath – Ilgner, 1983",
+      "quality": 3,
+      "date": null,
+      "text": "",
+      "notes": [],
+      "media": []
+     }
+    ],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "children": [
+   {
+    "xref": "I1",
+    "name": "Jonas Falkenrath",
+    "sortName": "Falkenrath,Jonas",
+    "given": "Jonas",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1985–",
+    "birth": {
+     "date": {
+      "text": "14. März 1985",
+      "year": 1985,
+      "jd": 2446139
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "2. Juni 1985",
+      "year": 1985,
+      "jd": 2446219
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Bauingenieur",
+    "thumb": null,
+    "url": "<url>",
+    "marriages": [
+     {
+      "family": "F1",
+      "spouse": "Mira Sandvoss",
+      "date": {
+       "text": "18. Juni 2015",
+       "year": 2015,
+       "jd": 2457192
+      },
+      "place": {
+       "name": "Hannover, Niedersachsen, Deutschland",
+       "short": "Hannover, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     }
+    ]
+   },
+   {
+    "xref": "I5",
+    "name": "Lena Falkenrath",
+    "sortName": "Falkenrath,Lena",
+    "given": "Lena",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1988–",
+    "birth": {
+     "date": {
+      "text": "30. Juli 1988",
+      "year": 1988,
+      "jd": 2447373
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Ärztin",
+    "thumb": null,
+    "url": "<url>",
+    "marriages": [
+     {
+      "family": "F2",
+      "spouse": "Tomasz Wolniak",
+      "date": {
+       "text": "3. Oktober 2017",
+       "year": 2017,
+       "jd": 2458030
+      },
+      "place": {
+       "name": "Bremen, Deutschland",
+       "short": "Bremen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     }
+    ]
+   }
+  ],
+  "access": "visitor",
+  "uids": [
+   "3AD4587E689054ECA706EA054F924301DD56"
+  ],
+  "media": [],
+  "tasks": [],
+  "lastChange": null
+ }
+}

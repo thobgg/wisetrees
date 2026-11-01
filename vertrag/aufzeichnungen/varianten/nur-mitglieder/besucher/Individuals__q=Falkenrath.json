@@ -1,0 +1,10 @@
+{
+ "rolle": "besucher",
+ "aktion": "Individuals",
+ "params": {
+  "q": "Falkenrath"
+ },
+ "status": 302,
+ "json": false,
+ "antwort": null
+}

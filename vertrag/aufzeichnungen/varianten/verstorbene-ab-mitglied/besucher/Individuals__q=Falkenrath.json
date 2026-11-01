@@ -1,0 +1,15 @@
+{
+ "rolle": "besucher",
+ "aktion": "Individuals",
+ "params": {
+  "q": "Falkenrath"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Falkenrath",
+  "page": 1,
+  "nextPage": null,
+  "data": []
+ }
+}

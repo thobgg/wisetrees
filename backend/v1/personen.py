@@ -31,7 +31,7 @@ class Bau:
         if not self.s.person_darf(p.id, stufe):
             return []
         return [e for e in p.fakten if not e.negated and (tags is None or e.type in tags)
-                and self.s.fakt_darf(e.type, e.resn, stufe)]
+                and self.s.fakt_darf(e.type, e.resn, stufe, p.xref)]
 
     def erstes_datum(self, p: Person, tags: tuple[str, ...]) -> str | None:
         for tag in tags:  # erste Ereignisart mit gültigem Datum, darin das erste
@@ -72,7 +72,7 @@ class Bau:
             return []
         tags = []
         for e in self.sichtbare_fakten(p, LEBENSDATEN):
-            if not self.s.fakt_darf(e.type, e.resn, 2) and e.type not in tags:
+            if not self.s.fakt_darf(e.type, e.resn, 2, p.xref) and e.type not in tags:
                 tags.append(e.type)
         return tags
 
@@ -90,6 +90,8 @@ class Bau:
         return text
 
     def sort_name(self, p: Person) -> str:
+        if not self.s.name_darf(p.id):
+            return "," + anzeige.PRIVAT   # nichts vom echten Namen, auch nicht zum Sortieren
         if not p.namen:
             return anzeige.UNBEKANNT + "," + anzeige.UNBEKANNT
         n = p.namen[0]
@@ -150,9 +152,9 @@ class Bau:
             "url": self.seiten_url(),
         }
         if mit_zahlen:
-            j["hasParents"] = bool(p.famc)
-            j["partnersCount"] = len(p.fams)
-            j["childrenCount"] = sum(len(self.m.familien[f].kinder) for f in p.fams)
+            j["hasParents"] = bool(self.s.als_kind(pid))
+            j["partnersCount"] = len(self.s.als_partner(pid))
+            j["childrenCount"] = sum(len(self.s.kinder(f)) for f in self.s.als_partner(pid))
         return j
 
 
@@ -266,25 +268,25 @@ def pedigree(ctx: Kontext):
     n = 1
     while n * 2 <= letzte:
         if n in ahnen:
-            p = m.personen[ahnen[n]]
-            if p.famc:
-                f = m.familien[p.famc[0]]
-                if 1 in f.partner:
-                    ahnen[n * 2] = f.partner[1]
-                if 2 in f.partner:
-                    ahnen[n * 2 + 1] = f.partner[2]
+            famc = bau.s.als_kind(ahnen[n])
+            if famc:
+                partner = bau.s.partner(famc[0])
+                if 1 in partner:
+                    ahnen[n * 2] = partner[1]
+                if 2 in partner:
+                    ahnen[n * 2 + 1] = partner[2]
         n += 1
     mit_geschwistern = (ctx.params.get("siblings") or "") in ("1", "true", "yes", "on")
     geschwister: dict[int, list] = {}
     daten = []
     for n in sorted(ahnen):
         pid = ahnen[n]
-        p = m.personen[pid]
-        f = m.familien[p.famc[0]] if (bau.s.person_darf(pid) and p.famc) else None
-        e = {"n": n, "person": bau.person_kurz(pid), "hasParents": bool(f and f.partner)}
+        famc = bau.s.als_kind(pid) if bau.s.person_darf(pid) else []
+        f = famc[0] if famc else None
+        e = {"n": n, "person": bau.person_kurz(pid), "hasParents": bool(f is not None and bau.s.partner(f))}
         if mit_geschwistern:
             if pid not in geschwister:
-                geschwister[pid] = [bau.person_kurz(k) for k in f.kinder if k != pid] if f else []
+                geschwister[pid] = [bau.person_kurz(k) for k in bau.s.kinder(f) if k != pid] if f is not None else []
             e["siblings"] = geschwister[pid]
         daten.append(e)
     return {"root": m.personen[wurzel].xref, "generations": gen, "ancestors": daten}
@@ -296,15 +298,15 @@ def _nachkommen(bau: Bau, pid: int, gen: int) -> dict:
     m = bau.m
     familien = []
     if gen > 1:
-        for fid in m.personen[pid].fams:
+        for fid in bau.s.als_partner(pid):
             f = m.familien[fid]
-            partner = next((q for q in f.partner.values() if q != pid), None)
+            partner = next((q for q in bau.s.partner(fid).values() if q != pid), None)
             heirat = _heirat(bau, f)
             familien.append({
                 "xref": f.xref,
                 "spouse": bau.person_kurz(partner) if partner else None,
                 "marriage": bau.ereignis_json(*heirat) if heirat else None,
-                "children": [_nachkommen(bau, k, gen - 1) for k in f.kinder],
+                "children": [_nachkommen(bau, k, gen - 1) for k in bau.s.kinder(fid)],
             })
     return {"person": bau.person_kurz(pid), "families": familien}
 
@@ -313,7 +315,7 @@ def _heirat(bau: Bau, f) -> tuple[str | None, str | None] | None:
     """Datum und Ort der Heirat: erstes gültiges Datum, erster Ort der sichtbaren Heiraten."""
     if not bau.s.familie_darf(f.id):
         return None
-    heiraten = [e for e in f.fakten if e.type == "MARR" and not e.negated and bau.s.fakt_darf(e.type, e.resn)]
+    heiraten = [e for e in f.fakten if e.type == "MARR" and not e.negated and bau.s.fakt_darf(e.type, e.resn, xref=f.xref)]
     datum = next((e.date_text for e in heiraten if anzeige.datum_grenzen(e.date_text)), None)
     ort = next((e.place_text for e in heiraten if e.place_text), None)
     return datum, ort

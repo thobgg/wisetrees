@@ -1,0 +1,2332 @@
+{
+ "rolle": "verwalter",
+ "aktion": "Individuals",
+ "params": {
+  "q": "Falkenrath"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Falkenrath",
+  "page": 1,
+  "nextPage": null,
+  "data": [
+   {
+    "xref": "I372",
+    "name": "Anna Catharina Falkenrath",
+    "sortName": "Falkenrath,Anna Catharina",
+    "given": "Anna Catharina",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1840–1842",
+    "birth": {
+     "date": {
+      "text": "23. August 1840",
+      "year": 1840,
+      "jd": 2393341
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "2. März 1842",
+      "year": 1842,
+      "jd": 2393897
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "25. August 1840",
+      "year": 1840,
+      "jd": 2393343
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "4. März 1842",
+      "year": 1842,
+      "jd": 2393899
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I55",
+    "name": "Anna Margarethe Falkenrath",
+    "sortName": "Falkenrath,Anna Margarethe",
+    "given": "Anna Margarethe",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1804–1871",
+    "birth": {
+     "date": {
+      "text": "6. Januar 1804",
+      "year": 1804,
+      "jd": 2379962
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "12. März 1871",
+      "year": 1871,
+      "jd": 2404499
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "11. Januar 1804",
+      "year": 1804,
+      "jd": 2379967
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "15. März 1871",
+      "year": 1871,
+      "jd": 2404502
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I387",
+    "name": "Anneliese Falkenrath",
+    "sortName": "Falkenrath,Anneliese",
+    "given": "Anneliese",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1909–1991",
+    "birth": {
+     "date": {
+      "text": "27. September 1909",
+      "year": 1909,
+      "jd": 2418577
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "4. Februar 1991",
+      "year": 1991,
+      "jd": 2448292
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "1. Oktober 1909",
+      "year": 1909,
+      "jd": 2418581
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I8",
+    "name": "Bernd Falkenrath",
+    "sortName": "Falkenrath,Bernd",
+    "given": "Bernd",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1955–",
+    "birth": {
+     "date": {
+      "text": "3. November 1955",
+      "year": 1955,
+      "jd": 2435415
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Lehrer",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I39",
+    "name": "Carl Falkenrath",
+    "sortName": "Falkenrath,Carl",
+    "given": "Carl",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1866–1938",
+    "birth": {
+     "date": {
+      "text": "19. November 1866",
+      "year": 1866,
+      "jd": 2402925
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "4. März 1938",
+      "year": 1938,
+      "jd": 2428962
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "28. November 1866",
+      "year": 1866,
+      "jd": 2402934
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "8. März 1938",
+      "year": 1938,
+      "jd": 2428966
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Zimmermann",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I18",
+    "name": "Dieter Falkenrath",
+    "sortName": "Falkenrath,Dieter",
+    "given": "Dieter",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1952–1952",
+    "birth": {
+     "date": {
+      "text": "2. März 1952",
+      "year": 1952,
+      "jd": 2434074
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "19. März 1952",
+      "year": 1952,
+      "jd": 2434091
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": {
+     "date": {
+      "text": "24. März 1952",
+      "year": 1952,
+      "jd": 2434096
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I23",
+    "name": "Elfriede Falkenrath",
+    "sortName": "Falkenrath,Elfriede",
+    "given": "Elfriede",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1925–2010",
+    "birth": {
+     "date": {
+      "text": "6. Januar 1925",
+      "year": 1925,
+      "jd": 2424157
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "14. Februar 2010",
+      "year": 2010,
+      "jd": 2455242
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Kontoristin",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I399",
+    "name": "Elfriede Falkenrath",
+    "sortName": "Falkenrath,Elfriede",
+    "given": "Elfriede",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1929–2002",
+    "birth": {
+     "date": {
+      "text": "28. September 1929",
+      "year": 1929,
+      "jd": 2425883
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "27. März 2002",
+      "year": 2002,
+      "jd": 2452361
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I3",
+    "name": "Emil Falkenrath",
+    "sortName": "Falkenrath,Emil",
+    "given": "Emil",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "2017–",
+    "birth": {
+     "date": {
+      "text": "9. Mai 2017",
+      "year": 2017,
+      "jd": 2457883
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I94",
+    "name": "Emily Falkenrath",
+    "sortName": "Falkenrath,Emily",
+    "given": "Emily",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1991–",
+    "birth": {
+     "date": {
+      "text": "19. Oktober 1991",
+      "year": 1991,
+      "jd": 2448549
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I385",
+    "name": "Erich Falkenrath",
+    "sortName": "Falkenrath,Erich",
+    "given": "Erich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1904–1990",
+    "birth": {
+     "date": {
+      "text": "17. Dezember 1904",
+      "year": 1904,
+      "jd": 2416832
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. November 1990",
+      "year": 1990,
+      "jd": 2448205
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "26. Dezember 1904",
+      "year": 1904,
+      "jd": 2416841
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Tischler",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I400",
+    "name": "Erna Falkenrath",
+    "sortName": "Falkenrath,Erna",
+    "given": "Erna",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1931–1998",
+    "birth": {
+     "date": {
+      "text": "7. November 1931",
+      "year": 1931,
+      "jd": 2426653
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "6. Oktober 1998",
+      "year": 1998,
+      "jd": 2451093
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Kontoristin",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I68",
+    "name": "Ernest Falkenrath",
+    "sortName": "Falkenrath,Ernest",
+    "given": "Ernest",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1895–1970",
+    "birth": {
+     "date": {
+      "text": "27. November 1895",
+      "year": 1895,
+      "jd": 2413525
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. April 1970",
+      "year": 1970,
+      "jd": 2440680
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Brewery worker",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I65",
+    "name": "Ernst Falkenrath",
+    "sortName": "Falkenrath,Ernst",
+    "given": "Ernst",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1869–1941",
+    "birth": {
+     "date": {
+      "text": "7. August 1869",
+      "year": 1869,
+      "jd": 2403917
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "14. Mai 1941",
+      "year": 1941,
+      "jd": 2430129
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "12. August 1869",
+      "year": 1869,
+      "jd": 2403922
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Zimmermann, später Bauunternehmer",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I375",
+    "name": "Frieda Falkenrath",
+    "sortName": "Falkenrath,Frieda",
+    "given": "Frieda",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1871–1929",
+    "birth": {
+     "date": {
+      "text": "28. August 1871",
+      "year": 1871,
+      "jd": 2404668
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "14. Oktober 1929",
+      "year": 1929,
+      "jd": 2425899
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "6. September 1871",
+      "year": 1871,
+      "jd": 2404677
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "17. Oktober 1929",
+      "year": 1929,
+      "jd": 2425902
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Dienstmagd",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I377",
+    "name": "Frieda Falkenrath",
+    "sortName": "Falkenrath,Frieda",
+    "given": "Frieda",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1876–1949",
+    "birth": {
+     "date": {
+      "text": "14. August 1876",
+      "year": 1876,
+      "jd": 2406481
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "8. November 1949",
+      "year": 1949,
+      "jd": 2433229
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "17. August 1876",
+      "year": 1876,
+      "jd": 2406484
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "13. November 1949",
+      "year": 1949,
+      "jd": 2433234
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I376",
+    "name": "Friedrich Falkenrath",
+    "sortName": "Falkenrath,Friedrich",
+    "given": "Friedrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1874–1874",
+    "birth": {
+     "date": {
+      "text": "24. August 1874",
+      "year": 1874,
+      "jd": 2405760
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "12. Mai 1874",
+      "year": 1874,
+      "jd": 2405656
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "28. August 1874",
+      "year": 1874,
+      "jd": 2405764
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "15. Mai 1874",
+      "year": 1874,
+      "jd": 2405659
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I48",
+    "name": "Friedrich Wilhelm Falkenrath",
+    "sortName": "Falkenrath,Friedrich Wilhelm",
+    "given": "Friedrich Wilhelm",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1834–1901",
+    "birth": {
+     "date": {
+      "text": "6. Juli 1834",
+      "year": 1834,
+      "jd": 2391101
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "22. Februar 1901",
+      "year": 1901,
+      "jd": 2415438
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "9. Juli 1834",
+      "year": 1834,
+      "jd": 2391104
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "27. Februar 1901",
+      "year": 1901,
+      "jd": 2415443
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Zimmermann",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I54",
+    "name": "Hans Jürgen Falkenrath",
+    "sortName": "Falkenrath,Hans Jürgen",
+    "given": "Hans Jürgen",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1770–1831",
+    "birth": {
+     "date": {
+      "text": "um 1770",
+      "year": 1770,
+      "jd": 2367540
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "11. Dezember 1831",
+      "year": 1831,
+      "jd": 2390163
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": {
+     "date": {
+      "text": "16. Dezember 1831",
+      "year": 1831,
+      "jd": 2390168
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Häusling",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I21",
+    "name": "Heinrich Falkenrath",
+    "sortName": "Falkenrath,Heinrich",
+    "given": "Heinrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1897–1969",
+    "birth": {
+     "date": {
+      "text": "26. April 1897",
+      "year": 1897,
+      "jd": 2414041
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. Januar 1969",
+      "year": 1969,
+      "jd": 2440231
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "1. Mai 1897",
+      "year": 1897,
+      "jd": 2414046
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "14. Januar 1969",
+      "year": 1969,
+      "jd": 2440236
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Tischler",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I60",
+    "name": "Heinrich Falkenrath",
+    "sortName": "Falkenrath,Heinrich",
+    "given": "Heinrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1837–1864",
+    "birth": {
+     "date": {
+      "text": "21. Juni 1837",
+      "year": 1837,
+      "jd": 2392182
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "4. August 1864",
+      "year": 1864,
+      "jd": 2402088
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "26. Juni 1837",
+      "year": 1837,
+      "jd": 2392187
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "7. August 1864",
+      "year": 1864,
+      "jd": 2402091
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Zimmergeselle",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I69",
+    "name": "Helen Falkenrath",
+    "sortName": "Falkenrath,Helen",
+    "given": "Helen",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1920–2005",
+    "birth": {
+     "date": {
+      "text": "12. August 1920",
+      "year": 1920,
+      "jd": 2422549
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "6. Januar 2005",
+      "year": 2005,
+      "jd": 2453377
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Teacher",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I4",
+    "name": "Ida Falkenrath",
+    "sortName": "Falkenrath,Ida",
+    "given": "Ida",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "2020–",
+    "birth": {
+     "date": {
+      "text": "23. November 2020",
+      "year": 2020,
+      "jd": 2459177
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I388",
+    "name": "Ilse Falkenrath",
+    "sortName": "Falkenrath,Ilse",
+    "given": "Ilse",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1912–1975",
+    "birth": {
+     "date": {
+      "text": "13. Mai 1912",
+      "year": 1912,
+      "jd": 2419536
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "20. Juni 1975",
+      "year": 1975,
+      "jd": 2442584
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "19. Mai 1912",
+      "year": 1912,
+      "jd": 2419542
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I386",
+    "name": "Irmgard Falkenrath",
+    "sortName": "Falkenrath,Irmgard",
+    "given": "Irmgard",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1907–1989",
+    "birth": {
+     "date": {
+      "text": "22. April 1907",
+      "year": 1907,
+      "jd": 2417688
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "15. Dezember 1989",
+      "year": 1989,
+      "jd": 2447876
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "27. April 1907",
+      "year": 1907,
+      "jd": 2417693
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I371",
+    "name": "Johann Friedrich Falkenrath",
+    "sortName": "Falkenrath,Johann Friedrich",
+    "given": "Johann Friedrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1843–1911",
+    "birth": {
+     "date": {
+      "text": "4. Februar 1843",
+      "year": 1843,
+      "jd": 2394236
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "17. September 1911",
+      "year": 1911,
+      "jd": 2419297
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Friedrich",
+    "chr": {
+     "date": {
+      "text": "12. Februar 1843",
+      "year": 1843,
+      "jd": 2394244
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "20. September 1911",
+      "year": 1911,
+      "jd": 2419300
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Anbauer",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I52",
+    "name": "Johann Heinrich Falkenrath",
+    "sortName": "Falkenrath,Johann Heinrich",
+    "given": "Johann Heinrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1801–1872",
+    "birth": {
+     "date": {
+      "text": "12. Oktober 1801",
+      "year": 1801,
+      "jd": 2379146
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. Januar 1872",
+      "year": 1872,
+      "jd": 2404796
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Heinrich",
+    "chr": {
+     "date": {
+      "text": "18. Oktober 1801",
+      "year": 1801,
+      "jd": 2379152
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "5. Januar 1872",
+      "year": 1872,
+      "jd": 2404798
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Häusling und Tagelöhner",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I1",
+    "name": "Jonas Falkenrath",
+    "sortName": "Falkenrath,Jonas",
+    "given": "Jonas",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1985–",
+    "birth": {
+     "date": {
+      "text": "14. März 1985",
+      "year": 1985,
+      "jd": 2446139
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "2. Juni 1985",
+      "year": 1985,
+      "jd": 2446219
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Bauingenieur",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I374",
+    "name": "Karl Falkenrath",
+    "sortName": "Falkenrath,Karl",
+    "given": "Karl",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1869–1869",
+    "birth": {
+     "date": {
+      "text": "2. August 1869",
+      "year": 1869,
+      "jd": 2403912
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. November 1869",
+      "year": 1869,
+      "jd": 2404011
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "5. August 1869",
+      "year": 1869,
+      "jd": 2403915
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "13. November 1869",
+      "year": 1869,
+      "jd": 2404015
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I5",
+    "name": "Lena Falkenrath",
+    "sortName": "Falkenrath,Lena",
+    "given": "Lena",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1988–",
+    "birth": {
+     "date": {
+      "text": "30. Juli 1988",
+      "year": 1988,
+      "jd": 2447373
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Ärztin",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I62",
+    "name": "Louise Falkenrath",
+    "sortName": "Falkenrath,Louise",
+    "given": "Louise",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1864–1944",
+    "birth": {
+     "date": {
+      "text": "2. Mai 1864",
+      "year": 1864,
+      "jd": 2401994
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "19. November 1944",
+      "year": 1944,
+      "jd": 2431414
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "10. Mai 1864",
+      "year": 1864,
+      "jd": 2402002
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "24. November 1944",
+      "year": 1944,
+      "jd": 2431419
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I41",
+    "name": "Marie Falkenrath",
+    "sortName": "Falkenrath,Marie",
+    "given": "Marie",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1894–1975",
+    "birth": {
+     "date": {
+      "text": "27. September 1894",
+      "year": 1894,
+      "jd": 2413099
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. Mai 1975",
+      "year": 1975,
+      "jd": 2442536
+     },
+     "place": {
+      "name": "Hannover, Niedersachsen, Deutschland",
+      "short": "Hannover, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "1. Oktober 1894",
+      "year": 1894,
+      "jd": 2413103
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I71",
+    "name": "Martha Falkenrath",
+    "sortName": "Falkenrath,Martha",
+    "given": "Martha",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1902–1988",
+    "birth": {
+     "date": {
+      "text": "14. Februar 1902",
+      "year": 1902,
+      "jd": 2415795
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "30. September 1988",
+      "year": 1988,
+      "jd": 2447435
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "17. Februar 1902",
+      "year": 1902,
+      "jd": 2415798
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Näherin",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I93",
+    "name": "Michael Falkenrath",
+    "sortName": "Falkenrath,Michael",
+    "given": "Michael",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1988–",
+    "birth": {
+     "date": {
+      "text": "3. Mai 1988",
+      "year": 1988,
+      "jd": 2447285
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Teacher",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I25",
+    "name": "Otto Falkenrath",
+    "sortName": "Falkenrath,Otto",
+    "given": "Otto",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1930–2008",
+    "birth": {
+     "date": {
+      "text": "22. März 1930",
+      "year": 1930,
+      "jd": 2426058
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. September 2008",
+      "year": 2008,
+      "jd": 2454713
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Werkzeugmacher",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I378",
+    "name": "Otto Falkenrath",
+    "sortName": "Falkenrath,Otto",
+    "given": "Otto",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1880–1959",
+    "birth": {
+     "date": {
+      "text": "3. Dezember 1880",
+      "year": 1880,
+      "jd": 2408053
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "8. Januar 1959",
+      "year": 1959,
+      "jd": 2436577
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "11. Dezember 1880",
+      "year": 1880,
+      "jd": 2408061
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "11. Januar 1959",
+      "year": 1959,
+      "jd": 2436580
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Landwirt",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I27",
+    "name": "Robert Falkenrath",
+    "sortName": "Falkenrath,Robert",
+    "given": "Robert",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1958–",
+    "birth": {
+     "date": {
+      "text": "15. September 1958",
+      "year": 1958,
+      "jd": 2436462
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Engineer",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I58",
+    "name": "Sophie Dorothee Falkenrath",
+    "sortName": "Falkenrath,Sophie Dorothee",
+    "given": "Sophie Dorothee",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1831–1902",
+    "birth": {
+     "date": {
+      "text": "9. November 1831",
+      "year": 1831,
+      "jd": 2390131
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "25. April 1902",
+      "year": 1902,
+      "jd": 2415865
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "16. November 1831",
+      "year": 1831,
+      "jd": 2390138
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "28. April 1902",
+      "year": 1902,
+      "jd": 2415868
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I10",
+    "name": "Ute Falkenrath",
+    "sortName": "Falkenrath,Ute",
+    "given": "Ute",
+    "surname": "Falkenrath",
+    "sex": "F",
+    "isDead": false,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1959–",
+    "birth": {
+     "date": {
+      "text": "16. August 1959",
+      "year": 1959,
+      "jd": 2436797
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": null,
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Krankenschwester",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I67",
+    "name": "Walter Falkenrath",
+    "sortName": "Falkenrath,Walter",
+    "given": "Walter",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1892–1965",
+    "birth": {
+     "date": {
+      "text": "5. September 1892",
+      "year": 1892,
+      "jd": 2412347
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "20. Februar 1965",
+      "year": 1965,
+      "jd": 2438812
+     },
+     "place": {
+      "name": "Milwaukee, Wisconsin, USA",
+      "short": "Milwaukee, Wisconsin, USA",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Machinist",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I15",
+    "name": "Wilhelm Falkenrath",
+    "sortName": "Falkenrath,Wilhelm",
+    "given": "Wilhelm",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1928–2003",
+    "birth": {
+     "date": {
+      "text": "8. Februar 1928",
+      "year": 1928,
+      "jd": 2425285
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "17. Oktober 2003",
+      "year": 2003,
+      "jd": 2452930
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Tischlermeister",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I70",
+    "name": "Wilhelm Falkenrath",
+    "sortName": "Falkenrath,Wilhelm",
+    "given": "Wilhelm",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1899–1918",
+    "birth": {
+     "date": {
+      "text": "3. Juli 1899",
+      "year": 1899,
+      "jd": 2414839
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "27. Oktober 1918",
+      "year": 1918,
+      "jd": 2421894
+     },
+     "place": {
+      "name": "Cambrai, Nord, Frankreich",
+      "short": "Cambrai, Nord, Frankreich",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "5. Juli 1899",
+      "year": 1899,
+      "jd": 2414841
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Zimmermannslehrling",
+    "thumb": null,
+    "url": "<url>"
+   }
+  ]
+ }
+}

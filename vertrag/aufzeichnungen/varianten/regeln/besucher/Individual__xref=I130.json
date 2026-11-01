@@ -1,0 +1,1609 @@
+{
+ "rolle": "besucher",
+ "aktion": "Individual",
+ "params": {
+  "xref": "I130"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "person": {
+   "xref": "I130",
+   "name": "Georg Mohwinkel",
+   "sortName": "Mohwinkel,Georg",
+   "given": "Georg",
+   "surname": "Mohwinkel",
+   "sex": "M",
+   "isDead": true,
+   "private": false,
+   "access": "visitor",
+   "nameAccess": "visitor",
+   "restricted": [],
+   "lifespan": "1833–1919",
+   "birth": {
+    "date": {
+     "text": "24. Februar 1833",
+     "year": 1833,
+     "jd": 2390604
+    },
+    "place": {
+     "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "death": {
+    "date": {
+     "text": "7. September 1919",
+     "year": 1919,
+     "jd": 2422209
+    },
+    "place": {
+     "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "call": "",
+   "chr": {
+    "date": {
+     "text": "3. März 1833",
+     "year": 1833,
+     "jd": 2390611
+    },
+    "place": {
+     "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "buri": {
+    "date": {
+     "text": "12. September 1919",
+     "year": 1919,
+     "jd": 2422214
+    },
+    "place": {
+     "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "lat": null,
+     "lng": null
+    }
+   },
+   "occupation": null,
+   "thumb": null,
+   "url": "<url>",
+   "hasParents": true,
+   "partnersCount": 1,
+   "childrenCount": 5
+  },
+  "relationship": "",
+  "canEdit": false,
+  "facts": [
+   {
+    "id": "<fact#1>",
+    "pending": false,
+    "tag": "BIRT",
+    "label": "Geburt",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "24. Februar 1833",
+     "year": 1833,
+     "jd": 2390604,
+     "gedcom": "24 FEB 1833"
+    },
+    "place": {
+     "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "lat": 53.1417,
+     "lng": 10.4867
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [
+     {
+      "tag": "PLAC:_GOV",
+      "value": "BIETE1JO53FD",
+      "date": null
+     },
+     {
+      "tag": "PLAC:_POST",
+      "value": "29553",
+      "date": "FROM 1 JUL 1993"
+     },
+     {
+      "tag": "PLAC:_MAIDENHEAD",
+      "value": "JO53FD",
+      "date": null
+     }
+    ],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#2>",
+    "pending": false,
+    "tag": "CHR",
+    "label": "Kindstaufe",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "3. März 1833",
+     "year": 1833,
+     "jd": 2390611,
+     "gedcom": "3 MAR 1833"
+    },
+    "place": {
+     "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "lat": 53.1417,
+     "lng": 10.4867
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [
+     {
+      "tag": "PLAC:_GOV",
+      "value": "BIETE1JO53FD",
+      "date": null
+     },
+     {
+      "tag": "PLAC:_POST",
+      "value": "29553",
+      "date": "FROM 1 JUL 1993"
+     },
+     {
+      "tag": "PLAC:_MAIDENHEAD",
+      "value": "JO53FD",
+      "date": null
+     }
+    ],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [
+     {
+      "xref": "I364",
+      "name": "Sophie Hinrichs",
+      "sex": "F",
+      "rela": "godparent",
+      "role": "godparent",
+      "label": "Patin",
+      "private": false,
+      "access": "visitor",
+      "level1": false,
+      "notes": [],
+      "sources": []
+     }
+    ],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#3>",
+    "pending": false,
+    "tag": "RESI",
+    "label": "Wohnsitz",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "von 1861 bis 1919",
+     "year": 1890,
+     "jd": 2400777,
+     "gedcom": "FROM 1861 TO 1919"
+    },
+    "place": {
+     "name": "Hof Nr. 3, Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "short": "Hof Nr. 3, Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "lat": 53.1409,
+     "lng": 10.4851
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [
+     {
+      "tag": "PLAC:_POST",
+      "value": "29553",
+      "date": "FROM 1 JUL 1993"
+     },
+     {
+      "tag": "PLAC:_MAIDENHEAD",
+      "value": "JO53FD",
+      "date": null
+     }
+    ],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#4>",
+    "pending": false,
+    "tag": "PROP",
+    "label": "Besitz",
+    "known": true,
+    "value": "Vollhof mit 48 Morgen Acker und Wiesen",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "von 1861 bis 1919",
+     "year": 1890,
+     "jd": 2400777,
+     "gedcom": "FROM 1861 TO 1919"
+    },
+    "place": {
+     "name": "Hof Nr. 3, Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "short": "Hof Nr. 3, Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "lat": 53.1409,
+     "lng": 10.4851
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [
+     {
+      "tag": "PLAC:_POST",
+      "value": "29553",
+      "date": "FROM 1 JUL 1993"
+     },
+     {
+      "tag": "PLAC:_MAIDENHEAD",
+      "value": "JO53FD",
+      "date": null
+     }
+    ],
+    "notes": [
+     "Hof 1861 gekauft."
+    ],
+    "noteKinds": [
+     "note"
+    ],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#5>",
+    "pending": false,
+    "tag": "NAME",
+    "label": "Name",
+    "known": true,
+    "value": "Georg /Mohwinkel/",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#6>",
+    "pending": false,
+    "tag": "SEX",
+    "label": "Geschlecht",
+    "known": true,
+    "value": "männlich",
+    "gedcomValue": "M",
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#7>",
+    "pending": false,
+    "tag": "DEAT",
+    "label": "Tod",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "7. September 1919",
+     "year": 1919,
+     "jd": 2422209,
+     "gedcom": "7 SEP 1919"
+    },
+    "place": {
+     "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "lat": 53.1417,
+     "lng": 10.4867
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [
+     {
+      "tag": "PLAC:_GOV",
+      "value": "BIETE1JO53FD",
+      "date": null
+     },
+     {
+      "tag": "PLAC:_POST",
+      "value": "29553",
+      "date": "FROM 1 JUL 1993"
+     },
+     {
+      "tag": "PLAC:_MAIDENHEAD",
+      "value": "JO53FD",
+      "date": null
+     }
+    ],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#8>",
+    "pending": false,
+    "tag": "BURI",
+    "label": "Bestattung",
+    "known": true,
+    "value": "",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": {
+     "text": "12. September 1919",
+     "year": 1919,
+     "jd": 2422214,
+     "gedcom": "12 SEP 1919"
+    },
+    "place": {
+     "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+     "lat": 53.1417,
+     "lng": 10.4867
+    },
+    "address": null,
+    "access": "visitor",
+    "extras": [
+     {
+      "tag": "PLAC:_GOV",
+      "value": "BIETE1JO53FD",
+      "date": null
+     },
+     {
+      "tag": "PLAC:_POST",
+      "value": "29553",
+      "date": "FROM 1 JUL 1993"
+     },
+     {
+      "tag": "PLAC:_MAIDENHEAD",
+      "value": "JO53FD",
+      "date": null
+     }
+    ],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   },
+   {
+    "id": "<fact#9>",
+    "pending": false,
+    "tag": "RELI",
+    "label": "Religion",
+    "known": true,
+    "value": "evangelisch-lutherisch",
+    "gedcomValue": null,
+    "type": "",
+    "typeLabel": null,
+    "date": null,
+    "place": null,
+    "address": null,
+    "access": "visitor",
+    "extras": [],
+    "notes": [],
+    "noteKinds": [],
+    "sources": [],
+    "associates": [],
+    "freeAssociates": [],
+    "noteXref": null,
+    "details": []
+   }
+  ],
+  "parentFamilies": [
+   {
+    "xref": "F76",
+    "name": "Carl Mohwinkel + Friederike Hinrichs",
+    "url": "<url>",
+    "husband": {
+     "xref": "I178",
+     "name": "Carl Mohwinkel",
+     "sortName": "Mohwinkel,Carl",
+     "given": "Carl",
+     "surname": "Mohwinkel",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1802–1872",
+     "birth": {
+      "date": {
+       "text": "17. September 1802",
+       "year": 1802,
+       "jd": 2379486
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "1. September 1872",
+       "year": 1872,
+       "jd": 2405038
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "24. September 1802",
+       "year": 1802,
+       "jd": 2379493
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "5. September 1872",
+       "year": 1872,
+       "jd": 2405042
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 3
+    },
+    "wife": {
+     "xref": "I179",
+     "name": "Friederike Hinrichs",
+     "sortName": "Hinrichs,Friederike",
+     "given": "Friederike",
+     "surname": "Hinrichs",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1802–1878",
+     "birth": {
+      "date": {
+       "text": "20. März 1802",
+       "year": 1802,
+       "jd": 2379305
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "3. Mai 1878",
+       "year": 1878,
+       "jd": 2407108
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "29. März 1802",
+       "year": 1802,
+       "jd": 2379314
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "5. Mai 1878",
+       "year": 1878,
+       "jd": 2407110
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 3
+    },
+    "spouse": null,
+    "marriage": {
+     "date": {
+      "text": "18. Dezember 1828",
+      "year": 1828,
+      "jd": 2389075
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#10>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Kirchliche Trauung",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "RELIGIOUS",
+      "typeLabel": "Kirchliche Trauung",
+      "date": {
+       "text": "18. Dezember 1828",
+       "year": 1828,
+       "jd": 2389075,
+       "gedcom": "18 DEC 1828"
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": 53.1417,
+       "lng": 10.4867
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [
+       {
+        "tag": "PLAC:_GOV",
+        "value": "BIETE1JO53FD",
+        "date": null
+       },
+       {
+        "tag": "PLAC:_POST",
+        "value": "29553",
+        "date": "FROM 1 JUL 1993"
+       },
+       {
+        "tag": "PLAC:_MAIDENHEAD",
+        "value": "JO53FD",
+        "date": null
+       }
+      ],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [],
+      "associates": [
+       {
+        "xref": "I365",
+        "name": "Carl Hinrichs",
+        "sex": "M",
+        "rela": "witness",
+        "role": "witness",
+        "label": "Zeuge",
+        "private": false,
+        "access": "visitor",
+        "level1": false,
+        "notes": [],
+        "sources": []
+       }
+      ],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I130",
+      "name": "Georg Mohwinkel",
+      "sortName": "Mohwinkel,Georg",
+      "given": "Georg",
+      "surname": "Mohwinkel",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1833–1919",
+      "birth": {
+       "date": {
+        "text": "24. Februar 1833",
+        "year": 1833,
+        "jd": 2390604
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "7. September 1919",
+        "year": 1919,
+        "jd": 2422209
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "3. März 1833",
+        "year": 1833,
+        "jd": 2390611
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "12. September 1919",
+        "year": 1919,
+        "jd": 2422214
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 5,
+      "marriages": [
+       {
+        "family": "F52",
+        "spouse": "Catharine Schulze",
+        "date": {
+         "text": "7. Oktober 1867",
+         "year": 1867,
+         "jd": 2403247
+        },
+        "place": {
+         "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+         "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     },
+     {
+      "xref": "I331",
+      "name": "August Mohwinkel",
+      "sortName": "Mohwinkel,August",
+      "given": "August",
+      "surname": "Mohwinkel",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1836–1838",
+      "birth": {
+       "date": {
+        "text": "9. Dezember 1836",
+        "year": 1836,
+        "jd": 2391988
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "9. Februar 1838",
+        "year": 1838,
+        "jd": 2392415
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "14. Dezember 1836",
+        "year": 1836,
+        "jd": 2391993
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "11. Februar 1838",
+        "year": 1838,
+        "jd": 2392417
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I330",
+      "name": "Ernst Mohwinkel",
+      "sortName": "Mohwinkel,Ernst",
+      "given": "Ernst",
+      "surname": "Mohwinkel",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1842–1845",
+      "birth": {
+       "date": {
+        "text": "18. Dezember 1842",
+        "year": 1842,
+        "jd": 2394188
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "23. März 1845",
+        "year": 1845,
+        "jd": 2395014
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "20. Dezember 1842",
+        "year": 1842,
+        "jd": 2394190
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "28. März 1845",
+        "year": 1845,
+        "jd": 2395019
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     }
+    ],
+    "access": "visitor",
+    "uids": [
+     "B5C946C46739509EAE9FCD150983B99F2992"
+    ]
+   }
+  ],
+  "spouseFamilies": [
+   {
+    "xref": "F52",
+    "name": "Georg Mohwinkel + Catharine Schulze",
+    "url": "<url>",
+    "husband": {
+     "xref": "I130",
+     "name": "Georg Mohwinkel",
+     "sortName": "Mohwinkel,Georg",
+     "given": "Georg",
+     "surname": "Mohwinkel",
+     "sex": "M",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1833–1919",
+     "birth": {
+      "date": {
+       "text": "24. Februar 1833",
+       "year": 1833,
+       "jd": 2390604
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "7. September 1919",
+       "year": 1919,
+       "jd": 2422209
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "3. März 1833",
+       "year": 1833,
+       "jd": 2390611
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "12. September 1919",
+       "year": 1919,
+       "jd": 2422214
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 5
+    },
+    "wife": {
+     "xref": "I131",
+     "name": "Catharine Schulze",
+     "sortName": "Schulze,Catharine",
+     "given": "Catharine",
+     "surname": "Schulze",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1848–1886",
+     "birth": {
+      "date": {
+       "text": "21. August 1848",
+       "year": 1848,
+       "jd": 2396261
+      },
+      "place": {
+       "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+       "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "6. Juni 1886",
+       "year": 1886,
+       "jd": 2410064
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "27. August 1848",
+       "year": 1848,
+       "jd": 2396267
+      },
+      "place": {
+       "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+       "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "10. Juni 1886",
+       "year": 1886,
+       "jd": 2410068
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 5
+    },
+    "spouse": {
+     "xref": "I131",
+     "name": "Catharine Schulze",
+     "sortName": "Schulze,Catharine",
+     "given": "Catharine",
+     "surname": "Schulze",
+     "sex": "F",
+     "isDead": true,
+     "private": false,
+     "access": "visitor",
+     "nameAccess": "visitor",
+     "restricted": [],
+     "lifespan": "1848–1886",
+     "birth": {
+      "date": {
+       "text": "21. August 1848",
+       "year": 1848,
+       "jd": 2396261
+      },
+      "place": {
+       "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+       "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "death": {
+      "date": {
+       "text": "6. Juni 1886",
+       "year": 1886,
+       "jd": 2410064
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "call": "",
+     "chr": {
+      "date": {
+       "text": "27. August 1848",
+       "year": 1848,
+       "jd": 2396267
+      },
+      "place": {
+       "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+       "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "buri": {
+      "date": {
+       "text": "10. Juni 1886",
+       "year": 1886,
+       "jd": 2410068
+      },
+      "place": {
+       "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+       "lat": null,
+       "lng": null
+      }
+     },
+     "occupation": null,
+     "thumb": null,
+     "url": "<url>",
+     "hasParents": true,
+     "partnersCount": 1,
+     "childrenCount": 5
+    },
+    "marriage": {
+     "date": {
+      "text": "7. Oktober 1867",
+      "year": 1867,
+      "jd": 2403247
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "facts": [
+     {
+      "id": "<fact#11>",
+      "pending": false,
+      "tag": "MARR",
+      "label": "Kirchliche Trauung",
+      "known": true,
+      "value": "",
+      "gedcomValue": null,
+      "type": "RELIGIOUS",
+      "typeLabel": "Kirchliche Trauung",
+      "date": {
+       "text": "7. Oktober 1867",
+       "year": 1867,
+       "jd": 2403247,
+       "gedcom": "7 OCT 1867"
+      },
+      "place": {
+       "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+       "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+       "lat": 53.1236,
+       "lng": 10.2125
+      },
+      "address": null,
+      "access": "visitor",
+      "extras": [],
+      "notes": [],
+      "noteKinds": [],
+      "sources": [],
+      "associates": [],
+      "freeAssociates": [],
+      "noteXref": null,
+      "details": []
+     }
+    ],
+    "children": [
+     {
+      "xref": "I289",
+      "name": "Richard Mohwinkel",
+      "sortName": "Mohwinkel,Richard",
+      "given": "Richard",
+      "surname": "Mohwinkel",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1869–1914",
+      "birth": {
+       "date": {
+        "text": "18. April 1869",
+        "year": 1869,
+        "jd": 2403806
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "8. Januar 1914",
+        "year": 1914,
+        "jd": 2420141
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "24. April 1869",
+        "year": 1869,
+        "jd": 2403812
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "13. Januar 1914",
+        "year": 1914,
+        "jd": 2420146
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I107",
+      "name": "Minna Mohwinkel",
+      "sortName": "Mohwinkel,Minna",
+      "given": "Minna",
+      "surname": "Mohwinkel",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1871–1929",
+      "birth": {
+       "date": {
+        "text": "24. November 1871",
+        "year": 1871,
+        "jd": 2404756
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "27. April 1929",
+        "year": 1929,
+        "jd": 2425729
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "3. Dezember 1871",
+        "year": 1871,
+        "jd": 2404765
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "2. Mai 1929",
+        "year": 1929,
+        "jd": 2425734
+       },
+       "place": {
+        "name": "Lüneburg, Niedersachsen, Deutschland",
+        "short": "Lüneburg, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 1,
+      "childrenCount": 2,
+      "marriages": [
+       {
+        "family": "F40",
+        "spouse": "Karl Marquardt",
+        "date": {
+         "text": "18. September 1894",
+         "year": 1894,
+         "jd": 2413090
+        },
+        "place": {
+         "name": "Lüneburg, Niedersachsen, Deutschland",
+         "short": "Lüneburg, Niedersachsen, Deutschland",
+         "lat": null,
+         "lng": null
+        }
+       }
+      ]
+     },
+     {
+      "xref": "I290",
+      "name": "Paul Mohwinkel",
+      "sortName": "Mohwinkel,Paul",
+      "given": "Paul",
+      "surname": "Mohwinkel",
+      "sex": "M",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1873–1949",
+      "birth": {
+       "date": {
+        "text": "3. Dezember 1873",
+        "year": 1873,
+        "jd": 2405496
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "2. April 1949",
+        "year": 1949,
+        "jd": 2433009
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "8. Dezember 1873",
+        "year": 1873,
+        "jd": 2405501
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "4. April 1949",
+        "year": 1949,
+        "jd": 2433011
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I287",
+      "name": "Marie Mohwinkel",
+      "sortName": "Mohwinkel,Marie",
+      "given": "Marie",
+      "surname": "Mohwinkel",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1879–1917",
+      "birth": {
+       "date": {
+        "text": "28. Februar 1879",
+        "year": 1879,
+        "jd": 2407409
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "27. Oktober 1917",
+        "year": 1917,
+        "jd": 2421529
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "5. März 1879",
+        "year": 1879,
+        "jd": 2407414
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "31. Oktober 1917",
+        "year": 1917,
+        "jd": 2421533
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     },
+     {
+      "xref": "I288",
+      "name": "Emilie Mohwinkel",
+      "sortName": "Mohwinkel,Emilie",
+      "given": "Emilie",
+      "surname": "Mohwinkel",
+      "sex": "F",
+      "isDead": true,
+      "private": false,
+      "access": "visitor",
+      "nameAccess": "visitor",
+      "restricted": [],
+      "lifespan": "1885–1964",
+      "birth": {
+       "date": {
+        "text": "18. März 1885",
+        "year": 1885,
+        "jd": 2409619
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "death": {
+       "date": {
+        "text": "21. April 1964",
+        "year": 1964,
+        "jd": 2438507
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "call": "",
+      "chr": {
+       "date": {
+        "text": "21. März 1885",
+        "year": 1885,
+        "jd": 2409622
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "buri": {
+       "date": {
+        "text": "25. April 1964",
+        "year": 1964,
+        "jd": 2438511
+       },
+       "place": {
+        "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+        "lat": null,
+        "lng": null
+       }
+      },
+      "occupation": null,
+      "thumb": null,
+      "url": "<url>",
+      "hasParents": true,
+      "partnersCount": 0,
+      "childrenCount": 0,
+      "marriages": []
+     }
+    ],
+    "access": "visitor",
+    "uids": [
+     "29B787C6459C525385AC31D9C8742BF64BCF"
+    ]
+   }
+  ],
+  "stepFamilies": [],
+  "media": [],
+  "associatedIn": [],
+  "tasks": [],
+  "lastChange": null,
+  "uids": [
+   "3918C7E56E96504B89EBAE285F06DBC1E76E"
+  ]
+ }
+}

@@ -3,13 +3,13 @@
 Keine v1-Route liest an dieser Schicht vorbei. Offene Änderungen werden hier später über den angenommenen Stand
 gelegt (Änderungssätze, nur für Bearbeiter und höher); die Sichtbarkeit wird danach angewendet.
 
-Sichtbarkeit mit den Vorgaben eines neuen Baums:
+Sichtbarkeit nach den Datenschutz-Einstellungen des Baums (E19, baum/datenschutz.py); die Vorgaben:
   Zugriffsstufen: Besucher 2, Mitglied/Bearbeiter/Moderator 1, Verwalter 0.
   Person: RESN (confidential → nur Verwalter, privacy → ab Mitglied, none → alle); Verwalter sehen alles;
           Verstorbene sehen alle (SHOW_DEAD_PEOPLE = 2); Lebende ab Mitglied.
   Name:   Namen Lebender ab Mitglied (SHOW_LIVING_NAMES = 1) oder wenn die Person sichtbar ist.
   Fakt:   RESN wie oben; Standard-Sperrvermerke SOUR und REPO privacy, SSN confidential.
-  Lebend: Regel aus KONZEPT.md 5.2 (MAX_ALIVE_AGE 120, Ableitung über Angehörige).
+  Lebend: Regel aus KONZEPT.md 5.2 (self.e.max_alive_age 120, Ableitung über Angehörige).
 """
 
 from __future__ import annotations
@@ -21,16 +21,15 @@ from dataclasses import dataclass, field
 
 from sqlalchemy import Connection, select
 
+from baum import datenschutz
 from baum.datei import Zeile
 from baum.schema import tabelle as T
 from gedcom.datum import jd_gregorianisch
+from v1.anzeige import jahr_aus_jd
 
-MAX_ALIVE_AGE = 120
-SHOW_DEAD_PEOPLE = 2
-SHOW_LIVING_NAMES = 1
-FAKT_SPERRE = {"SSN": 0, "SOUR": 1, "REPO": 1, "SUBM": 0, "SUBN": 0}
 STUFE = {"visitor": 2, "member": 1, "editor": 1, "moderator": 1, "manager": 0}
 TOD = ("DEAT", "BURI", "CREM")
+GEBURT = ("BIRT", "CHR", "BAPM")
 
 
 @dataclass
@@ -108,6 +107,10 @@ class Modell:
         self.person_xref: dict[str, int] = {}
         self.medien: dict[int, Medium] = {}
         self.quellen_resn: dict[int, str | None] = {}
+        self.quellen_xref: dict[int, str] = {}
+        self.quellen_archive: dict[int, list[int]] = {}      # Quelle → Archive (REPO)
+        self.archive: dict[int, tuple[str, str | None]] = {}  # Archiv → (xref, resn)
+        self.einst, self.regeln = datenschutz.laden(con)
         # Medium → Datensätze, die es verwenden (auch über Ereignisse und Zitate): ("person"|"family"|"source", id)
         self.medien_traeger: dict[int, set[tuple[str, int]]] = {}
         self.familie_xref: dict[str, int] = {}
@@ -154,8 +157,15 @@ class Modell:
                              .where(ml.c.person_id.is_not(None)).order_by(ml.c.sort)):
             self.personen[r[0]].medien.append((r[1], bool(r[2])))
         so, ta = T("source"), T("task")
-        for r in con.execute(select(so.c.id, so.c.resn)):
+        for r in con.execute(select(so.c.id, so.c.resn, so.c.xref)):
             self.quellen_resn[r[0]] = r[1]
+            self.quellen_xref[r[0]] = r[2]
+        re_, sr = T("repository"), T("source_repository")
+        for r in con.execute(select(re_.c.id, re_.c.xref, re_.c.resn)):
+            self.archive[r[0]] = (r[1], r[2])
+        for r in con.execute(select(sr.c.source_id, sr.c.repository_id).where(sr.c.repository_id.is_not(None))
+                             .order_by(sr.c.sort)):
+            self.quellen_archive.setdefault(r[0], []).append(r[1])
         self._medien_traeger(con)
         for r in con.execute(select(ta.c.person_id, ta.c.family_id, ta.c.date_from, ta.c.date_to)
                              .where(ta.c.date_from.is_not(None))):
@@ -225,6 +235,8 @@ class Sicht:
 
     def __init__(self, m: Modell, stufe: int, heute: datetime.date):
         self.m, self.stufe = m, stufe
+        self.e, self.r = m.einst, m.regeln
+        self.heute_jahr = heute.year
         self.heute_jd = jd_gregorianisch(heute.year, heute.month, heute.day)
         self._tot: dict[int, bool] = {}
 
@@ -248,28 +260,28 @@ class Sicht:
                 return True
         daten = self._daten(p)
         if daten:
-            if any(d <= grenze(MAX_ALIVE_AGE) for d in daten):
+            if any(d <= grenze(self.e.max_alive_age) for d in daten):
                 return True
             if any(e.type == "BIRT" and e.date_text for e in p.fakten):
                 return False
         for fid in p.famc:
             for eltern in self.m.familien[fid].partner.values():
-                if any(d <= grenze(MAX_ALIVE_AGE + 45) for d in self._daten(self.m.personen[eltern])):
+                if any(d <= grenze(self.e.max_alive_age + 45) for d in self._daten(self.m.personen[eltern])):
                     return True
         for fid in p.fams:
             f = self.m.familien[fid]
-            if any(d <= grenze(MAX_ALIVE_AGE - 10) for d in self._familien_daten(f)):
+            if any(d <= grenze(self.e.max_alive_age - 10) for d in self._familien_daten(f)):
                 return True
             for partner in f.partner.values():
-                if partner != p.id and any(d <= grenze(MAX_ALIVE_AGE + 40) for d in self._daten(self.m.personen[partner])):
+                if partner != p.id and any(d <= grenze(self.e.max_alive_age + 40) for d in self._daten(self.m.personen[partner])):
                     return True
             for kind in f.kinder:
                 k = self.m.personen[kind]
-                if any(d <= grenze(MAX_ALIVE_AGE - 15) for d in self._daten(k)):
+                if any(d <= grenze(self.e.max_alive_age - 15) for d in self._daten(k)):
                     return True
                 for kf in k.fams:
                     for enkel in self.m.familien[kf].kinder:
-                        if any(d <= grenze(MAX_ALIVE_AGE - 30) for d in self._daten(self.m.personen[enkel])):
+                        if any(d <= grenze(self.e.max_alive_age - 30) for d in self._daten(self.m.personen[enkel])):
                             return True
         return False
 
@@ -285,45 +297,82 @@ class Sicht:
             return True
         return None
 
+    def _datensatz(self, xref: str | None, resn: str | None, stufe: int) -> bool | None:
+        """Was für jeden Datensatz zuerst gilt: Schutz aus, Sperrvermerk, Regel für den Datensatz, Verwalter.
+        None = die Regeln der Datensatzart entscheiden."""
+        if not self.e.enabled:
+            return True
+        r = self._resn(resn, stufe)
+        if r is not None:
+            return r
+        if xref and xref in self.r.datensatz:
+            return self.r.datensatz[xref] >= stufe
+        if stufe <= 0:
+            return True
+        return None
+
+    def _art(self, art: str, stufe: int) -> bool:
+        """Regel für eine Datensatzart (SOUR, REPO, OBJE, NOTE …); ohne Regel öffentlich."""
+        return self.r.art[art] >= stufe if art in self.r.art else True
+
+    def _noch_geschuetzt(self, p: Person) -> bool:
+        """Verstorbene bleiben privat, solange Geburt oder Tod jünger sind als eingestellt."""
+        for jahre, arten in ((self.e.keep_alive_years_birth, GEBURT), (self.e.keep_alive_years_death, TOD)):
+            if jahre:
+                for e in p.fakten:
+                    if (e.type in arten and e.date_from is not None and e.date_to is not None
+                            and jahr_aus_jd((e.date_from + e.date_to) // 2) + jahre > self.heute_jahr):
+                        return True
+        return False
+
     def person_darf(self, pid: int, stufe: int | None = None) -> bool:
         stufe = self.stufe if stufe is None else stufe
         p = self.m.personen[pid]
-        r = self._resn(p.resn, stufe)
+        r = self._datensatz(p.xref, p.resn, stufe)
         if r is not None:
             return r
-        if stufe <= 0:
-            return True
-        if stufe <= SHOW_DEAD_PEOPLE and self.ist_tot(pid):
+        if self.e.show_dead_people >= stufe and self.ist_tot(pid) and not self._noch_geschuetzt(p):
             return True
         return stufe <= 1
 
     def name_darf(self, pid: int, stufe: int | None = None) -> bool:
         stufe = self.stufe if stufe is None else stufe
-        return stufe <= SHOW_LIVING_NAMES or self.person_darf(pid, stufe)
+        return self.e.show_living_names >= stufe or self.person_darf(pid, stufe)
 
     def familie_darf(self, fid: int, stufe: int | None = None) -> bool:
-        """Familie: RESN, Verwalter sehen alles, sonst nur, wenn alle Mitglieder sichtbar sind."""
+        """Familie: sichtbar, wenn alle Mitglieder sichtbar sind (nach Sperrvermerk und Regeln)."""
         stufe = self.stufe if stufe is None else stufe
         f = self.m.familien[fid]
-        r = self._resn(f.resn, stufe)
+        r = self._datensatz(f.xref, f.resn, stufe)
         if r is not None:
             return r
-        if stufe <= 0:
-            return True
         return all(self.person_darf(p, stufe) for p in [*f.partner.values(), *f.kinder])
 
-    def quelle_darf(self, sid: int, stufe: int | None = None) -> bool:
-        return sid in self.m.quellen_resn and self.fakt_darf("SOUR", self.m.quellen_resn[sid], stufe)
-
-    def medium_darf(self, mid: int, stufe: int | None = None) -> bool:
-        """Medium: RESN, Verwalter alles; sonst verborgen, wenn ein Datensatz, der es verwendet, verborgen ist
-        """
+    def archiv_darf(self, rid: int, stufe: int | None = None) -> bool:
         stufe = self.stufe if stufe is None else stufe
-        r = self._resn(self.m.medien[mid].resn, stufe)
+        xref, resn = self.m.archive[rid]
+        r = self._datensatz(xref, resn, stufe)
+        return r if r is not None else self._art("REPO", stufe)
+
+    def quelle_darf(self, sid: int, stufe: int | None = None) -> bool:
+        """Quelle: verborgen, wenn eines ihrer Archive verborgen ist; sonst die Regel für Quellen."""
+        stufe = self.stufe if stufe is None else stufe
+        if sid not in self.m.quellen_resn:
+            return False
+        r = self._datensatz(self.m.quellen_xref.get(sid), self.m.quellen_resn[sid], stufe)
         if r is not None:
             return r
-        if stufe <= 0:
-            return True
+        if any(not self.archiv_darf(a, stufe) for a in self.m.quellen_archive.get(sid, ())):
+            return False
+        return self._art("SOUR", stufe)
+
+    def medium_darf(self, mid: int, stufe: int | None = None) -> bool:
+        """Medium: verborgen, wenn ein Datensatz, der es verwendet, verborgen ist; sonst die Regel für Medien."""
+        stufe = self.stufe if stufe is None else stufe
+        med = self.m.medien[mid]
+        r = self._datensatz(med.xref, med.resn, stufe)
+        if r is not None:
+            return r
         for art, id_ in self.m.medien_traeger.get(mid, ()):
             if art == "person" and not self.person_darf(id_, stufe):
                 return False
@@ -331,20 +380,57 @@ class Sicht:
                 return False
             if art == "source" and not self.quelle_darf(id_, stufe):
                 return False
-        return True
+        return self._art("OBJE", stufe)
+
+    def notiz_darf(self, xref: str | None, resn: str | None, stufe: int | None = None) -> bool:
+        """Notiz als eigener Datensatz (mit Kennung); eingebettete Notizen folgen ihrem Fakt."""
+        stufe = self.stufe if stufe is None else stufe
+        if xref is None:
+            return self.fakt_darf("NOTE", resn, stufe)
+        r = self._datensatz(xref, resn, stufe)
+        return r if r is not None else self._art("NOTE", stufe)
+
+    # ── Familienstruktur (Einstellung „private Beziehungen zeigen“) ─────────────────────────────────
+
+    def als_kind(self, pid: int) -> list[int]:
+        """Familien, in denen die Person Kind ist; ohne die Einstellung nur sichtbare."""
+        fs = self.m.personen[pid].famc
+        return list(fs) if self.e.show_private_relationships else [f for f in fs if self.familie_darf(f)]
+
+    def als_partner(self, pid: int) -> list[int]:
+        fs = self.m.personen[pid].fams
+        return list(fs) if self.e.show_private_relationships else [f for f in fs if self.familie_darf(f)]
+
+    def kinder(self, fid: int) -> list[int]:
+        ks = self.m.familien[fid].kinder
+        return list(ks) if self.e.show_private_relationships else [k for k in ks if self.name_darf(k)]
+
+    def partner(self, fid: int) -> dict[int, int]:
+        """Platz (1 = HUSB, 2 = WIFE) → Person; ohne die Einstellung nur Partner, deren Name sichtbar ist."""
+        ps = self.m.familien[fid].partner
+        return dict(ps) if self.e.show_private_relationships else {k: q for k, q in ps.items() if self.name_darf(q)}
 
     def person_sichtbar(self, xref: str) -> bool:
         pid = self.m.person_xref.get(xref)
         return pid is not None and self.person_darf(pid)
 
-    def fakt_darf(self, tag: str, resn: str | None, stufe: int | None = None) -> bool:
+    def fakt_darf(self, tag: str, resn: str | None, stufe: int | None = None, xref: str | None = None) -> bool:
+        """Fakt: Sperrvermerk, dann Regel für diese Faktart an diesem Datensatz, dann Regel für die Faktart.
+        Gilt auch bei ausgeschaltetem Schutz."""
         stufe = self.stufe if stufe is None else stufe
         r = self._resn(resn, stufe)
         if r is not None:
             return r
-        if tag in FAKT_SPERRE:
-            return FAKT_SPERRE[tag] >= stufe
+        if xref and (xref, tag) in self.r.fakt_am_datensatz:
+            return self.r.fakt_am_datensatz[(xref, tag)] >= stufe
+        if tag in self.r.art:
+            return self.r.art[tag] >= stufe
         return True
+
+
+def nur_mitglieder(b) -> bool:
+    """Ist der Baum nur für Mitglieder (Einstellung members_only)?"""
+    return modell(str(b.pfad), b.oeffnen).einst.members_only
 
 
 def sicht_fuer(ctx, baum_name: str) -> Sicht:

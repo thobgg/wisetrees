@@ -134,6 +134,7 @@ class Fakten:
     def __init__(self, bau: Bau, con: Connection):
         self.bau, self.s, self.m, self.con = bau, bau.s, bau.m, con
         self.quellen = {r["id"]: r for r in zeilen(con, select(T("source")))}
+        self._xref: str | None = None
 
     def q(self, abfrage) -> list[Zeile]:
         return zeilen(self.con, abfrage)
@@ -143,14 +144,16 @@ class Fakten:
         t = T(tab)
         return select(t).where(t.c[spalte] == wert).order_by(t.c.sort)
 
-    def zugang_fakt(self, tag: str, resn: str | None) -> str:
-        if self.s.fakt_darf(tag, resn, 2):
-            return "visitor"
-        return "member" if self.s.fakt_darf(tag, resn, 1) else "manager"
+    @staticmethod
+    def zugang(darf) -> str:
+        """Ab welcher Rolle etwas sichtbar ist; darf(stufe) → bool."""
+        return "visitor" if darf(2) else "member" if darf(1) else "manager"
+
+    def zugang_fakt(self, tag: str, resn: str | None, xref: str | None = None) -> str:
+        return self.zugang(lambda st: self.s.fakt_darf(tag, resn, st, xref))
 
     def quelle_darf(self, sid: int, stufe: int | None = None) -> bool:
-        r = self.quellen.get(sid)
-        return r is not None and self.s.fakt_darf("SOUR", r["resn"], stufe)
+        return self.s.quelle_darf(sid, stufe)
 
     # Notizen ---------------------------------------------------------------------------------------
 
@@ -161,7 +164,7 @@ class Fakten:
 
     def notiz_texte(self, spalte: str, wert: int) -> list[str]:
         return [n["text"] for n in self.notizen(spalte, wert)
-                if (n["xref"] is None or self.s.fakt_darf("NOTE", n["resn"])) and n["text"].strip()]
+                if (n["xref"] is None or self.s.notiz_darf(n["xref"], n["resn"])) and n["text"].strip()]
 
     # Medien ----------------------------------------------------------------------------------------
 
@@ -283,7 +286,8 @@ class Fakten:
         label = typ_label if (typ_label and e.type in ("MARR", "EVEN", "FACT")) else standard or LABEL.get(e.type, e.type)
         roh = e.value or ""
         wert = WERT.get(e.type, {}).get(roh.upper(), roh) if roh else ""
-        f = self.leer(f"E{e.rolle_id}", e.type, label, wert, roh if roh else None, self.zugang_fakt(e.type, e.resn))
+        f = self.leer(f"E{e.rolle_id}", e.type, label, wert, roh if roh else None,
+                      self.zugang_fakt(e.type, e.resn, self._xref))
         f["type"], f["typeLabel"] = typ, typ_label
         f["date"] = anzeige.datum_json(e.date_text, mit_gedcom=True)
         f["_datum"] = e.date_text
@@ -322,8 +326,11 @@ class Fakten:
             return None
         titel = self.quellen[z["source_id"]]["title"] if z["source_id"] else (z["source_text"] or "")
         roh = f"@{self.quellen[z['source_id']]['xref']}@" if z["source_id"] else z["source_text"]
-        resn = self.quellen[z["source_id"]]["resn"] if z["source_id"] else z["resn"]
-        f = self.leer(f"Q{z['id']}", "SOUR", LABEL["SOUR"], titel or "", roh, self.zugang_fakt("SOUR", resn))
+        if z["source_id"]:
+            zugang = self.zugang(lambda st: self.s.quelle_darf(z["source_id"], st))
+        else:
+            zugang = self.zugang_fakt("SOUR", z["resn"], self._xref)
+        f = self.leer(f"Q{z['id']}", "SOUR", LABEL["SOUR"], titel or "", roh, zugang)
         f["notes"] = self.notiz_texte("citation_id", z["id"])
         f["noteKinds"] = ["note"] * len(f["notes"])
         j = self.zitat_json(z)
@@ -332,31 +339,39 @@ class Fakten:
 
     def datensatz_fakten(self, spalte: str, wert: int, ereignisse: list) -> list[dict]:
         """Alle sichtbaren Fakten eines Datensatzes (Person oder Familie), sortiert."""
+        # Kennung des Datensatzes für die Regeln „Faktart an einem Datensatz“
+        self._xref = (self.m.personen[wert] if spalte == "person_id" else self.m.familien[wert]).xref
         fakten = []
         if spalte == "person_id":
             p = self.m.personen[wert]
             for n in p.namen:
-                f = self.leer(f"N{n['id']}", "NAME", LABEL["NAME"], n["value"], None, self.zugang_fakt("NAME", n["resn"]))
+                f = self.leer(f"N{n['id']}", "NAME", LABEL["NAME"], n["value"], None,
+                              self.zugang_fakt("NAME", n["resn"], self._xref))
                 f["notes"] = self.notiz_texte("name_id", n["id"])
                 f["noteKinds"] = ["note"] * len(f["notes"])
                 f["sources"] = self.zitate("name_id", n["id"])
                 if n["type"]:
                     f["type"] = n["type_text"] or n["type"]
-                if self.s.fakt_darf("NAME", n["resn"]):
+                if self.s.fakt_darf("NAME", n["resn"], xref=self._xref):
                     fakten.append(f)
             sex = self.leer(f"X{p.id}", "SEX", LABEL["SEX"], WERT["SEX"].get(p.sex, p.sex), p.sex, "visitor")
             fakten.append(sex)
         for e in ereignisse:
-            if not e.negated and self.s.fakt_darf(e.type, e.resn):
+            if not e.negated and self.s.fakt_darf(e.type, e.resn, xref=self._xref):
                 fakten.append(self.ereignis_fakt(e))
         for n in self.notizen(spalte, wert):
-            darf = self.s.fakt_darf("NOTE", n["resn"]) if n["xref"] else True
-            if darf:
-                f = self.leer(f"T{n['link']}", "NOTE", LABEL["NOTE"], n["text"], None, self.zugang_fakt("NOTE", n["resn"] if n["xref"] else None))
+            # Notiz als Datensatz: dessen Sichtbarkeit; eingebettete Notiz: Regeln für die Faktart NOTE
+            if n["xref"]:
+                darf = lambda st, n=n: self.s.notiz_darf(n["xref"], n["resn"], st)  # noqa: E731
+            else:
+                darf = lambda st: self.s.fakt_darf("NOTE", None, st, self._xref)  # noqa: E731
+            if darf(self.s.stufe):
+                f = self.leer(f"T{n['link']}", "NOTE", LABEL["NOTE"], n["text"], None, self.zugang(darf))
                 f["noteXref"] = n["xref"]
                 fakten.append(f)
         for z in self.q(self.an("citation", spalte, wert)):
-            if self.s.fakt_darf("SOUR", None):
+            if (self.s.quelle_darf(z["source_id"]) if z["source_id"]
+                    else self.s.fakt_darf("SOUR", z["resn"], xref=self._xref)):
                 f = self.zitat_fakt(z)
                 if f is not None:
                     fakten.append(f)
@@ -437,7 +452,7 @@ class Fakten:
                         "completed": anzeige.datum_json(t["completed_text"], mit_gedcom=True), "solution": t["solution"],
                         # ein verborgenes Archiv behält die Kennung, verliert den Namen
                         "repository": {"xref": repo[0]["xref"],
-                                       "name": repo[0]["name"] if self.s.fakt_darf("REPO", repo[0]["resn"]) else None}
+                                       "name": repo[0]["name"] if self.s.archiv_darf(t["repository_id"]) else None}
                         if repo else None})
         return aus
 
@@ -461,11 +476,11 @@ class Fakten:
     def familie_json(self, fid: int, bezug: int | None = None, mit_zahlen: bool = False) -> dict:
         f = self.m.familien[fid]
         kinder = []
-        for k in f.kinder:
+        for k in self.s.kinder(fid):
             heiraten = []
-            for kf in self.m.personen[k].fams:
+            for kf in self.s.als_partner(k):
                 fam = self.m.familien[kf]
-                partner = next((q for q in fam.partner.values() if q != k), None)
+                partner = next((q for q in self.s.partner(kf).values() if q != k), None)
                 h = _heirat(self.bau, fam)
                 heiraten.append({"family": fam.xref,
                                  "spouse": self.bau.name(self.m.personen[partner]) if partner and self.s.name_darf(partner) else "",
@@ -473,22 +488,23 @@ class Fakten:
                                  "place": self.bau.ort_json(h[1]) if h else None})
             kinder.append({**self.bau.person_kurz(k, mit_zahlen), "marriages": heiraten})
         partner = None
+        eltern = self.s.partner(fid)
         if bezug is not None:
-            partner = next((q for q in f.partner.values() if q != bezug), None)
+            partner = next((q for q in eltern.values() if q != bezug), None)
         h = _heirat(self.bau, f)
         darf = self.s.familie_darf(fid)
         return {
             "xref": f.xref,
             "name": self.familien_name(f),
             "url": self.bau.seiten_url(),
-            "husband": self.bau.person_kurz(f.partner[1], mit_zahlen) if 1 in f.partner else None,
-            "wife": self.bau.person_kurz(f.partner[2], mit_zahlen) if 2 in f.partner else None,
+            "husband": self.bau.person_kurz(eltern[1], mit_zahlen) if 1 in eltern else None,
+            "wife": self.bau.person_kurz(eltern[2], mit_zahlen) if 2 in eltern else None,
             "spouse": self.bau.person_kurz(partner, mit_zahlen) if partner else None,
             "marriage": self.bau.ereignis_json(*h) if h else None,
             "facts": self.datensatz_fakten("family_id", fid, f.fakten) if darf else [],
             "children": kinder,
             "access": "visitor" if self.s.familie_darf(fid, 2) else "member" if self.s.familie_darf(fid, 1) else "manager",
-            "uids": self.uids("family", fid) if darf else [],
+            "uids": self.uids("family", fid),   # wie die Referenz: auch bei verborgener Familie (nur Kennungen)
         }
 
 
@@ -589,7 +605,7 @@ def _gegenrichtung(fk: Fakten, pid: int) -> list[dict]:
             name = fk.familien_name(rec)
             mann = m.personen[rec.partner[1]].xref if 1 in rec.partner and s.person_darf(rec.partner[1]) else None
             frau = m.personen[rec.partner[2]].xref if 2 in rec.partner and s.person_darf(rec.partner[2]) else None
-        if not s.fakt_darf(r["type"], r["resn"]):
+        if not s.fakt_darf(r["type"], r["resn"], xref=rec.xref):
             continue
         typ = r["subtype"] or ""
         if r["type"] == "MARR" and typ.upper() in MARR_TYP:
@@ -618,13 +634,13 @@ def individual(ctx: Kontext):
     con = _oeffnen(ctx)
     try:
         fk = Fakten(bau, con)
-        eltern = [fk.familie_json(fid, None, True) for fid in p.famc]
-        partner = [fk.familie_json(fid, pid, True) for fid in p.fams]
-        eigene_eltern = {q for fid in p.famc for q in m.familien[fid].partner.values()}
+        eltern = [fk.familie_json(fid, None, True) for fid in s.als_kind(pid)]
+        partner = [fk.familie_json(fid, pid, True) for fid in s.als_partner(pid)]
+        eigene_eltern = {q for fid in s.als_kind(pid) for q in s.partner(fid).values()}
         stief = []
-        for fid in p.famc:
-            for q in m.familien[fid].partner.values():
-                for sf in m.personen[q].fams:
+        for fid in s.als_kind(pid):
+            for q in s.partner(fid).values():
+                for sf in s.als_partner(q):
                     if sf not in p.famc and sf not in [x for x, _ in stief]:
                         stief.append((sf, q))
         stief_json = [{"parent": m.personen[q].xref if q in eigene_eltern else None, **fk.familie_json(sf, q, True)}

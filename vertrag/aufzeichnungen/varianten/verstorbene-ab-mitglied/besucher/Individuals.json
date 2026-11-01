@@ -1,0 +1,13 @@
+{
+ "rolle": "besucher",
+ "aktion": "Individuals",
+ "params": {},
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "",
+  "page": 1,
+  "nextPage": 2,
+  "data": []
+ }
+}

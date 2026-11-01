@@ -13,7 +13,7 @@ from gedcom import datum as gdatum
 MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober",
           "November", "Dezember"]
 UNBEKANNT = "…"
-PRIVAT = "Privat"
+PRIVAT = "Vertraulich"   # Name einer verborgenen Person (Wortlaut der Aufzeichnungen)
 
 _TEIL = re.compile(r"^(?:(@#D[A-Z ]+@|JULIAN|GREGORIAN) )?(?:(\d{1,2}) )?(?:([A-Z]{3,4}) )?(\d{1,4})(/\d{2})?( B\.?C\.?)?$")
 

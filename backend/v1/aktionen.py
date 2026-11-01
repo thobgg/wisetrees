@@ -8,6 +8,7 @@ from baum.schema import tabelle as T
 from core.konten import ROLLEN
 
 from .http import GET_AKTIONEN, Kontext
+from .sicht import nur_mitglieder
 
 # Stufe, die wisetrees meldet (Info.api). Stufe 1: lesender Teil vollständig, Schreibrouten fehlen noch
 # (docs/API-V1.md 5). Die Zahl wird mit jeder erfüllten Stufe angehoben (KONZEPT.md 4.1).
@@ -27,6 +28,8 @@ def info(ctx: Kontext) -> dict:
     baeume = []
     for b in ctx.app.state.baeume.alle():
         rolle = ctx.konten.rolle(konto, b.name)
+        if rolle == "visitor" and nur_mitglieder(b):
+            continue  # Baum nur für Mitglieder: für Besucher nicht vorhanden (E19)
         con = b.oeffnen()
         try:
             mt, pe = T("meta"), T("person")
