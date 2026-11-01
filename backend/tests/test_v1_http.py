@@ -68,3 +68,9 @@ def test_url_felder_zeigen_auf_die_startseite(einstellungen, server):
     url = s.get("Individual", "probe", {"xref": "I1"}).json["person"]["url"]
     assert url == server + "/familie/index.php"
     assert "wisetrees läuft" in s.holen(url).daten.decode()
+
+
+def test_nackte_adresse_fuehrt_zur_startseite(server):
+    s = Sitzung(server)
+    a = s.holen(server + "/")
+    assert a.status == 302 and a.location == "index.php"

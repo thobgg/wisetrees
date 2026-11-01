@@ -34,6 +34,13 @@ def erstellen(einstellungen: config.Einstellungen) -> FastAPI:
 
     app.state.baeume = Baeume(einstellungen.baeume)
 
+    @app.get("/", include_in_schema=False)
+    def wurzel():
+        # Die nackte Adresse führt zur Startseite (die Apps hängen index.php selbst an).
+        from fastapi.responses import RedirectResponse
+
+        return RedirectResponse("index.php", status_code=302)
+
     @app.get("/healthz")
     def healthz():
         return {"ok": True, "version": VERSION}
