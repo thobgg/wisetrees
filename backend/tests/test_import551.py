@@ -364,10 +364,10 @@ def test_mehrdeutiger_ortsname(klein):
     assert eins(con, "SELECT xref FROM place WHERE id = ?", ort) is None
 
 
-def test_gedcom7_wird_hier_abgelehnt_und_hinterlaesst_nichts(tmp_path):
-    ziel = tmp_path / "sieben.wise"
-    with pytest.raises(NichtLesbar, match="7.0"):
-        importieren(KLEIN.replace("2 VERS 5.5.1", "2 VERS 7.0").encode(), ziel)
+def test_unbekannte_fassung_wird_abgelehnt_und_hinterlaesst_nichts(tmp_path):
+    ziel = tmp_path / "sechs.wise"
+    with pytest.raises(NichtLesbar, match="6.0"):
+        importieren(KLEIN.replace("2 VERS 5.5.1", "2 VERS 6.0").encode(), ziel)
     assert not ziel.exists()
 
 

@@ -51,5 +51,6 @@ Nicht nötig: `httpx` für FastAPIs TestClient (zöge `certifi`, MPL-2.0, mit). 
 | Datei | Inhalt | Lizenz |
 |---|---|---|
 | `backend/tests/daten/falkenrath-1.7.1.ged`, `backend/tests/daten/medien/` | Falkenrath-Demobaum 1.7.1 und ein Porträt, unverändert | CC0 |
+| `backend/tests/daten/falkenrath-1.7.1-gedcom7.ged` | derselbe Baum als GEDCOM 7.0, mit dem Werkzeug `werkzeuge/gedcom7.py` des Demobaums abgeleitet | CC0 |
 | `vertrag/aufzeichnungen/` | festgelegte v1-Antworten am Falkenrath-Baum | CC0 (Falkenrath) |
 | `vertrag/api-v1.json` | Schemata von api4wisetrees v1 | AGPL-3.0-only wie das Projekt |

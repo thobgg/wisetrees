@@ -1,4 +1,4 @@
-"""GEDCOM 5.5.1 mit GEDCOM-L in eine Baumdatei einlesen (KONZEPT.md 3 und 6).
+"""GEDCOM 5.5.1 mit GEDCOM-L und GEDCOM 7.0 in eine Baumdatei einlesen (KONZEPT.md 3 und 6, E23).
 
 Grundsatz: Jede Zeile der Datei wird entweder ins Modell übernommen oder als GEDCOM-Rest an der Struktur
 aufgehoben, unter der sie stand (E9). Der Importbericht zählt beides; Summe = Zeilen der Datei.
@@ -12,6 +12,13 @@ Abbildung, kurz:
 - _LOC → place mit datierten Namen, Arten (_GOVTYPE), Zugehörigkeiten und Angaben; PLAC am Ereignis → Ort über
   _LOC-Verweis, sonst über die Namenskette. Unsichere Zuordnungen stehen im Bericht.
 - Zitate, Notizen, Medienverweise, Aufgaben (_TODO) an ihrem Träger.
+
+GEDCOM 7.0 hat dieselbe Zeilenform; abweichend liest der Import dort:
+- ASSO @VOID@ mit PHRASE (Beteiligter ohne Datensatz) wie _GODP/_WITN, die Rolle aus ROLE (E5).
+- ROLE mit Aufzählungswert (GODP, WITN …) als Rollencode; PHRASE ist der Rollentext, wie er kam. An 1 ASSO der Person
+  ist PHRASE (sonst ROLE) die Beziehung.
+- PLAC.EXID mit TYPE https://gov.genealogy.net/ wie _GOV; SNOTE als Notiz; NO <Ereignis> als Nicht-Ereignis.
+Werte wie FORM (MIME-Typ), MEDI und LANG bleiben, wie sie kamen.
 """
 
 from __future__ import annotations
@@ -25,7 +32,7 @@ from pathlib import Path
 from baum import datei as baumdatei
 from sqlalchemy import Connection, and_, bindparam, func, insert, select, update
 
-from baum.schema import TRAEGER, XREF_LAENGE
+from baum.schema import ROLLEN_GEDCOM7, TRAEGER, XREF_LAENGE
 from baum.schema import tabelle as T
 
 from . import datum as gdatum
@@ -44,6 +51,7 @@ PEDI = {"birth": "birth", "adopted": "adopted", "foster": "foster", "sealing": "
 # _FREL/_MREL (verbreitet, nicht GEDCOM-L): Abstammung zum Vater bzw. zur Mutter
 REL = {"natural": "birth", "birth": "birth", "adopted": "adopted", "foster": "foster", "step": "step",
        "stepchild": "step", "unknown": "unknown"}
+GOV_EXID = "https://gov.genealogy.net/"   # EXID.TYPE der GOV-Kennung in GEDCOM 7
 
 
 def rolle_aus_rela(text: str | None) -> str:
@@ -91,6 +99,7 @@ class Bericht:
 class Importer:
     def __init__(self, con: Connection, d: Datei, bericht: Bericht):
         self.con, self.d, self.b = con, d, bericht
+        self.v7 = (d.version or "").startswith("7")
         self.ids: dict[tuple[str, str], int] = {}       # (Tabelle, xref) → id
         self.rest_pfade: Counter = Counter()
         self._sort = 0
@@ -129,6 +138,8 @@ class Importer:
     def kinder(self, k: Knoten, holder: tuple[str, int], handler: dict, unter: str | None = None) -> None:
         for c in k.kinder:
             h = handler.get(c.tag)
+            if h is None and c.tag == "SNOTE" and c.zeiger:  # GEDCOM 7: Verweis auf eine Notiz
+                h = handler.get("NOTE")
             if h is None:
                 self.rest(c, holder, unter)
             else:
@@ -191,7 +202,7 @@ class Importer:
         self.b.zeilen_uebernommen += k.zeilen_gesamt()
 
         tabellen = {"INDI": "person", "FAM": "family", "SOUR": "source", "REPO": "repository", "OBJE": "media",
-                    "NOTE": "note", "_LOC": "place"}
+                    "NOTE": "note", "SNOTE": "note", "_LOC": "place"}
         angelegt: set[int] = set()       # Knoten, die einen Datensatz ergeben haben (nicht die doppelten)
         for r in self.d.datensaetze:  # 1. Durchgang: Datensätze mit Kennung anlegen
             tab = tabellen.get(r.tag)
@@ -216,8 +227,8 @@ class Importer:
 
         art = lambda tag: [r for r in self.d.datensaetze if r.tag == tag and id(r) in angelegt]  # noqa: E731
         erledigt = set()
-        for tag, f in (("REPO", self.archiv), ("NOTE", self.notiz_datensatz), ("OBJE", self.medium),
-                       ("SOUR", self.quelle)):
+        for tag, f in (("REPO", self.archiv), ("NOTE", self.notiz_datensatz), ("SNOTE", self.notiz_datensatz),
+                       ("OBJE", self.medium), ("SOUR", self.quelle)):
             for r in art(tag):
                 if id(r) not in erledigt:
                     erledigt.add(id(r))
@@ -713,7 +724,20 @@ class Importer:
                         unter="PLAC:_POST")
             vermerk("postal", aid)
 
-        handler = {"MAP": map_, "_GOV": gleich_oder_rest("gov_id", "gov"),
+        def exid(c):  # GEDCOM 7: GOV-Kennung als EXID mit TYPE
+            typ = c.erstes("TYPE")
+            alt = self.spalte("place", "gov_id", pid)
+            if (typ is None or typ.wert != GOV_EXID or typ.kinder or len(c.kinder) != 1
+                    or (alt is not None and alt != c.wert)):
+                self.rest(c, holder, "PLAC")
+                return
+            self.nimm(c)
+            self.nimm(typ)
+            if alt is None:
+                self.setze("place", pid, gov_id=c.wert)
+            vermerk("gov")
+
+        handler = {"MAP": map_, "_GOV": gleich_oder_rest("gov_id", "gov"), "EXID": exid,
                    "_MAIDENHEAD": gleich_oder_rest("maidenhead", "maidenhead"), "_POST": post}
         for c in k.kinder:
             if c is loc:
@@ -725,6 +749,21 @@ class Importer:
                 h(c)
 
     # ── Ereignisse ─────────────────────────────────────────────────────────────────────────────────
+
+    def rolle7(self, x: Knoten, holder) -> tuple[str, str | None] | None:
+        """GEDCOM 7 ROLE mit Aufzählungswert und PHRASE → (Code, Rollentext). None, wenn es keiner ist (dann gilt der
+        Wert als Text wie RELA in 5.5.1)."""
+        code = (x.wert or "").strip()
+        if not self.v7 or code not in ROLLEN_GEDCOM7:
+            return None
+        self.nimm(x)
+        text = None
+        for p in x.kinder:
+            if p.tag == "PHRASE" and text is None:
+                text = self.wert(p, holder)
+            else:
+                self.rest(p, holder, "ROLE")
+        return code, text
 
     def ereignis(self, k: Knoten, traeger: tuple[str, int], rolle: str, sort: int | None = None,
                  negiert: bool = False, typ: str | None = None) -> int:
@@ -741,6 +780,9 @@ class Importer:
             return unter_nr[0]
 
         def asso(c):
+            if c.wert == "@VOID@" and self.v7:
+                leer(c)
+                return
             pid = self.id_von("person", c, h)
             if pid is None:
                 return
@@ -749,13 +791,42 @@ class Importer:
             r = ("event_role", rid)
 
             def rela(x):
+                code = self.rolle7(x, r)
+                if code:
+                    self.setze("event_role", rid, role=code[0], rela=code[1])
+                    return
                 text = self.wert(x, r)
                 self.setze("event_role", rid, rela=text, role=rolle_aus_rela(text))
 
             self.kinder(c, r, {"RELA": rela, "ROLE": rela, "NOTE": lambda x: self.notiz(x, r),
                                "SOUR": lambda x: self.zitat(x, r)})
 
-        def frei(rolle_):
+        def leer(c):
+            """GEDCOM 7: ASSO @VOID@ mit PHRASE – Beteiligter ohne Datensatz (E5), Rolle aus ROLE."""
+            self.nimm(c)
+            text = c.wert_von("PHRASE")
+            name, _, zusatz = (text or "").partition(",")
+            rid = self.ins("event_role", event_id=eid, role="OTHER", sort=nr(), free_name=name.strip() or (text or ""),
+                           free_addition=zusatz.strip() or None, free_text=text)
+            r = ("event_role", rid)
+
+            def rolle(x):
+                code = self.rolle7(x, r)
+                if code:
+                    self.setze("event_role", rid, role=code[0], rela=code[1])
+                else:
+                    self.rest(x, r)
+
+            def phrase(x):
+                if x is c.erstes("PHRASE"):
+                    self.wert(x, r)
+                else:
+                    self.rest(x, r)
+
+            self.kinder(c, r, {"PHRASE": phrase, "ROLE": rolle, "NOTE": lambda x: self.notiz(x, r),
+                               "SOUR": lambda x: self.zitat(x, r)})
+
+        def frei(rolle_):  # GEDCOM-L _GODP/_WITN
             def f(c):
                 self.nimm(c)
                 text = (c.wert or "").strip()
@@ -793,6 +864,13 @@ class Importer:
             handler["FAMC"] = adop_famc
         self.kinder(k, h, handler)
         return eid
+
+    def nicht(self, k: Knoten, h, sort: int) -> None:
+        """GEDCOM 7: NO MARR – das Ereignis hat nicht stattgefunden (KONZEPT 3.3)."""
+        if not self.v7 or not re.fullmatch(r"[A-Z_][A-Z0-9_]*", k.wert or ""):
+            self.rest(k, h)
+            return
+        self.ereignis(k, h, "PRINCIPAL", sort=sort, negiert=True, typ=k.wert)
 
     # ── Personen ───────────────────────────────────────────────────────────────────────────────────
 
@@ -870,12 +948,19 @@ class Importer:
             self.nimm(c)
             aid = self.ins("person_association", person_id=pid, other_person_id=other, sort=zaehle("asso"))
             a = ("person_association", aid)
-            self.kinder(c, a, {"RELA": lambda x: self.setze("person_association", aid, relation=self.wert(x, a)),
+            def rolle(x):  # GEDCOM 7: ROLE GODP mit PHRASE godmother → Beziehung „godmother“ (sonst der Code)
+                code = self.rolle7(x, a)
+                text = (code[1] or code[0]) if code else self.wert(x, a)
+                self.setze("person_association", aid, relation=text)
+
+            self.kinder(c, a, {"ROLE": rolle,
+                               "RELA": lambda x: self.setze("person_association", aid, relation=self.wert(x, a)),
                                "NOTE": lambda x: self.notiz(x, a), "SOUR": lambda x: self.zitat(x, a)})
 
         handler = {"NAME": name, "SEX": sex, "FAMC": famc, "FAMS": fams, "ASSO": asso, **self.gemeinsam(h, "person")}
         for tag in EREIGNISSE_PERSON:
             handler[tag] = lambda c: self.ereignis(c, h, "PRINCIPAL", sort=zaehle("fakt"))
+        handler["NO"] = lambda c: self.nicht(c, h, zaehle("fakt"))
         self.kinder(r, h, handler)
 
     # ── Familien ───────────────────────────────────────────────────────────────────────────────────
@@ -933,6 +1018,7 @@ class Importer:
         handler = {"HUSB": partner_, "WIFE": partner_, "CHIL": kind, "_STAT": stat, **self.gemeinsam(h, "family")}
         for tag in EREIGNISSE_FAMILIE:
             handler[tag] = lambda c: self.ereignis(c, h, "PRINCIPAL", sort=nr())
+        handler["NO"] = lambda c: self.nicht(c, h, nr())
         self.kinder(r, h, handler)
 
     def mitglieder(self) -> None:
@@ -1000,10 +1086,10 @@ class Importer:
 
 
 def importieren(gedcom: bytes, ziel: Path, titel: str = "", dateiname: str = "") -> Bericht:
-    """GEDCOM 5.5.1 in eine neue Baumdatei. Wirft NichtLesbar; bei Fehlern bleibt keine halbe Datei liegen."""
+    """GEDCOM 5.5.1 oder 7.0 in eine neue Baumdatei. Wirft NichtLesbar; bei Fehlern bleibt keine halbe Datei liegen."""
     d = lesen(gedcom)
-    if d.version and not d.version.startswith("5."):
-        raise NichtLesbar(f"GEDCOM {d.version}: dieser Importer liest 5.5.1 (7.0 folgt über gedcom7)")
+    if d.version and not d.version.startswith(("5.", "7.")):
+        raise NichtLesbar(f"GEDCOM {d.version}: gelesen werden 5.5.1 und 7.0")
     b = Bericht(datei=dateiname, gedcom_version=d.version, zeichensatz=d.zeichensatz, zeilen_gesamt=d.zeilen,
                 lesefehler=d.fehler)
     con = baumdatei.anlegen(ziel, titel)
