@@ -8,7 +8,7 @@ wisetrees ist ein selbst gehosteter Genealogie-Server. Er speichert einen
 oder mehrere Stammbäume in SQLite, liefert sie über eine JSON-API an Apps
 aus und tauscht sie über GEDCOM mit anderen Programmen aus.
 
-Zwei Grundsätze bestimmen ihn:
+Drei Grundsätze bestimmen ihn:
 
 1. **Das Datenmodell ist nicht GEDCOM.** wisetrees hält Personen,
    Ereignisse, Orte und Quellen als eigene Tabellen mit Verweisen, nicht als
@@ -18,6 +18,23 @@ Zwei Grundsätze bestimmen ihn:
    Schlussfolgerung aus Einträgen in Quellen. Das Modell sieht dafür eine
    eigene Ebene vor (Abschnitt 3.6), auch wenn sie anfangs noch nicht
    gebaut wird.
+3. **Kein Lock-in.** Die Daten gehören dem Betreiber. Er kann wisetrees
+   jederzeit verlassen, ohne Angaben zu verlieren und ohne wisetrees zum
+   Auslesen zu brauchen.
+
+Prüfliste zu Grundsatz 3. Ein Punkt gilt erst als erfüllt, wenn ein Test
+oder eine veröffentlichte Spezifikation ihn belegt.
+
+| Punkt | Belegt durch | Stand |
+| ----- | ------------ | ----- |
+| GEDCOM 5.5.1 ohne Verlust | Rundlauf-Test Import → Export → Import (Abschnitt 6) | Import da, Export und Rundlauf offen |
+| GEDCOM 7.0 ohne Verlust | Rundlauf-Test wie oben | offen |
+| `.wise` ist offenes SQLite | Datei mit jedem SQLite-Werkzeug lesbar; Schema dokumentiert (`docs/SCHEMA.md`, E16 Teil 1) | Datei da (E12), Schemadoku offen |
+| WTX mit offener Spezifikation | Spezifikation im Repository, Rundlauf-Test (E13) | vorgesehen |
+| Dokumentierte API | `docs/API-V1.md` und Schema `vertrag/api-v1.json`, Vertragstests | erfüllt für v1 lesend |
+| Offene Datenbanken | SQLite; PostgreSQL als Option (E16) | SQLite da, PostgreSQL offen |
+| Freie Lizenz | AGPL-3.0-only, Abhängigkeiten nur mit verträglichen Lizenzen (`docs/DEPENDENCIES.md`) | erfüllt |
+| Nächtliche GEDCOM-Sicherung | Export je Baum in den Datenordner, einstellbar, mit Test | offen, folgt auf den Export |
 
 ## 2. Ausgangslage
 
