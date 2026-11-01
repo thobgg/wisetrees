@@ -136,6 +136,19 @@ def _von_1(con: Connection) -> None:
 UMBAU[1] = _von_1
 
 
+def _von_2(con: Connection) -> None:
+    """2 → 3: Datensatz am Änderungssatz (E21). Die Spalte kommt ans Ende, wie bei einer neuen Datei."""
+    from sqlalchemy.schema import CreateIndex
+
+    from .schema import change_set
+
+    con.exec_driver_sql("ALTER TABLE change_set ADD COLUMN record_xref VARCHAR(255)")
+    con.execute(CreateIndex(next(i for i in change_set.indexes if i.name == "change_set_offen")))
+
+
+UMBAU[2] = _von_2
+
+
 def verweise_pruefen(con: Connection) -> list[str]:
     """Alle Fremdschlüssel prüfen (auch die Trägerspalten). Leere Liste = alles in Ordnung."""
     return [f"Fremdschlüssel: {tuple(r)}" for r in con.exec_driver_sql("PRAGMA foreign_key_check")]

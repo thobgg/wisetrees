@@ -18,7 +18,7 @@ from sqlalchemy import (CheckConstraint, Column, Double, ForeignKey, Index, Inte
                         UniqueConstraint, text)
 
 APPLICATION_ID = 0x57495345  # ASCII "WISE", E12
-SCHEMA_VERSION = 2   # 2: Datenschutz-Regeln (E19); Dateien der Version 1 baut datei.oeffnen() um
+SCHEMA_VERSION = 3   # 2: Datenschutz-Regeln (E19); 3: Datensatz am Änderungssatz (E21); älteres baut oeffnen() um
 
 XREF_LAENGE = 255     # GEDCOM-Kennung ohne @ (E16); längere lehnt der Import ab
 PRAEFIX = 191         # Länge des Präfix-Index für Textspalten in MariaDB (utf8mb4)
@@ -497,7 +497,10 @@ change_set = _tabelle(
     Column("decided_by", Text),
     Column("decided_at", Text),
     Column("comment", Text),
+    # Datensatz, zu dem die Änderung gehört (Person, Familie …) – offene Änderungen werden je Datensatz angenommen
+    Column("record_xref", String(XREF_LAENGE), comment="Kennung des geänderten Datensatzes (seit Schemaversion 3)"),
     CheckConstraint("status IN ('pending', 'accepted', 'rejected')"),
+    Index("change_set_offen", "status", "record_xref", mysql_length={"status": PRAEFIX}),
 )
 
 change_step = _tabelle(
