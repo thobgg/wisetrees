@@ -73,7 +73,8 @@ Objekt hängen und kommt beim Export wieder heraus (E9).
 ### 3.2 Personen und Namen
 
 - **Person**: Kennung, Geschlecht (`M`, `F`, `X`, `U` – X kennen
-  GEDCOM-L und 7.0), Schutzvermerk (RESN), Zeitstempel. Lebensdaten
+  GEDCOM-L und 7.0; leer = keine Angabe, E22), Schutzvermerk (RESN),
+  Zeitstempel. Lebensdaten
   stehen nicht an der Person, sie ergeben sich aus den Ereignissen.
 - **Name**: beliebig viele je Person, mit Art (Geburtsname, Ehename,
   angenommener Name …), Teilen (Vornamen, Rufname `_RUFNAME`, Spitzname,

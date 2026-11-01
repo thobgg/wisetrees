@@ -23,6 +23,7 @@ import datetime
 import os
 import threading
 from dataclasses import dataclass, field
+from pathlib import PurePosixPath
 
 from sqlalchemy import Connection, select
 
@@ -31,6 +32,7 @@ from baum import datenschutz
 from baum.datei import Zeile
 from baum.schema import tabelle as T
 from gedcom.datum import jd_gregorianisch
+from gedcom.umsetzen import ENDUNG, MEDIEN_7
 from v1.anzeige import jahr_aus_jd
 
 STUFE = {"visitor": 2, "member": 1, "editor": 1, "moderator": 1, "manager": 0}
@@ -91,6 +93,19 @@ class Medium:
 
 
 BILDFORMATE = {"jpg", "jpeg", "png", "gif", "webp", "bmp", "tif", "tiff"}
+
+
+def kurzform(fmt: str | None, pfad: str) -> str | None:
+    """Dateiformat, wie v1 es meldet: die Endung wie in GEDCOM 5.5.1 („jpg“). Aus 7.0 steht in der Baumdatei der
+    MIME-Typ (E27); v1 meldet für beide dasselbe. Unbekannter MIME-Typ: die Endung der Datei, sonst der Typ selbst."""
+    if not fmt or "/" not in fmt:
+        return fmt
+    return ENDUNG.get(fmt.lower()) or PurePosixPath(pfad).suffix.lstrip(".").lower() or fmt
+
+
+def medienart(typ: str | None) -> str | None:
+    """Art des Mediums wie in 5.5.1 („photo“); 7.0 schreibt die festen Werte groß („PHOTO“, E27)."""
+    return typ.lower() if typ in MEDIEN_7 else typ
 
 
 @dataclass(slots=True)
@@ -164,7 +179,7 @@ class Modell:
             self.medien[r[0]] = Medium(r[0], r[1], r[2], r[3])
         for r in con.execute(select(mf.c.media_id, mf.c.path, mf.c.format, mf.c.media_type, mf.c.title)
                              .order_by(mf.c.media_id, mf.c.sort)):
-            self.medien[r[0]].dateien.append((r[1], r[2], r[3], r[4]))
+            self.medien[r[0]].dateien.append((r[1], kurzform(r[2], r[1]), medienart(r[3]), r[4]))
         for r in con.execute(select(ml.c.person_id, ml.c.media_id, ml.c.is_primary)
                              .where(ml.c.person_id.is_not(None)).order_by(ml.c.sort)):
             self.personen[r[0]].medien.append((r[1], bool(r[2])))

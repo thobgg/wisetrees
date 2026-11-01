@@ -47,3 +47,27 @@ def test_bilder_nur_sichtbar_und_im_ordner(einstellungen, server):
     assert s.holen(url("M3")).status == 404          # Bild einer lebenden Person, Besucher
     assert s.holen(url("M9")).status == 404
     assert s.holen(s.url("/wisetrees/medien/gibtsnicht/M1")).status == 404
+
+
+def test_baum_aus_gedcom7_zeigt_bilder_wie_aus_551(einstellungen, server):
+    """Aus 7.0 stehen Dateiformat und Medienart wie in 7.0 in der Baumdatei („image/jpeg“, „PHOTO“, E27); v1 meldet
+    sie wie bei 5.5.1 („jpg“, „photo“)."""
+    import json
+    from pathlib import Path
+
+    daten = Path(__file__).with_name("daten")
+    for name, datei in (("f5", "falkenrath-1.7.1.ged"), ("f7", "falkenrath-1.7.1-gedcom7.ged")):
+        importieren((daten / datei).read_bytes(), einstellungen.baeume / f"{name}.wise")
+        ordner = einstellungen.medien / name
+        ordner.mkdir(parents=True)
+        (ordner / "portrait-i21.jpg").write_bytes((daten / "medien" / "portrait-i21.jpg").read_bytes())
+    s = Sitzung(server)
+    i21 = {b: s.get("Individual", b, {"xref": "I21"}).json for b in ("f5", "f7")}
+    bilder = {b: json.loads(json.dumps([i21[b]["person"]["thumb"], i21[b]["media"]]).replace(f"%2F{b}%2F", "%2FBAUM%2F"))
+              for b in i21}
+    assert bilder["f7"] == bilder["f5"]
+    haupt = i21["f7"]["media"][0]
+    assert (haupt["isImage"], haupt["mime"], haupt["format"], haupt["type"]) == (True, "image/jpeg", "jpg", "photo")
+    assert i21["f7"]["person"]["thumb"]
+    bild = s.holen(i21["f7"]["person"]["thumb"])
+    assert bild.status == 200 and bild.content_type == "image/jpeg"
