@@ -1,0 +1,34 @@
+{
+ "nr": 5,
+ "art": "lesen",
+ "rolle": "moderator",
+ "fall": "Pending",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "data": [
+   {
+    "xref": "I130",
+    "type": "INDI",
+    "name": "Georg Mohwinkel",
+    "kind": "changed",
+    "changes": 2,
+    "users": [
+     "bearbeiter"
+    ],
+    "time": "<zeit>"
+   },
+   {
+    "xref": "F8",
+    "type": "FAM",
+    "name": "Heinrich Falkenrath + Anna Rosskamp",
+    "kind": "changed",
+    "changes": 1,
+    "users": [
+     "bearbeiter"
+    ],
+    "time": "<zeit>"
+   }
+  ]
+ }
+}

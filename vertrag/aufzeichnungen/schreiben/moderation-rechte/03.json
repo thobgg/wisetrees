@@ -1,0 +1,13 @@
+{
+ "nr": 3,
+ "art": "lesen",
+ "rolle": "mitglied",
+ "fall": "Pending",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-moderator",
+  "status": 403
+ }
+}

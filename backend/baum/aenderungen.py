@@ -20,6 +20,8 @@ from __future__ import annotations
 import datetime
 import json
 import re
+from collections.abc import Iterator
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 
 from sqlalchemy import Connection, delete, insert, select, update
@@ -177,6 +179,61 @@ def annehmen(con: Connection, satz_ids: list[int], wer: str) -> None:
             _schritt_anwenden(con, s)
         con.execute(update(change_set).where(change_set.c.id == sid)
                     .values(status="accepted", decided_by=wer, decided_at=_jetzt()))
+
+
+@contextmanager
+def offener_stand(con: Connection) -> Iterator[dict[str, set[int]]]:
+    """Den Baum lesen, als wären alle offenen Sätze angenommen (Sicht der Bearbeiter, E21).
+
+    Die Sätze werden in einer Transaktion angewendet, die am Ende immer zurückgerollt wird; die Datei bleibt
+    unverändert. Ein Satz mit Konflikt bleibt außen vor. Liefert die berührten Objekte je Tabelle (nach dem
+    Anwenden, also auch die Kennungen neu angelegter Objekte)."""
+    offen = offene_saetze(con)
+    if con.in_transaction():
+        con.rollback()
+    if not offen:
+        yield {}
+        return
+    tx = con.begin()
+    # Ausdrücklich beginnen: Der SQLite-Treiber beginnt sonst erst beim ersten Schreiben, und das Freigeben des
+    # ersten Sicherungspunkts würde dann festschreiben.
+    con.exec_driver_sql("BEGIN")
+    beruehrt: dict[str, set[int]] = {}
+    try:
+        for satz in offen:
+            sp = con.begin_nested()
+            try:
+                annehmen(con, [satz["id"]], satz["author"])
+            except Konflikt:
+                sp.rollback()
+                continue
+            sp.commit()
+            for s in schritte(con, [satz["id"]]):
+                beruehrt.setdefault(s["object_type"], set()).add(s["object_id"])
+        yield beruehrt
+    finally:
+        tx.rollback()
+
+
+def offene_datensaetze(con: Connection) -> list[dict]:
+    """Je Datensatz mit offenen Sätzen: xref, Anzahl, Autoren (in Reihenfolge), Zeit des letzten Satzes und ob der
+    Datensatz angelegt oder gelöscht wird – in der Reihenfolge des ersten offenen Satzes."""
+    aus: dict[str, dict] = {}
+    offen = offene_saetze(con)
+    art_von = {s["id"]: s for s in schritte(con, [s["id"] for s in offen])
+               if s["object_type"] in ("person", "family") and s["operation"] in ("create", "delete")}
+    for satz in offen:
+        d = aus.setdefault(satz["record_xref"], {"xref": satz["record_xref"], "changes": 0, "users": [],
+                                                 "time": satz["created_at"], "new": False, "deleted": False})
+        d["changes"] += 1
+        d["time"] = satz["created_at"]
+        if satz["author"] not in d["users"]:
+            d["users"].append(satz["author"])
+    for s in art_von.values():
+        xref = s["neu"].get("xref") if s["operation"] == "create" else s["alt"].get("xref")
+        if xref in aus:
+            aus[xref]["new" if s["operation"] == "create" else "deleted"] = True
+    return list(aus.values())
 
 
 def verwerfen(con: Connection, satz_ids: list[int], wer: str) -> None:

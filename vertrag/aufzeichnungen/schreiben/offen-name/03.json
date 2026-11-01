@@ -1,0 +1,235 @@
+{
+ "nr": 3,
+ "art": "lesen",
+ "rolle": "bearbeiter",
+ "fall": "Individuals__q=Heinz",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Heinz",
+  "page": 1,
+  "nextPage": null,
+  "data": [
+   {
+    "xref": "I265",
+    "name": "Heinz Krümmel",
+    "sortName": "Krümmel,Heinz",
+    "given": "Heinz",
+    "surname": "Krümmel",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1906–1985",
+    "birth": {
+     "date": {
+      "text": "24. Januar 1906",
+      "year": 1906,
+      "jd": 2417235
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "17. November 1985",
+      "year": 1985,
+      "jd": 2446387
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "31. Januar 1906",
+      "year": 1906,
+      "jd": 2417242
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Tischler",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I34",
+    "name": "Heinz Krümmel",
+    "sortName": "Krümmel,Heinz",
+    "given": "Heinz",
+    "surname": "Krümmel",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1933–1945",
+    "birth": {
+     "date": {
+      "text": "3. März 1933",
+      "year": 1933,
+      "jd": 2427135
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "18. April 1945",
+      "year": 1945,
+      "jd": 2431564
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": {
+     "date": {
+      "text": "21. April 1945",
+      "year": 1945,
+      "jd": 2431567
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I447",
+    "name": "Heinz Mohwinkel",
+    "sortName": "Mohwinkel,Heinz",
+    "given": "Heinz",
+    "surname": "Mohwinkel",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1938–2001",
+    "birth": {
+     "date": {
+      "text": "6. Februar 1938",
+      "year": 1938,
+      "jd": 2428936
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. Februar 2001",
+      "year": 2001,
+      "jd": 2451944
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": null,
+    "buri": null,
+    "occupation": "Handwerksmeister",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I383",
+    "name": "Heinz Ohlhoff",
+    "sortName": "Ohlhoff,Heinz",
+    "given": "Heinz",
+    "surname": "Ohlhoff",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1904–1980",
+    "birth": {
+     "date": {
+      "text": "4. Januar 1904",
+      "year": 1904,
+      "jd": 2416484
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "20. Oktober 1980",
+      "year": 1980,
+      "jd": 2444533
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "6. Januar 1904",
+      "year": 1904,
+      "jd": 2416486
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": null,
+    "occupation": "Maschinenschlosser",
+    "thumb": null,
+    "url": "<url>"
+   }
+  ]
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "nr": 1,
+ "art": "schreiben",
+ "rolle": "bearbeiter",
+ "aktion": "Fact",
+ "params": {
+  "xref": "I22"
+ },
+ "rumpf": {
+  "tag": "RESI",
+  "date": "1950",
+  "place": "Celle"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "I22",
+  "pending": true
+ }
+}

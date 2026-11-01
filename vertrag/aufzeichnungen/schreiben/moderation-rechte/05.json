@@ -1,0 +1,17 @@
+{
+ "nr": 5,
+ "art": "schreiben",
+ "rolle": "mitglied",
+ "aktion": "Reject",
+ "params": {
+  "xref": "I21"
+ },
+ "rumpf": {},
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": false,
+  "error": "not-moderator",
+  "status": 403
+ }
+}

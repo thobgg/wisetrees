@@ -7,11 +7,14 @@ Beschriftungen auf Deutsch, Wortlaut wie in den v1-Aufzeichnungen.
 
 from __future__ import annotations
 
+import contextlib
+
 import re
 from functools import cmp_to_key
 
 from sqlalchemy import Connection, func, select
 
+from baum import aenderungen as ae
 from baum.datei import Zeile, zeilen
 from baum.schema import tabelle as T
 from core.konten import ROLLEN
@@ -19,7 +22,7 @@ from core.konten import ROLLEN
 from . import anzeige
 from .http import GET_AKTIONEN, Kontext, fehler
 from .personen import Bau, _heirat, baum_und_person
-from .sicht import BILDFORMATE, sicht_fuer
+from .sicht import BILDFORMATE, ereignisse_aus, namen_aus, sicht_fuer, sieht_offenes
 
 # Tag-Reihenfolge der Fakten
 FAKT_REIHE = ["BIRT", "_HNM", "ALIA", "_AKA", "_AKAN", "ADOP", "_ADPF", "_ADPF", "_BRTM", "CHR", "BAPM", "FCOM", "CONF", "BARM", "BASM", "EDUC", "GRAD", "_DEG", "EMIG", "IMMI", "NATU", "_MILI", "_MILT", "ENGA", "MARB", "MARC", "MARL", "_MARI", "_MBON", "MARR", "_COML", "_STAT", "_SEPR", "DIVF", "MARS", "DIV", "ANUL", "CENS", "OCCU", "RESI", "PROP", "CHRA", "RETI", "FACT", "EVEN", "_NMR", "_NMAR", "NMR", "NCHI", "WILL", "_HOL", "_????_", "DEAT", "_FNRL", "CREM", "BURI", "_INTE", "_YART", "_NLIV", "PROB", "TITL", "COMM", "NATI", "CITN", "CAST", "RELI", "SSN", "IDNO", "TEMP", "SLGC", "BAPL", "CONL", "ENDL", "SLGS", "NO", "ADDR", "PHON", "EMAIL", "_EMAIL", "EMAL", "FAX", "WWW", "URL", "_URL", "_FSFTID", "AFN", "REFN", "_PRMN", "REF", "RIN", "_UID", "OBJE", "NOTE", "SOUR", "CREA", "CHAN", "_TODO"]
@@ -133,10 +136,26 @@ def sortieren(fakten: list[dict]) -> list[dict]:
 # ── Bausteine ──────────────────────────────────────────────────────────────────────────────────────
 
 class Fakten:
-    def __init__(self, bau: Bau, con: Connection):
+    def __init__(self, bau: Bau, con: Connection, offen: dict[str, set[int]] | None = None):
+        """offen: berührte Objekte der offenen Änderungen, wenn con den Stand mit ihnen zeigt (offener_stand)."""
         self.bau, self.s, self.m, self.con = bau, bau.s, bau.m, con
         self.quellen = {r["id"]: r for r in zeilen(con, select(T("source")))}
         self._xref: str | None = None
+        self.offen = offen or {}
+        # Ereignisse und Namen, an denen etwas offen ist – auch über Notizen, Zitate, Beteiligungen und Ortsangaben
+        self.offen_ereignisse = set(self.offen.get("event", ()))
+        self.offen_namen = set(self.offen.get("name", ()))
+        for tab, ids in self.offen.items():
+            t = T(tab)
+            spalten = [c for c in ("event_id", "name_id") if c in t.c]
+            if spalten:
+                for r in con.execute(select(*[t.c[c] for c in spalten]).where(t.c.id.in_(ids))):
+                    for c, v in zip(spalten, r, strict=True):
+                        if v is not None:
+                            (self.offen_ereignisse if c == "event_id" else self.offen_namen).add(v)
+
+    def ist_offen(self, tab: str, oid: int) -> bool:
+        return oid in self.offen.get(tab, ())
 
     def q(self, abfrage) -> list[Zeile]:
         return zeilen(self.con, abfrage)
@@ -346,9 +365,12 @@ class Fakten:
         # Kennung des Datensatzes für die Regeln „Faktart an einem Datensatz“
         self._xref = (self.m.personen[wert] if spalte == "person_id" else self.m.familien[wert]).xref
         fakten = []
+        if self.offen:
+            # Stand mit offenen Änderungen: Ereignisse und Namen aus der Datenbank statt aus dem Modell
+            ereignisse = ereignisse_aus(self.con, spalte, wert)
         if spalte == "person_id":
             p = self.m.personen[wert]
-            for n in p.namen:
+            for n in (namen_aus(self.con, wert) if self.offen else p.namen):
                 f = self.leer(f"N{n['id']}", "NAME", LABEL["NAME"], n["value"], None,
                               self.zugang_fakt("NAME", n["resn"], self._xref))
                 f["notes"] = self.notiz_texte("name_id", n["id"])
@@ -356,13 +378,16 @@ class Fakten:
                 f["sources"] = self.zitate("name_id", n["id"])
                 if n["type"]:
                     f["type"] = n["type_text"] or n["type"]
+                f["pending"] = n["id"] in self.offen_namen
                 if self.s.fakt_darf("NAME", n["resn"], xref=self._xref):
                     fakten.append(f)
             sex = self.leer(f"X{p.id}", "SEX", LABEL["SEX"], WERT["SEX"].get(p.sex, p.sex), p.sex, "visitor")
             fakten.append(sex)
         for e in ereignisse:
             if not e.negated and self.s.fakt_darf(e.type, e.resn, xref=self._xref):
-                fakten.append(self.ereignis_fakt(e))
+                f = self.ereignis_fakt(e)
+                f["pending"] = e.id in self.offen_ereignisse or self.ist_offen("event_role", e.rolle_id)
+                fakten.append(f)
         for n in self.notizen(spalte, wert):
             # Notiz als Datensatz: dessen Sichtbarkeit; eingebettete Notiz: Regeln für die Faktart NOTE
             if n["xref"]:
@@ -372,12 +397,14 @@ class Fakten:
             if darf(self.s.stufe):
                 f = self.leer(f"T{n['link']}", "NOTE", LABEL["NOTE"], n["text"], None, self.zugang(darf))
                 f["noteXref"] = n["xref"]
+                f["pending"] = self.ist_offen("note_link", n["link"]) or self.ist_offen("note", n["id"])
                 fakten.append(f)
         for z in self.q(self.an("citation", spalte, wert)):
             if (self.s.quelle_darf(z["source_id"]) if z["source_id"]
                     else self.s.fakt_darf("SOUR", z["resn"], xref=self._xref)):
                 f = self.zitat_fakt(z)
                 if f is not None:
+                    f["pending"] = self.ist_offen("citation", z["id"])
                     fakten.append(f)
         if spalte == "person_id":
             for a in self.q(self.an("person_association", "person_id", wert)):
@@ -393,6 +420,7 @@ class Fakten:
                                     "access": self.bau.zugang(q.id), "level1": True,
                                     "notes": self.notiz_texte("person_association_id", a["id"]),
                                     "sources": self.zitate("person_association_id", a["id"])}]
+                f["pending"] = self.ist_offen("person_association", a["id"])
                 fakten.append(f)
         gr = T("gedcom_rest")
         for r in self.q(select(gr.c.id, gr.c.gedcom).where(gr.c[spalte] == wert, gr.c.under.is_(None)).order_by(gr.c.sort)):
@@ -406,7 +434,8 @@ class Fakten:
                 f["_datum"] = datum.group(1) if datum else None
                 f["date"] = anzeige.datum_json(f["_datum"], mit_gedcom=True)
                 fakten.append(f)
-        aus = sortieren(fakten)
+        # Geänderte Fakten stehen beim Bearbeiter hinter den übrigen, bevor sortiert wird (bei gleichem Rang danach)
+        aus = sortieren([f for f in fakten if not f["pending"]] + [f for f in fakten if f["pending"]])
         if spalte == "person_id":
             self._paten_aus_asso(aus)
         for f in aus:
@@ -526,6 +555,13 @@ def _oeffnen(ctx: Kontext):
     return ctx.app.state.baeume.baum(ctx.baum_name).oeffnen()
 
 
+def _stand(ctx: Kontext, con):
+    """Bearbeiter und höher lesen den Stand mit offenen Änderungen (E21), alle anderen den angenommenen."""
+    if sieht_offenes(ctx.konten.rolle(ctx.konto, ctx.baum_name)):
+        return ae.offener_stand(con)
+    return contextlib.nullcontext({})
+
+
 def family(ctx: Kontext):
     try:
         s = sicht_fuer(ctx, ctx.baum_name or "")
@@ -539,13 +575,14 @@ def family(ctx: Kontext):
     bau = Bau(ctx, s)
     con = _oeffnen(ctx)
     try:
-        fk = Fakten(bau, con)
-        j = fk.familie_json(fid)
-        f = s.m.familien[fid]
-        j["media"] = fk.medien_json("family_id", fid, None)
-        j["tasks"] = fk.aufgaben("family_id", fid, f.xref, "FAM", j["name"])
-        j["lastChange"] = letzte_aenderung(con, f.xref)
-        return j
+        with _stand(ctx, con) as offen:
+            fk = Fakten(bau, con, offen)
+            j = fk.familie_json(fid)
+            f = s.m.familien[fid]
+            j["media"] = fk.medien_json("family_id", fid, None)
+            j["tasks"] = fk.aufgaben("family_id", fid, f.xref, "FAM", j["name"])
+            j["lastChange"] = letzte_aenderung(con, f.xref)
+            return j
     finally:
         con.close()
 
@@ -645,42 +682,43 @@ def individual(ctx: Kontext):
     p = m.personen[pid]
     con = _oeffnen(ctx)
     try:
-        fk = Fakten(bau, con)
-        eltern = [fk.familie_json(fid, None, True) for fid in s.als_kind(pid)]
-        partner = [fk.familie_json(fid, pid, True) for fid in s.als_partner(pid)]
-        eigene_eltern = {q for fid in s.als_kind(pid) for q in s.partner(fid).values()}
-        stief = []
-        for fid in s.als_kind(pid):
-            for q in s.partner(fid).values():
-                for sf in s.als_partner(q):
-                    if sf not in p.famc and sf not in [x for x, _ in stief]:
-                        stief.append((sf, q))
-        stief_json = [{"parent": m.personen[q].xref if q in eigene_eltern else None, **fk.familie_json(sf, q, True)}
-                      for sf, q in stief]
-        # Bezugsperson: relativeTo, sonst die eigene Person des Kontos („Das bin ich“)
-        bezug = ctx.params.get("relativeTo") or ctx.konten.kontobaum(ctx.konto, ctx.baum_name).person
-        verwandt = ""
-        if bezug and bezug != p.xref:
-            other = m.person_xref.get(bezug)
-            if other is not None and s.person_darf(other):
-                verwandt = _verwandtschaft(bau, other, pid)
-        rolle = ctx.konten.rolle(ctx.konto, ctx.baum_name)
-        haupt = bau.hauptbild(p)
-        name = bau.name(p)
-        return {
-            "person": bau.person_kurz(pid, True),
-            "relationship": verwandt,
-            "canEdit": ROLLEN.index(rolle) >= ROLLEN.index("editor") and p.resn != "locked" or rolle == "manager",
-            "facts": fk.datensatz_fakten("person_id", pid, p.fakten),
-            "parentFamilies": eltern,
-            "spouseFamilies": partner,
-            "stepFamilies": stief_json,
-            "media": fk.medien_json("person_id", pid, haupt[0].xref if haupt else None),
-            "associatedIn": _gegenrichtung(fk, pid),
-            "tasks": fk.aufgaben("person_id", pid, p.xref, "INDI", name),
-            "lastChange": letzte_aenderung(con, p.xref),
-            "uids": fk.uids("person", pid),
-        }
+        with _stand(ctx, con) as offen:
+            fk = Fakten(bau, con, offen)
+            eltern = [fk.familie_json(fid, None, True) for fid in s.als_kind(pid)]
+            partner = [fk.familie_json(fid, pid, True) for fid in s.als_partner(pid)]
+            eigene_eltern = {q for fid in s.als_kind(pid) for q in s.partner(fid).values()}
+            stief = []
+            for fid in s.als_kind(pid):
+                for q in s.partner(fid).values():
+                    for sf in s.als_partner(q):
+                        if sf not in p.famc and sf not in [x for x, _ in stief]:
+                            stief.append((sf, q))
+            stief_json = [{"parent": m.personen[q].xref if q in eigene_eltern else None, **fk.familie_json(sf, q, True)}
+                          for sf, q in stief]
+            # Bezugsperson: relativeTo, sonst die eigene Person des Kontos („Das bin ich“)
+            bezug = ctx.params.get("relativeTo") or ctx.konten.kontobaum(ctx.konto, ctx.baum_name).person
+            verwandt = ""
+            if bezug and bezug != p.xref:
+                other = m.person_xref.get(bezug)
+                if other is not None and s.person_darf(other):
+                    verwandt = _verwandtschaft(bau, other, pid)
+            rolle = ctx.konten.rolle(ctx.konto, ctx.baum_name)
+            haupt = bau.hauptbild(p)
+            name = bau.name(p)
+            return {
+                "person": bau.person_kurz(pid, True),
+                "relationship": verwandt,
+                "canEdit": ROLLEN.index(rolle) >= ROLLEN.index("editor") and p.resn != "locked" or rolle == "manager",
+                "facts": fk.datensatz_fakten("person_id", pid, p.fakten),
+                "parentFamilies": eltern,
+                "spouseFamilies": partner,
+                "stepFamilies": stief_json,
+                "media": fk.medien_json("person_id", pid, haupt[0].xref if haupt else None),
+                "associatedIn": _gegenrichtung(fk, pid),
+                "tasks": fk.aufgaben("person_id", pid, p.xref, "INDI", name),
+                "lastChange": letzte_aenderung(con, p.xref),
+                "uids": fk.uids("person", pid),
+            }
     finally:
         con.close()
 

@@ -1,0 +1,20 @@
+{
+ "nr": 1,
+ "art": "schreiben",
+ "rolle": "bearbeiter",
+ "aktion": "Fact",
+ "params": {
+  "xref": "I21"
+ },
+ "rumpf": {
+  "factId": "<fakt:NAME:0>",
+  "value": "Heinz /Falkenrath/"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "I21",
+  "pending": true
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "nr": 4,
+ "art": "schreiben",
+ "rolle": "moderator",
+ "aktion": "Reject",
+ "params": {
+  "xref": "I22"
+ },
+ "rumpf": {},
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "pending": 0
+ }
+}

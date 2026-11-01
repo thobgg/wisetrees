@@ -36,6 +36,9 @@ def info(ctx: Kontext) -> dict:
             titel = con.execute(select(mt.c.value).where(mt.c.key == "title")).scalar() or b.name
             anzahl = con.execute(select(func.count()).select_from(pe)).scalar()
             erste = con.execute(select(func.min(pe.c.xref))).scalar() or ""
+            # offen: Datensätze mit offenen Änderungen, nur für die Moderation; letzte: Nummer des letzten Satzes
+            offen = moderation.offene_anzahl(con) if rolle in moderation.MODERATION else 0
+            letzte = con.execute(select(func.max(T("change_set").c.id))).scalar() or 0
         finally:
             con.close()
         from .sicht import sicht_fuer
@@ -48,9 +51,9 @@ def info(ctx: Kontext) -> dict:
         baeume.append({
             "name": b.name, "title": titel, "individuals": anzahl, "role": rolle,
             "canEdit": _rang(rolle) >= _rang("editor"), "canUpload": _rang(rolle) >= _rang("editor"),
-            "canModerate": _rang(rolle) >= _rang("moderator"), "pending": 0, "autoAccept": kb.sofort,
+            "canModerate": _rang(rolle) >= _rang("moderator"), "pending": offen, "autoAccept": kb.sofort,
             "userXref": kb.person, "defaultXref": "", "startXref": start, "treeDefaultXref": "",
-            "availableModules": ["_api4webtrees_"], "lastChange": 0,
+            "availableModules": ["_api4webtrees_"], "lastChange": letzte,
         })
     return {
         "api": API_STUFE,
@@ -79,4 +82,5 @@ GET_AKTIONEN["Info"] = info
 
 from . import personen  # noqa: E402, F401 – trägt Individuals ein
 from . import fakten  # noqa: E402, F401 – trägt Family und Individual ein
+from . import moderation  # noqa: E402 – trägt Pending, Accept und Reject ein
 from . import schreiben  # noqa: E402, F401 – trägt die schreibenden Aktionen ein

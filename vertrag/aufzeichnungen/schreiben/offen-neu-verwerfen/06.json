@@ -1,0 +1,11 @@
+{
+ "nr": 6,
+ "art": "lesen",
+ "rolle": "moderator",
+ "fall": "Pending",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "data": []
+ }
+}

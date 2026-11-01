@@ -1,7 +1,9 @@
 """Leseschicht (KONZEPT.md 5.2, 5.3, E4 a): Baummodell im Speicher, darüber Sichtbarkeit je Rolle.
 
-Keine v1-Route liest an dieser Schicht vorbei. Offene Änderungen werden hier später über den angenommenen Stand
-gelegt (Änderungssätze, nur für Bearbeiter und höher); die Sichtbarkeit wird danach angewendet.
+Keine v1-Route liest an dieser Schicht vorbei. Das Modell enthält nur den angenommenen Stand. Bearbeiter und höher
+sehen in den Fakten eines Datensatzes (Individual, Family) zusätzlich die offenen Änderungen
+(baum/aenderungen.offener_stand, Fakten mit pending: true); Liste, Suche, Namen in Kurzform und Verwandtschaft
+bleiben beim angenommenen Stand (E21). Die Sichtbarkeit wird danach angewendet.
 
 Sichtbarkeit nach den Datenschutz-Einstellungen des Baums (E19, baum/datenschutz.py); die Vorgaben:
   Zugriffsstufen: Besucher 2, Mitglied/Bearbeiter/Moderator 1, Verwalter 0.
@@ -123,7 +125,7 @@ class Modell:
             return gleich.setdefault(text, text) if text else text
 
         pe, na, fa, fm = T("person"), T("name"), T("family"), T("family_member")
-        ev, er, me, mf, ml = T("event"), T("event_role"), T("media"), T("media_file"), T("media_link")
+        er, me, mf, ml = T("event_role"), T("media"), T("media_file"), T("media_link")
         for r in con.execute(select(pe.c.id, pe.c.xref, pe.c.sex, pe.c.resn, pe.c.uid)):
             self.personen[r[0]] = Person(r[0], r[1], r[2], r[3], r[4])
             self.person_xref[r[1]] = r[0]
@@ -146,17 +148,8 @@ class Modell:
             kinder.setdefault(r[0], []).append(r[1])
         for f in self.familien.values():
             f.kinder = kinder.get(f.id, [])
-        for r in con.execute(
-                select(ev.c.id, ev.c.type, ev.c.subtype, ev.c.value, ev.c.negated, ev.c.place_id, ev.c.place_text,
-                       ev.c.address, ev.c.cause, ev.c.date_text, ev.c.date_from, ev.c.date_to, ev.c.resn, er.c.id,
-                       er.c.fact_sort, er.c.person_id, er.c.family_id)
-                .select_from(er.join(ev, ev.c.id == er.c.event_id))
-                .where(er.c.role == "PRINCIPAL", (er.c.person_id.is_not(None)) | (er.c.family_id.is_not(None)))
-                .order_by(er.c.fact_sort)):
-            # Wiederkehrende Texte (Art, Ort, Ursache, Sperrvermerk …) nur einmal im Speicher halten
-            e = Ereignis(r[0], g(r[1]), g(r[2]), g(r[3]), bool(r[4]), r[5], g(r[6]), g(r[7]), g(r[8]), g(r[9]),
-                         r[10], r[11], g(r[12]), rolle_id=r[13], fact_sort=r[14])
-            (self.personen[r[15]] if r[15] else self.familien[r[16]]).fakten.append(e)
+        for r in con.execute(_ereignisse().where((er.c.person_id.is_not(None)) | (er.c.family_id.is_not(None)))):
+            (self.personen[r[15]] if r[15] else self.familien[r[16]]).fakten.append(_ereignis(r, g))
         for r in con.execute(select(me.c.id, me.c.xref, me.c.title, me.c.resn)):
             self.medien[r[0]] = Medium(r[0], r[1], r[2], r[3])
         for r in con.execute(select(mf.c.media_id, mf.c.path, mf.c.format, mf.c.media_type, mf.c.title)
@@ -216,6 +209,32 @@ class Modell:
             d = datensatz(person=r[1], family=r[2], source=r[3], event=r[4], citation=r[5])
             if d and d[1]:
                 self.medien_traeger.setdefault(r[0], set()).add(d)
+
+
+def _ereignisse():
+    """Hauptbeteiligungen an Ereignissen, nach Platz am Datensatz."""
+    ev, er = T("event"), T("event_role")
+    return (select(ev.c.id, ev.c.type, ev.c.subtype, ev.c.value, ev.c.negated, ev.c.place_id, ev.c.place_text,
+                   ev.c.address, ev.c.cause, ev.c.date_text, ev.c.date_from, ev.c.date_to, ev.c.resn, er.c.id,
+                   er.c.fact_sort, er.c.person_id, er.c.family_id)
+            .select_from(er.join(ev, ev.c.id == er.c.event_id)).where(er.c.role == "PRINCIPAL")
+            .order_by(er.c.fact_sort))
+
+
+def _ereignis(r, g=lambda x: x) -> Ereignis:
+    # g: wiederkehrende Texte (Art, Ort, Ursache, Sperrvermerk …) nur einmal im Speicher halten
+    return Ereignis(r[0], g(r[1]), g(r[2]), g(r[3]), bool(r[4]), r[5], g(r[6]), g(r[7]), g(r[8]), g(r[9]),
+                    r[10], r[11], g(r[12]), rolle_id=r[13], fact_sort=r[14])
+
+
+def ereignisse_aus(con: Connection, spalte: str, wert: int) -> list[Ereignis]:
+    """Ereignisse eines Datensatzes direkt aus der Datenbank (für den Stand mit offenen Änderungen)."""
+    return [_ereignis(r) for r in con.execute(_ereignisse().where(T("event_role").c[spalte] == wert))]
+
+
+def namen_aus(con: Connection, person_id: int) -> list[Zeile]:
+    na = T("name")
+    return [Zeile(r) for r in con.execute(select(na).where(na.c.person_id == person_id).order_by(na.c.sort))]
 
 
 _CACHE: dict[str, tuple[float, Modell]] = {}
@@ -467,6 +486,11 @@ class Sicht:
 def nur_mitglieder(b) -> bool:
     """Ist der Baum nur für Mitglieder (Einstellung members_only)?"""
     return modell(str(b.pfad), b.oeffnen).einst.members_only
+
+
+def sieht_offenes(rolle: str) -> bool:
+    """Offene Änderungen sehen Bearbeiter, Moderatoren und Verwalter; Besucher und Mitglieder nie."""
+    return rolle in ("editor", "moderator", "manager")
 
 
 def sicht_fuer(ctx, baum_name: str) -> Sicht:

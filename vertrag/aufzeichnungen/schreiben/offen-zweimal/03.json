@@ -1,0 +1,20 @@
+{
+ "nr": 3,
+ "art": "schreiben",
+ "rolle": "bearbeiter",
+ "aktion": "Fact",
+ "params": {
+  "xref": "F8"
+ },
+ "rumpf": {
+  "factId": "<fakt:MARR:0>",
+  "type": "religious"
+ },
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "ok": true,
+  "xref": "F8",
+  "pending": true
+ }
+}

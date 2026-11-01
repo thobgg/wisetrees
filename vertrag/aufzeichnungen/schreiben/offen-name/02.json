@@ -1,0 +1,1695 @@
+{
+ "nr": 2,
+ "art": "lesen",
+ "rolle": "bearbeiter",
+ "fall": "Individuals__q=Heinrich",
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "query": "Heinrich",
+  "page": 1,
+  "nextPage": null,
+  "data": [
+   {
+    "xref": "I123",
+    "name": "Johann Heinrich Behnke",
+    "sortName": "Behnke,Johann Heinrich",
+    "given": "Johann Heinrich",
+    "surname": "Behnke",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1842–1903",
+    "birth": {
+     "date": {
+      "text": "8. November 1842",
+      "year": 1842,
+      "jd": 2394148
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "13. April 1903",
+      "year": 1903,
+      "jd": 2416218
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "15. November 1842",
+      "year": 1842,
+      "jd": 2394155
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "18. April 1903",
+      "year": 1903,
+      "jd": 2416223
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Hofbesitzer",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I57",
+    "name": "Heinrich Bostelmann",
+    "sortName": "Bostelmann,Heinrich",
+    "given": "Heinrich",
+    "surname": "Bostelmann",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1832–1899",
+    "birth": {
+     "date": {
+      "text": "14. August 1832",
+      "year": 1832,
+      "jd": 2390410
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "2. Februar 1899",
+      "year": 1899,
+      "jd": 2414688
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "23. August 1832",
+      "year": 1832,
+      "jd": 2390419
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "4. Februar 1899",
+      "year": 1899,
+      "jd": 2414690
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Kötner",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I184",
+    "name": "Heinrich Wilhelm Bruns",
+    "sortName": "Bruns,Heinrich Wilhelm",
+    "given": "Heinrich Wilhelm",
+    "surname": "Bruns",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1811–1884",
+    "birth": {
+     "date": {
+      "text": "28. April 1811",
+      "year": 1811,
+      "jd": 2382631
+     },
+     "place": {
+      "name": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "20. November 1884",
+      "year": 1884,
+      "jd": 2409501
+     },
+     "place": {
+      "name": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Wilhelm",
+    "chr": {
+     "date": {
+      "text": "3. Mai 1811",
+      "year": 1811,
+      "jd": 2382636
+     },
+     "place": {
+      "name": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "22. November 1884",
+      "year": 1884,
+      "jd": 2409503
+     },
+     "place": {
+      "name": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Maurer",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I349",
+    "name": "Heinrich Wilhelm Eggers",
+    "sortName": "Eggers,Heinrich Wilhelm",
+    "given": "Heinrich Wilhelm",
+    "surname": "Eggers",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1808–1875",
+    "birth": {
+     "date": {
+      "text": "27. Juni 1808",
+      "year": 1808,
+      "jd": 2381596
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "18. April 1875",
+      "year": 1875,
+      "jd": 2405997
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "4. Juli 1808",
+      "year": 1808,
+      "jd": 2381603
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "21. April 1875",
+      "year": 1875,
+      "jd": 2406000
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Müller",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I21",
+    "name": "Heinrich Falkenrath",
+    "sortName": "Falkenrath,Heinrich",
+    "given": "Heinrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1897–1969",
+    "birth": {
+     "date": {
+      "text": "26. April 1897",
+      "year": 1897,
+      "jd": 2414041
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. Januar 1969",
+      "year": 1969,
+      "jd": 2440231
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "1. Mai 1897",
+      "year": 1897,
+      "jd": 2414046
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "14. Januar 1969",
+      "year": 1969,
+      "jd": 2440236
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Tischler",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I60",
+    "name": "Heinrich Falkenrath",
+    "sortName": "Falkenrath,Heinrich",
+    "given": "Heinrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1837–1864",
+    "birth": {
+     "date": {
+      "text": "21. Juni 1837",
+      "year": 1837,
+      "jd": 2392182
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "4. August 1864",
+      "year": 1864,
+      "jd": 2402088
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "26. Juni 1837",
+      "year": 1837,
+      "jd": 2392187
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "7. August 1864",
+      "year": 1864,
+      "jd": 2402091
+     },
+     "place": {
+      "name": "Celle, Niedersachsen, Deutschland",
+      "short": "Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Zimmergeselle",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I52",
+    "name": "Johann Heinrich Falkenrath",
+    "sortName": "Falkenrath,Johann Heinrich",
+    "given": "Johann Heinrich",
+    "surname": "Falkenrath",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1801–1872",
+    "birth": {
+     "date": {
+      "text": "12. Oktober 1801",
+      "year": 1801,
+      "jd": 2379146
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "3. Januar 1872",
+      "year": 1872,
+      "jd": 2404796
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Heinrich",
+    "chr": {
+     "date": {
+      "text": "18. Oktober 1801",
+      "year": 1801,
+      "jd": 2379152
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "5. Januar 1872",
+      "year": 1872,
+      "jd": 2404798
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Häusling und Tagelöhner",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I340",
+    "name": "Heinrich Hagedorn",
+    "sortName": "Hagedorn,Heinrich",
+    "given": "Heinrich",
+    "surname": "Hagedorn",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1834–1834",
+    "birth": {
+     "date": {
+      "text": "26. Juli 1834",
+      "year": 1834,
+      "jd": 2391121
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "4. Januar 1834",
+      "year": 1834,
+      "jd": 2390918
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "28. Juli 1834",
+      "year": 1834,
+      "jd": 2391123
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "8. Januar 1834",
+      "year": 1834,
+      "jd": 2390922
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I190",
+    "name": "Heinrich Christoph Hagedorn",
+    "sortName": "Hagedorn,Heinrich Christoph",
+    "given": "Heinrich Christoph",
+    "surname": "Hagedorn",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1796–1834",
+    "birth": {
+     "date": {
+      "text": "28. Februar 1796",
+      "year": 1796,
+      "jd": 2377094
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "12. Oktober 1834",
+      "year": 1834,
+      "jd": 2391199
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "2. März 1796",
+      "year": 1796,
+      "jd": 2377097
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "15. Oktober 1834",
+      "year": 1834,
+      "jd": 2391202
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Holzhauer",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I172",
+    "name": "Heinrich Wilhelm Hartmann",
+    "sortName": "Hartmann,Heinrich Wilhelm",
+    "given": "Heinrich Wilhelm",
+    "surname": "Hartmann",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1819–1871",
+    "birth": {
+     "date": {
+      "text": "5. März 1819",
+      "year": 1819,
+      "jd": 2385499
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "18. November 1871",
+      "year": 1871,
+      "jd": 2404750
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "7. März 1819",
+      "year": 1819,
+      "jd": 2385501
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "20. November 1871",
+      "year": 1871,
+      "jd": 2404752
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Bahnarbeiter",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I325",
+    "name": "Johann Heinrich Hartmann",
+    "sortName": "Hartmann,Johann Heinrich",
+    "given": "Johann Heinrich",
+    "surname": "Hartmann",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1853–1855",
+    "birth": {
+     "date": {
+      "text": "11. November 1853",
+      "year": 1853,
+      "jd": 2398169
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "2. Mai 1855",
+      "year": 1855,
+      "jd": 2398706
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Heinrich",
+    "chr": {
+     "date": {
+      "text": "16. November 1853",
+      "year": 1853,
+      "jd": 2398174
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "6. Mai 1855",
+      "year": 1855,
+      "jd": 2398710
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I246",
+    "name": "Heinrich Christoph Hinrichs",
+    "sortName": "Hinrichs,Heinrich Christoph",
+    "given": "Heinrich Christoph",
+    "surname": "Hinrichs",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1763–1842",
+    "birth": {
+     "date": {
+      "text": "25. März 1763",
+      "year": 1763,
+      "jd": 2365066
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "11. Juli 1842",
+      "year": 1842,
+      "jd": 2394028
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "30. März 1763",
+      "year": 1763,
+      "jd": 2365071
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "15. Juli 1842",
+      "year": 1842,
+      "jd": 2394032
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Müller",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I322",
+    "name": "Heinrich Ilgner",
+    "sortName": "Ilgner,Heinrich",
+    "given": "Heinrich",
+    "surname": "Ilgner",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1827–1829",
+    "birth": {
+     "date": {
+      "text": "26. März 1827",
+      "year": 1827,
+      "jd": 2388442
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "1. September 1829",
+      "year": 1829,
+      "jd": 2389332
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "4. April 1827",
+      "year": 1827,
+      "jd": 2388451
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "6. September 1829",
+      "year": 1829,
+      "jd": 2389337
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I194",
+    "name": "Heinrich Kleine",
+    "sortName": "Kleine,Heinrich",
+    "given": "Heinrich",
+    "surname": "Kleine",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1813–1899",
+    "birth": {
+     "date": {
+      "text": "9. September 1813",
+      "year": 1813,
+      "jd": 2383496
+     },
+     "place": {
+      "name": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+      "short": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "2. Mai 1899",
+      "year": 1899,
+      "jd": 2414777
+     },
+     "place": {
+      "name": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+      "short": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "12. September 1813",
+      "year": 1813,
+      "jd": 2383499
+     },
+     "place": {
+      "name": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+      "short": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "4. Mai 1899",
+      "year": 1899,
+      "jd": 2414779
+     },
+     "place": {
+      "name": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+      "short": "Delbrück, Paderborn, Nordrhein-Westfalen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Müller",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I303",
+    "name": "Johann Heinrich Lüders",
+    "sortName": "Lüders,Johann Heinrich",
+    "given": "Johann Heinrich",
+    "surname": "Lüders",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1844–1896",
+    "birth": {
+     "date": {
+      "text": "27. Juli 1844",
+      "year": 1844,
+      "jd": 2394775
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "20. Juni 1896",
+      "year": 1896,
+      "jd": 2413731
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "4. August 1844",
+      "year": 1844,
+      "jd": 2394783
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "24. Juni 1896",
+      "year": 1896,
+      "jd": 2413735
+     },
+     "place": {
+      "name": "Eschede, Celle, Niedersachsen, Deutschland",
+      "short": "Eschede, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Bahnarbeiter",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I328",
+    "name": "Heinrich Wilhelm Marquardt",
+    "sortName": "Marquardt,Heinrich Wilhelm",
+    "given": "Heinrich Wilhelm",
+    "surname": "Marquardt",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1843–1901",
+    "birth": {
+     "date": {
+      "text": "20. Mai 1843",
+      "year": 1843,
+      "jd": 2394341
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "1. August 1901",
+      "year": 1901,
+      "jd": 2415598
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "25. Mai 1843",
+      "year": 1843,
+      "jd": 2394346
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "3. August 1901",
+      "year": 1901,
+      "jd": 2415600
+     },
+     "place": {
+      "name": "Lüneburg, Niedersachsen, Deutschland",
+      "short": "Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Salzsieder",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I240",
+    "name": "Heinrich Christoph Müller",
+    "sortName": "Müller,Heinrich Christoph",
+    "given": "Heinrich Christoph",
+    "surname": "Müller",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1766–1804",
+    "birth": {
+     "date": {
+      "text": "9. Januar 1766",
+      "year": 1766,
+      "jd": 2366087
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "10. März 1804",
+      "year": 1804,
+      "jd": 2380026
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "17. Januar 1766",
+      "year": 1766,
+      "jd": 2366095
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "14. März 1804",
+      "year": 1804,
+      "jd": 2380030
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Schmied",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I98",
+    "name": "Heinrich Oberlin",
+    "sortName": "Oberlin,Heinrich",
+    "given": "Heinrich",
+    "surname": "Oberlin",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1895–1968",
+    "birth": {
+     "date": {
+      "text": "4. Februar 1895",
+      "year": 1895,
+      "jd": 2413229
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "28. November 1968",
+      "year": 1968,
+      "jd": 2440189
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "8. Februar 1895",
+      "year": 1895,
+      "jd": 2413233
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "3. Dezember 1968",
+      "year": 1968,
+      "jd": 2440194
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Hofbesitzer",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I152",
+    "name": "Heinrich Christoph Oberlin",
+    "sortName": "Oberlin,Heinrich Christoph",
+    "given": "Heinrich Christoph",
+    "surname": "Oberlin",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1796–1841",
+    "birth": {
+     "date": {
+      "text": "6. September 1796",
+      "year": 1796,
+      "jd": 2377285
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "25. März 1841",
+      "year": 1841,
+      "jd": 2393555
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "11. September 1796",
+      "year": 1796,
+      "jd": 2377290
+     },
+     "place": {
+      "name": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "short": "Suderburg, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "30. März 1841",
+      "year": 1841,
+      "jd": 2393560
+     },
+     "place": {
+      "name": "Uelzen, Niedersachsen, Deutschland",
+      "short": "Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Schäfer",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I354",
+    "name": "Heinrich Wilhelm Plate",
+    "sortName": "Plate,Heinrich Wilhelm",
+    "given": "Heinrich Wilhelm",
+    "surname": "Plate",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1811–1814",
+    "birth": {
+     "date": {
+      "text": "22. April 1811",
+      "year": 1811,
+      "jd": 2382625
+     },
+     "place": {
+      "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "13. April 1814",
+      "year": 1814,
+      "jd": 2383712
+     },
+     "place": {
+      "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "28. April 1811",
+      "year": 1811,
+      "jd": 2382631
+     },
+     "place": {
+      "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "18. April 1814",
+      "year": 1814,
+      "jd": 2383717
+     },
+     "place": {
+      "name": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "short": "Hermannsburg, Celle, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": null,
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I318",
+    "name": "Johann Heinrich Schnehage",
+    "sortName": "Schnehage,Johann Heinrich",
+    "given": "Johann Heinrich",
+    "surname": "Schnehage",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1851–1896",
+    "birth": {
+     "date": {
+      "text": "7. Februar 1851",
+      "year": 1851,
+      "jd": 2397161
+     },
+     "place": {
+      "name": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "short": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "20. November 1896",
+      "year": 1896,
+      "jd": 2413884
+     },
+     "place": {
+      "name": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "short": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "14. Februar 1851",
+      "year": 1851,
+      "jd": 2397168
+     },
+     "place": {
+      "name": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "short": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "24. November 1896",
+      "year": 1896,
+      "jd": 2413888
+     },
+     "place": {
+      "name": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "short": "Ebstorf, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Anbauer",
+    "thumb": "<bild>",
+    "url": "<url>"
+   },
+   {
+    "xref": "I248",
+    "name": "Heinrich Christoph Schulze",
+    "sortName": "Schulze,Heinrich Christoph",
+    "given": "Heinrich Christoph",
+    "surname": "Schulze",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1779–1817",
+    "birth": {
+     "date": {
+      "text": "12. Januar 1779",
+      "year": 1779,
+      "jd": 2370838
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. Juni 1817",
+      "year": 1817,
+      "jd": 2384865
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "Christoph",
+    "chr": {
+     "date": {
+      "text": "17. Januar 1779",
+      "year": 1779,
+      "jd": 2370843
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "12. Juni 1817",
+      "year": 1817,
+      "jd": 2384868
+     },
+     "place": {
+      "name": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Amelinghausen, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Halbhöfner",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I256",
+    "name": "Heinrich Christoph Wiebe",
+    "sortName": "Wiebe,Heinrich Christoph",
+    "given": "Heinrich Christoph",
+    "surname": "Wiebe",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1787–1832",
+    "birth": {
+     "date": {
+      "text": "26. Mai 1787",
+      "year": 1787,
+      "jd": 2373894
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "4. Juli 1832",
+      "year": 1832,
+      "jd": 2390369
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "2. Juni 1787",
+      "year": 1787,
+      "jd": 2373901
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "8. Juli 1832",
+      "year": 1832,
+      "jd": 2390373
+     },
+     "place": {
+      "name": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bad Bevensen, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Brinksitzer",
+    "thumb": null,
+    "url": "<url>"
+   },
+   {
+    "xref": "I186",
+    "name": "Johann Heinrich Winkelmann",
+    "sortName": "Winkelmann,Johann Heinrich",
+    "given": "Johann Heinrich",
+    "surname": "Winkelmann",
+    "sex": "M",
+    "isDead": true,
+    "private": false,
+    "access": "visitor",
+    "nameAccess": "visitor",
+    "restricted": [],
+    "lifespan": "1806–1888",
+    "birth": {
+     "date": {
+      "text": "25. April 1806",
+      "year": 1806,
+      "jd": 2380802
+     },
+     "place": {
+      "name": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "death": {
+     "date": {
+      "text": "9. Oktober 1888",
+      "year": 1888,
+      "jd": 2410920
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "call": "",
+    "chr": {
+     "date": {
+      "text": "27. April 1806",
+      "year": 1806,
+      "jd": 2380804
+     },
+     "place": {
+      "name": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "short": "Dahlenburg, Lüneburg, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "buri": {
+     "date": {
+      "text": "14. Oktober 1888",
+      "year": 1888,
+      "jd": 2410925
+     },
+     "place": {
+      "name": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "short": "Bienenbüttel, Uelzen, Niedersachsen, Deutschland",
+      "lat": null,
+      "lng": null
+     }
+    },
+    "occupation": "Holzhauer",
+    "thumb": "<bild>",
+    "url": "<url>"
+   }
+  ]
+ }
+}
