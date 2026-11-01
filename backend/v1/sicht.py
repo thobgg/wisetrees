@@ -114,6 +114,9 @@ class Modell:
         # Medium → Datensätze, die es verwenden (auch über Ereignisse und Zitate): ("person"|"family"|"source", id)
         self.medien_traeger: dict[int, set[tuple[str, int]]] = {}
         self.familie_xref: dict[str, int] = {}
+        # Was nur vom Baum abhängt (Sortierung der Personenliste, Suchtexte): einmal berechnet, gilt bis zum
+        # Neuladen des Modells
+        self.zwischen: dict = {}
         pe, na, fa, fm = T("person"), T("name"), T("family"), T("family_member")
         ev, er, me, mf, ml = T("event"), T("event_role"), T("media"), T("media_file"), T("media_link")
         for r in con.execute(select(pe.c.id, pe.c.xref, pe.c.sex, pe.c.resn, pe.c.uid)):

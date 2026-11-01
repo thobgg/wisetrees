@@ -42,12 +42,22 @@ def _pragmas(dbapi_con, _eintrag) -> None:
     c.close()
 
 
+_ENGINES: dict[str, Engine] = {}
+_ENGINES_SPERRE = threading.Lock()
+
+
 def engine(pfad: Path) -> Engine:
-    """Engine für eine Baumdatei. Ohne Verbindungspool: Jede Verbindung gehört dem, der sie öffnet, und ist nach
-    close() zu – wichtig, weil Dateien gelöscht oder ersetzt werden können."""
-    e = create_engine(f"sqlite:///{Path(pfad)}", poolclass=NullPool, connect_args={"check_same_thread": False})
-    event.listen(e, "connect", _pragmas)
-    return e
+    """Engine für eine Baumdatei, je Datei einmal angelegt (der Aufbau kostet mehr als eine Abfrage). Ohne
+    Verbindungspool: Jede Verbindung gehört dem, der sie öffnet, und ist nach close() zu – wichtig, weil Dateien
+    gelöscht oder ersetzt werden können."""
+    schluessel = str(Path(pfad).resolve())
+    with _ENGINES_SPERRE:
+        e = _ENGINES.get(schluessel)
+        if e is None:
+            e = create_engine(f"sqlite:///{schluessel}", poolclass=NullPool, connect_args={"check_same_thread": False})
+            event.listen(e, "connect", _pragmas)
+            _ENGINES[schluessel] = e
+        return e
 
 
 def anlegen(pfad: Path, titel: str = "") -> Connection:

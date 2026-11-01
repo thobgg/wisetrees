@@ -186,9 +186,16 @@ def individuals(ctx: Kontext) -> dict:
         nach = " ".join(x for x in (n["surname_prefix"], n["surname"]) if x) or "@N.N."
         return (f"{nach},{n['given'] or '@P.N.'}", m.personen[pid].xref)
 
+    if "liste" not in m.zwischen:
+        # Sortierte Liste und Suchtexte je Name: hängen nur am Baum, darum einmal je Modell
+        m.zwischen["liste"] = [pid for _, pid in sorted((schluessel(pid), pid) for pid, p in m.personen.items()
+                                                         if p.namen)]
+        m.zwischen["namen"] = [(pid, nr, schluessel(pid, nr), _norm(anzeige.voller_name(n["value"])),
+                                _norm(n["nickname"] or ""))
+                               for pid, p in m.personen.items() for nr, n in enumerate(p.namen)]
+
     if not worte:
-        reihe = sorted((schluessel(pid), pid) for pid, p in m.personen.items() if p.namen)
-        zeilen = [pid for _, pid in reihe][start:start + SEITE + 1]
+        zeilen = m.zwischen["liste"][start:start + SEITE + 1]
     elif ctx.params.get("scope") == "all":
         w = [_norm(x) for x in worte]
         treffer = []
@@ -206,11 +213,8 @@ def individuals(ctx: Kontext) -> dict:
         zeilen = treffer[start:start + SEITE + 1]
     else:
         w = [_norm(x) for x in worte]
-        reihe = []
-        for pid, p in m.personen.items():
-            for nr, n in enumerate(p.namen):
-                if all(x in _norm(anzeige.voller_name(n["value"])) or x in _norm(n["nickname"] or "") for x in w):
-                    reihe.append((schluessel(pid, nr), pid))
+        reihe = [(sk, pid) for pid, _nr, sk, name, nick in m.zwischen["namen"]
+                 if all(x in name or x in nick for x in w)]
         reihe.sort()
         zeilen = [pid for _, pid in reihe][start:start + SEITE + 1]
         zeilen = [pid for pid in zeilen if s.name_darf(pid)]
