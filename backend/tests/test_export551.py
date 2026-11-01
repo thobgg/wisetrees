@@ -9,7 +9,7 @@ import pytest
 
 from baum import datei
 from baum.auszug import auszug
-from gedcom.export551 import exportieren
+from gedcom.export import exportieren
 from gedcom.import551 import importieren
 
 DATEN = Path(__file__).with_name("daten")
@@ -111,6 +111,8 @@ KLEIN = """0 HEAD
 1 NOTE @@ am Anfang
 1 _MILT Infanterie
 2 DATE 1870
+1 DEAT
+2 DATE @#DJULIAN@ 1 JAN 1900
 0 @I4@ INDI
 1 NAME Grete /Pflege/
 1 FAMC @F1@
@@ -170,7 +172,8 @@ def test_klein_gedcom_wie_erwartet(klein):
                  "1 CHAN\n2 DATE 1 NOV 2026\n3 TIME 10:11:12",
                  "3 DATA\n4 TEXT Wortlaut",                 # TEXT am Zitat gehört unter DATA
                  "1 REPO @R1@\n2 CALN 1\n2 CALN 2\n3 MEDI book",
-                 "1 _MILT Infanterie\n2 DATE 1870"):
+                 "1 _MILT Infanterie\n2 DATE 1870",
+                 "2 DATE @#DJULIAN@ 1 JAN 1900"):          # Escape-Folge nicht verdoppelt
         assert teil in text, teil
 
 

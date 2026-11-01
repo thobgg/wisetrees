@@ -28,13 +28,13 @@ oder eine veröffentlichte Spezifikation ihn belegt.
 | Punkt | Belegt durch | Stand |
 | ----- | ------------ | ----- |
 | GEDCOM 5.5.1 ohne Verlust | Rundlauf-Test Import → Export → Import (Abschnitt 6) | erfüllt für Falkenrath 1.7.1: gleicher Modellauszug, Export → Import → Export bitgenau (`test_export551.py`) |
-| GEDCOM 7.0 ohne Verlust | Rundlauf-Test wie oben | offen |
+| GEDCOM 7.0 ohne Verlust | Rundlauf-Test wie oben | erfüllt für Falkenrath 1.7.1 als 7.0: gleicher Modellauszug, Export → Import → Export bitgenau, 7.0 → 5.5.1 → 7.0 ohne Verlust (`test_export7.py`) |
 | `.wise` ist offenes SQLite | Datei mit jedem SQLite-Werkzeug lesbar; Schema dokumentiert (`docs/SCHEMA.md`, aus dem Code erzeugt, Test prüft den Stand) | erfüllt |
 | WTX mit offener Spezifikation | Spezifikation im Repository, Rundlauf-Test (E13) | vorgesehen |
 | Dokumentierte API | `docs/API-V1.md` und Schema `vertrag/api-v1.json`, Vertragstests | erfüllt für v1 lesend |
 | Offene Datenbanken | SQLite; PostgreSQL als Option (E16) | SQLite da, PostgreSQL offen |
 | Freie Lizenz | AGPL-3.0-only, Abhängigkeiten nur mit verträglichen Lizenzen (`docs/DEPENDENCIES.md`) | erfüllt |
-| Nächtliche GEDCOM-Sicherung | Export je Baum in den Datenordner, einstellbar, mit Test | offen, folgt auf den Export |
+| Nächtliche GEDCOM-Sicherung | Export je Baum in den Datenordner, einstellbar, mit Test | offen; der Export (5.5.1, 7.0, GEDZIP) steht |
 
 ## 2. Ausgangslage
 
@@ -365,8 +365,11 @@ Einzelantwort noch in Liste oder Suche.
   und gewähltem Ort.
 - **Export-Kopf**: `1 SOUR WISE` mit `2 NAME wisetrees` und
   `2 CORP Thomas Bugge`. Im 5.5.1-Export steht `1 CHAR` direkt nach
-  `0 HEAD`, damit Leser den Zeichensatz sofort finden. `RIN` trägt die
-  interne Kennung mit dem Präfix `WISE:` (z. B. `1 RIN WISE:4711`).
+  `0 HEAD`, damit Leser den Zeichensatz sofort finden; im 7.0-Export steht
+  `1 GEDC` mit `2 VERS 7.0` zuerst. Kopfangaben der eingelesenen Datei
+  (`SUBM`, `COPR`, `LANG`, `NOTE` …) bleiben. `RIN` trägt die
+  interne Kennung mit dem Präfix `WISE:` (z. B. `1 RIN WISE:4711`) – noch
+  nicht umgesetzt; 7.0 kennt `RIN` nicht mehr.
 - **Rundlauf-Test**: Import → Export → Import ergibt dasselbe Modell. Ein
   zeilengleicher Export ist kein Ziel. Verglichen wird der **Modellauszug**
   (`backend/baum/auszug.py`): der ganze Baum als verschachtelte Struktur,
@@ -377,8 +380,22 @@ Einzelantwort noch in Liste oder Suche.
 - **Export** (E25, E26): der angenommene Stand, vollständig, für Verwalter
   und als nächtliche Sicherung. Ein **Exportbericht** nennt, was sich nicht
   gültig oder nicht verlustfrei schreiben ließ.
-- **Wechsel der Fassung** (E24): Bekanntes wird umgesetzt, Erweiterungen mit
-  Unterstrich gehen unverändert durch, der Rest steht im Exportbericht.
+- **Wechsel der Fassung** (E24, E27): Umgesetzt wird nur, wenn der Baum aus
+  der anderen Fassung stammt; in seiner eigenen Fassung geht er hinaus, wie
+  er kam. Bekanntes wird umgesetzt (`_UID` ↔ `UID`, `_GODP`/`_WITN` ↔
+  `ASSO @VOID@`, `RELA` ↔ `ROLE` mit `PHRASE`, `PLAC._GOV` ↔ `PLAC.EXID`,
+  `NOTE @…@` ↔ `SNOTE`, Datumsformen, Dateiformat, Medienart, Sprache …),
+  Erweiterungen mit Unterstrich gehen unverändert durch. Der Exportbericht
+  zählt jede Umsetzung und nennt, was danach nicht gültig oder nicht
+  verlustfrei ist. Was 7.0 hat und 5.5.1 nicht, bekommt eine eigene Form:
+  Nicht-Ereignisse (`NO`) stehen in 5.5.1 als `_NO`, der Import liest beides.
+  Was 7.0 nicht erlaubt, wird dort ein eigener Datensatz (Quellenangabe ohne
+  Quelle, eingebettetes Medium) oder eine Notiz (Text hinter `EMIG`, `IMMI`
+  und anderen Ereignissen, die nur `Y` kennen).
+- **GEDZIP**: `gedcom.ged` in 7.0 und die Dateien aus dem Medienordner des
+  Baums unter ihrem Pfad; fehlende Dateien stehen im Exportbericht, Adressen
+  im Netz bleiben Verweise. Beim Entpacken bleibt alles im Medienordner;
+  Namen, die hinausführen, werden übergangen.
 - **WTX – „wisetrees exchange“** (E13, nur vorgesehen): ein offenes,
   dokumentiertes Austauschformat. ZIP mit JSON nach eigener Spezifikation
   und den Medien, ähnlich GEDZIP, aber mit dem vollen Modell (Rollen,
@@ -451,6 +468,7 @@ Entschieden am 01.11.2026.
 | E24 | Reste beim Wechsel der Fassung | (entschieden 02.11.2026) **b** – GEDCOM-Reste aus einer anderen Fassung werden mechanisch umgesetzt (z. B. `CONC`, Kalender im Datum, `RELA` → `ROLE`); Erweiterungs-Tags mit Unterstrich gehen unverändert durch, wie GEDCOM 7 es erlaubt. Was danach nicht gültig ist, steht im Exportbericht |
 | E25 | Umfang des Exports | (entschieden 02.11.2026) Verwalter und nächtliche Sicherung bekommen den **vollständigen** Baum, nur den angenommenen Stand, ohne Filter nach Datenschutz. Ein gefilterter Export für Dritte kommt später |
 | E26 | Ereignis mit mehreren Hauptbeteiligten | (entschieden 02.11.2026) GEDCOM kennt keine geteilten Ereignisse: Der Export schreibt das Ereignis **bei jedem Hauptbeteiligten** als eigene Angabe; Paten, Zeugen und andere Beteiligte bei jeder Kopie. Der Exportbericht nennt jedes so geteilte Ereignis. Nach einem erneuten Import sind es getrennte Ereignisse |
+| E27 | Werte, die 5.5.1 frei und 7.0 fest schreibt | (entschieden 02.11.2026) **a** – Dateiformat (`jpg` / `image/jpeg`), Medienart (`photo` / `PHOTO`), Medium im Archiv, Sprache (`German` / `de`), Rolle im Zitat u. Ä. stehen im Modell so, wie sie kamen. Der Export übersetzt in die jeweils andere Fassung (E24); der Vergleich zwischen den Fassungen nutzt dieselbe Umsetzungstabelle. Ausnahme: Dateipfade aus 7.0 werden beim Import entschlüsselt (`%20` → Leerzeichen), damit sie auf die Datei im Medienordner zeigen |
 
 **Prüfung zu E12 (01.11.2026):**
 

@@ -300,3 +300,22 @@ class Auszug:
 
 def auszug(con: Connection) -> dict:
     return Auszug(con).ganz()
+
+
+def unterschiede(a, b, pfad: str = "") -> list[tuple[str, str, object, object]]:
+    """Unterschiede zweier Auszüge: (Art, Pfad, vorher, nachher) mit Art „+“ (nur in b), „-“ (nur in a), „~“."""
+    aus: list[tuple[str, str, object, object]] = []
+    if isinstance(a, dict) and isinstance(b, dict):
+        for k in sorted(set(a) | set(b), key=str):
+            if k not in a:
+                aus.append(("+", f"{pfad}/{k}", None, b[k]))
+            elif k not in b:
+                aus.append(("-", f"{pfad}/{k}", a[k], None))
+            else:
+                aus += unterschiede(a[k], b[k], f"{pfad}/{k}")
+    elif isinstance(a, list) and isinstance(b, list) and len(a) == len(b):
+        for i, (x, y) in enumerate(zip(a, b, strict=True)):
+            aus += unterschiede(x, y, f"{pfad}[{i}]")
+    elif a != b:
+        aus.append(("~", pfad, a, b))
+    return aus
