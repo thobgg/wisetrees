@@ -1,0 +1,28 @@
+name: Installationspaket
+
+# Hängt an jedes veröffentlichte Release ein Zip mit docker-compose.yml, env.beispiel und Anleitung (install/).
+# Im Paket zeigt das Image auf die Version des Release statt auf latest.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  paket:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Paket bauen
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          mkdir -p "paket/wisetrees-${version}"
+          cp install/docker-compose.yml install/env.beispiel install/LIESMICH.md install/README.md "paket/wisetrees-${version}/"
+          sed -i "s|ghcr.io/thobgg/wisetrees:latest|ghcr.io/thobgg/wisetrees:${version}|" "paket/wisetrees-${version}/docker-compose.yml"
+          grep -q "wisetrees:${version}" "paket/wisetrees-${version}/docker-compose.yml"
+          (cd paket && zip -r "wisetrees-${version}-docker.zip" "wisetrees-${version}")
+      - name: Ans Release hängen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${GITHUB_REF_NAME}" "paket/wisetrees-${GITHUB_REF_NAME#v}-docker.zip" --clobber

@@ -20,15 +20,22 @@ and the godparents attached in their roles; places have dated names and a dated 
 - wtTux shows the Falkenrath demo tree from wisetrees: tree, navigator, person panel with godparents, sources
   and photos. wtAnd uses the same core; a test on a device is still to come.
 - Accounts, roles per tree, sessions; runs as a Docker container (not as root).
-- Administration in the browser for administrators: create accounts, set passwords and roles, upload and import
-  GEDCOM with the import report, delete trees. Every account can change its own password there.
+- Administration in the browser for administrators: first-run setup with a one-time code, create accounts, set
+  passwords and roles, upload and import GEDCOM with the import report, delete trees. Every account can change its
+  own password there.
+- Privacy settings per tree: privacy on/off, tree for members only, deceased and names of private individuals by
+  role, private relationships, maximum age, protection after birth or death, rules per type, record and fact type
+  on a record. Per account: "this is me" and relationship privacy (living individuals only within a number of
+  relationship steps).
+- Database access via SQLAlchemy Core with a portable schema ([docs/SCHEMA.md](docs/SCHEMA.md)).
 
 **What is missing**
 
 - Writing (facts, individuals, media) and accepting pending changes.
 - GEDCOM export and the round-trip test import → export → import.
 - GEDCOM 7.0, ANSEL character set.
-- PostgreSQL as an alternative to SQLite.
+- PostgreSQL and MariaDB as alternatives to SQLite.
+- Relationship names beyond close relatives.
 
 **Next**
 
@@ -36,6 +43,9 @@ Writing in v1 (with pending changes visible only to editors and above), then GED
 decisions is in [docs/KONZEPT.md](docs/KONZEPT.md) (German).
 
 ## Try it
+
+Ready-made installation with Docker or Synology Container Manager: [install/README.md](install/README.md), as a
+package attached to every release. From source:
 
 ```sh
 mkdir -p data

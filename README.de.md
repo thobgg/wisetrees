@@ -20,15 +20,20 @@ Täufling, Eltern und Paten mit ihrer Rolle hängen; Orte haben datierte Namen u
 - wtTux zeigt den Falkenrath-Demobaum aus wisetrees: Baum, Navigator, Personentafel mit Paten, Quellen und Fotos.
   wtAnd nutzt denselben Kern; der Test am Gerät steht aus.
 - Konten, Rollen je Baum, Sitzungen; Betrieb als Docker-Container (nicht als root).
-- Verwaltung im Browser für Administratoren: Konten anlegen, Passwörter und Rollen setzen, GEDCOM hochladen und
-  einlesen mit Importbericht, Bäume löschen. Jedes Konto kann dort sein Passwort ändern.
+- Verwaltung im Browser für Administratoren: Ersteinrichtung mit Einmal-Code, Konten anlegen, Passwörter und Rollen
+  setzen, GEDCOM hochladen und einlesen mit Importbericht, Bäume löschen. Jedes Konto kann dort sein Passwort ändern.
+- Datenschutz einstellbar je Baum: Schutz an/aus, Baum nur für Mitglieder, Verstorbene und Namen privater Personen
+  ab Rolle, private Beziehungen, Höchstalter, Schutz nach Geburt oder Tod, Regeln je Art, Datensatz und Faktart. Je
+  Konto: „Das bin ich“ und Verwandtschaftsschutz (Lebende nur bis zu einer Zahl von Verwandtschaftsschritten).
+- Datenbankzugriff über SQLAlchemy Core mit portablem Schema ([docs/SCHEMA.md](docs/SCHEMA.md)).
 
 **Was fehlt**
 
 - Schreiben (Fakten, Personen, Medien) und das Freigeben offener Änderungen.
 - GEDCOM-Export und der Rundlauf-Test Import → Export → Import.
 - GEDCOM 7.0, Zeichensatz ANSEL.
-- PostgreSQL als Alternative zu SQLite.
+- PostgreSQL und MariaDB als Alternative zu SQLite.
+- Verwandtschaftsbezeichnungen über nahe Verwandte hinaus („Partners Urgroßvater“).
 
 **Als Nächstes**
 
@@ -36,6 +41,9 @@ Schreiben in v1 (mit offenen Änderungen, die nur Bearbeiter und höher sehen), 
 mit allen Entscheidungen steht in [docs/KONZEPT.md](docs/KONZEPT.md).
 
 ## Ausprobieren
+
+Fertige Installation mit Docker oder dem Synology Container Manager: [install/LIESMICH.md](install/LIESMICH.md), als
+Paket an jedem Release. Aus dem Quelltext:
 
 ```sh
 mkdir -p data

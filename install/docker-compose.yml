@@ -1,0 +1,23 @@
+# wisetrees – Installation mit Docker Compose (fertiges Image, nichts zu bauen)
+#
+#   1. Ordner anlegen, diese Datei und .env (aus env.beispiel) hineinlegen, Unterordner data anlegen
+#   2. docker compose up -d
+#   3. docker compose logs wisetrees   → Einrichtungscode
+#   4. Browser: http://<host>:8099/index.php → Verwaltung → erstes Administratorkonto mit dem Code anlegen
+#
+# Aktualisieren: docker compose pull && docker compose up -d
+# Sichern: den Ordner data (konten.sqlite, baeume/*.wise, medien/).
+
+services:
+  wisetrees:
+    image: ghcr.io/thobgg/wisetrees:latest
+    container_name: wisetrees
+    user: "${WISETREES_UID:-1000}:${WISETREES_GID:-1000}"
+    restart: unless-stopped
+    ports:
+      - "${WISETREES_PORT:-8099}:${WISETREES_PORT:-8099}"
+    volumes:
+      - ${WISETREES_DATA:-./data}:/data
+    environment:
+      - TZ=${TZ:-Europe/Berlin}
+      - WISETREES_PORT=${WISETREES_PORT:-8099}
