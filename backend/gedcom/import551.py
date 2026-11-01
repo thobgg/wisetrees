@@ -17,14 +17,17 @@ GEDCOM 7.0 hat dieselbe Zeilenform; abweichend liest der Import dort:
 - ASSO @VOID@ mit PHRASE (Beteiligter ohne Datensatz) wie _GODP/_WITN, die Rolle aus ROLE (E5).
 - ROLE mit Aufzählungswert (GODP, WITN …) als Rollencode; PHRASE ist der Rollentext, wie er kam. An 1 ASSO der Person
   ist PHRASE (sonst ROLE) die Beziehung.
-- PLAC.EXID mit TYPE https://gov.genealogy.net/ wie _GOV; SNOTE als Notiz; NO <Ereignis> als Nicht-Ereignis.
-Werte wie FORM (MIME-Typ), MEDI und LANG bleiben, wie sie kamen.
+- PLAC.EXID mit TYPE https://gov.genealogy.net/ wie _GOV; SNOTE als Notiz; NO <Ereignis> als Nicht-Ereignis (in 5.5.1
+  schreibt der Export dafür _NO).
+- FILE ist eine URL: Sonderzeichen (%20 …) werden entschlüsselt, damit der Pfad auf die Datei zeigt.
+Werte wie FORM (MIME-Typ), MEDI und LANG bleiben, wie sie kamen (E27).
 """
 
 from __future__ import annotations
 
 import json
 import re
+from urllib.parse import unquote
 from collections import Counter
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
@@ -52,6 +55,7 @@ PEDI = {"birth": "birth", "adopted": "adopted", "foster": "foster", "sealing": "
 REL = {"natural": "birth", "birth": "birth", "adopted": "adopted", "foster": "foster", "step": "step",
        "stepchild": "step", "unknown": "unknown"}
 GOV_EXID = "https://gov.genealogy.net/"   # EXID.TYPE der GOV-Kennung in GEDCOM 7
+URL = re.compile(r"^(?:[A-Za-z][A-Za-z0-9+.-]*://|file:)", re.I)   # FILE mit Schema: bleibt, wie es kam
 
 
 def rolle_aus_rela(text: str | None) -> str:
@@ -128,11 +132,12 @@ class Importer:
         self.b.zeilen_rest += k.zeilen_gesamt()
         self.rest_pfade[f"{holder[0]}:{(unter + ':') if unter else ''}{k.tag or '(unlesbar)'}"] += 1
 
-    def wert(self, k: Knoten, holder: tuple[str, int]) -> str | None:
-        """Ein Blatt übernehmen; was darunter steht, wird Rest unter dieser Zeile."""
+    def wert(self, k: Knoten, holder: tuple[str, int], pfad: str | None = None) -> str | None:
+        """Ein Blatt übernehmen; was darunter steht, wird Rest unter dieser Zeile. `pfad`: Stelle der Zeile am
+        Träger, wenn sie nicht direkt an ihm steht („EVEN:ROLE“); sonst ihr Tag."""
         self.nimm(k)
         for c in k.kinder:
-            self.rest(c, holder, unter=k.tag)
+            self.rest(c, holder, unter=pfad or k.tag)
         return k.wert
 
     def kinder(self, k: Knoten, holder: tuple[str, int], handler: dict, unter: str | None = None) -> None:
@@ -183,9 +188,9 @@ class Importer:
         t = T(tab)
         return self.con.execute(select(t.c[spalte]).where(t.c.id == id_)).scalar()
 
-    def datum(self, k: Knoten, holder: tuple[str, int], prefix: str = "") -> dict:
+    def datum(self, k: Knoten, holder: tuple[str, int], prefix: str = "", pfad: str | None = None) -> dict:
         """DATE-Knoten → Spalten. Unverstandenes bleibt als Text und steht im Bericht."""
-        text = self.wert(k, holder)
+        text = self.wert(k, holder, pfad)
         d = gdatum.lesen(text)
         if d is None:
             return {}
@@ -288,7 +293,7 @@ class Importer:
         def datum(c):
             self.nimm(c)
             teile.append(c.wert or "")
-            self.kinder(c, holder, {"TIME": lambda t: teile.append(self.wert(t, holder) or "")}, unter="CHAN:DATE")
+            self.kinder(c, holder, {"TIME": lambda t: teile.append(self.wert(t, holder, "CHAN:DATE:TIME") or "")}, unter="CHAN:DATE")
 
         self.kinder(k, holder, {"DATE": datum}, unter="CHAN")
         self.setze(tabelle, holder[1], changed_at=" ".join(t for t in teile if t) or None)
@@ -338,12 +343,13 @@ class Importer:
 
         def even(c):
             self.setze("citation", zid, event_type=self.wert_ohne_kinder(c))
-            self.kinder(c, z, {"ROLE": lambda r: self.setze("citation", zid, event_role=self.wert(r, z))}, unter="EVEN")
+            self.kinder(c, z, {"ROLE": lambda r: self.setze("citation", zid, event_role=self.wert(r, z, "EVEN:ROLE"))}, unter="EVEN")
 
         def data(c):
             self.nimm(c)
-            self.kinder(c, z, {"DATE": lambda d: self.setze("citation", zid, **self.datum(d, z, "data_")),
-                               "TEXT": lambda t: self.setze("citation", zid, data_text=self.wert(t, z))}, unter="DATA")
+            self.kinder(c, z, {"DATE": lambda d: self.setze("citation", zid, **self.datum(d, z, "data_", "DATA:DATE")),
+                               "TEXT": lambda t: self.setze("citation", zid, data_text=self.wert(t, z, "DATA:TEXT"))},
+                        unter="DATA")
 
         def text(c):  # TEXT direkt am Zitat (verbreitet, eigentlich DATA:TEXT)
             vorhanden = self.spalte("citation", "data_text", zid)
@@ -379,7 +385,7 @@ class Importer:
 
         def prim(c):
             if (c.wert or "").upper() in ("Y", "N") and not c.kinder:
-                self.setze("media_link", lid, is_primary=int(self.wert(c, holder).upper() == "Y"))
+                self.setze("media_link", lid, is_primary=int(self.wert(c, holder, f"{unter}:_PRIM").upper() == "Y"))
             else:
                 self.rest(c, holder, unter)
 
@@ -389,13 +395,13 @@ class Importer:
 
             def zahl(x):
                 if (x.wert or "").isdigit() and not x.kinder:
-                    self.setze("media_link", lid, **{felder[x.tag]: int(self.wert(x, holder))})
+                    self.setze("media_link", lid, **{felder[x.tag]: int(self.wert(x, holder, f"{unter}:CROP:{x.tag}"))})
                 else:
                     self.rest(x, holder, unter + ":CROP")
 
             self.kinder(c, holder, {t: zahl for t in felder}, unter=unter + ":CROP")
 
-        handler = {"_PRIM": prim, "CROP": crop, "TITL": lambda c: self.setze("media_link", lid, title=self.wert(c, holder))}
+        handler = {"_PRIM": prim, "CROP": crop, "TITL": lambda c: self.setze("media_link", lid, title=self.wert(c, holder, f"{unter}:TITL"))}
         if not k.zeiger:
             handler.update({"FILE": lambda c: None, "TITL": lambda c: None})  # schon in medium_inhalt
         self.kinder(k, holder, handler, unter=unter)
@@ -428,22 +434,23 @@ class Importer:
         rid = self.ids[("repository", r.xref)]
         h = ("repository", rid)
         self.nimm(r)
-        einmal = lambda s: (lambda c: self.einmal(c, h, "repository", s))  # noqa: E731
+        einmal = lambda s, unter=None: (lambda c: self.einmal(c, h, "repository", s, unter))  # noqa: E731
 
         def addr(c):
             self.setze("repository", rid, address=self.wert_ohne_kinder(c))
-            self.kinder(c, h, {"ADR1": einmal("adr1"), "CITY": einmal("city"), "POST": einmal("postal_code"),
-                               "CTRY": einmal("country"), "_NAME": einmal("address_name")}, unter="ADDR")
+            self.kinder(c, h, {"ADR1": einmal("adr1", "ADDR"), "CITY": einmal("city", "ADDR"),
+                               "POST": einmal("postal_code", "ADDR"), "CTRY": einmal("country", "ADDR"),
+                               "_NAME": einmal("address_name", "ADDR")}, unter="ADDR")
 
         self.kinder(r, h, {"NAME": einmal("name"), "ADDR": addr, "PHON": einmal("phone"), "EMAIL": einmal("email"),
                            "WWW": einmal("www"), **self.gemeinsam(h, "repository")})
 
-    def einmal(self, c: Knoten, holder, tabelle: str, spalte: str) -> None:
-        """Spalte setzen, wenn sie leer ist; eine zweite Angabe gleicher Art bleibt als Rest."""
+    def einmal(self, c: Knoten, holder, tabelle: str, spalte: str, unter: str | None = None) -> None:
+        """Spalte setzen, wenn sie leer ist; eine zweite Angabe gleicher Art bleibt als Rest (unter `unter`)."""
         if self.spalte(tabelle, spalte, holder[1]) is None:
-            self.setze(tabelle, holder[1], **{spalte: self.wert(c, holder)})
+            self.setze(tabelle, holder[1], **{spalte: self.wert(c, holder, f"{unter}:{c.tag}" if unter else None)})
         else:
-            self.rest(c, holder)
+            self.rest(c, holder, unter)
 
     def notiz_datensatz(self, r: Knoten) -> None:
         nid = self.ids[("note", r.xref)]
@@ -461,20 +468,24 @@ class Importer:
 
         def datei(c):
             self.nimm(c)
-            fid = self.ins("media_file", media_id=mid, sort=self._sortnr(), path=c.wert or "")
+            pfad = c.wert or ""
+            if self.v7 and not URL.match(pfad):   # 7.0: Pfad als URL, Sonderzeichen mit % (E27)
+                pfad = unquote(pfad)
+            fid = self.ins("media_file", media_id=mid, sort=self._sortnr(), path=pfad)
+            stelle = f"FILE {pfad}"
 
             def form(f):
                 self.setze("media_file", fid, format=self.wert_ohne_kinder(f))
-                typ = lambda t: self.setze("media_file", fid, media_type=self.wert(t, h))  # noqa: E731
-                self.kinder(f, h, {"TYPE": typ, "MEDI": typ}, unter=f"FILE {c.wert}:FORM")
+                typ = lambda t: self.setze("media_file", fid, media_type=self.wert(t, h, f"{stelle}:FORM:{t.tag}"))  # noqa: E731
+                self.kinder(f, h, {"TYPE": typ, "MEDI": typ}, unter=f"{stelle}:FORM")
 
             def titel(t):
-                titel_ = self.wert(t, h)
+                titel_ = self.wert(t, h, f"{stelle}:TITL")
                 self.setze("media_file", fid, title=titel_)
                 if self.spalte("media", "title", mid) is None:
                     self.setze("media", mid, title=titel_)
 
-            self.kinder(c, h, {"FORM": form, "TITL": titel}, unter=f"FILE {c.wert}")
+            self.kinder(c, h, {"FORM": form, "TITL": titel}, unter=stelle)
 
         handler = {"FILE": datei, "TITL": lambda c: self.setze("media", mid, title=self.wert(c, h))}
         if nur_dateien:
@@ -488,18 +499,20 @@ class Importer:
         sid = self.ids[("source", r.xref)]
         h = ("source", sid)
         self.nimm(r)
-        einmal = lambda s: (lambda c: self.einmal(c, h, "source", s))  # noqa: E731
+        einmal = lambda s, unter=None: (lambda c: self.einmal(c, h, "source", s, unter))  # noqa: E731
 
         def data(c):
             self.nimm(c)
 
             def even(e):
                 cid = self.ins("source_coverage", source_id=sid, sort=self._sortnr(), events=self.wert_ohne_kinder(e))
-                self.kinder(e, h, {"DATE": lambda d: self.setze("source_coverage", cid, **self.datum(d, h)),
-                                   "PLAC": lambda p: self.setze("source_coverage", cid, place_text=self.wert(p, h))},
+                self.kinder(e, h, {"DATE": lambda d: self.setze("source_coverage", cid,
+                                                                **self.datum(d, h, pfad="DATA:EVEN:DATE")),
+                                   "PLAC": lambda p: self.setze("source_coverage", cid,
+                                                                place_text=self.wert(p, h, "DATA:EVEN:PLAC"))},
                             unter="DATA:EVEN")
 
-            self.kinder(c, h, {"EVEN": even, "AGNC": einmal("agency")}, unter="DATA")
+            self.kinder(c, h, {"EVEN": even, "AGNC": einmal("agency", "DATA")}, unter="DATA")
 
         def repo(c):
             rid = None
@@ -508,6 +521,7 @@ class Importer:
                 if rid is None:
                     return
             self.nimm(c)
+            stelle = f"REPO {c.wert}" if c.wert else "REPO"
             calns = c.alle("CALN")
             if not calns:
                 self.ins("source_repository", source_id=sid, repository_id=rid, sort=self._sortnr())
@@ -515,10 +529,11 @@ class Importer:
             def caln(n):
                 sr = self.ins("source_repository", source_id=sid, repository_id=rid, sort=self._sortnr(),
                               call_number=self.wert_ohne_kinder(n))
-                self.kinder(n, h, {"MEDI": lambda m: self.setze("source_repository", sr, medium=self.wert(m, h))},
-                            unter=f"REPO {c.wert or ''}:CALN".strip())
+                self.kinder(n, h, {"MEDI": lambda m: self.setze("source_repository", sr,
+                                                                 medium=self.wert(m, h, f"{stelle}:CALN:MEDI"))},
+                            unter=f"{stelle}:CALN")
 
-            self.kinder(c, h, {"CALN": caln}, unter=f"REPO {c.wert or ''}".strip())
+            self.kinder(c, h, {"CALN": caln}, unter=stelle)
 
         self.kinder(r, h, {"TITL": einmal("title"), "ABBR": einmal("abbr"), "AUTH": einmal("author"),
                            "PUBL": einmal("publication"), "TEXT": einmal("text"), "DATA": data, "REPO": repo,
@@ -541,9 +556,10 @@ class Importer:
 
         def name(c):
             nid = self.ins("place_name", place_id=pid, sort=self._sortnr(), name=self.wert_ohne_kinder(c) or "")
-            self.kinder(c, h, {"DATE": lambda d: self.setze("place_name", nid, **self.datum(d, h)),
-                               "LANG": lambda x: self.setze("place_name", nid, lang=self.wert(x, h)),
-                               "ABBR": lambda x: self.setze("place_name", nid, abbr=self.wert(x, h))},
+            stelle = f"NAME {c.wert}"
+            self.kinder(c, h, {"DATE": lambda d: self.setze("place_name", nid, **self.datum(d, h, pfad=f"{stelle}:DATE")),
+                               "LANG": lambda x: self.setze("place_name", nid, lang=self.wert(x, h, f"{stelle}:LANG")),
+                               "ABBR": lambda x: self.setze("place_name", nid, abbr=self.wert(x, h, f"{stelle}:ABBR"))},
                         unter=f"NAME {c.wert}")
 
         def typ(c):
@@ -551,11 +567,12 @@ class Importer:
 
             def govtyp(g):
                 if (g.wert or "").isdigit() and not g.kinder:
-                    self.setze("place_type", tid, gov_type=int(self.wert(g, h)))
+                    self.setze("place_type", tid, gov_type=int(self.wert(g, h, f"TYPE {c.wert}:_GOVTYPE")))
                 else:
                     self.rest(g, h, f"TYPE {c.wert}")
 
-            self.kinder(c, h, {"DATE": lambda d: self.setze("place_type", tid, **self.datum(d, h)),
+            self.kinder(c, h, {"DATE": lambda d: self.setze("place_type", tid,
+                                                            **self.datum(d, h, pfad=f"TYPE {c.wert}:DATE")),
                                "_GOVTYPE": govtyp}, unter=f"TYPE {c.wert}")
 
         def oberort(c):
@@ -567,8 +584,10 @@ class Importer:
                 return
             lid = self.ins("place_link", place_id=pid, parent_id=eltern, sort=self._sortnr(), kind=None)
             self.wert_ohne_kinder(c)
-            self.kinder(c, h, {"TYPE": lambda t: self.setze("place_link", lid, kind=self.wert(t, h)),
-                               "DATE": lambda d: self.setze("place_link", lid, **self.datum(d, h))},
+            stelle = f"_LOC @{c.zeiger}@"
+            self.kinder(c, h, {"TYPE": lambda t: self.setze("place_link", lid, kind=self.wert(t, h, f"{stelle}:TYPE")),
+                               "DATE": lambda d: self.setze("place_link", lid,
+                                                            **self.datum(d, h, pfad=f"{stelle}:DATE"))},
                         unter=f"_LOC @{c.zeiger}@")
 
         def map_(c):
@@ -578,8 +597,11 @@ class Importer:
             def f(c):
                 aid = self.ins("place_attribute", place_id=pid, kind=art, value=self.wert_ohne_kinder(c) or "",
                                sort=self._sortnr())
-                self.kinder(c, h, {"TYPE": lambda t: self.setze("place_attribute", aid, subtype=self.wert(t, h)),
-                                   "DATE": lambda d: self.setze("place_attribute", aid, **self.datum(d, h))},
+                stelle = f"{c.tag} {c.wert}"
+                self.kinder(c, h, {"TYPE": lambda t: self.setze("place_attribute", aid,
+                                                                subtype=self.wert(t, h, f"{stelle}:TYPE")),
+                                   "DATE": lambda d: self.setze("place_attribute", aid,
+                                                                **self.datum(d, h, pfad=f"{stelle}:DATE"))},
                             unter=f"{c.tag} {c.wert}")
             return f
 
@@ -677,7 +699,7 @@ class Importer:
         pid = None
         if loc is not None and ("place", loc.zeiger) in self.ids:
             pid = self.ids[("place", loc.zeiger)]
-            self.wert(loc, holder)
+            self.wert(loc, holder, "PLAC:_LOC")
         elif k.wert:
             pid = self.ort_aus_text(k.wert, k.zeile)
         self.setze("event", eid, place_text=k.wert, place_id=pid)
@@ -720,7 +742,8 @@ class Importer:
                 return
             aid = self.ins("place_attribute", place_id=pid, kind="postal", value=self.wert_ohne_kinder(c) or "",
                            sort=self._sortnr())
-            self.kinder(c, holder, {"DATE": lambda d: self.setze("place_attribute", aid, **self.datum(d, holder))},
+            self.kinder(c, holder, {"DATE": lambda d: self.setze("place_attribute", aid,
+                                                                 **self.datum(d, holder, pfad="PLAC:_POST:DATE"))},
                         unter="PLAC:_POST")
             vermerk("postal", aid)
 
@@ -760,7 +783,7 @@ class Importer:
         text = None
         for p in x.kinder:
             if p.tag == "PHRASE" and text is None:
-                text = self.wert(p, holder)
+                text = self.wert(p, holder, "ROLE:PHRASE")
             else:
                 self.rest(p, holder, "ROLE")
         return code, text
@@ -866,8 +889,9 @@ class Importer:
         return eid
 
     def nicht(self, k: Knoten, h, sort: int) -> None:
-        """GEDCOM 7: NO MARR – das Ereignis hat nicht stattgefunden (KONZEPT 3.3)."""
-        if not self.v7 or not re.fullmatch(r"[A-Z_][A-Z0-9_]*", k.wert or ""):
+        """NO MARR (7.0) oder _NO MARR (5.5.1, vom Export geschrieben): das Ereignis hat nicht stattgefunden
+        (KONZEPT 3.3)."""
+        if (k.tag == "NO" and not self.v7) or not re.fullmatch(r"[A-Z_][A-Z0-9_]*", k.wert or ""):
             self.rest(k, h)
             return
         self.ereignis(k, h, "PRINCIPAL", sort=sort, negiert=True, typ=k.wert)
@@ -924,11 +948,12 @@ class Importer:
 
             def pedi(x):
                 if (x.wert or "").lower() in PEDI and not x.kinder:
-                    daten["pedi"] = PEDI[self.wert(x, h).lower()]
+                    daten["pedi"] = PEDI[self.wert(x, h, f"{unter}:PEDI").lower()]
                 else:
                     self.rest(x, h, unter)
 
-            self.kinder(c, h, {"PEDI": pedi, "STAT": lambda x: daten.update(status=self.wert(x, h))}, unter=unter)
+            self.kinder(c, h, {"PEDI": pedi, "STAT": lambda x: daten.update(status=self.wert(x, h, f"{unter}:STAT"))},
+                        unter=unter)
             self.famc[(pid, fid)] = daten
 
         def fams(c):
@@ -960,7 +985,7 @@ class Importer:
         handler = {"NAME": name, "SEX": sex, "FAMC": famc, "FAMS": fams, "ASSO": asso, **self.gemeinsam(h, "person")}
         for tag in EREIGNISSE_PERSON:
             handler[tag] = lambda c: self.ereignis(c, h, "PRINCIPAL", sort=zaehle("fakt"))
-        handler["NO"] = lambda c: self.nicht(c, h, zaehle("fakt"))
+        handler["NO"] = handler["_NO"] = lambda c: self.nicht(c, h, zaehle("fakt"))
         self.kinder(r, h, handler)
 
     # ── Familien ───────────────────────────────────────────────────────────────────────────────────
@@ -1000,7 +1025,7 @@ class Importer:
 
             def rel(x):
                 if (x.wert or "").lower() in REL and not x.kinder:
-                    daten[x.tag] = REL[self.wert(x, h).lower()]
+                    daten[x.tag] = REL[self.wert(x, h, f"{unter}:{x.tag}").lower()]
                 else:
                     self.rest(x, h, unter)
 
@@ -1018,7 +1043,7 @@ class Importer:
         handler = {"HUSB": partner_, "WIFE": partner_, "CHIL": kind, "_STAT": stat, **self.gemeinsam(h, "family")}
         for tag in EREIGNISSE_FAMILIE:
             handler[tag] = lambda c: self.ereignis(c, h, "PRINCIPAL", sort=nr())
-        handler["NO"] = lambda c: self.nicht(c, h, nr())
+        handler["NO"] = handler["_NO"] = lambda c: self.nicht(c, h, nr())
         self.kinder(r, h, handler)
 
     def mitglieder(self) -> None:

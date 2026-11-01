@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+from collections import Counter
 from pathlib import Path
 
 import pytest
@@ -36,7 +38,10 @@ def test_rest_ist_genau_das_erwartete(falkenrath7):
     """Rest: der Einsender und die Wortlaute (PHRASE) an MEDI und an der Rolle im Zitat – dafür hat das Modell
     noch keine Spalte."""
     _, b = falkenrath7
-    assert b.rest_pfade == {"citation:ROLE:PHRASE": 3, "media:MEDI:PHRASE": 11, "tree:SUBM": 1}
+    stellen = Counter()
+    for pfad, n in b.rest_pfade.items():
+        stellen[re.sub(r"FILE [^:]+", "FILE …", pfad)] += n
+    assert stellen == {"citation:EVEN:ROLE:PHRASE": 3, "media:FILE …:FORM:MEDI:PHRASE": 11, "tree:SUBM": 1}
 
 
 def test_anzahl_wie_in_5_5_1(falkenrath7, tmp_path):
