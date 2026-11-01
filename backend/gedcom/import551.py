@@ -192,6 +192,7 @@ class Importer:
 
         tabellen = {"INDI": "person", "FAM": "family", "SOUR": "source", "REPO": "repository", "OBJE": "media",
                     "NOTE": "note", "_LOC": "place"}
+        angelegt: set[int] = set()       # Knoten, die einen Datensatz ergeben haben (nicht die doppelten)
         for r in self.d.datensaetze:  # 1. Durchgang: Datensätze mit Kennung anlegen
             tab = tabellen.get(r.tag)
             if tab and r.xref:
@@ -207,12 +208,13 @@ class Importer:
                 if tab == "note":
                     werte["text"] = r.wert or ""
                 self.ids[(tab, r.xref)] = self.ins(tab, **werte)
+                angelegt.add(id(r))
             elif r.tag == "TRLR":
                 self.nimm(r)
             else:
                 self.rest(r, ("tree", 0))
 
-        art = lambda tag: [r for r in self.d.datensaetze if r.tag == tag and r.xref and (tabellen[tag], r.xref) in self.ids]  # noqa: E731
+        art = lambda tag: [r for r in self.d.datensaetze if r.tag == tag and id(r) in angelegt]  # noqa: E731
         erledigt = set()
         for tag, f in (("REPO", self.archiv), ("NOTE", self.notiz_datensatz), ("OBJE", self.medium),
                        ("SOUR", self.quelle)):
