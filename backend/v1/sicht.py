@@ -233,8 +233,12 @@ def modell(pfad: str, oeffnen) -> Modell:
 class Sicht:
     """Ein Baum, gesehen mit einer Zugriffsstufe (0 Verwalter, 1 Mitglied, 2 Besucher) an einem Tag."""
 
-    def __init__(self, m: Modell, stufe: int, heute: datetime.date):
+    def __init__(self, m: Modell, stufe: int, heute: datetime.date, eigene: str = "", pfad: int = 0):
         self.m, self.stufe = m, stufe
+        # E19 B: eigene Person des Kontos („Das bin ich“) und Verwandtschaftsschutz in Schritten
+        self.eigene = m.person_xref.get(eigene) if eigene else None
+        self.pfad = pfad
+        self._verwandte: set[int] | None = None
         self.e, self.r = m.einst, m.regeln
         self.heute_jahr = heute.year
         self.heute_jd = jd_gregorianisch(heute.year, heute.month, heute.day)
@@ -328,12 +332,35 @@ class Sicht:
     def person_darf(self, pid: int, stufe: int | None = None) -> bool:
         stufe = self.stufe if stufe is None else stufe
         p = self.m.personen[pid]
+        # Die eigene Person ist immer sichtbar – vor Sperrvermerk und Regeln, aber nur mit der eigenen Stufe.
+        if self.e.enabled and pid == self.eigene and stufe == self.stufe:
+            return True
         r = self._datensatz(p.xref, p.resn, stufe)
         if r is not None:
             return r
         if self.e.show_dead_people >= stufe and self.ist_tot(pid) and not self._noch_geschuetzt(p):
             return True
+        if self.eigene is not None and self.pfad > 0:
+            # Verwandtschaftsschutz: Lebende nur, wenn nah genug verwandt – unabhängig von der Stufe
+            return pid in self.verwandte()
         return stufe <= 1
+
+    def verwandte(self) -> set[int]:
+        """Personen bis self.pfad Schritte von der eigenen Person; ein Schritt ist Person → Familie → Person
+        (Eltern, Partner, Kinder, Geschwister über die gemeinsame Familie)."""
+        if self._verwandte is None:
+            gesehen, rand = {self.eigene}, {self.eigene}
+            for _ in range(self.pfad):
+                neu = set()
+                for pid in rand:
+                    p = self.m.personen[pid]
+                    for fid in (*p.famc, *p.fams):
+                        f = self.m.familien[fid]
+                        neu.update(q for q in (*f.partner.values(), *f.kinder) if q not in gesehen)
+                gesehen |= neu
+                rand = neu
+            self._verwandte = gesehen
+        return self._verwandte
 
     def name_darf(self, pid: int, stufe: int | None = None) -> bool:
         stufe = self.stufe if stufe is None else stufe
@@ -437,4 +464,5 @@ def sicht_fuer(ctx, baum_name: str) -> Sicht:
     b = ctx.app.state.baeume.baum(baum_name)
     m = modell(str(b.pfad), b.oeffnen)
     rolle = ctx.konten.rolle(ctx.konto, baum_name)
-    return Sicht(m, STUFE[rolle], ctx.einstellungen.heute())
+    kb = ctx.konten.kontobaum(ctx.konto, baum_name)
+    return Sicht(m, STUFE[rolle], ctx.einstellungen.heute(), kb.person, kb.pfad)

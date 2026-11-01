@@ -235,3 +235,25 @@ def test_datenschutz_nur_fuer_administratoren(einstellungen, server):
     assert a.status == 303
     a = b.senden_formular("datenschutz-speichern", {"baum": "probe", "enabled": "0"})
     assert meldung(a)[0] == ""
+
+
+def test_das_bin_ich_und_verwandtschaft_einstellen(admin, einstellungen):
+    from core.konten import KontoBaum
+
+    b = admin
+    b.seite()
+    b.hochladen("probe", KLEIN)
+    b.seite()
+    a = b.senden_formular("rollen-setzen", {"name": "anna", "rolle:probe": "member", "person:probe": "@I1@",
+                                            "pfad:probe": "3", "sofort:probe": "1"})
+    assert meldung(a) == ("rolle-gesetzt", "anna")
+    db = KontenDB(einstellungen.konten_db)
+    assert db.kontobaum("anna", "probe") == KontoBaum("I1", 3, True)
+    assert db.rolle(db.konto("anna"), "probe") == "member"
+    # Administratoren: keine Rollenauswahl, aber „Das bin ich“
+    b.senden_formular("rollen-setzen", {"name": "chef", "person:probe": "I2", "pfad:probe": "-5"})
+    assert db.kontobaum("chef", "probe") == KontoBaum("I2", 0, False)
+    assert meldung(b.senden_formular("rollen-setzen", {"name": "anna", "rolle:probe": "member",
+                                                       "person:probe": "I1; x"}))[0] == "regel-ungueltig"
+    assert 'value="I1"' in b.seite()
+    db.schliessen()

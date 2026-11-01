@@ -726,6 +726,21 @@ Regeln:
 
 - `rolle IN ('member', 'editor', 'moderator', 'manager')`
 
+### kontobaum
+
+| Spalte | Typ | Pflicht | Vorgabe | Verweis | Bedeutung |
+|---|---|---|---|---|---|
+| `konto` | Text (255) | Schlüssel |  | konto.name (beim Löschen: CASCADE) |  |
+| `baum` | Text (255) | Schlüssel |  |  |  |
+| `person` | Text (255) |  |  |  |  |
+| `pfad` | Ganzzahl | ja | 0 |  |  |
+| `sofort` | Ganzzahl | ja | 0 |  |  |
+
+Regeln:
+
+- `pfad >= 0`
+- `sofort IN (0, 1)`
+
 ### sitzung
 
 | Spalte | Typ | Pflicht | Vorgabe | Verweis | Bedeutung |

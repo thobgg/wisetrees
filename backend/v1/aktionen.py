@@ -40,12 +40,16 @@ def info(ctx: Kontext) -> dict:
             con.close()
         from .sicht import sicht_fuer
 
-        start = erste if erste and sicht_fuer(ctx, b.name).person_sichtbar(erste) else ""
+        kb = ctx.konten.kontobaum(konto, b.name)
+        s = sicht_fuer(ctx, b.name)
+        # Startperson: die eigene Person („Das bin ich“), sonst die erste – nur, wenn sichtbar
+        kandidat = kb.person if kb.person in s.m.person_xref else erste
+        start = kandidat if kandidat and s.person_sichtbar(kandidat) else ""
         baeume.append({
             "name": b.name, "title": titel, "individuals": anzahl, "role": rolle,
             "canEdit": _rang(rolle) >= _rang("editor"), "canUpload": _rang(rolle) >= _rang("editor"),
-            "canModerate": _rang(rolle) >= _rang("moderator"), "pending": 0, "autoAccept": False,
-            "userXref": "", "defaultXref": "", "startXref": start, "treeDefaultXref": "",
+            "canModerate": _rang(rolle) >= _rang("moderator"), "pending": 0, "autoAccept": kb.sofort,
+            "userXref": kb.person, "defaultXref": "", "startXref": start, "treeDefaultXref": "",
             "availableModules": ["_api4webtrees_"], "lastChange": 0,
         })
     return {

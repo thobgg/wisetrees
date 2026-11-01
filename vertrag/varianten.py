@@ -21,7 +21,24 @@ class Variante:
     referenz_spalten: dict = field(default_factory=dict)  # Spalte der Baumtabelle der Referenz → Wert
     wisetrees: dict = field(default_factory=dict)       # Feld von baum.datenschutz.Einstellungen → Wert
     regeln: tuple = ()                                   # (xref | None, tag | None, resn | None); None = Regel weg
+    # Je Konto (E19 B): in der Referenz Einstellungen je Konto und Baum bzw. je Konto, in wisetrees je Konto und Baum
+    referenz_konto_baum: dict = field(default_factory=dict)  # Konto → {Einstellung: Wert}
+    referenz_konto: dict = field(default_factory=dict)       # Konto → {Einstellung: Wert}
+    wisetrees_konten: dict = field(default_factory=dict)     # Konto → {person, pfad, sofort}
 
+
+# Bekannte Lücke: Verwandtschaftsbezeichnungen über nahe Verwandte hinaus (Fähigkeit relationship, später,
+# docs/FUNKTIONEN.md 1.4). In diesen Fällen weicht nur das Feld relationship ab; alles andere wird geprüft.
+RELATIONSHIP_OFFEN = {
+    ("das-bin-ich", "bearbeiter", "Individual__xref=I1"), ("das-bin-ich", "bearbeiter", "Individual__xref=I2"),
+    ("das-bin-ich", "bearbeiter", "Individual__xref=I54"), ("das-bin-ich", "mitglied", "Individual__xref=I130"),
+    ("das-bin-ich", "mitglied", "Individual__xref=I54"),
+    ("eigene-person-gesperrt", "mitglied", "Individual__xref=I130"),
+    ("eigene-person-gesperrt", "mitglied", "Individual__xref=I54"),
+    ("verwandtschaft-1", "mitglied", "Individual__xref=I130"), ("verwandtschaft-1", "mitglied", "Individual__xref=I54"),
+    ("verwandtschaft-3", "mitglied", "Individual__xref=I130"), ("verwandtschaft-3", "mitglied", "Individual__xref=I54"),
+    ("verwandtschaft-3", "moderator", "Individual__xref=I21"), ("verwandtschaft-3", "moderator", "Individual__xref=I22"),
+}
 
 # Fälle, die Sichtbarkeit zeigen: Liste, Suche, lebende und verstorbene Personen, Familien, Bäume.
 _NAMEN = {
@@ -56,4 +73,22 @@ VARIANTEN: list[Variante] = [
              regeln=((None, "OCCU", "privacy"), (None, "SOUR", None), (None, "OBJE", "privacy"),
                      ("I21", None, "confidential"), ("I22", "BIRT", "confidential"), ("F8", None, "privacy"),
                      ("I54", None, "none"))),
+    # E19 B: je Konto
+    Variante("das-bin-ich", "Konten mit eigener Person: Startperson und Verwandtschaft zur eigenen Person",
+             referenz_konto_baum={"mitglied": {"gedcomid": "I1"}, "bearbeiter": {"gedcomid": "I22"}},
+             wisetrees_konten={"mitglied": {"person": "I1"}, "bearbeiter": {"person": "I22"}}),
+    Variante("verwandtschaft-1", "Lebende nur bis 1 Verwandtschaftsschritt von der eigenen Person",
+             referenz_konto_baum={"mitglied": {"gedcomid": "I1", "RELATIONSHIP_PATH_LENGTH": "1"}},
+             wisetrees_konten={"mitglied": {"person": "I1", "pfad": 1}}),
+    Variante("verwandtschaft-3", "Lebende nur bis 3 Verwandtschaftsschritte von der eigenen Person",
+             referenz_konto_baum={"mitglied": {"gedcomid": "I1", "RELATIONSHIP_PATH_LENGTH": "3"},
+                                  "moderator": {"gedcomid": "I2", "RELATIONSHIP_PATH_LENGTH": "1"}},
+             wisetrees_konten={"mitglied": {"person": "I1", "pfad": 3}, "moderator": {"person": "I2", "pfad": 1}}),
+    Variante("eigene-person-gesperrt", "Die eigene Person ist sichtbar, auch wenn eine Regel sie sperrt",
+             regeln=(("I1", None, "confidential"),),
+             referenz_konto_baum={"mitglied": {"gedcomid": "I1"}},
+             wisetrees_konten={"mitglied": {"person": "I1"}}),
+    Variante("sofort-annehmen", "Eigene Änderungen sofort annehmen",
+             referenz_konto={"bearbeiter": {"auto_accept": "1"}},
+             wisetrees_konten={"bearbeiter": {"sofort": True}}),
 ]

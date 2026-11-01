@@ -78,23 +78,31 @@
     <td><code>{{ k.name }}</code>{% if k.is_admin %}<br><span class="leise">Administrator</span>{% endif %}</td>
     <td>{{ k.real_name }}</td>
     <td>
-      {% if k.is_admin %}
-      <span class="leise">Verwalter in allen Bäumen</span>
-      {% elif baeume %}
+      {% if k.is_admin %}<span class="leise">Verwalter in allen Bäumen</span>{% endif %}
+      {% if baeume %}
       <form method="post" action="{{ ort.url('/rollen-setzen') }}">
         {{ csrf_feld() }}
         <input type="hidden" name="name" value="{{ k.name }}">
         {% for b in baeume %}
+        {% set kb = kontobaum.get((k.name, b.name)) %}
         <div class="zeile">
-          <label class="inline" for="r-{{ k.name }}-{{ b.name }}"><code>{{ b.name }}</code></label>
-          <select id="r-{{ k.name }}-{{ b.name }}" name="rolle:{{ b.name }}">
+          <code>{{ b.name }}</code>
+          {% if not k.is_admin %}
+          <select aria-label="Rolle in {{ b.name }}" name="rolle:{{ b.name }}">
             {% set jetzt = rollen.get(k.name, {}).get(b.name, "visitor") %}
             {% for r in rollen_wahl %}<option value="{{ r }}"{% if r == jetzt %} selected{% endif %}>{{ rollen_text[r] }}</option>{% endfor %}
           </select>
+          {% endif %}
+          <input type="text" class="kurz" style="width:6rem" aria-label="Das bin ich in {{ b.name }}" placeholder="Das bin ich"
+                 name="person:{{ b.name }}" value="{{ kb.person if kb else '' }}">
+          <input type="text" style="width:3rem" aria-label="Verwandtschaftsschritte in {{ b.name }}" title="Lebende nur bis so viele Verwandtschaftsschritte von der eigenen Person (0 = aus)"
+                 name="pfad:{{ b.name }}" value="{{ kb.pfad if kb else 0 }}" inputmode="numeric">
+          <label class="inline"><input type="checkbox" name="sofort:{{ b.name }}" value="1"{% if kb and kb.sofort %} checked{% endif %}> sofort annehmen</label>
         </div>
         {% endfor %}
-        <button type="submit">Rollen speichern</button>
+        <button type="submit">Speichern</button>
       </form>
+      <p class="leise">„Das bin ich“: Kennung der eigenen Person. Die Zahl dahinter: Lebende nur bis so viele Verwandtschaftsschritte von ihr (0 = aus).</p>
       {% else %}<span class="leise">kein Baum</span>{% endif %}
     </td>
     <td>

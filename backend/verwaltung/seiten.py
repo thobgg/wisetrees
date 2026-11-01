@@ -22,7 +22,7 @@ from starlette.concurrency import run_in_threadpool
 
 from baum import datei, datenschutz
 from baum.schema import tabelle as T
-from core.konten import NAME_LAENGE, ROLLEN, KontenDB, Sitzung
+from core.konten import NAME_LAENGE, ROLLEN, KontenDB, KontoBaum, Sitzung
 from gedcom.import551 import importieren
 from gedcom.lesen import NichtLesbar
 from v1.http import COOKIE, anmeldung_pruefen, cookie, sitzung_wechseln
@@ -49,7 +49,7 @@ MELDUNGEN = {
     "passwort-gesetzt": ("Passwort für {name} gesetzt.", "ok"),
     "passwort-geaendert": ("Das eigene Passwort ist geändert.", "ok"),
     "passwort-falsch": ("Das bisherige Passwort stimmt nicht.", "fehler"),
-    "rolle-gesetzt": ("Rollen für {name} gespeichert.", "ok"),
+    "rolle-gesetzt": ("Einstellungen für {name} gespeichert.", "ok"),
     "selbst": ("Das eigene Konto lässt sich hier nicht löschen.", "fehler"),
     "baum-eingelesen": ("Baum {name} eingelesen.", "ok"),
     "baum-gibt-es": ("Einen Baum {name} gibt es schon.", "fehler"),
@@ -62,7 +62,7 @@ MELDUNGEN = {
     "datenschutz-gespeichert": ("Datenschutz für {name} gespeichert.", "ok"),
     "regel-gesetzt": ("Regel gespeichert.", "ok"),
     "regel-entfernt": ("Regel entfernt.", "ok"),
-    "regel-ungueltig": ("Eine Regel braucht eine Kennung oder eine Art (Buchstaben, Ziffern, _).", "fehler"),
+    "regel-ungueltig": ("Kennungen und Arten bestehen aus Buchstaben, Ziffern und _.", "fehler"),
 }
 
 # Wer sieht etwas: Stufe → Text (Einstellungen „Verstorbene“ und „Namen privater Personen“)
@@ -183,6 +183,7 @@ def _uebersicht(request: Request, sitzung: Sitzung, ort: _Ort) -> HTMLResponse:
     baeume = _baeume(request)
     rollen = konten.rollen()
     werte.update(baeume=baeume, konten=konten.alle(), rollen=rollen, rollen_text=ROLLEN_TEXT,
+                 kontobaum=konten.alle_kontobaum(),
                  rollen_wahl=[r for r in ROLLEN], min_passwort=MIN_PASSWORT)
     return _seite("verwaltung.html", **werte)
 
@@ -321,9 +322,15 @@ async def _rollen_setzen(request, sitzung, form, ort):
     if konten.konto(name) is None:
         return _zurueck(ort, "unbekannt", name)
     for b in request.app.state.baeume.alle():
-        rolle = str(form.get(f"rolle:{b.name}", "visitor"))
-        if rolle in ROLLEN:
-            konten.rolle_setzen(name, b.name, rolle)
+        if f"rolle:{b.name}" in form:   # Administratoren haben keine Auswahl
+            rolle = str(form.get(f"rolle:{b.name}", "visitor"))
+            if rolle in ROLLEN:
+                konten.rolle_setzen(name, b.name, rolle)
+        person = str(form.get(f"person:{b.name}", "")).strip().strip("@")
+        if person and not _KENNUNG.match(person):
+            return _zurueck(ort, "regel-ungueltig")
+        konten.kontobaum_setzen(name, b.name, KontoBaum(
+            person=person, pfad=_ganzzahl(form, f"pfad:{b.name}", 0, 0, 20), sofort=form.get(f"sofort:{b.name}") == "1"))
     return _zurueck(ort, "rolle-gesetzt", name)
 
 

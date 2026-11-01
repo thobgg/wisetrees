@@ -1,0 +1,48 @@
+{
+ "rolle": "moderator",
+ "aktion": "Info",
+ "params": {},
+ "status": 200,
+ "json": true,
+ "antwort": {
+  "api": "<api>",
+  "module": "<version>",
+  "webtrees": "<version>",
+  "baseUrl": "<basis>",
+  "rewriteUrls": "<server>",
+  "csrf": "<csrf>",
+  "maxUpload": "<server>",
+  "user": {
+   "loggedIn": true,
+   "userName": "moderator",
+   "realName": "moderator",
+   "isAdmin": false,
+   "language": "en-US",
+   "messages": 0
+  },
+  "trees": [
+   {
+    "name": "falkenrath",
+    "title": "Falkenrath",
+    "individuals": 492,
+    "role": "moderator",
+    "canEdit": true,
+    "canUpload": true,
+    "canModerate": true,
+    "pending": 0,
+    "autoAccept": false,
+    "userXref": "",
+    "defaultXref": "",
+    "startXref": "",
+    "treeDefaultXref": "",
+    "availableModules": "<server>",
+    "lastChange": 0
+   }
+  ],
+  "loginForm": {
+   "welcomeMessage": "Jeder mit einem Benutzerkonto kann auf diese Website zugreifen.",
+   "isSelfRegistrationAllowed": false,
+   "registrationTerms": null
+  }
+ }
+}

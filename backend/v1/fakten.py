@@ -44,7 +44,9 @@ DETAIL_LABEL = {"CAUS": "Ursache", "AGE": "Alter", "AGNC": "Institution", "ADDR"
 WERT = {"SEX": {"M": "männlich", "F": "weiblich", "U": "unbekannt", "X": "divers"},
         "_STAT": {"UNKNOWN": "Unbekannt", "NOT MARRIED": "unverheiratet", "NEVER MARRIED": "nie verheiratet"}}
 MARR_TYP = {"CIVIL": "Standesamtliche Heirat", "RELIGIOUS": "Kirchliche Trauung", "PARTNERS": "Partnerschaft"}
-ROLLE_LABEL = {"godparent": {"M": "Pate", "F": "Patin", "U": "Pate"}, "witness": {"M": "Zeuge", "F": "Zeugin", "U": "Zeuge"}}
+# Wortlaut der Aufzeichnungen: Paten nach Geschlecht, unbekannt oder verborgen „Pate/Patin“; Zeugen immer „Zeuge“
+ROLLE_LABEL = {"godparent": {"M": "Pate", "F": "Patin", "U": "Pate/Patin"},
+               "witness": {"M": "Zeuge", "F": "Zeuge", "U": "Zeuge"}}
 PATEN = {"godparent", "godfather", "godmother", "pate", "patin", "taufpate", "taufpatin", "gevatter", "gevatterin"}
 ZEUGEN = {"witness", "trauzeuge", "trauzeugin", "zeuge", "zeugin"}
 MIME = {"jpg": "image/jpeg", "jpeg": "image/jpeg", "png": "image/png", "gif": "image/gif", "webp": "image/webp",
@@ -645,7 +647,8 @@ def individual(ctx: Kontext):
                         stief.append((sf, q))
         stief_json = [{"parent": m.personen[q].xref if q in eigene_eltern else None, **fk.familie_json(sf, q, True)}
                       for sf, q in stief]
-        bezug = ctx.params.get("relativeTo") or ""
+        # Bezugsperson: relativeTo, sonst die eigene Person des Kontos („Das bin ich“)
+        bezug = ctx.params.get("relativeTo") or ctx.konten.kontobaum(ctx.konto, ctx.baum_name).person
         verwandt = ""
         if bezug and bezug != p.xref:
             other = m.person_xref.get(bezug)

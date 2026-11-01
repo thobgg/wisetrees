@@ -59,6 +59,19 @@ baumrolle_t = Table(
     PrimaryKeyConstraint("konto", "baum"),
 )
 
+# Einstellungen eines Kontos in einem Baum, unabhängig von der Rolle (KONZEPT.md E19 B)
+kontobaum_t = Table(
+    "kontobaum", metadata,
+    Column("konto", String(NAME_LAENGE), ForeignKey("konto.name", ondelete="CASCADE"), nullable=False),
+    Column("baum", String(NAME_LAENGE), nullable=False),
+    Column("person", String(NAME_LAENGE)),                                  # „Das bin ich“: Kennung der Person
+    Column("pfad", Integer, nullable=False, server_default=text("0")),      # Verwandtschaftsschutz: Schritte, 0 = aus
+    Column("sofort", Integer, nullable=False, server_default=text("0")),    # eigene Änderungen sofort annehmen
+    CheckConstraint("pfad >= 0"),
+    CheckConstraint("sofort IN (0, 1)"),
+    PrimaryKeyConstraint("konto", "baum"),
+)
+
 sitzung_t = Table(
     "sitzung", metadata,
     Column("token_hash", String(64), primary_key=True),
@@ -88,6 +101,15 @@ class Konto:
     email: str
     language: str
     is_admin: bool
+
+
+@dataclass(frozen=True)
+class KontoBaum:
+    """Einstellungen eines Kontos in einem Baum (E19 B)."""
+
+    person: str = ""      # „Das bin ich“
+    pfad: int = 0         # Lebende nur bis zu so vielen Verwandtschaftsschritten von der eigenen Person; 0 = aus
+    sofort: bool = False  # eigene Änderungen sofort annehmen
 
 
 @dataclass(frozen=True)
@@ -215,9 +237,34 @@ class KontenDB:
         return aus
 
     def rollen_entfernen(self, baum: str) -> None:
-        """Alle Rollen in einem Baum entfernen (wenn der Baum gelöscht wird)."""
+        """Alle Rollen und Konto-Einstellungen in einem Baum entfernen (wenn der Baum gelöscht wird)."""
         with self._lock, self._con.begin():
             self._con.execute(delete(baumrolle_t).where(baumrolle_t.c.baum == baum))
+            self._con.execute(delete(kontobaum_t).where(kontobaum_t.c.baum == baum))
+
+    # Einstellungen je Konto und Baum (E19 B) -------------------------------------------------------
+
+    def kontobaum(self, konto: Konto | str | None, baum: str) -> KontoBaum:
+        name = konto.name if isinstance(konto, Konto) else konto
+        if not name:
+            return KontoBaum()
+        with self._lock:
+            r = self._lesen(select(kontobaum_t).where(kontobaum_t.c.konto == name, kontobaum_t.c.baum == baum))
+        return KontoBaum(r["person"] or "", r["pfad"], bool(r["sofort"])) if r else KontoBaum()
+
+    def kontobaum_setzen(self, name: str, baum: str, kb: KontoBaum) -> None:
+        if kb.pfad < 0:
+            raise ValueError("Schritte dürfen nicht negativ sein")
+        with self._lock, self._con.begin():
+            self._con.execute(delete(kontobaum_t).where(kontobaum_t.c.konto == name, kontobaum_t.c.baum == baum))
+            if kb != KontoBaum():
+                self._con.execute(insert(kontobaum_t).values(konto=name, baum=baum, person=kb.person or None,
+                                                             pfad=kb.pfad, sofort=int(kb.sofort)))
+
+    def alle_kontobaum(self) -> dict[tuple[str, str], KontoBaum]:
+        with self._lock, self._con.begin():
+            return {(r.konto, r.baum): KontoBaum(r.person or "", r.pfad, bool(r.sofort))
+                    for r in self._con.execute(select(kontobaum_t))}
 
     # Sitzungen ------------------------------------------------------------------------------------
 
