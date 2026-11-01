@@ -18,13 +18,15 @@ from __future__ import annotations
 
 import json
 import re
-import sqlite3
 from collections import Counter
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 from baum import datei as baumdatei
-from baum.schema import TRAEGER
+from sqlalchemy import Connection, and_, bindparam, func, insert, select, update
+
+from baum.schema import TRAEGER, XREF_LAENGE
+from baum.schema import tabelle as T
 
 from . import datum as gdatum
 from .lesen import Datei, Knoten, NichtLesbar, lesen
@@ -87,7 +89,7 @@ class Bericht:
 
 
 class Importer:
-    def __init__(self, con: sqlite3.Connection, d: Datei, bericht: Bericht):
+    def __init__(self, con: Connection, d: Datei, bericht: Bericht):
         self.con, self.d, self.b = con, d, bericht
         self.ids: dict[tuple[str, str], int] = {}       # (Tabelle, xref) → id
         self.rest_pfade: Counter = Counter()
@@ -101,6 +103,7 @@ class Importer:
         self.fam_partner: dict[int, dict[int, int]] = {}  # Familie → {Platz: Person}; 1 = HUSB, 2 = WIFE, 3+ = nur FAMS
         self.fam_kinder: dict[int, list[tuple[int, dict]]] = {}
         self.adoptionen: list[tuple[int, int, str]] = []  # (kind, familie, HUSB|WIFE|BOTH)
+        self._anweisungen: dict[tuple, object] = {}
 
     # ── Buchführung ────────────────────────────────────────────────────────────────────────────────
 
@@ -139,18 +142,35 @@ class Importer:
             self.rest(k, holder, unter)
         return ziel
 
-    def ins(self, tabelle: str, **werte) -> int:
+    def ins(self, tab: str, **werte) -> int:
         if not werte:
-            return self.con.execute(f"INSERT INTO {tabelle} DEFAULT VALUES").lastrowid
-        spalten = ", ".join(werte)
-        return self.con.execute(f"INSERT INTO {tabelle}({spalten}) VALUES({', '.join('?' * len(werte))})",
-                                tuple(werte.values())).lastrowid
+            return self.con.execute(insert(T(tab)).values()).inserted_primary_key[0]
+        return self.con.execute(self._anweisung("ins", tab, werte), werte).inserted_primary_key[0]
 
-    def setze(self, tabelle: str, id_: int, **werte) -> None:
-        if not werte:
-            return
-        self.con.execute(f"UPDATE {tabelle} SET {', '.join(f'{k} = ?' for k in werte)} WHERE id = ?",
-                         (*werte.values(), id_))
+    def setze(self, tab: str, id_: int, **werte) -> None:
+        if werte:
+            self.con.execute(self._anweisung("upd", tab, werte), {**werte, "_id": id_})
+
+    def _anweisung(self, art: str, tab: str, werte: dict):
+        """Anweisung je Tabelle und Spaltensatz einmal bauen; danach wechseln nur die Werte (spart viel Zeit)."""
+        schluessel = (art, tab, tuple(werte))
+        a = self._anweisungen.get(schluessel)
+        if a is None:
+            t = T(tab)
+            if art == "ins":
+                a = insert(t).values({k: bindparam(k) for k in werte})
+            else:
+                a = update(t).where(t.c.id == bindparam("_id")).values({k: bindparam(k) for k in werte})
+            self._anweisungen[schluessel] = a
+        return a
+
+    def ins_meta(self, key: str, value: str) -> None:
+        self.con.execute(insert(T("meta")).values(key=key, value=value))
+
+    def spalte(self, tab: str, spalte: str, id_: int):
+        """Wert einer Spalte im Datensatz mit dieser id."""
+        t = T(tab)
+        return self.con.execute(select(t.c[spalte]).where(t.c.id == id_)).scalar()
 
     def datum(self, k: Knoten, holder: tuple[str, int], prefix: str = "") -> dict:
         """DATE-Knoten → Spalten. Unverstandenes bleibt als Text und steht im Bericht."""
@@ -167,7 +187,7 @@ class Importer:
 
     def ausfuehren(self) -> None:
         k = self.d.kopf
-        self.con.execute("INSERT INTO meta(key, value) VALUES('gedcom_head', ?)", (k.gedcom(),))
+        self.ins_meta("gedcom_head", k.gedcom())
         self.b.zeilen_uebernommen += k.zeilen_gesamt()
 
         tabellen = {"INDI": "person", "FAM": "family", "SOUR": "source", "REPO": "repository", "OBJE": "media",
@@ -175,6 +195,10 @@ class Importer:
         for r in self.d.datensaetze:  # 1. Durchgang: Datensätze mit Kennung anlegen
             tab = tabellen.get(r.tag)
             if tab and r.xref:
+                if len(r.xref) > XREF_LAENGE:
+                    self.b.verweis_fehlt.append(f"Zeile {r.zeile}: Kennung länger als {XREF_LAENGE} Zeichen")
+                    self.rest(r, ("tree", 0))
+                    continue
                 if (tab, r.xref) in self.ids:
                     self.b.verweis_fehlt.append(f"Zeile {r.zeile}: Kennung {r.xref} doppelt")
                     self.rest(r, ("tree", 0))
@@ -213,7 +237,7 @@ class Importer:
         for tab in ("person", "name", "family", "family_member", "parentage", "event", "event_role", "place",
                     "place_name", "place_type", "place_link", "place_attribute", "source", "repository", "citation",
                     "note", "media", "media_link", "task", "person_association", "event_place_detail", "gedcom_rest"):
-            self.b.anzahl[tab] = self.con.execute(f"SELECT COUNT(*) FROM {tab}").fetchone()[0]
+            self.b.anzahl[tab] = self.con.execute(select(func.count()).select_from(T(tab))).scalar()
 
     # ── Gemeinsame Unterstrukturen ─────────────────────────────────────────────────────────────────
 
@@ -228,7 +252,7 @@ class Importer:
         return h
 
     def uid(self, k: Knoten, holder, tabelle: str) -> None:
-        vorhanden = self.con.execute(f"SELECT uid FROM {tabelle} WHERE id = ?", (holder[1],)).fetchone()[0]
+        vorhanden = self.spalte(tabelle, "uid", holder[1])
         if vorhanden is None and k.wert and not k.kinder:
             self.nimm(k)
             self.setze(tabelle, holder[1], uid=k.wert)
@@ -309,7 +333,7 @@ class Importer:
                                "TEXT": lambda t: self.setze("citation", zid, data_text=self.wert(t, z))}, unter="DATA")
 
         def text(c):  # TEXT direkt am Zitat (verbreitet, eigentlich DATA:TEXT)
-            vorhanden = self.con.execute("SELECT data_text FROM citation WHERE id = ?", (zid,)).fetchone()[0]
+            vorhanden = self.spalte("citation", "data_text", zid)
             if vorhanden is None:
                 self.setze("citation", zid, data_text=self.wert(c, z))
             else:
@@ -403,7 +427,7 @@ class Importer:
 
     def einmal(self, c: Knoten, holder, tabelle: str, spalte: str) -> None:
         """Spalte setzen, wenn sie leer ist; eine zweite Angabe gleicher Art bleibt als Rest."""
-        if self.con.execute(f"SELECT {spalte} FROM {tabelle} WHERE id = ?", (holder[1],)).fetchone()[0] is None:
+        if self.spalte(tabelle, spalte, holder[1]) is None:
             self.setze(tabelle, holder[1], **{spalte: self.wert(c, holder)})
         else:
             self.rest(c, holder)
@@ -434,7 +458,7 @@ class Importer:
             def titel(t):
                 titel_ = self.wert(t, h)
                 self.setze("media_file", fid, title=titel_)
-                if self.con.execute("SELECT title FROM media WHERE id = ?", (mid,)).fetchone()[0] is None:
+                if self.spalte("media", "title", mid) is None:
                     self.setze("media", mid, title=titel_)
 
             self.kinder(c, h, {"FORM": form, "TITL": titel}, unter=f"FILE {c.wert}")
@@ -566,7 +590,8 @@ class Importer:
         True, wenn die Angabe übernommen wurde."""
         lat, lng = self._grad(c.wert_von("LATI")), self._grad(c.wert_von("LONG"))
         sauber = lat is not None and lng is not None and len(c.kinder) == 2 and all(not k.kinder for k in c.kinder)
-        alt = self.con.execute("SELECT lat, lng FROM place WHERE id = ?", (pid,)).fetchone()
+        pl = T("place")
+        alt = self.con.execute(select(pl.c.lat, pl.c.lng).where(pl.c.id == pid)).one()
         if not sauber or (alt[0] is not None and (round(alt[0], 6), round(alt[1], 6)) != (round(lat, 6), round(lng, 6))):
             self.rest(c, holder, unter)
             return False
@@ -612,8 +637,9 @@ class Importer:
             if gewaehlt is None:
                 gewaehlt = self.ins("place")
                 self.ins("place_name", place_id=gewaehlt, sort=self._sortnr(), name=name)
-            if eltern is not None and not self.con.execute(
-                    "SELECT 1 FROM place_link WHERE place_id = ? AND parent_id = ?", (gewaehlt, eltern)).fetchone():
+            lk = T("place_link")
+            if eltern is not None and self.con.execute(
+                    select(lk.c.id).where(lk.c.place_id == gewaehlt, lk.c.parent_id == eltern)).first() is None:
                 self.ins("place_link", place_id=gewaehlt, parent_id=eltern, sort=self._sortnr(), kind=None)
             if unsicher:
                 ortstext = ", ".join(teile[i:])
@@ -629,7 +655,8 @@ class Importer:
         return any(name in [n.lower() for n in self._namen(e)] for e in self.loc_eltern.get(pid, []))
 
     def _namen(self, pid: int) -> list[str]:
-        return [r[0] for r in self.con.execute("SELECT name FROM place_name WHERE place_id = ?", (pid,))]
+        pn = T("place_name")
+        return list(self.con.execute(select(pn.c.name).where(pn.c.place_id == pid)).scalars())
 
     def plac(self, k: Knoten, eid: int, holder) -> None:
         self.nimm(k)
@@ -652,7 +679,7 @@ class Importer:
 
         def gleich_oder_rest(spalte, art):
             def f(c):
-                alt = self.con.execute(f"SELECT {spalte} FROM place WHERE id = ?", (pid,)).fetchone()[0]
+                alt = self.spalte("place", spalte, pid)
                 if c.kinder or (alt is not None and alt != c.wert):
                     self.rest(c, holder, "PLAC")
                 else:
@@ -668,9 +695,10 @@ class Importer:
 
         def post(c):
             datum_ = c.erstes("DATE")
-            vorhanden = self.con.execute(
-                "SELECT id FROM place_attribute WHERE place_id = ? AND kind = 'postal' AND value = ? "
-                "AND IFNULL(date_text, '') = ?", (pid, c.wert, datum_.wert if datum_ else "")).fetchone()
+            pa = T("place_attribute")
+            vorhanden = self.con.execute(select(pa.c.id).where(
+                pa.c.place_id == pid, pa.c.kind == "postal", pa.c.value == c.wert,
+                func.coalesce(pa.c.date_text, "") == (datum_.wert if datum_ else ""))).first()
             if vorhanden and len(c.kinder) <= 1 and all(x.tag == "DATE" and not x.kinder for x in c.kinder):
                 self.nimm(c)
                 for x in c.kinder:
@@ -792,7 +820,8 @@ class Importer:
                                "NOTE": lambda x: self.notiz(x, n), "SOUR": lambda x: self.zitat(x, n)})
             # Fehlen GIVN/SURN, aus dem Namen ableiten (Vornamen /Familienname/ Zusatz)
             m = re.match(r"^([^/]*)/([^/]*)/?(.*)$", c.wert or "")
-            alt = self.con.execute("SELECT given, surname FROM name WHERE id = ?", (nid,)).fetchone()
+            nm = T("name")
+            alt = self.con.execute(select(nm.c.given, nm.c.surname).where(nm.c.id == nid)).one()
             if m and alt[0] is None and m.group(1).strip():
                 self.setze("name", nid, given=m.group(1).strip())
             if m and alt[1] is None and m.group(2).strip():
@@ -951,14 +980,21 @@ class Importer:
 
     def bevorzugte(self) -> None:
         """Je Träger und Ereignisart ist das erste das bevorzugte (KONZEPT 3.3)."""
-        self.con.execute("""
-            UPDATE event_role SET preferred = 1 WHERE id IN (
-                SELECT er.id FROM event_role er JOIN event e ON e.id = er.event_id
-                WHERE er.role = 'PRINCIPAL' AND e.negated = 0
-                  AND er.fact_sort = (SELECT MIN(er2.fact_sort) FROM event_role er2 JOIN event e2 ON e2.id = er2.event_id
-                                 WHERE er2.role = er.role AND e2.type = e.type AND e2.negated = 0
-                                   AND er2.person_id IS er.person_id AND er2.family_id IS er.family_id
-                                   AND er2.place_id IS er.place_id))""")
+        er, e = T("event_role").alias("er"), T("event").alias("e")
+        er2, e2 = T("event_role").alias("er2"), T("event").alias("e2")
+        erste = (select(func.min(er2.c.fact_sort)).select_from(er2.join(e2, e2.c.id == er2.c.event_id))
+                 .where(er2.c.role == er.c.role, e2.c.type == e.c.type, e2.c.negated == 0,
+                        er2.c.person_id.is_not_distinct_from(er.c.person_id),
+                        er2.c.family_id.is_not_distinct_from(er.c.family_id),
+                        er2.c.place_id.is_not_distinct_from(er.c.place_id))
+                 .scalar_subquery())
+        ids = (select(er.c.id).select_from(er.join(e, e.c.id == er.c.event_id))
+               .where(and_(er.c.role == "PRINCIPAL", e.c.negated == 0, er.c.fact_sort == erste)))
+        rollen = T("event_role")
+        # Erst die Kennungen holen, dann ändern: MariaDB erlaubt keine Unterabfrage auf die Tabelle, die es ändert.
+        bevorzugt = list(self.con.execute(ids).scalars())
+        for i in range(0, len(bevorzugt), 500):
+            self.con.execute(update(rollen).where(rollen.c.id.in_(bevorzugt[i:i + 500])).values(preferred=1))
 
 
 def importieren(gedcom: bytes, ziel: Path, titel: str = "", dateiname: str = "") -> Bericht:
@@ -970,10 +1006,10 @@ def importieren(gedcom: bytes, ziel: Path, titel: str = "", dateiname: str = "")
                 lesefehler=d.fehler)
     con = baumdatei.anlegen(ziel, titel)
     try:
-        with con:
-            Importer(con, d, b).ausfuehren()
-            con.execute("INSERT INTO meta(key, value) VALUES('import_report', ?)",
-                        (json.dumps(asdict(b), ensure_ascii=False),))
+        with con.begin():
+            imp = Importer(con, d, b)
+            imp.ausfuehren()
+            imp.ins_meta("import_report", json.dumps(asdict(b), ensure_ascii=False))
     except BaseException:
         con.close()
         for rest in (ziel, ziel.with_name(ziel.name + "-wal"), ziel.with_name(ziel.name + "-shm")):

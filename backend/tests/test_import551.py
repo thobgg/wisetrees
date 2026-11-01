@@ -29,12 +29,12 @@ def falkenrath(tmp_path_factory):
 
 
 def eins(con, sql, *args):
-    r = con.execute(sql, args).fetchone()
+    r = con.exec_driver_sql(sql, args).fetchone()
     return r[0] if r and len(r) == 1 else r
 
 
 def alle(con, sql, *args):
-    return [tuple(r) for r in con.execute(sql, args)]
+    return [tuple(r) for r in con.exec_driver_sql(sql, args)]
 
 
 # ── Nichts geht verloren ─────────────────────────────────────────────────────────────────────────────

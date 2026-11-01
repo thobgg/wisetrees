@@ -8,9 +8,12 @@ Beschriftungen auf Deutsch, Wortlaut wie in den v1-Aufzeichnungen.
 from __future__ import annotations
 
 import re
-import sqlite3
 from functools import cmp_to_key
 
+from sqlalchemy import Connection, func, select
+
+from baum.datei import Zeile, zeilen
+from baum.schema import tabelle as T
 from core.konten import ROLLEN
 
 from . import anzeige
@@ -128,13 +131,17 @@ def sortieren(fakten: list[dict]) -> list[dict]:
 # ── Bausteine ──────────────────────────────────────────────────────────────────────────────────────
 
 class Fakten:
-    def __init__(self, bau: Bau, con: sqlite3.Connection):
+    def __init__(self, bau: Bau, con: Connection):
         self.bau, self.s, self.m, self.con = bau, bau.s, bau.m, con
-        self.con.row_factory = sqlite3.Row
-        self.quellen = {r["id"]: r for r in con.execute("SELECT * FROM source")}
+        self.quellen = {r["id"]: r for r in zeilen(con, select(T("source")))}
 
-    def q(self, sql, *args):
-        return self.con.execute(sql, args).fetchall()
+    def q(self, abfrage) -> list[Zeile]:
+        return zeilen(self.con, abfrage)
+
+    def an(self, tab: str, spalte: str, wert: int):
+        """Alle Zeilen der Tabelle, die über die Spalte am Träger hängen, nach sort."""
+        t = T(tab)
+        return select(t).where(t.c[spalte] == wert).order_by(t.c.sort)
 
     def zugang_fakt(self, tag: str, resn: str | None) -> str:
         if self.s.fakt_darf(tag, resn, 2):
@@ -147,9 +154,10 @@ class Fakten:
 
     # Notizen ---------------------------------------------------------------------------------------
 
-    def notizen(self, spalte: str, wert: int) -> list[sqlite3.Row]:
-        return self.q(f"SELECT n.id, n.xref, n.text, n.resn, l.id AS link FROM note_link l JOIN note n ON n.id = l.note_id "
-                      f"WHERE l.{spalte} = ? ORDER BY l.sort", wert)
+    def notizen(self, spalte: str, wert: int) -> list[Zeile]:
+        n, lk = T("note"), T("note_link")
+        return self.q(select(n.c.id, n.c.xref, n.c.text, n.c.resn, lk.c.id.label("link"))
+                      .select_from(lk.join(n, n.c.id == lk.c.note_id)).where(lk.c[spalte] == wert).order_by(lk.c.sort))
 
     def notiz_texte(self, spalte: str, wert: int) -> list[str]:
         return [n["text"] for n in self.notizen(spalte, wert)
@@ -175,7 +183,7 @@ class Fakten:
 
     # Zitate ----------------------------------------------------------------------------------------
 
-    def zitat_json(self, z: sqlite3.Row) -> dict | None:
+    def zitat_json(self, z: Zeile) -> dict | None:
         if z["source_id"] is not None:
             if not self.quelle_darf(z["source_id"]):
                 return None
@@ -183,7 +191,8 @@ class Fakten:
         else:
             xref, titel = "", z["source_text"] or ""
         medien = []
-        for r in self.q("SELECT media_id FROM media_link WHERE citation_id = ? ORDER BY sort", z["id"]):
+        ml = T("media_link")
+        for r in self.q(select(ml.c.media_id).where(ml.c.citation_id == z["id"]).order_by(ml.c.sort)):
             if self.medium_darf(r[0]):
                 medien += self.datei_json(r[0])
         return {"xref": xref, "title": titel, "page": z["page"] or "", "quality": z["quality"],
@@ -192,7 +201,7 @@ class Fakten:
 
     def zitate(self, spalte: str, wert: int) -> list[dict]:
         aus = []
-        for z in self.q(f"SELECT * FROM citation WHERE {spalte} = ? ORDER BY sort", wert):
+        for z in self.q(self.an("citation", spalte, wert)):
             j = self.zitat_json(z)
             if j is not None:
                 aus.append(j)
@@ -202,8 +211,9 @@ class Fakten:
 
     def verknuepfte(self, event_id: int) -> list[dict]:
         aus = []
-        for r in self.q("SELECT * FROM event_role WHERE event_id = ? AND role <> 'PRINCIPAL' AND person_id IS NOT NULL "
-                        "ORDER BY sort", event_id):
+        er = T("event_role")
+        for r in self.q(select(er).where(er.c.event_id == event_id, er.c.role != "PRINCIPAL", er.c.person_id.is_not(None))
+                        .order_by(er.c.sort)):
             pid = r["person_id"]
             if not self.s.name_darf(pid):
                 continue
@@ -233,8 +243,9 @@ class Fakten:
 
     def notizen_und_freie(self, event_id: int) -> tuple[list, list, list]:
         frei = []
-        for r in self.q("SELECT role, free_text FROM event_role WHERE event_id = ? AND free_name IS NOT NULL ORDER BY sort",
-                        event_id):
+        er = T("event_role")
+        for r in self.q(select(er.c.role, er.c.free_text).where(er.c.event_id == event_id, er.c.free_name.is_not(None))
+                        .order_by(er.c.sort)):
             rolle = "godparent" if r["role"] == "GODP" else "witness" if r["role"] == "WITN" else "other"
             text = r["free_text"] or ""
             frei += self.freie_eintraege(rolle, text if ";" in text else text + ";")
@@ -265,7 +276,9 @@ class Fakten:
         if e.type == "MARR" and typ.upper() in MARR_TYP:
             typ = typ.upper()
         typ_label = (MARR_TYP.get(typ, typ) if e.type == "MARR" else typ) if typ else None
-        familie = self.q("SELECT family_id FROM event_role WHERE id = ?", e.rolle_id)[0][0] is not None
+        er, d, a, pl = T("event_role"), T("event_place_detail"), T("place_attribute"), T("place")
+        rolle = self.q(select(er.c.family_id, er.c.age).where(er.c.id == e.rolle_id))[0]
+        familie = rolle["family_id"] is not None
         standard = LABEL_FAMILIE.get(e.type) if familie else None
         label = typ_label if (typ_label and e.type in ("MARR", "EVEN", "FACT")) else standard or LABEL.get(e.type, e.type)
         roh = e.value or ""
@@ -274,12 +287,13 @@ class Fakten:
         f["type"], f["typeLabel"] = typ, typ_label
         f["date"] = anzeige.datum_json(e.date_text, mit_gedcom=True)
         f["_datum"] = e.date_text
-        details = {r["kind"]: r for r in self.q("SELECT d.kind, a.value, a.date_text FROM event_place_detail d LEFT JOIN "
-                                                "place_attribute a ON a.id = d.place_attribute_id WHERE d.event_id = ? "
-                                                "ORDER BY d.sort", e.id)}
-        posten = self.q("SELECT a.value, a.date_text FROM event_place_detail d JOIN place_attribute a ON a.id = "
-                        "d.place_attribute_id WHERE d.event_id = ? AND d.kind = 'postal' ORDER BY d.sort", e.id)
-        ort = self.q("SELECT gov_id, lat, lng, maidenhead FROM place WHERE id = ?", e.place_id)[0] if e.place_id else None
+        details = {r["kind"]: r for r in self.q(
+            select(d.c.kind, a.c.value, a.c.date_text).select_from(d.outerjoin(a, a.c.id == d.c.place_attribute_id))
+            .where(d.c.event_id == e.id).order_by(d.c.sort))}
+        posten = self.q(select(a.c.value, a.c.date_text).select_from(d.join(a, a.c.id == d.c.place_attribute_id))
+                        .where(d.c.event_id == e.id, d.c.kind == "postal").order_by(d.c.sort))
+        ort = self.q(select(pl.c.gov_id, pl.c.lat, pl.c.lng, pl.c.maidenhead).where(pl.c.id == e.place_id))[0] \
+            if e.place_id else None
         if e.place_text:
             mit_karte = ort is not None and "map" in details and ort["lat"] is not None
             f["place"] = {"name": e.place_text, "short": e.place_text, "lat": ort["lat"] if mit_karte else None,
@@ -297,12 +311,12 @@ class Fakten:
         for tag, wert_ in (("CAUS", e.cause),):
             if wert_:
                 f["details"].append({"tag": tag, "label": DETAIL_LABEL[tag], "value": wert_, "level": 0})
-        alter = self.q("SELECT age FROM event_role WHERE id = ?", e.rolle_id)[0][0]
+        alter = rolle["age"]
         if alter:
             f["details"].append({"tag": "AGE", "label": DETAIL_LABEL["AGE"], "value": alter, "level": 0})
         return f
 
-    def zitat_fakt(self, z: sqlite3.Row) -> dict | None:
+    def zitat_fakt(self, z: Zeile) -> dict | None:
         """Allgemeiner Quellenverweis am Datensatz (1 SOUR): der Fakt ist selbst der Verweis."""
         if z["source_id"] is not None and z["source_id"] not in self.quellen:
             return None
@@ -341,13 +355,13 @@ class Fakten:
                 f = self.leer(f"T{n['link']}", "NOTE", LABEL["NOTE"], n["text"], None, self.zugang_fakt("NOTE", n["resn"] if n["xref"] else None))
                 f["noteXref"] = n["xref"]
                 fakten.append(f)
-        for z in self.q(f"SELECT * FROM citation WHERE {spalte} = ? ORDER BY sort", wert):
+        for z in self.q(self.an("citation", spalte, wert)):
             if self.s.fakt_darf("SOUR", None):
                 f = self.zitat_fakt(z)
                 if f is not None:
                     fakten.append(f)
         if spalte == "person_id":
-            for a in self.q("SELECT * FROM person_association WHERE person_id = ? ORDER BY sort", wert):
+            for a in self.q(self.an("person_association", "person_id", wert)):
                 if not self.s.name_darf(a["other_person_id"]):
                     continue
                 q = self.m.personen[a["other_person_id"]]
@@ -361,7 +375,8 @@ class Fakten:
                                     "notes": self.notiz_texte("person_association_id", a["id"]),
                                     "sources": self.zitate("person_association_id", a["id"])}]
                 fakten.append(f)
-        for r in self.q(f"SELECT id, gedcom FROM gedcom_rest WHERE {spalte} = ? AND under IS NULL ORDER BY sort", wert):
+        gr = T("gedcom_rest")
+        for r in self.q(select(gr.c.id, gr.c.gedcom).where(gr.c[spalte] == wert, gr.c.under.is_(None)).order_by(gr.c.sort)):
             kopf = r["gedcom"].split("\n", 1)[0]
             m = re.match(r"^\d+ (\S+)(?: (.*))?$", kopf)
             if m:
@@ -394,7 +409,7 @@ class Fakten:
 
     def medien_json(self, spalte: str, wert: int, haupt_xref: str | None) -> list[dict]:
         aus = []
-        for r in self.q(f"SELECT * FROM media_link WHERE {spalte} = ? ORDER BY sort", wert):
+        for r in self.q(self.an("media_link", spalte, wert)):
             if not self.medium_darf(r["media_id"]):
                 continue
             med = self.m.medien[r["media_id"]]
@@ -408,9 +423,10 @@ class Fakten:
 
     def aufgaben(self, spalte: str, wert: int, xref: str, art: str, name: str) -> list[dict]:
         aus = []
-        for t in self.q(f"SELECT * FROM task WHERE {spalte} = ? ORDER BY sort", wert):
+        rp = T("repository")
+        for t in self.q(self.an("task", spalte, wert)):
             notizen = self.notiz_texte("task_id", t["id"])
-            repo = self.q("SELECT xref, name, resn FROM repository WHERE id = ?", t["repository_id"]) \
+            repo = self.q(select(rp.c.xref, rp.c.name, rp.c.resn).where(rp.c.id == t["repository_id"])) \
                 if t["repository_id"] else []
             datum = anzeige.datum_json(t["date_text"], mit_gedcom=True)
             aus.append({"record": xref, "recordType": art, "name": name, "factId": f"K{t['id']}", "text": t["text"] or "",
@@ -426,9 +442,12 @@ class Fakten:
         return aus
 
     def uids(self, tabelle: str, wert: int) -> list[str]:
-        erste = self.q(f"SELECT uid FROM {tabelle} WHERE id = ?", wert)[0][0]
-        weitere = [r[0].split(" ", 2)[2] for r in self.q(f"SELECT gedcom FROM gedcom_rest WHERE {tabelle}_id = ? AND under "
-                                                         "IS NULL AND gedcom LIKE '1 _UID %'", wert)]
+        t, gr = T(tabelle), T("gedcom_rest")
+        erste = self.q(select(t.c.uid).where(t.c.id == wert))[0][0]
+        # weitere _UID-Zeilen am Datensatz; Vergleich mit festem Anfang statt LIKE, damit er überall genau ist
+        weitere = [r[0].split(" ", 2)[2] for r in self.q(
+            select(gr.c.gedcom).where(gr.c[f"{tabelle}_id"] == wert, gr.c.under.is_(None),
+                                      func.substr(gr.c.gedcom, 1, 7) == "1 _UID ").order_by(gr.c.sort))]
         return [u for u in [erste, *weitere] if u]
 
     # Familie -----------------------------------------------------------------------------------------
@@ -551,11 +570,12 @@ def _gegenrichtung(fk: Fakten, pid: int) -> list[dict]:
     bau, s, m = fk.bau, fk.s, fk.m
     p = m.personen[pid]
     eintraege = []
-    rollen = fk.q("""SELECT er.id, er.rela, e.id AS event_id, e.type, e.subtype, e.date_text, e.place_text, e.resn,
-                            h.person_id, h.family_id, h.id AS haupt
-                     FROM event_role er JOIN event e ON e.id = er.event_id
-                     JOIN event_role h ON h.event_id = e.id AND h.role = 'PRINCIPAL'
-                     WHERE er.person_id = ? AND er.role <> 'PRINCIPAL' ORDER BY er.id""", pid)
+    er, e, h = T("event_role").alias("er"), T("event").alias("e"), T("event_role").alias("h")
+    rollen = fk.q(select(er.c.id, er.c.rela, e.c.id.label("event_id"), e.c.type, e.c.subtype, e.c.date_text,
+                         e.c.place_text, e.c.resn, h.c.person_id, h.c.family_id, h.c.id.label("haupt"))
+                  .select_from(er.join(e, e.c.id == er.c.event_id)
+                               .join(h, (h.c.event_id == e.c.id) & (h.c.role == "PRINCIPAL")))
+                  .where(er.c.person_id == pid, er.c.role != "PRINCIPAL").order_by(er.c.id))
     for r in rollen:
         if r["person_id"] is not None:
             if not s.person_darf(r["person_id"]):

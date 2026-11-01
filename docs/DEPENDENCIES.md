@@ -12,10 +12,11 @@ Abhängigkeit kommt hier mit Lizenz hinein, auch mitgezogene.
 | uvicorn | 0.54.0 | BSD-3-Clause | HTTP-Server |
 | argon2-cffi | 25.1.0 | MIT | Passwort-Hashes (Argon2id) |
 | python-multipart | 0.0.33 | Apache-2.0 | Formulare (Anmeldung in v1) |
+| sqlalchemy | 2.1.6 | MIT | Datenbankzugriff über SQLAlchemy Core (E16); zieht nur typing_extensions mit |
 | *mitgezogen:* starlette | 1.10.0 | BSD-3-Clause | fastapi |
 | *mitgezogen:* pydantic, pydantic_core | 2.14.2, 2.50.2 | MIT | fastapi |
 | *mitgezogen:* annotated-types, annotated-doc, typing-inspection | 0.8.0, 0.0.5, 0.4.4 | MIT | pydantic, fastapi |
-| *mitgezogen:* typing_extensions | 4.16.0 | PSF-2.0 | pydantic, referencing |
+| *mitgezogen:* typing_extensions | 4.16.0 | PSF-2.0 | pydantic, referencing, sqlalchemy |
 | *mitgezogen:* opentelemetry-api | 1.45.2 | Apache-2.0 | fastapi |
 | *mitgezogen:* anyio | 4.15.1 | MIT | starlette |
 | *mitgezogen:* idna | 3.20 | BSD-3-Clause | anyio |

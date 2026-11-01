@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import re
-import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
+
+from sqlalchemy import Connection
 
 from baum import datei
 
@@ -17,7 +18,7 @@ class Baum:
     name: str
     pfad: Path
 
-    def oeffnen(self) -> sqlite3.Connection:
+    def oeffnen(self) -> Connection:
         return datei.oeffnen(self.pfad)
 
 

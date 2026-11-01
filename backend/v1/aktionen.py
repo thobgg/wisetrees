@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from sqlalchemy import func, select
+
+from baum.schema import tabelle as T
 from core.konten import ROLLEN
 
 from .http import GET_AKTIONEN, Kontext
@@ -26,9 +29,10 @@ def info(ctx: Kontext) -> dict:
         rolle = ctx.konten.rolle(konto, b.name)
         con = b.oeffnen()
         try:
-            titel = (con.execute("SELECT value FROM meta WHERE key = 'title'").fetchone() or [""])[0] or b.name
-            anzahl = con.execute("SELECT COUNT(*) FROM person").fetchone()[0]
-            erste = con.execute("SELECT MIN(xref) FROM person").fetchone()[0] or ""
+            mt, pe = T("meta"), T("person")
+            titel = con.execute(select(mt.c.value).where(mt.c.key == "title")).scalar() or b.name
+            anzahl = con.execute(select(func.count()).select_from(pe)).scalar()
+            erste = con.execute(select(func.min(pe.c.xref))).scalar() or ""
         finally:
             con.close()
         from .sicht import sicht_fuer

@@ -16,10 +16,13 @@ from __future__ import annotations
 
 import datetime
 import os
-import sqlite3
 import threading
 from dataclasses import dataclass, field
 
+from sqlalchemy import Connection, select
+
+from baum.datei import Zeile
+from baum.schema import tabelle as T
 from gedcom.datum import jd_gregorianisch
 
 MAX_ALIVE_AGE = 120
@@ -64,7 +67,7 @@ class Person:
     sex: str
     resn: str | None
     uid: str | None
-    namen: list = field(default_factory=list)       # sqlite3.Row aus name, nach sort
+    namen: list = field(default_factory=list)       # Zeilen aus name, nach sort
     fakten: list[Ereignis] = field(default_factory=list)
     famc: list[int] = field(default_factory=list)  # Familien als Kind, nach person_sort
     fams: list[int] = field(default_factory=list)  # Familien als Partner, nach person_sort
@@ -99,7 +102,7 @@ class Familie:
 class Modell:
     """Der angenommene Stand eines Baums im Speicher."""
 
-    def __init__(self, con: sqlite3.Connection):
+    def __init__(self, con: Connection):
         self.personen: dict[int, Person] = {}
         self.familien: dict[int, Familie] = {}
         self.person_xref: dict[str, int] = {}
@@ -108,57 +111,68 @@ class Modell:
         # Medium → Datensätze, die es verwenden (auch über Ereignisse und Zitate): ("person"|"family"|"source", id)
         self.medien_traeger: dict[int, set[tuple[str, int]]] = {}
         self.familie_xref: dict[str, int] = {}
-        for r in con.execute("SELECT id, xref, sex, resn, uid FROM person"):
+        pe, na, fa, fm = T("person"), T("name"), T("family"), T("family_member")
+        ev, er, me, mf, ml = T("event"), T("event_role"), T("media"), T("media_file"), T("media_link")
+        for r in con.execute(select(pe.c.id, pe.c.xref, pe.c.sex, pe.c.resn, pe.c.uid)):
             self.personen[r[0]] = Person(r[0], r[1], r[2], r[3], r[4])
             self.person_xref[r[1]] = r[0]
-        for r in con.execute("SELECT * FROM name ORDER BY person_id, sort"):
-            self.personen[r["person_id"]].namen.append(r)
-        for r in con.execute("SELECT id, xref, resn, uid FROM family"):
+        for r in con.execute(select(na).order_by(na.c.person_id, na.c.sort)):
+            self.personen[r.person_id].namen.append(Zeile(r))
+        for r in con.execute(select(fa.c.id, fa.c.xref, fa.c.resn, fa.c.uid)):
             self.familien[r[0]] = Familie(r[0], r[1], r[2], r[3])
             self.familie_xref[r[1]] = r[0]
-        for r in con.execute("SELECT family_id, person_id, role, sort, person_sort FROM family_member "
-                             "ORDER BY person_id, person_sort"):
+        for r in con.execute(select(fm.c.family_id, fm.c.person_id, fm.c.role, fm.c.sort, fm.c.person_sort)
+                             .order_by(fm.c.person_id, fm.c.person_sort)):
             f, p = self.familien[r[0]], self.personen[r[1]]
             if r[2] == "partner":
                 f.partner[r[3]] = p.id
                 p.fams.append(f.id)
             else:
                 p.famc.append(f.id)
+        kinder: dict[int, list[int]] = {}
+        for r in con.execute(select(fm.c.family_id, fm.c.person_id).where(fm.c.role == "child")
+                             .order_by(fm.c.family_id, fm.c.sort)):
+            kinder.setdefault(r[0], []).append(r[1])
         for f in self.familien.values():
-            f.kinder = [r[0] for r in con.execute(
-                "SELECT person_id FROM family_member WHERE family_id = ? AND role = 'child' ORDER BY sort", (f.id,))]
-        for r in con.execute("""
-                SELECT e.id, e.type, e.subtype, e.value, e.negated, e.place_id, e.place_text, e.address, e.cause,
-                       e.date_text, e.date_from, e.date_to, e.resn, er.id, er.fact_sort, er.person_id, er.family_id
-                FROM event_role er JOIN event e ON e.id = er.event_id
-                WHERE er.role = 'PRINCIPAL' AND (er.person_id IS NOT NULL OR er.family_id IS NOT NULL)
-                ORDER BY er.fact_sort"""):
+            f.kinder = kinder.get(f.id, [])
+        for r in con.execute(
+                select(ev.c.id, ev.c.type, ev.c.subtype, ev.c.value, ev.c.negated, ev.c.place_id, ev.c.place_text,
+                       ev.c.address, ev.c.cause, ev.c.date_text, ev.c.date_from, ev.c.date_to, ev.c.resn, er.c.id,
+                       er.c.fact_sort, er.c.person_id, er.c.family_id)
+                .select_from(er.join(ev, ev.c.id == er.c.event_id))
+                .where(er.c.role == "PRINCIPAL", (er.c.person_id.is_not(None)) | (er.c.family_id.is_not(None)))
+                .order_by(er.c.fact_sort)):
             e = Ereignis(r[0], r[1], r[2], r[3], bool(r[4]), r[5], r[6], r[7], r[8], r[9], r[10], r[11], r[12],
                          rolle_id=r[13], fact_sort=r[14])
             (self.personen[r[15]] if r[15] else self.familien[r[16]]).fakten.append(e)
-        for r in con.execute("SELECT id, xref, title, resn FROM media"):
+        for r in con.execute(select(me.c.id, me.c.xref, me.c.title, me.c.resn)):
             self.medien[r[0]] = Medium(r[0], r[1], r[2], r[3])
-        for r in con.execute("SELECT media_id, path, format, media_type, title FROM media_file ORDER BY media_id, sort"):
+        for r in con.execute(select(mf.c.media_id, mf.c.path, mf.c.format, mf.c.media_type, mf.c.title)
+                             .order_by(mf.c.media_id, mf.c.sort)):
             self.medien[r[0]].dateien.append((r[1], r[2], r[3], r[4]))
-        for r in con.execute("SELECT person_id, media_id, is_primary FROM media_link WHERE person_id IS NOT NULL ORDER BY sort"):
+        for r in con.execute(select(ml.c.person_id, ml.c.media_id, ml.c.is_primary)
+                             .where(ml.c.person_id.is_not(None)).order_by(ml.c.sort)):
             self.personen[r[0]].medien.append((r[1], bool(r[2])))
-        for r in con.execute("SELECT id, resn FROM source"):
+        so, ta = T("source"), T("task")
+        for r in con.execute(select(so.c.id, so.c.resn)):
             self.quellen_resn[r[0]] = r[1]
         self._medien_traeger(con)
-        for r in con.execute("SELECT person_id, family_id, date_from, date_to FROM task WHERE date_from IS NOT NULL"):
+        for r in con.execute(select(ta.c.person_id, ta.c.family_id, ta.c.date_from, ta.c.date_to)
+                             .where(ta.c.date_from.is_not(None))):
             ziel = self.personen.get(r[0]) if r[0] else self.familien.get(r[1])
             if ziel is not None:
                 ziel.weitere_daten.append(r[3] if r[3] is not None else r[2])
 
 
-    def _medien_traeger(self, con: sqlite3.Connection) -> None:
+    def _medien_traeger(self, con: Connection) -> None:
         """Welcher Datensatz verweist irgendwo in sich (auch über Ereignisse und Zitate) auf das Medium."""
+        er, na, ci, ml = T("event_role"), T("name"), T("citation"), T("media_link")
         haupt = {r[0]: (("person", r[1]) if r[1] else ("family", r[2]) if r[2] else None) for r in con.execute(
-            "SELECT event_id, person_id, family_id FROM event_role WHERE role = 'PRINCIPAL'")}
-        rolle_ereignis = dict(con.execute("SELECT id, event_id FROM event_role"))
-        name_person = dict(con.execute("SELECT id, person_id FROM name"))
-        zitat = {r[0]: r[1:] for r in con.execute(
-            "SELECT id, person_id, family_id, name_id, event_id, event_role_id FROM citation")}
+            select(er.c.event_id, er.c.person_id, er.c.family_id).where(er.c.role == "PRINCIPAL"))}
+        rolle_ereignis = {r[0]: r[1] for r in con.execute(select(er.c.id, er.c.event_id))}
+        name_person = {r[0]: r[1] for r in con.execute(select(na.c.id, na.c.person_id))}
+        zitat = {r[0]: tuple(r[1:]) for r in con.execute(
+            select(ci.c.id, ci.c.person_id, ci.c.family_id, ci.c.name_id, ci.c.event_id, ci.c.event_role_id))}
 
         def datensatz(person=None, family=None, source=None, event=None, citation=None, name=None, event_role=None):
             if person:
@@ -174,11 +188,12 @@ class Modell:
             if event:
                 return haupt.get(event)
             if citation and citation in zitat:
-                p, f, n, e, er = zitat[citation]
-                return datensatz(person=p, family=f, name=n, event=e, event_role=er)
+                p, f, n, e, er_ = zitat[citation]
+                return datensatz(person=p, family=f, name=n, event=e, event_role=er_)
             return None
 
-        for r in con.execute("SELECT media_id, person_id, family_id, source_id, event_id, citation_id FROM media_link"):
+        for r in con.execute(select(ml.c.media_id, ml.c.person_id, ml.c.family_id, ml.c.source_id, ml.c.event_id,
+                                    ml.c.citation_id)):
             d = datensatz(person=r[1], family=r[2], source=r[3], event=r[4], citation=r[5])
             if d and d[1]:
                 self.medien_traeger.setdefault(r[0], set()).add(d)
