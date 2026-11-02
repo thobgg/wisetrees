@@ -2,6 +2,9 @@
 
 **Deutsch** · [English](README.md)
 
+> **wisetrees wird nicht weiterentwickelt.** Letzter Stand ist
+> [0.3.0](https://github.com/thobgg/wisetrees/releases/tag/v0.3.0); Code, Releases und Images bleiben verfügbar.
+
 Ein selbst gehosteter Genealogie-Server mit eigener JSON-Schnittstelle. Er hält Personen, Ereignisse, Orte und Quellen
 als eigenes Datenmodell; GEDCOM ist das Austauschformat. Ein Ereignis wie eine Taufe ist ein Objekt, an dem
 Täufling, Eltern und Paten mit ihrer Rolle hängen; Orte haben datierte Namen und eine datierte Zugehörigkeit.
@@ -40,7 +43,7 @@ Täufling, Eltern und Paten mit ihrer Rolle hängen; Orte haben datierte Namen u
 - PostgreSQL und MariaDB als Alternative zu SQLite.
 - Verwandtschaftsbezeichnungen über nahe Verwandte hinaus („Partners Urgroßvater“).
 
-**Als Nächstes**
+**Geplant, nicht gebaut**
 
 Die übrigen Teile von Meilenstein 2 in der Reihenfolge von [docs/FUNKTIONEN.md](docs/FUNKTIONEN.md) 1.3: Fotos
 (hochladen, verknüpfen, Hauptbild, Vorschaubilder), der ganze Baum seitenweise, Gerät koppeln, Merkliste, Jahrestage.

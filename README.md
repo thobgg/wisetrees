@@ -2,6 +2,9 @@
 
 [Deutsch](README.de.md) · **English**
 
+> **wisetrees is no longer developed.** The last version is
+> [0.3.0](https://github.com/thobgg/wisetrees/releases/tag/v0.3.0); code, releases and images stay available.
+
 A self-hosted genealogy server with its own JSON interface. It keeps individuals, events, places and sources in its
 own data model; GEDCOM is the exchange format. An event such as a baptism is one object, with the child, the parents
 and the godparents attached in their roles; places have dated names and a dated hierarchy.
@@ -42,7 +45,7 @@ and the godparents attached in their roles; places have dated names and a dated 
 - PostgreSQL and MariaDB as alternatives to SQLite.
 - Relationship names beyond close relatives.
 
-**Next**
+**Planned, not built**
 
 The other parts of milestone 2 in the order of [docs/FUNKTIONEN.md](docs/FUNKTIONEN.md) 1.3: photos (upload, link,
 main photo, thumbnails), the whole tree page by page, pairing a device, bookmarks, anniversaries. The concept with all
